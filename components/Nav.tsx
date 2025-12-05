@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import logo from "../Assets/bigwig digital logo (11).png";
+import logo from "../Assets/chrismass.svg";
 import {
   LayoutDashboard,
   Info,
@@ -131,7 +131,7 @@ const Nav: React.FC = () => {
             <Image
               src={logo}
               alt="Logo"
-              className="w-44 md:w-48 transition duration-300"
+              className="w-44 md:w-52 transition duration-300"
               draggable="false"
             />
           </Link>
