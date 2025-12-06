@@ -110,15 +110,79 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
 
   return (
     <div className="bg-white text-black min-h-screen">
+      {/* ================== AUTO BREADCRUMB SCHEMA ================== */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.bigwigmediadigital.com/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blogs",
+                item: "https://www.bigwigmediadigital.com/blogs",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: blog.title,
+                item: `https://www.bigwigmediadigital.com/blogs/${blog.slug}`,
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* ================== AUTO ARTICLE SCHEMA ================== */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://www.bigwigmediadigital.com/blogs/${blog.slug}`,
+            },
+            headline: blog.title,
+            description: blog.excerpt,
+            image: [blog.coverImage],
+            author: {
+              "@type": "Person",
+              name: blog.author || "Team Bigwig",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Bigwigmediadigital",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.bigwigmediadigital.com/bigwig digital logo (11).png",
+              },
+            },
+            url: `https://www.bigwigmediadigital.com/blogs/${blog.slug}`,
+            datePublished: blog.datePublished,
+            dateModified: blog.datePublished,
+          }),
+        }}
+      />
+
       {/* ✅ Schema Markup */}
-      {Array.isArray(blog.schemaMarkup) &&
+      {/* {Array.isArray(blog.schemaMarkup) &&
         blog.schemaMarkup.map((markup, idx) => (
           <script
             key={idx}
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: markup }}
           />
-        ))}
+        ))} */}
 
       <Navbar />
 
