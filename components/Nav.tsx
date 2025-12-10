@@ -1,10 +1,7 @@
 // components/Nav.tsx
 "use client";
-
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "../Assets/Bigwig_logo__final.png";
+import React, { useState } from "react";
+import logo from "../Assets/bigwig digital logo (11).png";
 import {
   Search,
   Globe,
@@ -222,20 +219,18 @@ const Nav: React.FC = () => {
       </div>
       <hr className="border-0 h-[1px] bg-[#A7EBF2]" /> */}
 
-      {/* Main Nav */}
-      <div className=" px-4 md:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-5 items-center  ">
-          {/* Logo */}
-          <div className="flex items-center col-span-1">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="Bigwig Digital"
-                className="w-16 md:w-24"
-                draggable={false}
-              />
-            </Link>
-          </div>
+      <div className="px-4 md:px-16 container mx-auto flex justify-between items-center py-3 w-full">
+        {/* Logo */}
+        <div className="flex items-center font-bold text-2xl">
+          <Link href="/">
+            <Image
+              src={logo}
+              alt="Logo"
+              className="w-44 md:w-48 transition duration-300"
+              draggable="false"
+            />
+          </Link>
+        </div>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex justify-center whitespace-nowrap col-span-3">

@@ -8,12 +8,8 @@ import {
   faXTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import {
-  faEnvelope,
-  faLocation,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import logo from "../Assets/Bigwig_logo__final.png";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import logo from "../Assets/bigwig digital logo (11).png";
 import line2 from "../Assets/line2.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +34,7 @@ function Footer() {
                 <Image
                   src={logo}
                   alt="Bigwig Logo"
-                  className="w-32 md:w-64"
+                  className="w-60"
                   draggable="false"
                 />
               </div>
