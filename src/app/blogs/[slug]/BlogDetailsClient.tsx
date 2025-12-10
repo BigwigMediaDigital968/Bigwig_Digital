@@ -187,6 +187,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
           }),
         }}
       />
+
       {/* ✅ Schema Markup */}
       {/* {Array.isArray(blog.schemaMarkup) &&
         blog.schemaMarkup.map((markup, idx) => (
