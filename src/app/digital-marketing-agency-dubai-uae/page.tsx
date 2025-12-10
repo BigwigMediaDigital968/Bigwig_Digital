@@ -4,24 +4,42 @@ import Footer from "../../../components/Footer";
 import Nav from "../../../components/Nav";
 import bannerImage from "../../../Assets/dubai.jpg";
 import transfrom from "../../../Assets/Dubai/transformBuisness.jpg";
-
+// import {
+//   Search,
+//   Share2,
+//   BarChart3,
+//   FileText,
+//   Layout,
+//   Mail,
+//   Instagram,
+//   Image,
+//   Brain,
+//   MousePointerClick,
+//   Users,
+//   Video,
+//   Megaphone,
+//   UserCheck,
+//   ShieldCheck,
+// } from "lucide-react";
 import OurProcess from "../../../components/OurProcess";
 import WhyBigwig from "../../../components/WhyBigwig";
 import seo from "../../../Assets/services/SEO.png";
 import affiliate from "../../../Assets/services/Affiliate Marketing.png";
+import ai from "../../../Assets/services/AI and CGI.png";
 import content from "../../../Assets/services/Content Marketing.png";
 import email from "../../../Assets/services/Email Marketing.png";
 import graphic from "../../../Assets/services/Graphic Desining.png";
 import influencer from "../../../Assets/services/Influencer Marketing.png";
+import landing from "../../../Assets/services/Landing Page Optimization.png";
 import orm from "../../../Assets/services/ORM.png";
 import performance from "../../../Assets/services/Performance Marketing.png";
-
+import publicRelation from "../../../Assets/services/Public Relations.png";
 import smm from "../../../Assets/services/SMM.png";
 import smo from "../../../Assets/services/SMO.png";
+import video from "../../../Assets/services/Video Shoots.png";
 import website from "../../../Assets/services/Website Development.png";
 import CTABanner from "../../../components/CTABanner";
 import Image from "next/image";
-import GetInTouch from "../../../components/GetInTouch";
 
 const services = [
   {
@@ -136,7 +154,7 @@ const services = [
 
 function SeoServicesDubai() {
   return (
-    <div className="bg-[var(--color1)] text-white">
+    <div className="bg-white text-black font-raleway">
       <title>
         Digital Marketing Agency in Dubai, UAE | BigWig Media Digital
       </title>
@@ -160,7 +178,7 @@ social media, performance marketing, content, and web design to help brands grow
         }}
       >
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-[var(--color1)]/60"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
 
         <div className="relative w-11/12 md:w-5/6 mx-auto py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left Side - Text */}
@@ -193,13 +211,14 @@ social media, performance marketing, content, and web design to help brands grow
               className="rounded-2xl shadow-lg w-full h-auto object-cover"
             />
             {/* Overlay Accent */}
-            {/* <div className="absolute inset-0 bg-black/20 rounded-2xl"></div> */}
+            <div className="absolute inset-0 bg-black/20 rounded-2xl"></div>
           </div>
 
           {/* Text */}
-          <div className="space-y-6 leading-relaxed">
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)]">
-              Transform Your Business
+          <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Transform Your{" "}
+              <span className="text-[var(--primary-color)]">Business</span>
             </h2>
             <p>
               At BigWig Media Digital, we believe every brand has the potential
@@ -225,88 +244,42 @@ social media, performance marketing, content, and web design to help brands grow
       </section>
 
       {/* Who We Are Section */}
-      <section className="w-full py-12 relative">
-        <div className="w-11/12 md:w-5/6 mx-auto grid md:grid-cols-2 gap-10">
-          {/* LEFT BOX — WHO WE ARE */}
-          <div
-            className="
-        group relative p-8 rounded-2xl overflow-hidden
-        bg-[var(--color1)]/70 border border-white/10
-      
- 
-      "
-          >
-            {/* CONTENT */}
-            <div className="relative z-10 space-y-5">
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)]">
-                Who We Are
-              </h2>
-
-              <p className="text-gray-300 leading-relaxed">
-                BigWig Media Digital is a full-service, performance-led digital
-                marketing company in Dubai, UAE with roots in India. Our team
-                blends creativity, technology, and data-driven approaches to
-                provide powerful solutions across SEO, social media, content,
-                and performance marketing.
-              </p>
-
-              <p className="text-gray-300 leading-relaxed">
-                From startups to enterprises, we empower brands to grow, scale,
-                and dominate their digital landscape with confidence.
-              </p>
-            </div>
+      <section className="relative bg-white py-12">
+        <div className="w-11/12 md:w-5/6 mx-auto items-center">
+          {/* Text */}
+          <div className="space-y-6 text-lg leading-relaxed order-2 md:order-1">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 relative inline-block">
+              Who We Are
+              <span className="absolute -bottom-2 left-0 w-16 h-1 bg-[var(--primary-color)]"></span>
+            </h2>
+            <p>
+              BigWig Media Digital is a full-service, performance-led digital
+              marketing company in Dubai, UAE with roots in India. We’re
+              dedicated to helping businesses of all sizes achieve measurable
+              growth in the digital world. Our team blends creativity,
+              technology, and data-driven approaches to provide end-to-end
+              solutions across SEO, social media, content, and performance
+              marketing.
+            </p>
+            <p>
+              Whether it’s a startup looking to build its identity or an
+              established enterprise aiming to scale further, we empower
+              businesses to stay ahead in the competitive digital landscape and
+              position themselves as leaders in their industry.
+            </p>
           </div>
 
-          {/* RIGHT BOX — WHY BIGWIG MEDIA */}
-          <div
-            className="
-        group relative p-8 rounded-2xl overflow-hidden
-        bg-[var(--color1)]/70 border border-white/10
-      
-      "
-          >
-            {/* CONTENT */}
-            <div className="relative z-10 space-y-5">
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)]">
-                Why BigWig Media Digital Is Trusted
-              </h2>
-
-              <p className="text-gray-300 leading-relaxed">
-                We combine{" "}
-                <span className="text-[var(--color5)] font-medium">
-                  creativity, data, and technology
-                </span>{" "}
-                to craft strategies that deliver meaningful results. With
-                presence in both UAE & India, we bring deep market insights and
-                global expertise to the table.
-              </p>
-
-              <p className="text-gray-300 leading-relaxed">
-                Across industries like lifestyle, tech, hospitality, and
-                e-commerce, we&#39;ve helped brands grow visibility, engagement,
-                and revenue through innovative digital solutions.
-              </p>
-
-              <p className="text-gray-300 leading-relaxed">
-                Our{" "}
-                <span className="text-[var(--color5)] font-medium">
-                  performance-led approach
-                </span>{" "}
-                ensures campaigns aren’t just creative — they’re measurable,
-                scalable, and built for real business growth.
-              </p>
-            </div>
-          </div>
+          {/* Image */}
         </div>
       </section>
 
-      <section className="w-full py-12 ">
+      <section className="w-full py-12 font-raleway ">
         {/* Heading */}
-        <div className="w-11/12 md:w-5/6 mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--color5)]">
+        <div className=" w-11/12 md:w-5/6 mx-auto mb-10">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             Your Trusted Digital Marketing Partner in Dubai, UAE
           </h2>
-          <p className="text-gray-300 text-base">
+          <p className="text-gray-600 text-lg">
             We combine deep market understanding, innovation, and
             performance-driven strategies to ensure your brand achieves
             measurable results.
@@ -314,89 +287,89 @@ social media, performance marketing, content, and web design to help brands grow
         </div>
 
         {/* Services Grid */}
-        <div className="w-11/12 md:w-5/6 mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="w-11/12 md:w-5/6 mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="
-          group relative p-4 rounded-2xl overflow-hidden
-          bg-[var(--color1)]/70 border border-white/10
-          shadow-[0_0_25px_rgba(0,0,0,0.45)] 
-          hover:shadow-[0_0_40px_rgba(167,235,242,0.3)]
-          hover:border-[var(--color5)]
-          transition-all duration-500
-        "
+              className="group relative bg-white shadow-md rounded-2xl p-6 border border-gray-100
+                 hover:shadow-2xl transition-all duration-300 flex flex-col"
             >
-              {/* Matrix hologram overlay */}
-              <div
-                className="
-          absolute inset-0 opacity-[0.15] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')]
-          bg-cover bg-center mix-blend-screen pointer-events-none
-        "
-              ></div>
-
-              {/* Glow border */}
-              <div
-                className="
-          absolute inset-0 rounded-2xl border border-transparent 
-          group-hover:border-[var(--color5)] 
-          transition-all duration-500
-        "
-              ></div>
-
-              {/* CONTENT WRAPPER */}
-              <div className="relative z-10">
-                {/* Icon + Subtitle */}
-                <div className="flex items-center gap-4 mb-5">
-                  <div
-                    className="
-              rounded-xl 
-              flex items-center justify-center 
-            "
-                  >
-                    <Image
-                      src={service.icon}
-                      alt={service.title}
-                      className="w-16 h-16"
-                    />
-                  </div>
-
-                  <h4 className="text-sm text-[var(--color5)] tracking-wide font-semibold">
-                    {service.subtitle}
-                  </h4>
+              {/* Icon + Subtitle (Flex) */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[var(--primary-color)]/10 text-[var(--primary-color)]">
+                  <Image src={service.icon} alt={service.title} />
                 </div>
+                <h4 className="text-sm text-[var(--primary-color)] font-medium">
+                  {service.subtitle}
+                </h4>
+              </div>
 
-                {/* Description */}
-                <p className="text-gray-300 text-sm leading-relaxed min-h-[50px]">
-                  {service.desc}
-                </p>
+              {/* Content */}
+              <p className="text-gray-600 text-sm flex-grow">{service.desc}</p>
 
-                {/* Read More Button (slide-up) */}
-                <div className="mt-6 overflow-hidden">
-                  <a
-                    href={service.link}
-                    className="
-                block w-full text-center px-5 py-2 rounded-lg 
-                bg-[var(--color5)]/10 border border-[var(--color5)] text-[var(--color5)]
-                font-semibold tracking-wide
-                opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100
-                transition-all duration-300
-                shadow-[0_0_15px_rgba(167,235,242,0.25)]
-                hover:bg-[var(--color5)] hover:text-black
-              "
-                  >
-                    Read More →
-                  </a>
-                </div>
+              {/* Hover Read More (Slide Up Animation) */}
+              <div className="mt-4 overflow-hidden">
+                <a
+                  href={service.link}
+                  className="block w-full text-center px-5 py-2 rounded-lg text-[var(--primary-color)] font-medium 
+                   transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100
+                   transition-all duration-300 ease-out"
+                >
+                  Read More →
+                </a>
               </div>
             </div>
           ))}
         </div>
       </section>
 
+      <section className="w-full py-16  font-raleway">
+        {/* Container */}
+        <div className="w-11/12 md:w-5/6 mx-auto mb-14 space-y-6 text-center md:text-left">
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
+            Why{" "}
+            <span className="text-[var(--primary-color)]">
+              BigWig Media Digital
+            </span>{" "}
+            is a Trusted Digital Marketing Agency in Dubai, UAE
+          </h2>
+
+          {/* Paragraphs */}
+          <p className="text-gray-700 text-lg leading-relaxed">
+            At BigWig Media Digital, we go beyond conventional marketing by
+            blending
+            <span className="font-medium">
+              {" "}
+              creativity, data, and technology
+            </span>{" "}
+            to craft strategies that deliver real results. With a presence in
+            both UAE and India, we bring local expertise and a global
+            perspective to every campaign.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Our team has successfully partnered with businesses across
+            industries, from lifestyle and hospitality to tech and
+            e-commerce,helping them boost visibility, engagement, and revenue
+            through innovative digital solutions.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            What sets us apart is our{" "}
+            <span className="font-medium">performance-led approach</span>: we
+            don’t just chase trends, we create meaningful digital experiences
+            that shape brands, spark conversations, and drive measurable
+            business growth.
+          </p>
+        </div>
+      </section>
       <OurProcess />
       <WhyBigwig />
-      <GetInTouch />
+      <CTABanner
+        title="With BigWig Media Digital, your brand won’t just rank higher – it will dominate the Dubai digital market."
+        buttonText="Get Started Today"
+      />
       <Footer />
     </div>
   );

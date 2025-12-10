@@ -7,15 +7,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import Button from "./Button";
-import { FaQuoteRight } from "react-icons/fa";
 
 interface Testimonial {
   name: string;
   review: string;
   rating: number;
   image: string;
-  text: string;
 }
 
 // Custom Navigation Buttons
@@ -39,8 +36,6 @@ export default function ImageSlider() {
         "We have been working with Big Wig Media digital for nearly a year and their SEO + PPC combination strategy is giving us steady results. Unlike agency that over promise they deliver consistent improvements and focus on long term growth.",
       rating: 5,
       image: "",
-
-      text: "#E57648",
     },
     {
       name: "Aparajita Pandey",
@@ -49,8 +44,6 @@ export default function ImageSlider() {
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjV9LGaNpHLRB9zgIuu3-FQAitUeRxKhF-XS986Ll8-SphirLA7CrA=w90-h90-p-rp-mo-br100",
-
-      text: "#4AA8F0",
     },
     {
       name: "ESHAAN AGGARWAL",
@@ -58,8 +51,6 @@ export default function ImageSlider() {
         "What I loved most is that they didn’t offer me a one-size-fits-all plan. The strategy they created was tailor-made for my startup’s goals, and it worked beautifully.",
       rating: 5,
       image: "",
-
-      text: "#7A5AF8",
     },
     {
       name: "Amit Paal Siingh",
@@ -68,8 +59,6 @@ export default function ImageSlider() {
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjVxYdkNjf2_Uda0TFgK4Mt9fA3uftsVT9eAb6YTljLckk_immAXJw=w90-h90-p-rp-mo-ba2-br100",
-
-      text: "#00B8A9",
     },
     {
       name: "Piyush Paswan",
@@ -77,8 +66,6 @@ export default function ImageSlider() {
         "I was struggling with content marketing for my online business. BigWig not only created a content strategy for me but also executed it so well that our engagement grew by 60%. Love their approach!",
       rating: 5,
       image: "",
-
-      text: "#E57648",
     },
     {
       name: "Chanchal Sikha",
@@ -86,8 +73,6 @@ export default function ImageSlider() {
         "I own a fashion label and wanted help with Instagram growth. BigWig’s team helped us create a reel strategy that went viral twice in one month. Super impressed!",
       rating: 5,
       image: "",
-
-      text: "#4AA8F0",
     },
     {
       name: "Manjot Singh",
@@ -96,8 +81,6 @@ export default function ImageSlider() {
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjWocBrIQukTEUH6FyQY-OHikb2HnSX5lb2cg68rB_OW1zUapt_IXw=w90-h90-p-rp-mo-br100",
-
-      text: "#7A5AF8",
     },
     {
       name: "Kashvi Chhabra",
@@ -106,61 +89,74 @@ export default function ImageSlider() {
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjVZZS5xpnWcD6qeivGWgPcOxB9vmVoBiGuvRREcL8JdNDsNZNG1AQ=w90-h90-p-rp-mo-br100",
-
-      text: "#00B8A9",
     },
   ];
 
   return (
-    <section className="relative py-12 bg-[var(--color1)] text-white">
-      <div className="w-11/12 md:w-5/6 mx-auto ">
-        <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 uppercase tracking-widest">
-          Testimonials
-        </p>
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg">
-          What Our Clients Say About Us
-        </h1>
+    <div className="w-11/12 md:w-5/6 mx-auto mb-10 py-8 relative">
+      <h1 className="md:block hidden text-4xl md:text-5xl mb-10 text-center font-bold">
+        What Our Clients Say About Us
+      </h1>
 
-        <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 mt-5">
-          {/* Slider */}
-          <div className=" w-full relative overflow-hidden">
-            <CustomPrev />
-            <CustomNext />
+      <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 mt-5">
+        {/* Left Info Section */}
+        <div className="md:w-1/3 text-center md:text-left">
+          <h2 className="text-2xl font-bold mb-3">CLIENT TESTIMONIALS</h2>
 
-            <Swiper
-              modules={[Navigation, Autoplay]}
-              spaceBetween={20}
-              autoplay={{ delay: 2500 }}
-              navigation={{
-                prevEl: ".swiper-button-prev-custom",
-                nextEl: ".swiper-button-next-custom",
-              }}
-              breakpoints={{
-                0: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-              }}
-            >
-              {testimonials.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <TestimonialCard item={item} index={index} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+          <div className="flex items-center gap-3 mt-2 justify-center md:justify-start">
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt=""
+              className="w-10 h-10"
+            />
+            <p className="font-bold text-lg">Rated 4.8/5</p>
           </div>
+
+          <p className="text-gray-800 mt-4">
+            Don’t just take our word for it. Here’s what our clients say.
+          </p>
+        </div>
+
+        {/* Slider */}
+        <div className="md:w-2/3 w-full relative overflow-hidden">
+          <CustomPrev />
+          <CustomNext />
+
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            spaceBetween={20}
+            autoplay={{ delay: 2500 }}
+            navigation={{
+              prevEl: ".swiper-button-prev-custom",
+              nextEl: ".swiper-button-next-custom",
+            }}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+          >
+            {testimonials.map((item, index) => (
+              <SwiperSlide key={index}>
+                <TestimonialCard item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
-    </section>
+
+      <div className="flex justify-center mt-8">
+        <a href="/contact">
+          <button className="bg-[var(--primary-color)] text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300 font-semibold text-sm md:text-base">
+            Want to grow your business?
+          </button>
+        </a>
+      </div>
+    </div>
   );
 }
 
-const TestimonialCard = ({
-  item,
-  index,
-}: {
-  item: Testimonial;
-  index: number;
-}) => {
+const TestimonialCard = ({ item }: { item: Testimonial }) => {
   const [showFull, setShowFull] = useState(false);
   const truncateLength = 150;
 
@@ -171,73 +167,49 @@ const TestimonialCard = ({
 
   return (
     <div className="p-2">
-      <div className="relative bg-[var(--color1)] shadow-xl rounded-2xl  border border-gray-200 overflow-visible mt-6">
-        {/* ---- Top Right Avatar ---- */}
-
-        <div
-          className={`absolute -top-6 right-4 w-14 h-14 rounded-full border-4  bg-white shadow-lg flex items-center justify-center overflow-hidden`}
-          style={{ borderColor: item.text }}
-        >
-          {item.image ? (
-            <img
-              src={item.image}
-              alt={item.name}
-              className="w-full h-full object-cover rounded-full"
-            />
-          ) : (
-            <span className={` font-bold text-lg`} style={{ color: item.text }}>
-              {item.name.charAt(0).toUpperCase()}
-            </span>
-          )}
-        </div>
-
-        {/* ---- Name ---- */}
-        <p
-          className="text-white w-[60%] py-2 px-5 font-bold text-base mt-5 relative"
-          style={{
-            backgroundColor: item.text,
-            clipPath: "polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%)",
-          }}
-        >
-          {item.name}
+      <div
+        className={`shadow-xl rounded-2xl p-6 border border-gray-700 transition-all duration-300 overflow-hidden ${
+          showFull ? "h-auto" : "min-h-[260px]"
+        }`}
+      >
+        {/* Review */}
+        <p className="text-gray-800 mb-3 text-xs md:text-sm leading-relaxed">
+          {displayedText}
+          {!showFull && isTruncated && "..."}
         </p>
-        <div className="p-5">
-          {/* ---- Review ---- */}
-          <p className="text-gray-200 text-base leading-relaxed mt-2">
-            {displayedText}
-            {!showFull && isTruncated && "..."}
-          </p>
 
-          {/* ---- Read More ---- */}
-          {isTruncated && (
-            <button
-              className="text-blue-500 text-xs mt-1 font-semibold hover:underline"
-              onClick={() => setShowFull(!showFull)}
-            >
-              {showFull ? "Show Less" : "Read More"}
-            </button>
-          )}
-        </div>
-
-        {/* ---- Bottom Ribbon (color bar) ---- */}
-        <div className="">
-          <div
-            style={{ backgroundColor: item.text }}
-            className={` text-white px-4 py-2 mt-6 flex items-center gap-1 rounded-bl-xl rounded-tr-4xl w-[60%]`}
+        {/* Read More */}
+        {isTruncated && (
+          <button
+            className="text-blue-400 text-xs mt-1 font-semibold hover:underline"
+            onClick={() => setShowFull(!showFull)}
           >
-            {/* Stars */}
-            <div className="flex gap-1">
+            {showFull ? "Show Less" : "Read More"}
+          </button>
+        )}
+
+        {/* Profile */}
+        <div className="flex items-center mt-4">
+          <div className="w-10 h-10 rounded-full bg-[var(--primary-color)] flex items-center justify-center text-white overflow-hidden text-sm">
+            {item.image ? (
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span>{item.name.charAt(0).toUpperCase()}</span>
+            )}
+          </div>
+
+          <div className="ml-3">
+            <p className="font-semibold text-gray-900 text-sm">{item.name}</p>
+            <div className="flex mt-1">
               {Array.from({ length: item.rating }).map((_, i) => (
-                <Star key={i} size={18} fill="white" stroke="none" />
+                <Star key={i} size={14} fill="#d49325" stroke="none" />
               ))}
             </div>
           </div>
-
-          {/* ---- QUOTE ICON OUTSIDE on Right ---- */}
-          <FaQuoteRight
-            color={`${item.text}`}
-            className={`absolute bottom-3 right-8 text-2xl opacity-80`}
-          />
         </div>
       </div>
     </div>

@@ -45,10 +45,10 @@ const OurProcess: React.FC = () => {
 
   return (
     <section
-      className="w-full px-4 py-16 bg-[var(--color1)] dark:bg-black"
+      className="w-full px-4 py-16 bg-white dark:bg-black"
       ref={containerRef}
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-[var(--color5)] mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-[var(--primary-color)] mb-16">
         Our Process
       </h2>
 
@@ -59,7 +59,7 @@ const OurProcess: React.FC = () => {
         {/* Scroll progress bar */}
         <motion.div
           style={{ height: timelineProgress }}
-          className="absolute left-1/2 top-0 w-1 bg-[var(--color3)] transform -translate-x-1/2 z-10"
+          className="absolute left-1/2 top-0 w-1 bg-[var(--primary-color)] transform -translate-x-1/2 z-10"
         />
 
         <div className="flex flex-col gap-16">
@@ -75,7 +75,7 @@ const OurProcess: React.FC = () => {
               }`}
             >
               {/* Timeline Dot */}
-              <div className="absolute left-1/2 top-1 w-5 h-5 bg-[var(--color5)] rounded-full shadow-md transform -translate-x-1/2 z-20 border-4 border-white dark:border-zinc-900" />
+              <div className="absolute left-1/2 top-1 w-5 h-5 bg-[var(--primary-color)] rounded-full shadow-md transform -translate-x-1/2 z-20 border-4 border-white dark:border-zinc-900" />
 
               {/* Content */}
               <div
@@ -91,14 +91,14 @@ const OurProcess: React.FC = () => {
                 <Image
                   src={step.img}
                   alt={step.title}
-                  className={`w-24 h-24 object-contain mb-3 invert ${
+                  className={`w-24 h-24 object-contain mb-3 ${
                     index % 2 === 0 ? "ml-auto" : "mr-auto"
                   }`}
                 />
-                <h3 className="text-xl font-bold text-[var(--color4)] mb-1">
+                <h3 className="text-xl font-bold text-[var(--primary-color)] mb-1">
                   {step.title}
                 </h3>
-                <p className="text-gray-200 dark:text-gray-300 text-sm leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                   {step.content}
                 </p>
               </div>

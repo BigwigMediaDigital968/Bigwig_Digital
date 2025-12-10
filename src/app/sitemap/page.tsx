@@ -154,14 +154,14 @@ const categoriesData = [
 
 export default function CategoriesSection() {
   return (
-    <div className="bg-[var(--color1)] text-white">
+    <div className="bg-white min-h-screen">
       <Nav />
       <div className="w-11/12 mx-auto p-4 md:p-8">
         {/* <h2 className="text-lg md:text-xl font-bold mb-4">Categories</h2> */}
         <div className="space-y-8">
           {categoriesData.map((category, idx) => (
             <div key={idx}>
-              <h3 className="text-md md:text-lg font-semibold mb-2 text-[var(--color5)]">
+              <h3 className="text-md md:text-lg font-semibold mb-2 ">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-x-3 gap-y-2 text-sm md:text-base">
@@ -169,7 +169,7 @@ export default function CategoriesSection() {
                   <span key={i} className="flex items-center">
                     <Link
                       href={item.path}
-                      className="text-gray-200 hover:text-[var(--color5)] whitespace-nowrap"
+                      className="text-gray-600 hover:text-blue-500 whitespace-nowrap"
                     >
                       {item.name}
                     </Link>

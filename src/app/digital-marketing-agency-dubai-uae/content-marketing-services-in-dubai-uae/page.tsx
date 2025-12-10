@@ -20,8 +20,6 @@ import {
 } from "react-icons/fa";
 
 import Image from "next/image";
-import GetInTouch from "../../../../components/GetInTouch";
-import ServicesNavigation from "../../../../components/UAEServicesDirectory";
 
 function ContentMarketingInDubai() {
   //   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -60,7 +58,7 @@ function ContentMarketingInDubai() {
   ];
 
   return (
-    <div className="bg-[var(--color1)]">
+    <div className="bg-white text-black font-raleway">
       <Nav />
       {/* Hero Section */}
       <section
@@ -97,7 +95,7 @@ function ContentMarketingInDubai() {
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto py-12">
+      <section className="w-11/12 md:w-5/6 mx-auto py-12 bg-white">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Image */}
           <div className="flex justify-center">
@@ -110,11 +108,11 @@ function ContentMarketingInDubai() {
 
           {/* Right Side - Content */}
           <div>
-            <h2 className="text-3xl font-semibold mb-6 text-[var(--color5)]">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
               Creating Content That Cuts Through the Noise
             </h2>
 
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
               Content is the foundation of every successful digital strategy in
               today’s competitive market. At{" "}
               <strong>BigWig Media Digital</strong>, a leading one{" "}
@@ -123,14 +121,14 @@ function ContentMarketingInDubai() {
               engage, and convert.
             </p>
 
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
               Our goal is simple: to help your brand build authority, connect
               with your audience, and drive measurable growth. From SEO-rich
               blogs to high-converting social media content, we design campaigns
               that work for both search engines and people.
             </p>
 
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               If you’re looking for{" "}
               <strong>content marketing services in Dubai, UAE </strong>
               that combine clarity, creativity, and conversions, you’re in the
@@ -140,13 +138,13 @@ function ContentMarketingInDubai() {
         </div>
       </section>
 
-      <section className=" py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto">
-          <h2 className="text-3xl font-semibold text-[var(--color5)] mb-6 text-center md:text-left">
+      <section className="bg-white py-12">
+        <div className="w-11/12 md:w-5/6 mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center md:text-left">
             Why Content Marketing Matters in Dubai, UAE
           </h2>
 
-          <p className="text-gray-300 leading-relaxed text-lg mb-10 ">
+          <p className="text-gray-600 leading-relaxed text-lg mb-10 ">
             Content marketing is more than writing articles; it’s about building
             trust, visibility, and long-term relationships in a crowded digital
             space. Done right, it transforms your website into a lead-generation
@@ -154,30 +152,30 @@ function ContentMarketingInDubai() {
             into a thought leader.
           </p>
 
-          <div className="bg-gradient-to-r from-[var(--color1)] to-[var(--color2)] p-8 rounded-2xl shadow-md border border-[var(--color5)]">
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-300 mb-4">
+          <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-8 rounded-2xl shadow-md border border-yellow-200">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
               With years of expertise as a trusted content marketing agency in
               Dubai, UAE, we understand that impactful content must do three
               things:
             </h3>
 
-            <ul className="space-y-4 text-gray-300 text-base">
+            <ul className="space-y-4 text-gray-700 text-lg">
               <li className="flex items-start gap-3">
-                <span className="text-[var(--color5)] font-bold">•</span>
+                <span className="text-yellow-600 font-bold">•</span>
                 <span>
                   <strong>Get Found:</strong> Optimized for search engines with
                   smart SEO strategies.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-[var(--color5)] font-bold">•</span>
+                <span className="text-yellow-600 font-bold">•</span>
                 <span>
                   <strong>Get Read:</strong> Engaging and valuable content that
                   keeps audiences hooked.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-[var(--color5)] font-bold">•</span>
+                <span className="text-yellow-600 font-bold">•</span>
                 <span>
                   <strong>Get Results:</strong> Clear, persuasive messaging that
                   drives action.
@@ -189,210 +187,137 @@ function ContentMarketingInDubai() {
       </section>
 
       <section className="w-11/12 md:w-5/6 mx-auto py-12">
-        {/* Heading */}
-        <div className="mb-14">
-          <h2 className="text-3xl  font-semibold text-left text-white">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl text-left font-bold text-gray-900 dark:text-white">
             Our Core{" "}
-            <span className="text-[var(--color5)]">
+            <span className="text-[var(--primary-color)]">
               Content Marketing Services in Dubai
             </span>
           </h2>
-          <p className="text-white/70 max-w-2xl mt-3">
-            High-impact content strategies designed to boost visibility, build
-            trust, and drive conversions across all digital platforms in Dubai &
-            the UAE.
-          </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((item, index) => (
             <div
               key={index}
-              className="
-          group relative p-8 rounded-2xl overflow-hidden
-          bg-[var(--color1)]/60 backdrop-blur-xl
-          border border-white/10 shadow-[0_12px_30px_rgba(2,6,23,0.45)]
-          transition-transform duration-300 hover:-translate-y-2
-        "
+              className="flex flex-col items-start bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 hover:shadow-xl transition"
             >
-              {/* Gradient Blob */}
-              <div
-                className="absolute -right-10 -top-10 w-56 h-56 blur-3xl opacity-30 
-          bg-gradient-to-br from-[var(--color3)] to-[var(--color4)]
-          rounded-full pointer-events-none"
-              ></div>
-
-              {/* Hologram Texture */}
-              <div
-                className="
-          absolute inset-0 opacity-10
-          bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')]
-          bg-cover bg-center mix-blend-screen pointer-events-none
-        "
-              ></div>
-
-              {/* Content */}
-              <div className="relative z-10 flex flex-col">
-                <div
-                  className="
-              w-14 h-14 rounded-xl bg-[var(--color5)]/10 border border-[var(--color5)]/30
-              flex items-center justify-center shadow-[0_0_15px_rgba(167,235,242,0.2)]
-              mb-5
-            "
-                >
-                  <item.icon className="w-8 h-8 text-[var(--color5)]" />
-                </div>
-
-                <h3 className="text-lg font-semibold text-[var(--color4)] mb-2">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm text-white/70 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
+              <item.icon className="w-10 h-10 text-[var(--primary-color)] mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>
       </section>
-
-      <section className="py-12 relative">
-        <div className="w-11/12 md:w-5/6 mx-auto">
+      <section className="bg-white py-16">
+        <div className="w-11/12 md:w-5/6 mx-auto px-6">
           {/* WHY CHOOSE US */}
-          <h2 className="text-3xl  font-semibold text-[var(--color5)] lg:max-w-3xl text-center md:text-left mb-6">
-            Why Choose BigWig Media Digital as Your Content Marketing Agency in
-            Dubai?
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center md:text-left mb-6">
+            Why Choose{" "}
+            <span className="text-[var(--primary-color)]">
+              BigWig Media Digital
+            </span>{" "}
+            as Your Content Marketing Agency in Dubai?
           </h2>
 
-          <p className="text-white/80 leading-relaxed text-lg mb-10 ">
-            We’re more than a content team — we’re your strategic partners in
+          <p className="text-gray-600 leading-relaxed text-lg mb-10">
+            We’re more than a content team; we’re your strategic partners in
             growth. Here’s what sets us apart:
           </p>
 
-          {/* WHY CHOOSE GRID */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
               {
                 title: "SEO at the Core",
-                desc: "From keyword research to on-page optimization, we create content that ranks and drives organic visibility.",
+                desc: "From keyword research to on-page optimization, we create content that ranks.",
               },
               {
                 title: "Unique Brand Voice",
-                desc: "Every brand is different — we craft a content identity that reflects your tone, values, and audience expectations.",
+                desc: "Every brand is different, and we ensure your content reflects your identity.",
               },
               {
                 title: "Consistency & Scale",
-                desc: "Whether you need a few blogs or full content engines, we deliver quality at any scale.",
+                desc: "Whether you need a few blogs or full-scale campaigns, we deliver quality at any volume.",
               },
               {
                 title: "Data-Driven Approach",
-                desc: "Every decision is backed by analytics, user behavior data, and competitive insights.",
+                desc: "Every piece of content is backed by research, analytics, and user intent.",
               },
             ].map((item, index) => (
               <div
                 key={index}
-                className="
-            relative p-6 rounded-2xl overflow-hidden
-            bg-[var(--color1)]/70 border border-white/10 backdrop-blur-xl
-            shadow-[0_12px_30px_rgba(2,6,23,0.45)]
-            hover:border-[var(--color5)] hover:shadow-[0_0_30px_rgba(167,235,242,0.25)]
-            transition-all duration-300
-          "
+                className="bg-gradient-to-b from-yellow-50 to-yellow-100 border border-yellow-200 rounded-2xl shadow-md p-6 hover:shadow-lg transition"
               >
-                {/* Hologram Texture */}
-                <div className="absolute inset-0 opacity-[0.12] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>
-
-                {/* Blob Light */}
-                <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-gradient-to-br from-[var(--color3)] to-[var(--color4)] blur-3xl opacity-30"></div>
-
-                <div className="relative z-10">
-                  <h3 className="text-xl text-[var(--color5)] font-semibold mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-white/80 leading-relaxed text-sm">
-                    {item.desc}
-                  </p>
-                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-700 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          {/* HOW WE BUILD CONTENT ENGINE */}
-          <h2 className="text-3xl  font-semibold text-[var(--color5)] text-center md:text-left mb-10">
-            How We Build Your Content Marketing Engine
+          {/* HOW WE BUILD ENGINE */}
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center md:text-left mb-10">
+            How We Build Your{" "}
+            <span className="text-[var(--primary-color)]">
+              Content Marketing Engine
+            </span>
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {[
               {
                 step: "1.",
                 title: "Discovery & Goal Mapping",
-                desc: "We understand your business, audience, competitors, and KPIs to set a winning direction.",
+                desc: "We understand your business, audience, and objectives to set the right direction.",
               },
               {
                 step: "2.",
                 title: "Topic & SEO Planning",
-                desc: "In-depth keyword research + audience intent analysis to map a powerful content plan.",
+                desc: "In-depth keyword research and competitor analysis for maximum visibility.",
               },
               {
                 step: "3.",
                 title: "Content Creation & Optimization",
-                desc: "SEO-friendly, engaging content crafted to educate, rank, and convert.",
+                desc: "We craft high-quality, search-friendly, and engaging content that connects.",
               },
               {
                 step: "4.",
-                title: "Publishing & Distribution",
-                desc: "Content shared on the right channels for maximum reach and engagement.",
+                title: "Publishing & Promotion",
+                desc: "Content is distributed across the right platforms to reach your ideal audience.",
               },
               {
                 step: "5.",
-                title: "Tracking & Performance Scaling",
-                desc: "We monitor results and continuously optimize to scale performance.",
+                title: "Performance Tracking & Reporting",
+                desc: "We analyze performance metrics to refine and scale your campaigns effectively.",
               },
             ].map((step, index) => (
               <div
                 key={index}
-                className="
-            relative p-6 rounded-2xl bg-[var(--color1)]/70 border border-white/10 shadow-md 
-            hover:shadow-xl hover:border-[var(--color5)] transition-all duration-300
-          "
+                className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 hover:shadow-lg transition"
               >
-                {/* Neon Number */}
-                <div className="text-[var(--color5)] font-bold text-3xl mb-3">
-                  {step.step}
+                <div className="text-[var(--primary-color)] font-bold text-2xl mb-3">
+                  {step.step} {step.title}
                 </div>
-
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-white/70 leading-relaxed text-sm">
-                  {step.desc}
-                </p>
+                <p className="text-gray-700 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
 
           {/* CTA */}
-          <div
-            className="
-        text-center p-10 rounded-2xl 
-        bg-[var(--color1)]/60 backdrop-blur-xl border border-white/10
-        shadow-[inset_0_0_40px_rgba(167,235,242,0.15)]
-      "
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-[var(--color5)] mb-4">
+          <div className="text-center bg-gradient-to-r from-yellow-50 to-yellow-100 py-10 px-6 rounded-2xl shadow-inner">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               Fuel Your Brand Growth with Content That Works
             </h3>
-
-            <p className="text-white/80 text-lg max-w-3xl mx-auto leading-relaxed">
-              Your audience expects value. Your brand deserves visibility. At
-              <strong className="text-[var(--color5)]">
-                {" "}
-                BigWig Media Digital
-              </strong>
-              , we deliver content that builds trust, drives traffic, and boosts
-              conversions.
+            <p className="text-gray-700 text-lg mb-6">
+              Your audience in Dubai expects value. Your brand deserves
+              visibility. At <strong>BigWig Media Digital</strong>, we deliver
+              content marketing services in Dubai, UAE, designed to make your
+              business stand out, scale, and succeed.
             </p>
           </div>
         </div>
@@ -400,8 +325,10 @@ function ContentMarketingInDubai() {
 
       <OurProcess />
       <WhyBigwig />
-      <ServicesNavigation />
-      <GetInTouch />
+      <CTABanner
+        title="Let’s create content that drives growth, builds trust, and makes your brand stand out in Dubai."
+        buttonText="Get Started Today"
+      />
       <Footer />
       {/* <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} /> */}
     </div>

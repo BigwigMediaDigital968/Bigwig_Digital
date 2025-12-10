@@ -1,9 +1,5 @@
 // app/components/Location.tsx
-"use client";
 import { MapPin } from "lucide-react";
-import ButtonFill from "./Button";
-import PopupForm from "./PopupForm";
-import { useState } from "react";
 
 type Location = {
   city: string;
@@ -38,7 +34,7 @@ const locations: Location[] = [
 
 const LocationCard = ({ city, address, image, mapUrl }: Location) => {
   return (
-    <div className="group [perspective:1000px] py-4">
+    <div className="group [perspective:1000px] mb-10 py-4">
       <div className="relative h-60 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         {/* Front Side */}
         <div
@@ -83,39 +79,19 @@ const LocationCard = ({ city, address, image, mapUrl }: Location) => {
 };
 
 const LocationsSection = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
-    <section className="py-12 bg-[var(--color1)] text-white">
-      <div className="mb-6 w-11/12 md:w-5/6 mx-auto">
-        <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
-          <div>
-            <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 uppercase tracking-widest">
-              Our Presence
-            </p>
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg">
-              Connecting Globally, Impacting Locally
-            </h1>
-          </div>
+    <section className="px-4 md:px-16 lg:px-24 bg-white text-gray-900 mb-6">
+      <h2 className="text-5xl font-bold text-center mb-6">Our Presence</h2>
 
-          {/* 👉 View All Services Button */}
-
-          <ButtonFill
-            onClick={() => setIsPopupOpen(true)}
-            text="Get In Touch "
-          />
-        </div>
-
-        <div className="overflow-x-auto sm:overflow-x-visible">
-          <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {locations.map((location, index) => (
-              <div key={index} className="min-w-[220px] sm:min-w-0">
-                <LocationCard {...location} />
-              </div>
-            ))}
-          </div>
+      <div className="overflow-x-auto sm:overflow-x-visible">
+        <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {locations.map((location, index) => (
+            <div key={index} className="min-w-[220px] sm:min-w-0">
+              <LocationCard {...location} />
+            </div>
+          ))}
         </div>
       </div>
-      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </section>
   );
 };

@@ -18,18 +18,8 @@ import smo from "../../../Assets/services/SMO.png";
 import video from "../../../Assets/services/Video Shoots.png";
 import website from "../../../Assets/services/Website Development.png";
 import Image from "next/image";
-import ButtonFill from "../../../components/Button";
-import GetInTouch from "../../../components/GetInTouch";
 
 const services = [
-  {
-    title: "Website Designing & Development",
-    heading: "Your digital store front, built to impress!",
-    content:
-      "We craft stunning, responsive websites that turn visitors into customers.",
-    path: "/services/website-design-development",
-    image: website,
-  },
   {
     title: "Search Engine Optimization",
     heading: "Be visible when it matters most!",
@@ -37,14 +27,6 @@ const services = [
       "We rank your website on Google so your customers find you before your competitors.",
     path: "/services/search-engine-optimization",
     image: seo,
-  },
-  {
-    title: "Social Media Optimization",
-    heading: "Be everywhere your audience is!",
-    content:
-      "We optimize your profiles for visibility, engagement, and brand authority across platforms.",
-    path: "/services/social-media-optimization",
-    image: smo,
   },
   {
     title: "Social Media Marketing",
@@ -63,20 +45,20 @@ const services = [
     image: performance,
   },
   {
-    title: "Online Reputation Management",
-    heading: "Your online image matters,protect it!",
+    title: "Content Marketing",
+    heading: "Words that work for your brand!",
     content:
-      "We monitor, manage, and improve your digital reputation across platforms.",
-    path: "/services/online-reputation-management",
-    image: orm,
+      "From blogs to visuals, we create content that educates, engages, and builds trust.",
+    path: "/services/content-marketing",
+    image: content,
   },
   {
-    title: "Graphic Designing & Video Editing",
-    heading: "Designs that speak louder than words!",
+    title: "Website Designing & Development",
+    heading: "Your digital store front, built to impress!",
     content:
-      "We create eye-catching visuals that reflect your brand and grab attention instantly.",
-    path: "/services/graphic-designing",
-    image: graphic,
+      "We craft stunning, responsive websites that turn visitors into customers.",
+    path: "/services/website-design-development",
+    image: website,
   },
   {
     title: "Email Marketing",
@@ -87,30 +69,21 @@ const services = [
     image: email,
   },
   {
-    title: "Affiliate Marketing",
-    heading: "Let others sell for you, smartly!",
+    title: "Social Media Optimization",
+    heading: "Be everywhere your audience is!",
     content:
-      "Grow your brand with trusted affiliates promoting your product for results-based returns.",
-    path: "/services/affiliate-marketing",
-    image: affiliate,
+      "We optimize your profiles for visibility, engagement, and brand authority across platforms.",
+    path: "/services/social-media-optimization",
+    image: smo,
   },
   {
-    title: "Influencer Marketing",
-    heading: "Real people. Real influence. Real results.",
+    title: "Graphic Designing & Video Editing",
+    heading: "Designs that speak louder than words!",
     content:
-      "We connect your brand with the right influencers to boost reach and trust authentically.",
-    path: "/services/influencer-marketing",
-    image: influencer,
+      "We create eye-catching visuals that reflect your brand and grab attention instantly.",
+    path: "/services/graphic-designing",
+    image: graphic,
   },
-  {
-    title: "Content Marketing",
-    heading: "Words that work for your brand!",
-    content:
-      "From blogs to visuals, we create content that educates, engages, and builds trust.",
-    path: "/services/content-marketing",
-    image: content,
-  },
-
   // {
   //   title: "AI and CGI Marketing",
   //   heading: "Modern visuals for modern audiences!",
@@ -127,7 +100,14 @@ const services = [
   //   path: "/services/landing-page-optimization",
   //   image: landing,
   // },
-
+  {
+    title: "Affiliate Marketing",
+    heading: "Let others sell for you, smartly!",
+    content:
+      "Grow your brand with trusted affiliates promoting your product for results-based returns.",
+    path: "/services/affiliate-marketing",
+    image: affiliate,
+  },
   // {
   //   title: "Video Shoot",
   //   heading: "Lights. Camera. Convert.",
@@ -144,6 +124,22 @@ const services = [
   //   path: "/services/public-relations",
   //   image: publicRelation,
   // },
+  {
+    title: "Influencer Marketing",
+    heading: "Real people. Real influence. Real results.",
+    content:
+      "We connect your brand with the right influencers to boost reach and trust authentically.",
+    path: "/services/influencer-marketing",
+    image: influencer,
+  },
+  {
+    title: "Online Reputation Management",
+    heading: "Your online image matters,protect it!",
+    content:
+      "We monitor, manage, and improve your digital reputation across platforms.",
+    path: "/services/online-reputation-management",
+    image: orm,
+  },
 ];
 
 function Services() {
@@ -162,7 +158,7 @@ function Services() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--color1)] text-white">
+    <div className="min-h-screen bg-white text-black font-raleway">
       <Nav />
       <title>Full Digital Marketing Services</title>
       <meta
@@ -174,60 +170,110 @@ function Services() {
         href="https://www.bigwigmediadigital.com/services"
       />
 
-      {/* NEW GRID DESIGN */}
-      <div className=" py-12 w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
-          <span className="text-[var(--color5)]">Our Services</span>
+      {/* Mobile View */}
+      <div className="md:hidden px-4 py-8">
+        <h2 className="text-3xl font-bold text-center mb-6">
+          <span className="text-black">Our </span>
+          <span className="text-[var(--primary-color)]">Services</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <select
+          className="w-full p-3 mb-4 bg-gray-200 border border-gray-600 rounded text-black"
+          value={selectedIndex}
+          onChange={(e) => setSelectedIndex(Number(e.target.value))}
+        >
+          {services.map((service, index) => (
+            <option key={index} value={index}>
+              {service.title}
+            </option>
+          ))}
+        </select>
+
+        <div className="bg-gray-100 p-5 rounded-lg">
+          <h3 className="text-xl font-bold text-[var(--primary-color)] mb-2">
+            {services[selectedIndex].heading}
+          </h3>
+          <p className="text-gray-800 mb-4">
+            {services[selectedIndex].content}
+          </p>
+          <a href={services[selectedIndex].path}>
+            <button className="bg-[var(--primary-color)] text-white font-semibold px-4 py-2 rounded cursor-pointer">
+              Explore
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div className="relative hidden md:flex px-10 py-10 gap-10">
+        {/* Fixed-width vertical title */}
+        <div className="w-[60px] flex justify-center">
+          <div className="sticky top-1/2 -translate-y-1/2 h-fit z-20">
+            <h2 className="writing-vertical2 rotate-180 text-[40px] font-bold leading-tight whitespace-nowrap text-center">
+              <span className="text-black">Our</span>{" "}
+              <span className="text-[var(--primary-color)]">Services</span>
+            </h2>
+          </div>
+        </div>
+
+        {/* Scrollable list of service titles */}
+        <div className="w-1/4">
+          <div className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-hidden hover:overflow-y-auto border-r border-gray-700 pr-6">
+            <div className="space-y-4">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  onClick={() => scrollToService(index)}
+                  className={`cursor-pointer hover:text-[var(--primary-color)] transition ${
+                    selectedIndex === index
+                      ? "text-[var(--primary-color)] font-semibold"
+                      : ""
+                  }`}
+                >
+                  {service.title}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right section with content */}
+        <div className="w-3/4 space-y-16">
           {services.map((service, index) => (
             <div
               key={index}
-              className="rounded-xl bg-transparent transition-all duration-300"
+              ref={(el) => {
+                serviceRefs.current[index] = el;
+              }}
+              className="bg-gray-100 p-8 rounded-xl shadow-md transition-all duration-300 scroll-mt-28"
             >
-              {/* LAPTOP CARD */}
-              <div className="rounded-xl p-3 shadow-2xl">
-                {/* SCREEN */}
-                <div className="relative group h-60 rounded-lg border-8 border-gray-400 overflow-hidden bg-gradient-to-bl from-[var(--color2)] via-[var(--color1)] to-[var(--color2)]">
-                  {/* BG IMAGE */}
+              <div className="flex justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-[var(--primary-color)] mb-2">
+                    {service.title}
+                  </h3>
+                  <h4 className="text-xl font-semibold mb-2">
+                    {service.heading}
+                  </h4>
+                  <p className="text-gray-800 mb-4">{service.content}</p>
+                  <a href={service.path}>
+                    <button className="bg-[var(--primary-color)] text-white font-semibold px-4 py-2 rounded cursor-pointer">
+                      Explore
+                    </button>
+                  </a>
+                </div>
+                <div>
                   <Image
                     src={service.image}
                     alt={service.title}
-                    fill
-                    className="object-contain brightness-70 group-hover:brightness-85 transition duration-500"
+                    className="w-36"
                   />
-
-                  {/* OVERLAY CONTENT */}
-                  <a
-                    href={service.path}
-                    className="absolute inset-0 flex flex-col  justify-between p-5 bg-gradient-to-t from-black/70 via-black/40 to-transparent"
-                  >
-                    <h3 className="text-lg font-semibold text-white ">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-gray-300 text-sm mt-1  ">
-                      {service.content}
-                    </p>
-
-                    {/* BUTTON ON HOVER */}
-                    <ButtonFill
-                      className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 
-transition-all duration-500 "
-                      text="Explore"
-                    />
-                  </a>
                 </div>
-
-                {/* BASE */}
-                <div className="h-3 bg-gradient-to-b from-gray-300 to-gray-500 rounded-b-xl mt-1"></div>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <GetInTouch />
+
       <Footer />
     </div>
   );

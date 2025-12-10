@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
-import ButtonFill from "./Button";
 
 type FormDataType = {
   fullName: string;
@@ -91,7 +90,14 @@ const ApplicationForm = () => {
   };
 
   return (
-    <div className="space-y-6 text-white bg-gradient-to-bl from-[var(--color1)] via-[var(--color2)] to-[var(--color1)] backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-200">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-200"
+    >
+      <h2 className="text-3xl font-bold mb-4 text-[var(--primary-color)]">
+        Apply for this Job
+      </h2>
+
       {/* Grid layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
@@ -110,7 +116,7 @@ const ApplicationForm = () => {
             placeholder={field.placeholder}
             value={formData[field.name as keyof FormDataType]}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-200 focus:ring-1 focus:ring-[var(--color3)] focus:border-[var(--color3)] transition"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-800 focus:ring-2 focus:ring-black focus:border-black transition"
             required={
               field.name === "fullName" ||
               field.name === "email" ||
@@ -127,15 +133,15 @@ const ApplicationForm = () => {
             value={formData.coverLetter}
             onChange={handleChange}
             rows={3}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-200 focus:ring-1 focus:ring-[var(--color3)] focus:border-[var(--color3)] transition"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-800 focus:ring-2 focus:ring-black focus:border-black transition"
           />
 
-          <label className="block w-full border-2 border-dashed border-gray-400 rounded-xl p-5 cursor-pointer  transition">
+          <label className="block w-full border-2 border-dashed border-gray-400 rounded-xl p-5 cursor-pointer hover:bg-gray-50 transition">
             <div className="text-center">
-              <p className="font-semibold text-gray-200">
+              <p className="font-semibold text-gray-700">
                 {resume ? resume.name : "Upload Resume (PDF)"}
               </p>
-              <p className="text-sm text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 mt-1">
                 Click to browse or drag & drop
               </p>
             </div>
@@ -151,11 +157,13 @@ const ApplicationForm = () => {
       </div>
 
       {/* Submit Button */}
-      <ButtonFill
-        onClick={() => handleSubmit}
-        text={loading ? "Submitting..." : "Submit Application"}
-        className="w-full"
-      />
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-[var(--primary-color)] text-white py-3 rounded-xl text-lg font-semibold hover:bg-[var(--primary-color)]/90 cursor-pointer transition active:scale-95"
+      >
+        {loading ? "Submitting..." : "Submit Application"}
+      </button>
 
       {/* Message */}
       {message && (
@@ -167,7 +175,7 @@ const ApplicationForm = () => {
           {message}
         </p>
       )}
-    </div>
+    </form>
   );
 };
 

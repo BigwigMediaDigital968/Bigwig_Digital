@@ -20,7 +20,7 @@
     "fuse.js": "^7.1.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.544.0",
-    "next": "^16.0.7",
+    "next": "15.5.4",
     "prettier": "^3.6.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -35,8 +35,7 @@
     "recharts": "^3.2.1",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.23.0",
-    "swiper": "^12.0.3",
-    "vanilla-tilt": "^1.7.1"
+    "swiper": "^12.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

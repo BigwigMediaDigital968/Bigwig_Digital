@@ -13,217 +13,41 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ContactForm from "../../../../components/ContactForm";
 import Image from "next/image";
-import ButtonFill from "../../../../components/Button";
-import PopupForm from "../../../../components/PopupForm";
-import GetInTouch from "../../../../components/GetInTouch";
-import { SetStateAction, useState } from "react";
 
-const emailPoints = [
+const services = [
   {
-    title: "Deep Local Market Knowledge",
-    content:
-      "We understand Delhi’s market dynamics-from festivals and sales cycles to audience preferences across neighborhoods. That local insight helps your email marketing in Delhi feel timely and relevant.",
+    title: "Email Campaign Strategy",
+    description:
+      "We build custom campaign flows aligned with your business goals, whether it's for awareness, conversion, or retention.",
   },
   {
-    title: "End-to-End Email Marketing Services",
-    content:
-      "We offer full service: list building, segmentation, creative design, copywriting, automation, transactional emails, and analytics-making us a one-stop email marketing company in Delhi.",
+    title: "Email Design & Development",
+    description:
+      "Responsive, visually appealing, and on-brand email templates designed to perform on all devices and platforms.",
   },
   {
-    title: "Technology & Deliverability Expertise",
-    content:
-      "We work with HubSpot, Klaviyo, Mailchimp, and major SMTP providers. We manage SPF/DKIM/DMARC and IP reputation to ensure your emails land in inboxes, not spam.",
+    title: "Copywriting That Converts",
+    description:
+      "We write subject lines that get opened and body content that gets clicked. Our emails are concise, compelling, and action-oriented.",
   },
   {
-    title: "ROI-Focused & Scalable Solutions",
-    content:
-      "Whether you need high-volume promotional sends or automated drip journeys, our email marketing services scale to your goals and budget.",
-  },
-];
-
-const steps = [
-  {
-    title: "Research & Strategy",
-    content:
-      "We start by understanding your business goals, customers, and existing data - then define a measurable email strategy for email marketing in Delhi that aligns with KPIs (revenue, leads, retention).",
+    title: "Marketing Automation",
+    description:
+      "Automate customer journeys with smart sequences: welcome emails, cart abandonment flows, re-engagement campaigns, and more.",
   },
   {
-    title: "List Building & Segmentation",
-    content:
-      "Clean lists and smart segmentation (behavioral, demographic, lifecycle stage) are the backbone of effective email marketing services in Delhi. We create segments that allow highly personalised messages.",
+    title: "A/B Testing & Optimization",
+    description:
+      "We test everything, from subject lines to CTAs, to continually improve open rates, click-through rates, and conversions.",
   },
   {
-    title: "Creative & Copy",
-    content:
-      "Compelling subject lines, concise benefit-led copy, and mobile-first design raise open and click rates. Our copywriters craft messages tailored to Delhi audiences while promoting your brand voice.",
-  },
-  {
-    title: "Automation & Workflow Setup",
-    content:
-      "From welcome series and onboarding flows to cart recovery and win-back campaigns, automation turns one email into dozens of revenue opportunities for any email marketing company in Delhi to deliver.",
-  },
-  {
-    title: "Testing & Optimization",
-    content:
-      "A/B subject tests, send-time experiments, and content variants help us iteratively improve performance across your email marketing in Delhi program.",
-  },
-  {
-    title: "Monitoring & Reporting",
-    content:
-      "We track deliverability, opens, clicks, conversions, and revenue - then translate results into clear recommendations to grow ROI month over month.",
-  },
-];
-
-const emailTypes = [
-  {
-    title: "Email Campaign Management",
-    content:
-      "Promotional campaigns, newsletters, and product launches crafted for maximum engagement.",
-  },
-  {
-    title: "Email Automation & Drip Campaigns",
-    content:
-      "Welcome sequences, onboarding flows, cart recovery, and lifecycle automations that nurture leads automatically.",
-  },
-  {
-    title: "Transactional Emails",
-    content:
-      "Order confirmations, password resets, and system notifications optimised for clarity and conversion.",
-  },
-  {
-    title: "B2B Email Marketing",
-    content:
-      "Account-based campaigns and nurture sequences designed for longer and complex B2B sales cycles.",
-  },
-  {
-    title: "E-commerce Email Marketing",
-    content:
-      "Abandoned cart recovery, personalised product recommendations, and post-purchase flows to increase repeat purchases.",
-  },
-  {
-    title: "Local Business Email Campaigns",
-    content:
-      "Location-based promotions and event invites crafted specifically for Delhi neighbourhood audiences.",
-  },
-];
-
-const emailListQuality = [
-  {
-    title: "Opt-In Strategies & Lead Magnets",
-    content:
-      "We design sign-up flows and high-value incentives that attract engaged subscribers — not just raw volume.",
-    icon: "MailPlus",
-  },
-  {
-    title: "Subscription Management",
-    content:
-      "Preference centers let subscribers choose topics and frequency, reducing unsubscribes and boosting retention.",
-    icon: "Sliders",
-  },
-  {
-    title: "List Hygiene & Bounce Management",
-    content:
-      "We remove bounces and inactive users regularly to protect sender reputation and ensure maximum deliverability.",
-    icon: "ShieldCheck",
-  },
-];
-
-const emailWorkflow = [
-  "Collect consented leads",
-  "Segment audiences intelligently",
-  "Send personalized targeted messages",
-  "Measure performance across KPIs",
-  "Optimize continuously based on data",
-];
-
-const investEmailMarketing = [
-  "End-to-end strategy and execution",
-  "Technical setup (SPF, DKIM, DMARC)",
-  "Automation & personalization",
-  "Creative design + conversion copywriting",
-  "Transparent reporting & ROI tracking",
-  "Reduced waste and higher conversions",
-];
-
-const industriesServed = [
-  "E-commerce",
-  "SaaS & Technology",
-  "Healthcare",
-  "Real Estate",
-  "Logistics & Supply Chain",
-  "Legal & Consulting",
-  "Luxury Brands",
-  "Local Delhi Businesses",
-];
-
-const faqs = [
-  {
-    q: "Why is email marketing important for businesses?",
-    a: "Email marketing offers high ROI, personalized communication, and direct customer reach. When handled by an experienced email marketing company in Delhi, it boosts sales, nurtures leads, and strengthens long-term customer relationships.",
-  },
-  {
-    q: "How can an email marketing agency in Delhi/NCR benefit my business?",
-    a: "A trusted email marketing agency in Delhi helps you develop a tailored strategy, create engaging content, improve deliverability, and automate workflows – resulting in higher engagement, conversions, and revenue.",
-  },
-  {
-    q: "What services do you offer as an email marketing company in Delhi?",
-    a: "Our email marketing services in Delhi include newsletters, drip automation, transactional emails, template design, segmentation, copywriting, A/B testing, analytics, and deliverability monitoring.",
-  },
-  {
-    q: "Can you provide email marketing services in Delhi NCR and nearby cities?",
-    a: "Yes, we serve clients across Delhi, Noida, Gurugram, Faridabad, Ghaziabad, and other NCR regions. As a leading email marketing company in Delhi, we also support clients across India and overseas.",
-  },
-  {
-    q: "How do I get started with email marketing?",
-    a: "We begin by helping you build or refine your list, choose a platform, create a strategy, and set up your campaigns. Working with an email marketing agency in Delhi ensures smooth implementation and faster results.",
-  },
-  {
-    q: "How often should I send emails to my subscribers?",
-    a: "Most brands send 1–4 emails per week, depending on goals and audience behavior. Our experts in email marketing in Delhi help you determine the ideal frequency for engagement without overwhelming your subscribers.",
-  },
-  {
-    q: "How do you prevent emails from going to spam?",
-    a: "We avoid spam triggers, verify domains, maintain list quality, and use proper authentication – ensuring high deliverability from your email marketing company in Delhi.",
-  },
-  {
-    q: "What email marketing tools or platforms do you recommend?",
-    a: "We use Mailchimp, Klaviyo, HubSpot, ActiveCampaign, and enterprise SMTP systems. As a modern email marketing agency in Delhi, we select the best platform for your needs.",
-  },
-  {
-    q: "How do you measure email campaign success?",
-    a: "We evaluate engagement, conversions, sales, and ROI. Our email marketing services in Delhi include detailed analytics dashboards and monthly performance reports.",
-  },
-  {
-    q: "How do you create engaging email content?",
-    a: "We use persuasive copy, personalized messaging, strong visuals, and compelling CTAs. As a leading email marketing company in Delhi, we create content that drives clicks and conversions.",
-  },
-  {
-    q: "How do you build an effective email list?",
-    a: "We use opt-in forms, lead magnets, landing pages, and sign-up incentives. This ensures your email marketing in Delhi targets qualified, engaged subscribers.",
-  },
-  {
-    q: "What’s included in your email marketing services packages?",
-    a: "Packages include campaign creation, automation setup, template design, segmentation, testing, analytics, optimization, and full support from our email marketing agency in Delhi.",
-  },
-  {
-    q: "Can email marketing work for B2B companies?",
-    a: "Yes. Email is one of the most powerful channels for B2B lead nurturing. Our email marketing company in Delhi builds tailored sequences that improve conversions and shorten sales cycles.",
-  },
-  {
-    q: "Can you integrate email marketing with CRM or shopping cart systems?",
-    a: "Yes. We integrate email tools with CRMs like HubSpot, Zoho, Salesforce, and ecommerce platforms like Shopify, WooCommerce, and Magento – strengthening your email marketing in Delhi, automation, and tracking.",
+    title: "Email List Management",
+    description:
+      "We help you grow, segment, and clean your email lists for better targeting and deliverability.",
   },
 ];
 
 function EmailMarketing() {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleItem = (index: SetStateAction<number | null>) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   const settings = {
     dots: false,
     infinite: true,
@@ -236,7 +60,7 @@ function EmailMarketing() {
     pauseOnHover: false,
   };
   return (
-    <div className="bg-[var(--color1)]">
+    <div>
       <title>Result-Driven Email Marketing</title>
       <link
         rel="canonical"
@@ -252,30 +76,56 @@ function EmailMarketing() {
         className="relative bg-cover bg-center bg-no-repeat py-10 px-4"
         style={{ backgroundImage: `url(${hero.src})` }}
       >
-        <div className="bg-black/60 absolute inset-0 z-0" />
+        <div className="bg-black/40 absolute inset-0 z-0" />
 
-        <div className="relative z-10 w-5/6 mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="relative z-10 w-5/6 mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
           {/* Left Content - 2/3 */}
-          <div className="w-full md:w-2/3 text-white space-y-6">
+          <div className="w-full md:w-2/3 text-white space-y-6 pr-0 md:pr-8">
             <h1 className="text-3xl md:text-4xl font-semibold text-white leading-snug">
-              Email Marketing Services in Delhi
+              Proven Email Marketing services
             </h1>
 
-            <p className=" max-w-xl text-white/90">
-              Looking for a results-driven email marketing company in Delhi that
-              understands local audiences and delivers measurable ROI? As a
-              specialist email marketing agency in Delhi, we design, build, and
-              run high-performing email programs that increase opens, clicks,
-              and conversions - whether you’re a startup, ecommerce brand, B2B
-              firm, or local business. Read on to discover our end-to-end email
-              marketing services in Delhi and how we’ll make email work for your
-              business.
+            <p
+              className="text-2xl md:text-4xl font-semibold text-[#4e6cba]"
+              style={{
+                textShadow: "0 2px 6px rgba(0,0,0,0.6)",
+                letterSpacing: "0.5px",
+              }}
+            >
+              <span className="inline">We send emails that&nbsp;</span>
+              <span className="inline-block whitespace-nowrap">
+                <TypeAnimation
+                  sequence={[
+                    "get opened",
+                    2000,
+                    "drive action",
+                    2000,
+                    "build loyalty",
+                    2000,
+                    "convert leads",
+                    2000,
+                    "spark engagement",
+                    2000,
+                    "deliver results",
+                    2000,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  repeat={Infinity}
+                />
+              </span>
             </p>
 
-            <ButtonFill
-              onClick={() => setIsPopupOpen(true)}
-              text="Contact Us"
-            />
+            <p className="text-base md:text-lg max-w-md text-white/90">
+              We craft emails that not only get opened but also deliver
+              meaningful messages that drive real results for your business.
+            </p>
+
+            <a href="/contact">
+              <button className="mt-4 px-6 py-3 bg-[var(--primary-color)] text-white rounded-full font-semibold hover:bg-opacity-80 transition">
+                Contact Us
+              </button>
+            </a>
           </div>
 
           {/* Right Form - 1/3 */}
@@ -283,1078 +133,293 @@ function EmailMarketing() {
         </div>
       </section>
 
-      <section className="  py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto">
-          {/* Main content layout */}
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            {/* Left content */}
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
-                Leading Email Marketing Company in Delhi for Measurable Growth
-              </h2>
+      <section className="bg-white  py-12 ">
+        <div className="w-11/12 md:w-5/6 mx-auto space-y-5 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--primary-color)]">
+            Power Your Brand with Email Marketing That Works
+          </h2>
 
-              <p className="text-white leading-relaxed text-justify">
-                Delhi’s inboxes are crowded - standing out requires strategy,
-                relevance, and flawless execution. As a leading email marketing
-                agency in Delhi, we combine data, creative copywriting, and
-                automation to deliver personalised experiences that convert.
-                From audience segmentation to deliverability optimization, our
-                email marketing in Delhi approach focuses on driving business
-                outcomes: higher revenue, repeat purchases, and improved
-                customer lifetime value.
-              </p>
-              <ButtonFill
-                text="Get Started Today"
-                onClick={() => setIsPopupOpen(true)}
-              />
-            </div>
+          <p className="text-lg text-gray-700  max-w-3xl mx-auto">
+            Want to stand out and make it to your customer’s inbox, not their
+            spam folder?
+            <br />
+            Email isn’t outdated; ineffective emails are. Let’s fix that.
+          </p>
 
-            {/* Right image */}
-            <div className="w-full">
-              <Image
-                src={image}
-                alt="Best SEO Company in India"
-                className="w-full h-[60vh] rounded-xl shadow-lg"
-              />
+          <div className="border text-gray-800 p-6 rounded-2xl text-lg font-medium">
+            Whether you&#39;re a startup, a growing D2C brand, or an enterprise
+            business, or from any country our{" "}
+            <span className="italic">Email Marketing Services </span>
+            are crafted to help you deliver strategically, sell more, advertise
+            more and build relationships that actually stays.
+          </div>
+
+          <div className="pt-10">
+            <h3 className="text-3xl md:text-4xl text-[var(--primary-color)] font-bold mb-8">
+              Why Email Marketing Still Wins
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4 text-left">
+              <div className="p-6 rounded-2xl bg-gray-100  hover:shadow-xl transition">
+                <Mail className="text-[var(--primary-color)] mb-4" size={32} />
+                <h4 className="font-bold text-lg text-[var(--primary-color)]">
+                  Direct & Personal
+                </h4>
+                <p className="text-sm text-gray-600 ">
+                  Engage your audience in conversation, don’t just broadcast.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-gray-100  hover:shadow-xl transition">
+                <Inbox className="text-[var(--primary-color)] mb-4" size={32} />
+                <h4 className="font-bold text-lg text-[var(--primary-color)]">
+                  Cost-Effective
+                </h4>
+                <p className="text-sm text-gray-600 ">
+                  High ROI, low spend, especially when compared to paid ads.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-gray-100  hover:shadow-xl transition">
+                <Rocket
+                  className="text-[var(--primary-color)] mb-4"
+                  size={32}
+                />
+                <h4 className="font-bold text-lg text-[var(--primary-color)]">
+                  Automated & Scalable
+                </h4>
+                <p className="text-sm text-gray-600 ">
+                  Set it, personalize it, and scale it effortlessly.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-gray-100  hover:shadow-xl transition">
+                <BarChart4
+                  className="text-[var(--primary-color)] mb-4"
+                  size={32}
+                />
+                <h4 className="font-bold text-lg text-[var(--primary-color)]">
+                  Measurable
+                </h4>
+                <p className="text-sm text-gray-600 ">
+                  Track performance in real time. Optimize what works.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* Heading */}
-        <div className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
-            Why Choose Bigwig Media Digital as an Email Marketing Agency in
-            Delhi?
-          </h2>
-
-          <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            Our email marketing services are designed to deliver measurable
-            impact. With deep market insights, robust technical expertise, and
-            creative, high-performing campaign strategies, we help businesses
-            grow consistently and meaningfully.
-          </p>
-        </div>
-
-        {/* Main Container */}
-        <div className="relative mb-10 z-10">
-          {/* Mobile Slider */}
-          <div className="block lg:hidden">
-            <Slider {...settings}>
-              {emailPoints.map((item, index) => (
-                <div key={index} className="px-2">
-                  <div
-                    className="
-                    relative flex flex-col p-6 rounded-2xl
-                    backdrop-blur-xl bg-white/5 
-                    border border-white/10
-                    shadow-[0_0_25px_rgba(0,255,255,0.1)]
-                    hover:shadow-[0_0_40px_var(--color5)]
-                    space-y-5 overflow-hidden group
-                    transition-all duration-500
-                    hover:-translate-y-2
-                  "
-                  >
-                    <div
-                      className="
-                      absolute inset-0 bg-gradient-to-br 
-                      from-transparent via-white/5 to-transparent
-                      opacity-0 group-hover:opacity-100
-                      transition-opacity duration-500
-                    "
-                    />
-
-                    <div
-                      className="
-                      absolute -top-full left-0 w-full h-full
-                      bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
-                      rotate-45 group-hover:animate-shineLine
-                    "
-                    />
-
-                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-gray-200 text-sm md:text-base leading-relaxed relative z-10 text-justify">
-                      {item.content}
-                    </p>
-
-                    <div
-                      className="
-                      absolute inset-0 rounded-2xl border border-transparent
-                      group-hover:border-[var(--color5)] transition-all duration-500
-                    "
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </Slider>
-          </div>
-
-          {/* Desktop Grid */}
-          <div
-            className="
-            hidden lg:grid 
-            grid-cols-1 md:grid-cols-2 lg:grid-cols-4 
-            gap-10 auto-rows-fr
-          "
-          >
-            {emailPoints.map((item, index) => (
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto  bg-white">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[var(--primary-color)] mb-12">
+          Our Email Marketing Services
+        </h2>
+        <div>
+          {/* Desktop View */}
+          <div className=" mx-auto hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((item, index) => (
               <div
                 key={index}
-                className="
-                group relative overflow-hidden rounded-2xl 
-                transition-transform duration-500 
-                hover:-translate-y-3 h-full
-              "
+                className="border-l-4 border-[var(--primary-color)] bg-gray-100  p-6 rounded-lg shadow-sm hover:shadow-md transition"
               >
-                <div
-                  className="
-                  relative z-10 p-6 rounded-2xl 
-                  backdrop-blur-xl bg-white/5
-                  border border-white/10
-                  shadow-[0_0_25px_rgba(0,255,255,0.15)]
-                  hover:shadow-[0_0_45px_var(--color5)]
-                  flex flex-col h-full space-y-5
-                  transition-all duration-500
-                "
-                >
-                  <div
-                    className="
-                    absolute -top-full left-0 w-full h-full
-                    bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
-                    rotate-45 group-hover:animate-shineLine
-                  "
-                  />
-
-                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
-                    {item.content}
-                  </p>
-
-                  <div
-                    className="
-                    absolute inset-0 rounded-2xl border border-transparent 
-                    group-hover:border-[var(--color5)] transition-all duration-500
-                  "
-                  ></div>
-                </div>
+                <h3 className="text-xl font-semibold mb-2 text-[var(--primary-color)]">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-700 ">{item.description}</p>
               </div>
             ))}
           </div>
 
-          {/* Animation */}
-          <style>{`
-          @keyframes shineLine {
-            0% { transform: translateY(-150%); }
-            100% { transform: translateY(150%); }
-          }
-          .animate-shineLine {
-            animation: shineLine 1.5s ease-in-out forwards;
-          }
-        `}</style>
-        </div>
-      </section>
-
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* Heading */}
-        <div className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
-            Our Complete Process for Email Marketing in Delhi
-          </h2>
-
-          <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            From strategy to reporting - here’s how our email marketing process
-            delivers measurable, scalable results for brands in Delhi.
-          </p>
-        </div>
-
-        {/* Main Container */}
-        <div className="relative mb-10 z-10">
-          {/* Mobile Slider */}
-          <div className="block lg:hidden">
+          {/* Mobile View - Slider */}
+          <div className="md:hidden">
             <Slider {...settings}>
-              {steps.map((step, idx) => (
-                <div key={idx} className="px-2">
-                  <div
-                    className="
-                    relative flex flex-col p-6 rounded-2xl
-                    backdrop-blur-xl bg-white/5 
-                    border border-white/10
-                    shadow-[0_0_25px_rgba(0,255,255,0.1)]
-                    hover:shadow-[0_0_40px_var(--color5)]
-                    space-y-5 overflow-hidden group
-                    transition-all duration-500
-                    hover:-translate-y-2
-                  "
-                  >
-                    {/* Soft gradient overlay */}
-                    <div
-                      className="
-                      absolute inset-0 bg-gradient-to-br 
-                      from-transparent via-white/5 to-transparent
-                      opacity-0 group-hover:opacity-100
-                      transition-opacity duration-500
-                    "
-                    />
-
-                    {/* Diagonal shine */}
-                    <div
-                      className="
-                      absolute -top-full left-0 w-full h-full
-                      bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
-                      rotate-45 group-hover:animate-shineLine
-                    "
-                    />
-
-                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
-                      {step.title}
-                    </h3>
-
-                    <p className="text-gray-200 text-sm md:text-base leading-relaxed relative z-10 text-justify">
-                      {step.content}
-                    </p>
-
-                    <div
-                      className="
-                      absolute inset-0 rounded-2xl border border-transparent
-                      group-hover:border-[var(--color5)] transition-all duration-500
-                    "
-                    />
+              {services.map((item, index) => (
+                <div key={index} className="px-2 w-5/6">
+                  <div className="border-l-4 border-[var(--primary-color)] bg-gray-100  p-6 rounded-lg shadow-sm mb-4">
+                    <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                    <p className="text-sm text-gray-700 ">{item.description}</p>
                   </div>
                 </div>
               ))}
             </Slider>
           </div>
-
-          {/* Desktop Grid */}
-          <div
-            className="
-            hidden lg:grid 
-            grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
-            gap-10 auto-rows-fr
-          "
-          >
-            {steps.map((step, idx) => (
-              <div
-                key={idx}
-                className="
-                group relative overflow-hidden rounded-2xl 
-                transition-transform duration-500 
-                hover:-translate-y-3 h-full
-              "
-              >
-                <div
-                  className="
-                  relative z-10 p-6 rounded-2xl 
-                  backdrop-blur-xl bg-white/5
-                  border border-white/10
-                  shadow-[0_0_25px_rgba(0,255,255,0.15)]
-                  hover:shadow-[0_0_45px_var(--color5)]
-                  flex flex-col h-full space-y-5
-                  transition-all duration-500
-                "
-                >
-                  {/* Diagonal shine */}
-                  <div
-                    className="
-                    absolute -top-full left-0 w-full h-full
-                    bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
-                    rotate-45 group-hover:animate-shineLine
-                  "
-                  />
-
-                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
-                    {step.title}
-                  </h3>
-
-                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
-                    {step.content}
-                  </p>
-
-                  <div
-                    className="
-                    absolute inset-0 rounded-2xl border border-transparent 
-                    group-hover:border-[var(--color5)] transition-all duration-500
-                  "
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Animations */}
-          <style>{`
-          @keyframes shineLine {
-            0% { transform: translateY(-150%); }
-            100% { transform: translateY(150%); }
-          }
-          .animate-shineLine {
-            animation: shineLine 1.5s ease-in-out forwards;
-          }
-        `}</style>
         </div>
       </section>
 
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
-        <div
-          className="
-      relative rounded-3xl p-6 md:p-10
-      backdrop-blur-2xl bg-white/5
-      border border-[var(--color5)]/40
-      shadow-[0_0_45px_rgba(0,255,255,0.15)]
-      hover:shadow-[0_0_30px_var(--color5)]
-      transition-all duration-700
-      overflow-hidden
-    "
-        >
-          {/* Shine Sweep */}
-          <div
-            className="
-        absolute -top-full left-0 w-full h-full 
-        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
-        rotate-45 opacity-70
-        animate-[shineMove_5s_ease-in-out_infinite]
-      "
-          />
-
-          {/* Header Glow Orbs */}
-          <div className="absolute -top-10 -left-10 w-32 h-32 bg-[var(--color5)]/10 blur-3xl rounded-full"></div>
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[var(--color5)]/10 blur-3xl rounded-full"></div>
-
-          {/* Two-Column Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
-            {/* LEFT BLOCK */}
-            <div>
-              <h2 className="text-3xl font-semibold text-[var(--color5)] mb-8 tracking-wide">
-                Key Features of Our Email Marketing Services in Delhi
-              </h2>
-
-              <div className="space-y-7 text-gray-200 leading-relaxed">
-                {[
-                  {
-                    title: "Professional Email Templates & Responsive Design",
-                    desc: "Custom-built responsive email templates that enhance your brand identity and improve overall engagement.",
-                  },
-                  {
-                    title: "Advanced Tracking & Analytics",
-                    desc: "Beyond opens and clicks, we track user behavior, conversions, purchases, LTV and more to show real ROI.",
-                  },
-                  {
-                    title: "Dedicated Deliverability Management",
-                    desc: "Authenticated sending, IP warming, and list hygiene ensure your campaigns consistently reach the inbox.",
-                  },
-                  {
-                    title: "Easy CRM & E-commerce Integration",
-                    desc: "Seamless integration with leading CRMs and platforms to personalize communication at scale.",
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="
-                p-4 rounded-xl bg-white/5 border border-[var(--color5)]/20
-                shadow-[0_0_20px_rgba(0,255,255,0.08)]
-                hover:shadow-[0_0_25px_var(--color5)]
-                transition-all duration-500
-                group
-              "
-                  >
-                    <h3 className="text-lg font-semibold text-[var(--color5)] flex items-center gap-2">
-                      <span className="w-2 h-2 bg-[var(--color5)] rounded-full"></span>
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-gray-300 group-hover:text-white/90 transition">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* RIGHT BLOCK */}
-            <div>
-              <h2 className="text-3xl font-semibold text-[var(--color5)] mb-8 tracking-wide">
-                Crafting Engaging Email Content That Converts
-              </h2>
-
-              <div className="space-y-7 text-gray-200 leading-relaxed">
-                {[
-                  {
-                    title: "Understand Your Audience",
-                    desc: "We study user intent, behavior signals, and purchase trends so each email speaks directly to their needs.",
-                  },
-                  {
-                    title: "Write Compelling Subject Lines",
-                    desc: "Curiosity, urgency, and value-driven messaging help maximize open rates across Delhi audiences.",
-                  },
-                  {
-                    title: "Personalization & Dynamic Content",
-                    desc: "Localized recommendations, personalized offers, and smart segmentation increase conversions.",
-                  },
-                  {
-                    title: "Clear Calls to Action",
-                    desc: "We focus every email around one powerful CTA to boost user action and revenue.",
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="
-                p-4 rounded-xl bg-white/5 border border-[var(--color5)]/20
-                shadow-[0_0_20px_rgba(0,255,255,0.08)]
-                hover:shadow-[0_0_25px_var(--color5)]
-                transition-all duration-500
-                group
-              "
-                  >
-                    <h3 className="text-lg font-semibold text-[var(--color5)] flex items-center gap-2">
-                      <span className="w-2 h-2 bg-[var(--color5)] rounded-full"></span>
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-gray-300 group-hover:text-white/90 transition">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <section className="bg-white text-gray-800 ">
+        {/* 1. Hero / Intro Section */}
+        <div className="py-12  text-center w-11/12 md:w-5/6 mx-auto space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--primary-color)]">
+            Why Brands Trust Email Marketing Services
+          </h2>
+          <p className="text-lg text-gray-700 ">
+            Brands across industries are increasingly relying on Email Marketing
+            Services for one simple reason, it works. With high ROI, direct
+            reach, and measurable results, email remains one of the most
+            effective digital marketing tools.
+          </p>
+          <p className="text-lg text-gray-700 ">
+            At{" "}
+            <strong>
+              {" "}
+              <a href="https://www.bigwigdigital.in/">BigWig Digital</a>
+            </strong>
+            , a trusted Email Marketing Agency , we build meaningful
+            relationships through strategic, personalized, and
+            conversion-focused email campaigns.
+          </p>
         </div>
 
-        {/* Shine Animation Keyframes */}
-        <style>
-          {`
-      @keyframes shineMove {
-        0% { transform: translateY(-160%); }
-        100% { transform: translateY(160%); }
-      }
-    `}
-        </style>
-      </section>
-
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
-        {/* ====================== GRID ====================== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-          {/* ========== LEFT SIDE (FULL HEIGHT) ========== */}
-          <div className="h-full flex flex-col justify-between">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] mb-6">
-                Ensuring Maximum Deliverability for Email Marketing in Delhi
-              </h2>
-
-              <p className="text-gray-300 leading-relaxed mb-6">
-                Deliverability is technical but non-negotiable. We manage
-                everything to ensure your emails reach the inbox.
-              </p>
-
-              <div className="space-y-5">
-                {[
-                  "SPF, DKIM and DMARC setup",
-                  "IP reputation and warming",
-                  "List hygiene to remove bounces and inactive subscribers",
-                  "Compliance with anti-spam laws and opt-in best practices",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-[var(--color5)]/20 flex items-center justify-center text-[var(--color5)] text-xl font-bold">
-                      ✔
-                    </div>
-                    <h3 className="text-gray-200 text-lg">{item}</h3>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <p className="text-gray-300 mt-6">
-              These steps ensure your email marketing services in Delhi
-              consistently reach the inbox.
+        {/* 2. Trust Section */}
+        <div className=" w-5/6 mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div className="space-y-4">
+            <h3 className="text-3xl text-[var(--primary-color)] font-semibold">
+              Work With a Smart Email Marketing Agency
+            </h3>
+            <p>
+              We’re not just about emails, we’re driving results. A
+              professional, dedicated, and experienced email marketing agency
+              like ours gives you:
             </p>
+            <ul className="list-disc list-inside space-y-2 text-md">
+              <li>Hands-free campaign management systems.</li>
+              <li>Content and design that becomes your brand’s voice.</li>
+              <li>Aligned with international email marketing regulations.</li>
+              <li>CRM, e-commerce, and CMS integrations.</li>
+            </ul>
           </div>
-
-          {/* ========== RIGHT SIDE (FULL HEIGHT) ========== */}
-          <div className="h-full flex flex-col justify-start">
-            <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] mb-6">
-              Benefits of Email Marketing in Delhi
-            </h2>
-
-            <div className="space-y-5">
-              {[
-                "High ROI – one of the most cost-effective channels",
-                "Direct customer access – no reliance on algorithms",
-                "Personalization & relevance at scale",
-                "Measurable performance with clear attribution",
-                "Automation that saves time & increases revenue",
-                "Fast testing & optimization for continuous improvement",
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color5)]/20 flex items-center justify-center text-[var(--color5)] text-xl font-bold">
-                    ✦
-                  </div>
-                  <p className="text-gray-200 text-lg">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ====================== CTA BELOW SECTION ====================== */}
-        <div className="flex justify-center mt-10">
-          <ButtonFill
-            onClick={() => setIsPopupOpen(true)}
-            text=" Book Free Email Marketing Consultation"
-          />
-        </div>
-      </section>
-
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* Heading */}
-        <div className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
-            Types of Email Marketing Services We Offer in Delhi
-          </h2>
-
-          <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            Our email marketing solutions cover every major category — from
-            campaigns to automation, transactional workflows, and personalised
-            engagement.
-          </p>
-        </div>
-
-        {/* MOBILE SLIDER */}
-        <div className="block lg:hidden">
-          <Slider {...settings}>
-            {emailTypes.map((item, index) => (
-              <div key={index} className="px-2">
-                <div
-                  className="
-              relative flex flex-col p-6 rounded-2xl
-              backdrop-blur-xl bg-white/5 
-              border border-white/10
-              shadow-[0_0_25px_rgba(0,255,255,0.1)]
-              hover:shadow-[0_0_40px_var(--color5)]
-              space-y-5 overflow-hidden group
-              transition-all duration-500
-              hover:-translate-y-2
-            "
-                >
-                  <div
-                    className="
-                absolute inset-0 bg-gradient-to-br 
-                from-transparent via-white/5 to-transparent
-                opacity-0 group-hover:opacity-100
-                transition-opacity duration-500
-              "
-                  />
-
-                  <div
-                    className="
-                absolute -top-full left-0 w-full h-full
-                bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
-                rotate-45 group-hover:animate-shineLine
-              "
-                  />
-
-                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-gray-200 text-sm md:text-base leading-relaxed relative z-10 text-justify">
-                    {item.content}
-                  </p>
-
-                  <div
-                    className="
-                absolute inset-0 rounded-2xl border border-transparent
-                group-hover:border-[var(--color5)] transition-all duration-500
-              "
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-
-        {/* DESKTOP GRID */}
-        <div
-          className="
-      hidden lg:grid 
-      grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
-      gap-10 auto-rows-fr
-    "
-        >
-          {emailTypes.map((item, index) => (
-            <div
-              key={index}
-              className="
-          group relative overflow-hidden rounded-2xl 
-          transition-transform duration-500 
-          hover:-translate-y-3 h-full
-        "
-            >
-              <div
-                className="
-            relative z-10 p-6 rounded-2xl 
-            backdrop-blur-xl bg-white/5
-            border border-white/10
-            shadow-[0_0_25px_rgba(0,255,255,0.15)]
-            hover:shadow-[0_0_45px_var(--color5)]
-            flex flex-col h-full space-y-5
-            transition-all duration-500
-          "
-              >
-                <div
-                  className="
-              absolute -top-full left-0 w-full h-full
-              bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
-              rotate-45 group-hover:animate-shineLine
-            "
-                />
-
-                <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
-                  {item.title}
-                </h3>
-
-                <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
-                  {item.content}
-                </p>
-
-                <div
-                  className="
-              absolute inset-0 rounded-2xl border border-transparent 
-              group-hover:border-[var(--color5)] transition-all duration-500
-            "
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Animation */}
-        <style>{`
-    @keyframes shineLine {
-      0% { transform: translateY(-150%); }
-      100% { transform: translateY(150%); }
-    }
-    .animate-shineLine {
-      animation: shineLine 1.5s ease-in-out forwards;
-    }
-  `}</style>
-      </section>
-
-      <section className="w-11/12 md:w-5/6 mx-auto py-12 space-y-12">
-        {/* ===================== SECTION 1 ===================== */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] mb-6">
-            Building & Managing High-Quality Email Lists
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {emailListQuality.map((item, i) => (
-              <div
-                key={i}
-                className="
-            p-6 rounded-2xl bg-white/5 backdrop-blur-xl
-            border border-[var(--color5)]/20
-            shadow-[0_0_30px_rgba(0,255,255,0.15)]
-            hover:shadow-[0_0_40px_var(--color5)]
-            transition-all hover:-translate-y-2
-            group relative overflow-hidden
-          "
-              >
-                <div className="absolute -top-full left-0 w-full h-full bg-gradient-to-r from-transparent via-[var(--color5)]/15 to-transparent rotate-45 group-hover:animate-shine"></div>
-
-                <h3 className="text-xl font-semibold text-[var(--color5)] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-300 leading-relaxed">{item.content}</p>
-              </div>
-            ))}
-          </div>
-
-          <style>{`
-      @keyframes shine {
-        0% { transform: translateY(-150%); }
-        100% { transform: translateY(150%); }
-      }
-      .group-hover\\:animate-shine:hover {
-        animation: shine 1.5s ease-in-out forwards;
-      }
-    `}</style>
-        </div>
-
-        {/* ===================== SECTION 2 ===================== */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] mb-6">
-            How Do Email Marketing Services Work?
-          </h2>
-
-          <div className="relative border-l-2 border-[var(--color5)]/40 pl-6 space-y-8">
-            {emailWorkflow.map((step, i) => (
-              <div key={i} className="relative">
-                <div className="w-4 h-4 bg-[var(--color5)] rounded-full absolute -left-8 top-1"></div>
-                <p className="text-gray-200 text-lg">{step}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-gray-300 mt-6">
-            This loop ensures each campaign becomes smarter and more profitable
-            over time.
-          </p>
-        </div>
-
-        {/* ===================== SECTION 3 ===================== */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] mb-6">
-            Why Invest in an Email Marketing Company in Delhi?
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {investEmailMarketing.map((point, i) => (
-              <div
-                key={i}
-                className="
-            flex items-center gap-4 p-4 rounded-xl 
-            bg-white/5 border border-white/10 
-            hover:bg-white/10 transition
-          "
-              >
-                <div className="w-10 h-10 bg-[var(--color5)]/20 rounded-xl flex items-center justify-center text-[var(--color5)] text-xl">
-                  ✓
-                </div>
-                <p className="text-gray-200 text-lg">{point}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="mt-8">
-            <ButtonFill
-              onClick={() => setIsPopupOpen(true)}
-              text="Boost Your Email Marketing Today"
+          <div>
+            <Image
+              src={image}
+              alt="Email Marketing Service in "
+              className="w-full md:w-[50%] mb-10 mx-auto"
             />
           </div>
         </div>
 
-        {/* ===================== SECTION 4 ===================== */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] mb-6">
-            Industries We Serve
-          </h2>
+        {/* 3. How Email Helps New Businesses */}
+        <div className="bg-[var(--primary-color)] text-white py-12">
+          <div className="w-5/6 mx-auto grid md:grid-cols-2 gap-10 items-center">
+            {/* LEFT - MAIN CONTENT */}
+            <div className="space-y-6 text-left">
+              <h3 className="text-3xl font-bold">
+                How is Email Marketing Service Helpful for New Business?
+              </h3>
+              <p className="text-lg leading-relaxed">
+                For startups and small businesses, building brand recognition
+                and customer trust is crucial. That’s where a professional email
+                marketing service becomes a game-changer. With personalized
+                email campaigns, your business can connect directly with your
+                target audience, share updates, promote offers, and guide leads
+                through the buying journey, all while keeping marketing costs
+                low.
+              </p>
+              <p className="text-lg leading-relaxed">
+                At BigWig Digital, a trusted email marketing agency, we help new
+                businesses launch impactful campaigns that drive engagement,
+                build credibility, and boost early conversions. Whether
+                you&#39;re growing your list or nurturing your first set of
+                leads, our email marketing services are designed to support
+                consistent, scalable growth from day one.
+              </p>
+            </div>
 
-          <div className="flex flex-wrap gap-4">
-            {industriesServed.map((ind, i) => (
+            {/* RIGHT - POINTS IN BOXES */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[
+                {
+                  title: "Cost-Effective Growth",
+                  description:
+                    "Reach thousands without burning your budget, perfect for startups and small businesses.",
+                },
+                {
+                  title: "Builds Brand Awareness",
+                  description:
+                    "Introduce your brand directly to potential customers’ inboxes with personalized messages.",
+                },
+                {
+                  title: "Drives Early Engagement",
+                  description:
+                    "Keep your audience interested with updates, promotions, and product launches from day one.",
+                },
+                {
+                  title: "Creates a Loyal Community",
+                  description:
+                    "Stay connected with your customers and turn them into repeat buyers with value-packed emails.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-white text-black rounded-xl p-4 shadow-md"
+                >
+                  <h4 className="text-lg font-semibold text-[var(--primary-color)] mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white w-5/6 mx-auto text-[var(--primary-color)] py-12  text-center space-y-4">
+          {/* Heading */}
+          <h3 className="text-3xl font-bold">
+            Wherever You Are, We’ve Got You Covered{" "}
+          </h3>
+
+          {/* Paragraph */}
+          <p className=" text-gray-700 mx-auto text-lg">
+            As a ranking and leading email marketing agency, we know what the
+            local market requires and how to strategically deliver. Our team
+            specializes in:
+          </p>
+
+          {/* Bullet Points in Boxes */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+            {[
+              "Hyper-local targeting audience.",
+              "Industry-specific campaigns.",
+              "B2B & B2C strategies for  unique business market.",
+              "Bulk campaigns to automation suites, ready to deploy.",
+            ].map((point, i) => (
               <div
                 key={i}
-                className="
-            px-5 py-3 rounded-full 
-            bg-white/5 border border-[var(--color5)]/30 
-            text-gray-200 text-lg
-            hover:bg-[var(--color5)] hover:text-black
-            transition-all shadow-[0_0_20px_rgba(0,255,255,0.1)]
-          "
+                className="bg-white text-black rounded-xl p-4 font-medium shadow-md"
               >
-                {ind}
+                {point}
               </div>
             ))}
           </div>
+
+          {/* Optional Highlighted Footer Message */}
+          <p className="max-w-3xl mx-auto text-lg font-semibold mt-4">
+            If you&#39;re looking for tailored and genuine email marketing
+            services Wherever You Are, We’ve Got You Covered{" "}
+          </p>
         </div>
-      </section>
-
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
-        <div
-          className="
-      relative rounded-3xl p-6 md:p-10
-      backdrop-blur-2xl bg-white/5
-      border border-[var(--color5)]/40
-      shadow-[0_0_45px_rgba(0,255,255,0.15)]
-      hover:shadow-[0_0_30px_var(--color5)]
-      transition-all duration-700
-      overflow-hidden
-    "
-        >
-          {/* Shine Sweep */}
-          <div
-            className="
-        absolute -top-full left-0 w-full h-full 
-        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
-        rotate-45 opacity-70
-        animate-[shineMove_5s_ease-in-out_infinite]
-      "
-          />
-
-          {/* Glow Orbs */}
-          <div className="absolute -top-10 -left-10 w-32 h-32 bg-[var(--color5)]/10 blur-3xl rounded-full"></div>
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[var(--color5)]/10 blur-3xl rounded-full"></div>
-
-          {/* Two-Column Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-14">
-            {/* LEFT SIDE */}
-            <div>
-              <h2 className="text-3xl font-semibold text-[var(--color5)] mb-8 tracking-wide">
-                Why We’re the Email Marketing Agency in Delhi You Should Choose
-              </h2>
-
-              <div className="space-y-4 text-gray-200 leading-relaxed">
-                {[
-                  "Data-driven strategies with measurable outcomes.",
-                  "Dedicated strategists and copywriters focused on conversions.",
-                  "Deep expertise in deliverability and platform integrations.",
-                  "Transparent reporting and actionable insights.",
-                  "Local market knowledge combined with global best practices.",
-                ].map((text, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="w-2 h-2 mt-2 rounded-full bg-[var(--color5)]"></span>
-                    <p className="text-gray-300 group-hover:text-white/90 transition">
-                      {text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* RIGHT SIDE */}
-            <div>
-              <h2 className="text-3xl font-semibold text-[var(--color5)] mb-8 tracking-wide">
-                Ready to Grow with Email Marketing Services in Delhi?
-              </h2>
-
-              <div
-                className="
-            p-6 rounded-2xl bg-white/5 border border-[var(--color5)]/20
-            shadow-[0_0_20px_rgba(0,255,255,0.08)]
-            hover:shadow-[0_0_30px_var(--color5)]
-            transition-all duration-500
-          "
-              >
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  If you’re ready to turn your email list into predictable
-                  revenue, let’s talk. Book a free strategy call, share your
-                  goals, and we’ll provide a tailored roadmap and sample
-                  campaign plan.
-                </p>
-
-                <ButtonFill text="Book Free Strategy Call" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Shine Animation */}
-        <style>
-          {`
-      @keyframes shineMove {
-        0% { transform: translateY(-160%); }
-        100% { transform: translateY(160%); }
-      }
-    `}
-        </style>
-      </section>
-
-      <section className="py-12 relative overflow-hidden">
-        {/* Heading */}
-        <div className="mb-12 text-center">
-          <h2 className="text-xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
-            Frequently Asked Questions
-          </h2>
-        </div>
-
-        {/* FAQ Boxes */}
-        <div className="space-y-6 w-11/12 md:w-5/6 mx-auto relative z-10">
-          {faqs.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => toggleItem(index)}
-              className="
-              p-6 rounded-2xl backdrop-blur-xl bg-white/5 
-              border border-white/10 transition-all duration-300
-              shadow-[0_0_20px_rgba(0,255,255,0.1)]
-              hover:border-[var(--color5)]
-              hover:shadow-[0_0_30px_var(--color5)]
-              cursor-pointer relative overflow-hidden
-            "
-            >
-              {/* Scan Lines */}
-              <div className="absolute inset-0 opacity-30 pointer-events-none">
-                {[...Array(4)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute left-0 w-full h-[2px]
-                    bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                    animate-cardScan"
-                    style={{
-                      top: `${40 + i * 45}px`,
-                      animationDelay: `${i * 0.25}s`,
-                    }}
-                  ></div>
-                ))}
-              </div>
-
-              {/* Question Row */}
-              <div className="flex justify-between items-center relative z-10">
-                <h3 className="text-lg md:text-xl font-semibold text-[var(--color5)]">
-                  {item.q}
-                </h3>
-
-                <span className="text-[var(--color5)] text-2xl font-bold transition-all">
-                  {openIndex === index ? "−" : "+"}
-                </span>
-              </div>
-
-              {/* Answer */}
-              <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <p className="leading-relaxed">{item.a}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA Button */}
-        <div className="mt-10 flex justify-center">
-          <ButtonFill
-            text="Start Your Project Today"
-            onClick={() => setIsPopupOpen(true)}
-          />
-        </div>
-
-        {/* Animation */}
-        <style>
-          {`
-          @keyframes cardScan {
-            0% { transform: translateX(-100%); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%); opacity: 0; }
-          }
-          .animate-cardScan {
-            animation: cardScan 5s linear infinite;
-          }
-        `}
-        </style>
       </section>
       <OurProcess />
       <WhyBigwig />
-      <section className="py-12 relative overflow-hidden">
-        {/* Matrix glow background */}
-        <div className="absolute inset-0 opacity-[0.20] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>
 
-        <div className="w-11/12 md:w-5/6 mx-auto space-y-14 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)] text-center tracking-wider ">
-            Our Other Services
-          </h2>
+      <div className="bg-[var(--primary-color)] text-white py-12 text-center ">
+        <div className="w-11/12 md:w-5/6 mx-auto space-y-6">
+          {/* Headline */}
+          <h3 className="text-3xl md:text-4xl font-bold">
+            Ready to Make Every Email Count?
+          </h3>
 
-          {/* TABLE WRAPPER */}
-          <div
-            className="
-        rounded-2xl 
-        overflow-hidden 
-        backdrop-blur-xl bg-white/5 
-        border border-white/10 
-        shadow-[0_0_30px_rgba(0,255,255,0.15)] 
-        relative
-      "
-          >
-            {/* Scan Line */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent animate-scan"></div>
+          {/* Main Paragraph */}
+          <p className="max-w-3xl mx-auto text-lg leading-relaxed">
+            If you&#39;re looking for a reliable email marketing agency, BigWig
+            Digital brings the creativity, strategy, and technology together to
+            deliver results. We help you send smarter emails that your audience
+            actually wants to read, and act on.
+          </p>
 
-            <table className="min-w-full text-sm text-gray-200 relative z-10">
-              <tbody>
-                {[
-                  [
-                    "Search Engine Optimization",
-                    "Social Media Marketing",
-                    "Performance Marketing",
-                  ],
-                  [
-                    "Content Marketing",
-                    "Website Designing & Development",
-                    "Email Marketing",
-                  ],
-                  [
-                    "Social Media Optimization",
-                    "Graphic Designing & Video Editing",
-                    "Influencer Marketing",
-                  ],
-                  ["Online Reputation Management", "", "Affiliate Marketing"],
-                ].map((row, rowIndex) => (
-                  <tr key={rowIndex} className="divide-x divide-white/10">
-                    {row.map((cell, colIndex) => (
-                      <td
-                        key={colIndex}
-                        className="
-                    h-20 
-                    border-b border-white/10 
-                    relative group overflow-hidden
-                  "
-                      >
-                        {cell && (
-                          <a
-                            href={`/services/${cell
-                              .toLowerCase()
-                              .replace(/ /g, "-")
-                              .replace(/\&/g, "and")}`}
-                            target="_blank"
-                            className="
-                        flex items-center justify-center 
-                        w-full h-full px-4 text-center 
-                        font-semibold
-                        text-gray-200
-                        transition-all duration-300
-                        hover:text-[var(--color5)]
-                      "
-                          >
-                            {/* Neon card effect */}
-                            <span
-                              className="
-                          absolute inset-0 
-                          rounded-xl 
-                          border border-transparent
-                          group-hover:border-[var(--color5)]
-                          group-hover:shadow-[0_0_20px_var(--color5)]
-                          transition-all duration-300
-                        "
-                            ></span>
-
-                            <span className="relative z-10">{cell}</span>
-                          </a>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {/* Closing Line */}
+          <p className="max-w-2xl mx-auto text-lg font-semibold">
+            Let’s turn your subscribers into customers and customers into loyal
+            fans.
+          </p>
         </div>
-
-        {/* Animations */}
-        <style>{`
-    @keyframes scan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    .animate-scan {
-      animation: scan 4s linear infinite;
-    }
-  `}</style>
-      </section>
-      <GetInTouch />
-      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+      </div>
 
       <Footer />
     </div>

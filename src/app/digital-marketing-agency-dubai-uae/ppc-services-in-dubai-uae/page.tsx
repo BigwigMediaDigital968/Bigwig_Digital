@@ -34,14 +34,8 @@ import {
   Layers,
   Languages,
   Globe2,
-  ShieldCheck,
-  Clock,
-  Star,
-  Anchor,
 } from "lucide-react";
 import Image from "next/image";
-import GetInTouch from "../../../../components/GetInTouch";
-import ServicesNavigation from "../../../../components/UAEServicesDirectory";
 
 const reasons = [
   {
@@ -111,68 +105,20 @@ const features = [
 
 const whyUs = [
   {
-    icon: <Target className="w-8 h-8 text-[var(--color5)]" />,
+    icon: <Target className="w-8 h-8 text-[var(--primary-color)]" />,
     text: "Understand Dubai’s competitive PPC landscape.",
   },
   {
-    icon: <Languages className="w-8 h-8 text-[var(--color5)]" />,
+    icon: <Languages className="w-8 h-8 text-[var(--primary-color)]" />,
     text: "Deliver campaigns in both English and Arabic.",
   },
   {
-    icon: <Globe2 className="w-8 h-8 text-[var(--color5)]" />,
+    icon: <Globe2 className="w-8 h-8 text-[var(--primary-color)]" />,
     text: "Run ads that capture both local UAE audiences and international markets.",
   },
   {
-    icon: <TrendingUp className="w-8 h-8 text-[var(--color5)]" />,
+    icon: <TrendingUp className="w-8 h-8 text-[var(--primary-color)]" />,
     text: "Focus on long-term ROI, not just clicks.",
-  },
-];
-
-const benefits = [
-  {
-    icon: <CheckCircle className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Faster Results",
-    desc: "Campaigns & experiments tuned for rapid learnings and fast wins.",
-  },
-  {
-    icon: <ShieldCheck className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Quality-first",
-    desc: "White-hat SEO, transparent reporting and privacy-respecting tracking.",
-  },
-  {
-    icon: <Clock className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Always-on Optimization",
-    desc: "Continuous A/B testing, bid optimization and creative refresh cycles.",
-  },
-  {
-    icon: <Star className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Creative Excellence",
-    desc: "High-converting creative that performs across markets & languages.",
-  },
-  {
-    icon: <Anchor className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Local Market Expertise",
-    desc: "Dubai & UAE-specific targeting, language & cultural optimizations.",
-  },
-  {
-    icon: <Users className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Dedicated Team",
-    desc: "Experienced specialists for strategy, execution and reporting.",
-  },
-  {
-    icon: <Layers className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Full-funnel Approach",
-    desc: "From awareness to retention — we design end-to-end funnels.",
-  },
-  {
-    icon: <BarChart2 className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Data-driven Decisions",
-    desc: "Custom dashboards, weekly insights and measurable KPIs.",
-  },
-  {
-    icon: <PhoneCall className="w-7 h-7 text-[var(--color5)]" />,
-    title: "Local Support",
-    desc: "Local hours, multilingual support and in-market partners.",
   },
 ];
 
@@ -180,7 +126,7 @@ function PpcServicesInDubai() {
   //   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <div className="bg-[var(--color1)] text-white">
+    <div className="bg-white text-black font-raleway">
       <title>PPC Services in Dubai, UAE | BigWig Media Digital</title>
       <link
         rel="canonical"
@@ -225,7 +171,7 @@ function PpcServicesInDubai() {
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto py-12">
+      <section className="w-11/12 md:w-5/6 mx-auto py-12 bg-white">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Image */}
           <div className="flex justify-center">
@@ -238,11 +184,11 @@ function PpcServicesInDubai() {
 
           {/* Right Side - Content */}
           <div>
-            <h2 className="text-3xl font-semibold mb-4 text-[var(--color5)]">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
               Data-Driven PPC Campaigns That Deliver Instant Results
             </h2>
 
-            <p className="text-gray-300 mb-4 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
               At <strong>BigWig Media Digital</strong>, we take pride in being
               one of the top PPC companies in Dubai, UAE, known for delivering
               measurable results with cost-effective campaigns. Our team of
@@ -251,45 +197,49 @@ function PpcServicesInDubai() {
               services.
             </p>
 
+            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              We specialize in:
+            </p>
+
             {/* Icon List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <Search className="text-[var(--color5)] w-6 h-6" />
+                <Search className="text-[var(--primary-color)] w-6 h-6" />
                 <span>Google Search Ads</span>
               </div>
               <div className="flex items-center gap-3">
-                <ImageIcon className="text-[var(--color5)] w-6 h-6" />
+                <ImageIcon className="text-[var(--primary-color)] w-6 h-6" />
                 <span>Display & Banner Ads</span>
               </div>
               <div className="flex items-center gap-3">
-                <MonitorPlay className="text-[var(--color5)] w-6 h-6" />
+                <MonitorPlay className="text-[var(--primary-color)] w-6 h-6" />
                 <span>YouTube Video Ads</span>
               </div>
               <div className="flex items-center gap-3">
-                <Smartphone className="text-[var(--color5)] w-6 h-6" />
+                <Smartphone className="text-[var(--primary-color)] w-6 h-6" />
                 <span>App Installation Ads</span>
               </div>
               <div className="flex items-center gap-3">
-                <ShoppingBag className="text-[var(--color5)] w-6 h-6" />
+                <ShoppingBag className="text-[var(--primary-color)] w-6 h-6" />
                 <span>Shopping Ads (E-commerce PPC)</span>
               </div>
               <div className="flex items-center gap-3">
-                <Users className="text-[var(--color5)] w-6 h-6" />
+                <Users className="text-[var(--primary-color)] w-6 h-6" />
                 <span>Lead Generation Ads</span>
               </div>
               <div className="flex items-center gap-3">
-                <Target className="text-[var(--color5)] w-6 h-6" />
+                <Target className="text-[var(--primary-color)] w-6 h-6" />
                 <span>Remarketing Campaigns</span>
               </div>
               <div className="flex items-center gap-3">
-                <Layout className="text-[var(--color5)] w-6 h-6" />
+                <Layout className="text-[var(--primary-color)] w-6 h-6" />
                 <span>
                   Landing Page Optimization & Quality Score Improvement
                 </span>
               </div>
             </div>
 
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               With years of experience running successful PPC campaigns for real
               estate, hospitality, education, healthcare, e-commerce, and
               corporate brands in Dubai, UAE, we know how to maximize every
@@ -300,68 +250,26 @@ function PpcServicesInDubai() {
       </section>
 
       <section className="w-11/12 md:w-5/6 mx-auto py-12 ">
-        {/* Heading */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl  font-semibold text-white leading-snug">
+        <div className=" text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             Why Choose Us as Your{" "}
-            <span className="text-[var(--color5)]">
+            <span className="text-[var(--primary-color)]">
               PPC Company in Dubai, UAE?
             </span>
           </h2>
         </div>
 
-        {/* Grid */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {reasons.map((item, index) => (
             <div
               key={index}
-              className="
-          group relative p-8 rounded-2xl overflow-hidden 
-          bg-[var(--color1)]/60 backdrop-blur-xl 
-          border border-white/10 
-          shadow-[0_0_25px_rgba(0,0,0,0.5)]
-          hover:shadow-[0_0_40px_rgba(167,235,242,0.3)]
-          hover:border-[var(--color5)]
-          transition-all duration-500
-        "
+              className="flex flex-col items-start bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 hover:shadow-xl transition"
             >
-              {/* Matrix hologram overlay */}
-              <div
-                className="
-            absolute inset-0 opacity-[0.15] 
-            bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')]
-            bg-cover bg-center mix-blend-screen pointer-events-none
-          "
-              ></div>
-
-              {/* Glow border on hover */}
-              <div
-                className="
-            absolute inset-0 rounded-2xl border border-transparent
-            group-hover:border-[var(--color5)]
-            transition-all duration-500
-          "
-              ></div>
-
-              {/* Icon */}
-              <div
-                className="
-          w-16 h-16 rounded-xl border border-[var(--color5)]/40 
-          bg-[var(--color5)]/10 flex items-center justify-center 
-          shadow-[0_0_18px_rgba(167,235,242,0.35)]
-          mb-6 group-hover:scale-110 transition-transform duration-300
-        "
-              >
-                <item.icon className="w-8 h-8 text-[var(--color5)]" />
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-semibold text-[var(--color5)] mb-3 tracking-wide">
+              <item.icon className="w-10 h-10 text-[var(--primary-color)] mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                 {item.title}
               </h3>
-
-              {/* Description */}
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -369,114 +277,144 @@ function PpcServicesInDubai() {
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto py-12 ">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)]">
-            Our Core Services
+      <section className="w-11/12 md:w-5/6 mx-auto py-12 space-y-20">
+        {/* Services */}
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-14">
+            Our{" "}
+            <span className="text-[var(--primary-color)]">PPC Advertising</span>{" "}
+            Services in Dubai, UAE
           </h2>
-          <p className="text-sm text-white/80 mt-2 max-w-2xl mx-auto">
-            End-to-end digital marketing capabilities — from SEO to creative
-            campaigns and technical web builds. Pick a service to explore more.
-          </p>
-        </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-start gap-4 bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+              >
+                {/* Icon Circle */}
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[var(--primary-color)] flex items-center justify-center shadow-md">
+                  {item.icon}
+                </div>
 
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((s, i) => (
-            <article
-              key={i}
-              className={`
-          group relative p-8 rounded-2xl overflow-hidden
-          bg-[var(--color1)]/60 backdrop-blur-xl
-          border border-white/10 shadow-[0_12px_30px_rgba(2,6,23,0.45)]
-          transition-transform duration-300 hover:-translate-y-2
-        `}
-            >
-              {/* Blob light effect */}
-              <div className="absolute -right-10 -top-10 w-56 h-56 blur-3xl opacity-30 bg-gradient-to-br from-[var(--color3)] to-[var(--color4)] rounded-full pointer-events-none"></div>
-
-              {/* Hologram overlay */}
-              <div className="absolute inset-0 opacity-10 bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>
-
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-[var(--color5)]/10 border border-[var(--color5)]/30 flex items-center justify-center shadow-[0_6px_20px_rgba(167,235,242,0.08)]">
-                    {s.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-[var(--color4)]">
-                    {s.title}
+                {/* Content */}
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {item.title}
                   </h3>
-                </div>
-
-                <p className="text-sm text-white/70 leading-relaxed flex-grow">
-                  {s.text}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* BENEFITS */}
-      <section className="w-11/12 md:w-5/6 mx-auto py-12 ">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)]">
-            Benefits of Working with Us
-          </h2>
-          <p className="text-sm text-white/80 mt-2 max-w-2xl mx-auto">
-            What clients gain when they partner with BigWig Media Digital.
-          </p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {benefits.map((b, i) => (
-            <div
-              key={i}
-              className="relative rounded-xl p-6 bg-[var(--color2)]/10 border border-white/6 shadow-md hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1"
-            >
-              <div className="mb-4">
-                <div className="w-12 h-12 rounded-lg bg-[var(--color5)]/10 flex items-center justify-center">
-                  {b.icon}
+                  <p className="text-gray-600 mt-1">{item.text}</p>
                 </div>
               </div>
-
-              <h4 className="font-semibold text-white/95 mb-2">{b.title}</h4>
-              <p className="text-sm text-white/70">{b.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* WHY US */}
-      <section className="w-11/12 md:w-5/6 mx-auto py-12 ">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)]">
-            Why Dubai Businesses Choose Us
-          </h2>
-          <p className="text-sm text-white/80 mt-2 max-w-2xl mx-auto">
-            Trusted by local brands for measurable growth and reliable delivery.
-          </p>
+            ))}
+          </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-4">
-          {whyUs.map((w, i) => (
-            <div
-              key={i}
-              className="flex items-start gap-4 p-5 bg-[var(--color1)]/60 border border-white/8 rounded-2xl hover:shadow-xl transition"
-            >
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[var(--color5)]/10 flex items-center justify-center text-[var(--color5)]">
-                {w.icon}
+        {/* Benefits */}
+        <div>
+          <h3 className="text-3xl md:text-4xl font-bold mb-10 text-center">
+            Benefits of{" "}
+            <span className="text-[var(--primary-color)]">PPC Services</span>{" "}
+            for Dubai, UAE Businesses
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <TrendingUp className="w-8 h-8 " />,
+                title: "Achieve Goals Fast",
+                desc: "From sales to leads, PPC delivers measurable results instantly.",
+              },
+              {
+                icon: <Eye className="w-8 h-8 " />,
+                title: "Immediate Visibility",
+                desc: "Unlike SEO, your brand is on Google’s first page immediately.",
+              },
+              {
+                icon: <BarChart2 className="w-8 h-8 " />,
+                title: "Measurable ROI",
+                desc: "Track every click, conversion, and dirham with 100% transparency.",
+              },
+              {
+                icon: <Target className="w-8 h-8 " />,
+                title: "Targeted Audience",
+                desc: "Reach by location, age, interest, and buying behavior.",
+              },
+              {
+                icon: <Award className="w-8 h-8 " />,
+                title: "Boost Recognition",
+                desc: "Stay visible on Google, YouTube & Social Media.",
+              },
+              {
+                icon: <DollarSign className="w-8 h-8 " />,
+                title: "Flexible Budgeting",
+                desc: "Control daily spend, scale up or down anytime.",
+              },
+              {
+                icon: <Users className="w-8 h-8 " />,
+                title: "More Conversions",
+                desc: "Drive qualified traffic that turns into real customers.",
+              },
+              {
+                icon: <PhoneCall className="w-8 h-8 " />,
+                title: "Local Impact",
+                desc: "Increase store visits & calls with location-based ads.",
+              },
+              {
+                icon: <Layers className="w-8 h-8 " />,
+                title: "Better Funnel",
+                desc: "Retarget past visitors, optimize landing pages, boost sales.",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="rounded-xl p-6 bg-white shadow-md hover:shadow-xl hover:-translate-y-1 transition relative border border-gray-100"
+              >
+                {/* Icon Circle */}
+                <div className=" text-[var(--primary-color)]  mb-2">
+                  {item.icon}
+                </div>
+
+                {/* Title */}
+                <h4 className="font-bold text-lg mb-2 text-gray-900">
+                  {item.title}
+                </h4>
+
+                {/* Description */}
+                <p className="text-sm text-gray-600">{item.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
 
-              <p className="text-sm text-white/80">{w.text}</p>
-            </div>
-          ))}
+        {/* Why Us */}
+        <div className="py-12">
+          <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            Why Dubai Businesses{" "}
+            <span className="text-[var(--primary-color)]">
+              Trust BigWig Media Digital
+            </span>
+          </h3>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {whyUs.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-start gap-4 p-6 bg-white shadow-lg rounded-2xl hover:shadow-xl transition-shadow"
+              >
+                <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100">
+                  {item.icon}
+                </div>
+                <p className="text-gray-700 leading-relaxed">{item.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <OurProcess />
       <WhyBigwig />
-      <ServicesNavigation />
-      <GetInTouch />
+      <CTABanner
+        title="With BigWig Media Digital as your PPC partner, you don’t just get traffic—you get conversions, sales, and business growth."
+        buttonText="Get Started Today"
+      />
       <Footer />
       {/* <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} /> */}
     </div>

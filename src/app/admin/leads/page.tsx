@@ -1,4 +1,5 @@
 "use client";
+import { Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface ContactRequest {
@@ -7,6 +8,7 @@ interface ContactRequest {
   phone: string;
   email: string;
   createdAt: string;
+  marked?: boolean; // <== Added
 }
 
 const ITEMS_PER_PAGE = 20;
@@ -52,8 +54,42 @@ const AdminLead = () => {
     currentPage * ITEMS_PER_PAGE
   );
 
+  // Toggle Marked
+  const toggleMarked = async (id: string, current: boolean) => {
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/${id}/mark`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ marked: !current }),
+      });
+
+      // Update UI instantly
+      setContacts((prev) =>
+        prev.map((c) => (c._id === id ? { ...c, marked: !current } : c))
+      );
+    } catch (err) {
+      console.error("Error updating marked:", err);
+    }
+  };
+
+  // Delete Lead
+  const deleteLead = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this lead?")) return;
+
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/${id}`, {
+        method: "DELETE",
+      });
+
+      setContacts((prev) => prev.filter((c) => c._id !== id));
+    } catch (err) {
+      console.error("Error deleting lead:", err);
+    }
+  };
+
   return (
     <div className="h-screen bg-black text-white font-raleway flex flex-col p-0">
+      {/* Header */}
       <div className="sticky top-0 z-20 bg-black p-4 sm:p-6 border-b border-gray-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-2xl sm:text-3xl font-bold">Leads</h1>
         <div className="flex items-center gap-2">
@@ -70,6 +106,7 @@ const AdminLead = () => {
         </div>
       </div>
 
+      {/* Table */}
       <div className="flex-1 overflow-y-auto p-4 sm:p-6">
         {filteredContacts.length === 0 ? (
           <p className="text-gray-400">No Leads found.</p>
@@ -84,15 +121,21 @@ const AdminLead = () => {
                   <th className="px-4 py-3 border-b border-gray-700">
                     Requested At
                   </th>
+                  {/* <th className="px-4 py-3 border-b border-gray-700">Marked</th> */}
+                  <th className="px-4 py-3 border-b border-gray-700">Action</th>
                 </tr>
               </thead>
+
               <tbody>
                 {currentContacts.map((contact) => (
                   <tr
                     key={contact._id}
-                    className="even:bg-[#111] hover:bg-[#222] transition duration-200"
+                    className={`hover:bg-[#222] transition duration-200 ${
+                      contact.marked ? "bg-green-900/20" : "even:bg-[#111]"
+                    }`}
                   >
-                    <td className="px-4 py-3">{contact.name}</td>
+                    <td className="px-4 py-3 font-semibold">{contact.name}</td>
+
                     <td className="px-4 py-3">
                       <a
                         href={`mailto:${contact.email}`}
@@ -101,9 +144,30 @@ const AdminLead = () => {
                         {contact.email}
                       </a>
                     </td>
+
                     <td className="px-4 py-3">{contact.phone}</td>
+
                     <td className="px-4 py-3">
                       {new Date(contact.createdAt).toLocaleString()}
+                    </td>
+
+                    {/* Delete Button */}
+                    <td className="px-4 py-3 flex gap-2 items-center">
+                      <input
+                        type="checkbox"
+                        checked={contact.marked || false}
+                        onChange={() =>
+                          toggleMarked(contact._id, contact.marked || false)
+                        }
+                        className="h-4 w-4 cursor-pointer"
+                      />
+
+                      <button
+                        onClick={() => deleteLead(contact._id)}
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <Trash2 />
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -124,43 +188,9 @@ const AdminLead = () => {
                 Prev
               </button>
 
-              {currentPage > 2 && (
-                <>
-                  <span className="px-2">1</span>
-                  {currentPage > 3 && <span className="px-1">...</span>}
-                </>
-              )}
-
-              {currentPage > 1 && (
-                <button
-                  className="px-2 py-1 text-gray-300"
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                  {currentPage - 1}
-                </button>
-              )}
-
               <span className="px-3 py-1 bg-[var(--primary-color)] text-white rounded">
                 {currentPage}
               </span>
-
-              {currentPage < totalPages && (
-                <button
-                  className="px-2 py-1 text-gray-300"
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                  {currentPage + 1}
-                </button>
-              )}
-
-              {currentPage < totalPages - 1 && (
-                <>
-                  {currentPage < totalPages - 2 && (
-                    <span className="px-1">...</span>
-                  )}
-                  <span className="px-2">{totalPages}</span>
-                </>
-              )}
 
               <button
                 disabled={currentPage === totalPages}

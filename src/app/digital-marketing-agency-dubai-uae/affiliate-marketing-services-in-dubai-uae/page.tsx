@@ -14,15 +14,12 @@ import CTABanner from "../../../../components/CTABanner";
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
-import ButtonFill from "../../../../components/Button";
-import GetInTouch from "../../../../components/GetInTouch";
-import ServicesNavigation from "../../../../components/UAEServicesDirectory";
 
 function AffiliateMarketingDubai() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <div className="bg-[var(--color1)] ">
+    <div className="bg-white text-black font-raleway">
       <Nav />
       {/* Hero Section */}
       <section
@@ -58,16 +55,16 @@ function AffiliateMarketingDubai() {
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto py-12">
+      <section className="w-11/12 md:w-5/6 mx-auto py-12 bg-white">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text */}
           <div>
-            <h1 className="text-3xl font-bold mb-6 text-[var(--color5)]">
+            <h1 className="text-3xl md:text-4xl font-bold mb-6">
               Boost Your Sales with High-Performance Affiliate Marketing
               Services in Dubai
             </h1>
 
-            <p className="text-gray-300  mb-4 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
               In today’s competitive digital world, businesses in Dubai need
               smarter, performance-driven strategies to grow — not just
               traditional marketing. That’s where{" "}
@@ -75,7 +72,7 @@ function AffiliateMarketingDubai() {
               <strong>Affiliate Marketing Services in Dubai</strong>.
             </p>
 
-            <p className="text-gray-300  mb-4 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
               We help brands build, manage, and scale affiliate programs that
               deliver real, measurable results. From connecting you with
               top-performing affiliates to optimizing campaigns for maximum ROI,
@@ -83,7 +80,7 @@ function AffiliateMarketingDubai() {
               profit.
             </p>
 
-            <p className="text-gray-300  leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               Affiliate marketing is one of the most cost-effective ways to
               boost online visibility and sales — because you only pay for
               results. With our deep understanding of Dubai’s digital ecosystem,
@@ -103,202 +100,156 @@ function AffiliateMarketingDubai() {
         </div>
       </section>
 
-      <section className="py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto grid lg:grid-cols-2 gap-10">
-          {/* LEFT BOX */}
-          <div
-            className="
-        relative p-8 rounded-3xl overflow-hidden
-        bg-[var(--color1)]/70 border border-white/10
-        shadow-[0_0_25px_rgba(0,0,0,0.45)]
-        hover:shadow-[0_0_40px_rgba(167,235,242,0.25)]
-        transition-all duration-500
-      "
-          >
-            {/* Matrix Overlay */}
-            <div className="absolute inset-0 opacity-[0.18] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen"></div>
+      <section className="w-11/12 md:w-5/6 mx-auto py-12">
+        {/* Wrapper with split styling */}
+        <div className="grid lg:grid-cols-2 gap-10">
+          {/* Left Section - What is Affiliate Marketing */}
+          <div className=" rounded-3xl shadow-lg p-8 border-l-4 border-blue-400">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+              What Is Affiliate Marketing?
+            </h2>
 
-            {/* Glow Border on Hover */}
-            <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-[var(--color5)] transition-all duration-500"></div>
+            <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+              <strong>Affiliate marketing</strong> is a performance-based
+              marketing strategy where brands collaborate with affiliates
+              (publishers, influencers, or content creators) who promote their
+              products or services in exchange for a commission on each sale,
+              lead, or click.
+            </p>
 
-            {/* Content */}
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-6 text-[var(--color5)]">
-                What Is Affiliate Marketing?
-              </h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+              Unlike traditional advertising, affiliate marketing ensures{" "}
+              <strong>zero wastage of budget</strong> — you only pay when you
+              get actual results.
+            </p>
 
-              <p className="text-gray-300 mb-4 leading-relaxed">
-                <strong>Affiliate marketing</strong> is a performance-based
-                strategy where brands collaborate with affiliates—publishers,
-                influencers, or creators—who promote your products or services
-                for commission.
-              </p>
-
-              <p className="text-gray-300 mb-4 leading-relaxed">
-                You only pay for real conversions, ensuring{" "}
-                <strong>zero wasted budget</strong>.
-              </p>
-
-              <p className="text-gray-300 leading-relaxed">
-                Our <strong>Affiliate Marketing Services in Dubai</strong>{" "}
-                include setup, recruitment, tracking, reporting, and full
-                campaign optimization.
-              </p>
-            </div>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Our <strong>Affiliate Marketing Services in Dubai</strong> include
+              everything from partner recruitment and campaign setup to
+              tracking, reporting, and optimization.
+            </p>
           </div>
 
-          {/* RIGHT BOX */}
-          <div
-            className="
-        relative p-8 rounded-3xl overflow-hidden
-        bg-[var(--color1)]/70 border border-white/10
-        shadow-[0_0_25px_rgba(0,0,0,0.45)]
-        hover:shadow-[0_0_40px_rgba(167,235,242,0.25)]
-        transition-all duration-500
-      "
-          >
-            {/* Matrix Overlay */}
-            <div className="absolute inset-0 opacity-[0.18] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen"></div>
+          {/* Right Section - Why it works in Dubai */}
+          <div className=" rounded-3xl shadow-lg p-8 border-l-4 border-blue-400">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+              Why Affiliate Marketing Works Best in Dubai
+            </h2>
 
-            {/* Glow Border */}
-            <div className="absolute inset-0 rounded-3xl border border-transparent hover:border-[var(--color5)] transition-all duration-500"></div>
+            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              Dubai is one of the fastest-growing e-commerce and digital
+              business hubs in the world. With a tech-savvy population, high
+              social media usage, and strong purchasing power, it’s a fertile
+              ground for affiliate-driven growth.
+            </p>
 
-            {/* Content */}
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-6 text-[var(--color5)]">
-                Why Affiliate Marketing Works Best in Dubai
-              </h2>
+            <ul className="space-y-4">
+              {[
+                "The UAE’s online user base is expanding rapidly.",
+                "High smartphone and e-commerce adoption rates mean more conversions.",
+                "Influencer marketing blends seamlessly with affiliate partnerships.",
+                "Global affiliate platforms already have reach in the Middle East region.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="flex-shrink-0 w-3 h-3 mt-2 bg-blue-600 rounded-full shadow-md animate-pulse"></span>
+                  <p className="ml-4 text-gray-700 dark:text-gray-300">
+                    {item}
+                  </p>
+                </li>
+              ))}
+            </ul>
 
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                Dubai’s digital-first, high-income audience makes it a perfect
-                hub for affiliate-driven conversions.
-              </p>
-
-              <ul className="space-y-4">
-                {[
-                  "UAE’s online user base is rapidly expanding.",
-                  "High e-commerce adoption = more conversions.",
-                  "Influencer culture blends naturally with affiliate promotions.",
-                  "Global platforms already operate strongly in the Middle East.",
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="w-2 h-2 mt-2 bg-[var(--color5)] rounded-full shadow-[0_0_10px_var(--color5)]"></span>
-                    <p className="ml-4 text-gray-300 leading-relaxed">{item}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <p className="mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+              Whether you run an <strong>online store</strong>,{" "}
+              <strong>SaaS product</strong>, or a{" "}
+              <strong>service-based company</strong>, our Affiliate Marketing
+              Services in Dubai help you reach the right audience — locally and
+              internationally.
+            </p>
           </div>
         </div>
       </section>
 
       <section className="w-11/12 md:w-5/6 mx-auto py-12">
-        {/* Heading */}
-        <div className=" mb-12">
-          <h2 className="text-3xl  font-bold text-[var(--color5)] mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Affiliate Marketing Services Include
           </h2>
-          <p className="text-gray-300 max-w-3xl leading-relaxed">
-            At <strong>BigWig Media Digital</strong>, we offer end-to-end
-            <strong> Affiliate Marketing Services in Dubai</strong>, ensuring
+          <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            At <strong>BigWig Media Digital</strong>, we offer end-to-end{" "}
+            <strong>Affiliate Marketing Services in Dubai</strong>, ensuring
             your program runs efficiently and delivers consistent ROI.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-10">
+        {/* Grid Layout */}
+        <div className="grid md:grid-cols-2 gap-8">
           {[
             {
               title: "1. Affiliate Program Strategy & Setup",
-              desc: "We define KPIs, build tracking systems, structure payouts, and set up a tailored affiliate program for your business.",
+              desc: "We begin by defining your goals, audience, and KPIs. Then, we set up a custom affiliate marketing framework that includes tracking mechanisms, payout structures, and campaign strategies tailored to your brand.",
             },
             {
               title: "2. Affiliate Recruitment",
-              desc: "We onboard top affiliates, influencers, bloggers, and publishers across Dubai & UAE who align with your target market.",
+              desc: "Our network includes trusted affiliates, influencers, bloggers, and digital publishers across Dubai and the UAE. We identify and onboard the best partners who align with your industry and target audience.",
             },
             {
               title: "3. Campaign Management",
-              desc: "Our team handles communication, content flow, and daily monitoring to ensure seamless execution.",
+              desc: "From daily communication to content coordination and performance tracking, our team manages every aspect of your affiliate campaign — ensuring smooth execution.",
             },
             {
               title: "4. Performance Tracking & Reporting",
-              desc: "We measure sales, leads, CTR, and conversions in real time with transparent monthly performance reporting.",
+              desc: "We use advanced analytics tools to track conversions, traffic, and sales in real-time. You’ll receive monthly performance reports detailing ROI, affiliate performance, and opportunities for improvement.",
             },
             {
               title: "5. Creative & Content Support",
-              desc: "We craft banners, social creatives, landing pages, and guidelines to maintain consistent branding and boost conversions.",
+              desc: "We design engaging creatives, landing pages, banners, and content for affiliates to use — ensuring your brand messaging remains consistent and conversion-focused.",
             },
             {
               title: "6. Compliance & Quality Control",
-              desc: "We ensure affiliates follow ethical practices, eliminate fraud, and maintain brand-safe promotion.",
+              desc: "We ensure every affiliate follows ethical marketing practices, brand guidelines, and platform policies. No spam, fake leads, or misleading promotions — ever.",
             },
           ].map((item, index) => (
             <div
               key={index}
-              className="
-          group relative p-8 rounded-2xl overflow-hidden
-          bg-[var(--color1)]/70 border border-white/10
-          shadow-[0_0_25px_rgba(0,0,0,0.45)]
-          hover:shadow-[0_0_40px_rgba(167,235,242,0.3)]
-          hover:border-[var(--color5)]
-          transition-all duration-500
-        "
+              className="border border-blue-200 rounded-2xl p-6 hover:shadow-lg transition transform hover:-translate-y-1 bg-white"
             >
-              {/* Background Matrix Overlay */}
-              <div className="absolute inset-0 opacity-[0.15] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>
-
-              {/* Glow Border */}
-              <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all duration-500"></div>
-
-              {/* Content */}
-              <div className="relative z-10">
-                <h3 className="text-xl font-semibold text-[var(--color5)] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-300 leading-relaxed text-sm">
-                  {item.desc}
-                </p>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                {item.title}
+              </h3>
+              <p className="text-gray-700 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 text-center bg-[var(--color1)]/60 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-[0_0_25px_rgba(0,0,0,0.4)] relative overflow-hidden">
-          {/* Glow Effect */}
-          <div className="absolute -top-10 -left-10 w-40 h-40 bg-[var(--color5)]/20 blur-3xl rounded-full"></div>
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[var(--color4)]/20 blur-3xl rounded-full"></div>
-
-          <h3 className="text-2xl md:text-3xl font-bold text-[var(--color5)] mb-4">
-            Want to start earning more while spending less?
-          </h3>
-          <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed max-w-3xl mx-auto">
-            Get started with
+        <div className="text-center mt-8 bg-gradient-to-r from-yellow-50 to-yellow-100 p-10 rounded-2xl">
+          <p className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed">
+            Want to start earning more while spending less? <br />
+            Get started with{" "}
             <strong>
-              {" "}
-              BigWig Media Digital’s Affiliate Marketing Services in Dubai{" "}
-            </strong>
-            and scale your growth with performance-driven partnerships.
+              BigWig Media Digital’s Affiliate Marketing Services in Dubai
+            </strong>{" "}
+            today.
           </p>
-          <div className="flex justify-center">
-            <ButtonFill
-              onClick={() => setIsPopupOpen(true)}
-              text="Get Started Today"
-            />
-          </div>
+          <button
+            onClick={() => setIsPopupOpen(true)}
+            className="bg-[var(--primary-color)] text-white font-semibold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1"
+          >
+            Get Started Today
+          </button>
         </div>
       </section>
 
       <section className="w-11/12 md:w-5/6 mx-auto py-12">
         {/* Title Section */}
-        <div className="mb-6">
-          <h2 className="text-3xl font-bold text-[var(--color5)] mb-4">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Process: How We Build Successful Affiliate Campaigns
           </h2>
-          <p className="text-gray-300 max-w-3xl leading-relaxed">
+          <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed">
             We follow a transparent, data-driven approach to ensure your
-            affiliate campaigns are optimized for conversions, scale, and
-            consistent long-term performance.
+            affiliate campaigns perform consistently.
           </p>
         </div>
 
@@ -308,120 +259,88 @@ function AffiliateMarketingDubai() {
             {
               num: "1",
               title: "Market & Competitor Analysis",
-              desc: "We analyze your niche, target demographic, buying behavior, and competitor strategies in Dubai & UAE.",
+              desc: "We research your industry, audience behavior, and competitor strategies in Dubai.",
             },
             {
               num: "2",
               title: "Affiliate Network Selection",
-              desc: "Choosing the best platforms — CJ, ShareASale, Impact, Awin, or private networks — for maximum ROI.",
+              desc: "Choosing the right platforms (ShareASale, CJ, Impact, or private networks) for your brand.",
             },
             {
               num: "3",
               title: "Affiliate Vetting",
-              desc: "We hand-select affiliates based on niche relevance, audience quality, reputation, and performance history.",
+              desc: "Hand-picking affiliates who meet your performance and reputation standards.",
             },
             {
               num: "4",
               title: "Offer Structuring",
-              desc: "Crafting strong commission models (CPA, CPS, CPL) and irresistible offers that encourage conversions.",
+              desc: "Setting attractive commission models (CPA, CPS, CPL) that motivate affiliates.",
             },
             {
               num: "5",
               title: "Creative Deployment",
-              desc: "We provide high-impact banners, landing pages, copy, and ad creatives ready for instant launch.",
+              desc: "Providing ready-to-use creatives for faster campaign launch.",
             },
             {
               num: "6",
               title: "Continuous Optimization",
-              desc: "Real-time tracking, CTR improvement, funnel optimization, fraud checks & performance scaling.",
+              desc: "Regular performance audits to improve conversions and lower acquisition costs.",
             },
           ].map((step, index) => (
             <div
               key={index}
-              className="
-          relative p-5 rounded-2xl overflow-hidden
-          bg-[var(--color1)]/70 backdrop-blur-xl
-          border border-white/10
-          shadow-[0_0_30px_rgba(0,0,0,0.4)]
-          hover:shadow-[0_0_40px_rgba(167,235,242,0.35)]
-          transition-all duration-300 hover:-translate-y-2 group
-        "
+              className="relative bg-white border border-blue-200/60 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 group"
             >
-              {/* Hologram BG */}
-              <div className="absolute inset-0 opacity-[0.12] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover mix-blend-screen pointer-events-none"></div>
-
-              {/* Glow Border */}
-              <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition duration-500"></div>
-              <div className="relative z-10 flex items-start gap-4 mb-4">
-                {/* Number Badge */}
-                <div
-                  className="
-      w-14 h-14 rounded-full flex items-center justify-center
-      bg-[var(--color3)]/40 border border-[var(--color5)]
-      text-[var(--color5)] font-bold text-xl
-      shadow-[0_0_15px_rgba(167,235,242,0.4)]
-      backdrop-blur-xl transition group-hover:scale-110
-    "
-                >
-                  {step.num}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-[var(--color4)] leading-tight mt-2">
-                  {step.title}
-                </h3>
+              {/* Gradient Circle Number */}
+              <div className="absolute -top-6 left-6 bg-[var(--primary-color)] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition">
+                {step.num}
               </div>
 
               {/* Content */}
-              <div className="relative z-10">
-                <p className="text-gray-300 leading-relaxed">{step.desc}</p>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-4">
+                {step.title}
+              </h3>
+              <p className="text-gray-700 leading-relaxed">{step.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="relative w-11/12 md:w-5/6 mx-auto py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* LEFT SECTION */}
-          <div
-            className="
-        relative p-10 rounded-3xl overflow-hidden
-        bg-[var(--color1)]/70 backdrop-blur-xl
-        border border-white/10 
-        shadow-[0_0_25px_rgba(0,0,0,0.4)]
-        hover:shadow-[0_0_35px_rgba(167,235,242,0.3)]
-        transition-all duration-300
-      "
-          >
-            {/* Hologram BG */}
-            <div className="absolute inset-0 opacity-[0.12] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover mix-blend-screen pointer-events-none"></div>
+        {/* Background Gradient */}
 
-            <h2 className="text-3xl font-bold text-[var(--color5)] mb-6">
-              Why Choose BigWig Media Digital for Affiliate Marketing in Dubai
+        <div className="relative grid lg:grid-cols-2 gap-12 items-start z-10">
+          {/* LEFT SECTION */}
+          <div className="bg-white/80 backdrop-blur-md border-l-4 border-blue-400 rounded-3xl shadow-md p-10 hover:shadow-xl transition-all duration-300">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Why Choose{" "}
+              <span className="text-[var(--primary-color)]">
+                BigWig Media Digital
+              </span>{" "}
+              for Affiliate Marketing in Dubai
             </h2>
 
-            <p className="text-gray-300 leading-relaxed mb-8">
-              Partnering with BigWig Media Digital means working with Dubai’s
-              most trusted digital growth experts. Here’s what makes our
-              Affiliate Marketing services different:
+            <p className="text-gray-700 mb-8 leading-relaxed">
+              Partnering with BigWig Media Digital means teaming up with one of
+              Dubai’s most trusted digital growth agencies. Here’s what makes
+              our Affiliate Marketing Services stand out:
             </p>
 
-            <ul className="space-y-5 relative z-10">
+            <ul className="space-y-5">
               {[
-                "Local Expertise — deep understanding of Dubai’s market behavior.",
-                "Verified Affiliate Network with only high-performing partners.",
-                "Complete End-to-End Management from setup to payouts.",
-                "100% Transparent ROI Tracking with real-time dashboards.",
-                "Arabic-English multilingual campaign execution.",
-                "SEO + Performance Integration for full-funnel growth.",
+                "Local Expertise: We understand Dubai’s consumer behavior and regional platforms.",
+                "Verified Affiliate Network: Access to a vetted network of reliable and high-performing affiliates.",
+                "End-to-End Management: From setup to tracking and payouts — we handle it all.",
+                "Transparent ROI Tracking: You see where every dollar goes and what it returns.",
+                "Multilingual Campaigns: Arabic-English affiliate marketing campaigns for UAE audiences.",
+                "SEO + Performance Integration: We combine affiliate marketing with organic and paid strategies for full-funnel growth.",
               ].map((point, index) => (
-                <li key={index} className="flex items-start gap-4 group">
+                <li key={index} className="flex items-start space-x-4 group">
                   <div className="relative w-3.5 h-3.5 mt-2">
-                    <span className="absolute inset-0 bg-[var(--color5)] rounded-full animate-pulse opacity-70"></span>
-                    <span className="absolute inset-1 bg-[var(--color5)] rounded-full"></span>
+                    <span className="absolute inset-0 bg-[var(--primary-color)] rounded-full animate-pulse opacity-70"></span>
+                    <span className="absolute inset-1 bg-[var(--primary-color)] rounded-full"></span>
                   </div>
-                  <p className="text-gray-300 group-hover:text-[var(--color5)] transition-all duration-300">
+                  <p className="text-gray-800 group-hover:text-[var(--primary-color)] transition-colors duration-200">
                     {point}
                   </p>
                 </li>
@@ -430,123 +349,98 @@ function AffiliateMarketingDubai() {
           </div>
 
           {/* RIGHT SECTION */}
-          <div className="flex flex-col justify-between">
-            <div
-              className="
-          relative p-10 rounded-3xl overflow-hidden
-          bg-[var(--color1)]/70 backdrop-blur-xl
-          border border-white/10
-          shadow-[0_0_25px_rgba(0,0,0,0.4)]
-          hover:shadow-[0_0_35px_rgba(167,235,242,0.3)]
-          transition-all duration-300
-        "
-            >
-              {/* Hologram BG */}
-              <div className="absolute inset-0 opacity-[0.12] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover mix-blend-screen pointer-events-none"></div>
-
-              <h2 className="text-3xl font-bold text-[var(--color5)] mb-4 text-center lg:text-left">
+          <div className=" flex flex-col justify-between ">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
                 Benefits of Affiliate Marketing for Your Business
               </h2>
 
-              <p className="text-gray-300 leading-relaxed mb-6 text-center lg:text-left">
-                Affiliate marketing drives measurable results while staying
-                highly cost-effective. Here’s what you gain:
+              <p className="text-gray-700 mb-6 text-center leading-relaxed max-w-2xl mx-auto">
+                Affiliate marketing offers measurable results and cost-efficient
+                scalability. Here’s what you gain:
               </p>
 
-              <div className="grid sm:grid-cols-2 gap-6 relative z-10">
+              <div className="grid sm:grid-cols-2 gap-6">
                 {[
                   {
-                    title: "Increased Sales",
-                    desc: "Grow revenue with qualified traffic.",
+                    title: "Increased Sales and Leads",
+                    desc: "Drive qualified traffic and grow your revenue.",
                   },
                   {
                     title: "Performance-Based ROI",
-                    desc: "Pay only for results.",
+                    desc: "Pay only when a sale or lead happens.",
                   },
                   {
                     title: "Global Reach",
-                    desc: "Expand beyond Dubai & GCC markets.",
+                    desc: "Expand your visibility beyond Dubai into the GCC region.",
                   },
-                  { title: "Low Risk", desc: "Ideal for SMEs & startups." },
                   {
-                    title: "Brand Awareness",
-                    desc: "Boost visibility through influencers.",
+                    title: "Low Risk, High Reward",
+                    desc: "Ideal for startups and SMEs looking for measurable returns.",
+                  },
+                  {
+                    title: "Improved Brand Awareness",
+                    desc: "Collaborate with influential voices to strengthen your presence.",
                   },
                   {
                     title: "Scalable Growth",
-                    desc: "Scale your campaigns with ease.",
+                    desc: "Optimize your spend for maximum performance and reach.",
                   },
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="
-                bg-[var(--color2)]/60 backdrop-blur-md
-                border border-white/10 
-                rounded-2xl p-3
-                shadow-sm hover:shadow-lg hover:-translate-y-1 
-                transition-all duration-300
-              "
+                    className="bg-white/90 backdrop-blur-sm border border-blue-200 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                   >
-                    <h4 className="text-lg font-semibold text-[var(--color5)] mb-1">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
                       {item.title}
                     </h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                    <p className="text-gray-700 text-sm leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-        {/* CTA */}
-        <div
-          className="
-          mt-6 text-center 
-          bg-[var(--color5)]/10 border border-[var(--color5)] 
-          p-6 rounded-2xl shadow-[0_0_20px_rgba(167,235,242,0.3)]
-        "
-        >
-          <p className="text-gray-300 text-xl mb-4">
-            Want a marketing strategy that pays for itself?
-          </p>
-          <div className="flex justify-center">
-            <ButtonFill
-              onClick={() => setIsPopupOpen(true)}
-              text="Get Started Today"
-            />
+
+            <div className="mt-6 text-center bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-2xl">
+              <p className="text-gray-800 text-base mb-4">
+                Want a marketing strategy that pays for itself?
+              </p>
+              <button
+                onClick={() => setIsPopupOpen(true)}
+                className="bg-[var(--primary-color)] text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              >
+                Get Started Today
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="w-11/12 md:w-5/6 mx-auto py-12 space-y-12">
-        {/* SECTION 1: DIGITAL PRESENCE BENEFITS */}
+        {/* SECTION 1: How Affiliate Marketing Improves Presence */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)] mb-6">
-              How Affiliate Marketing
-              <span className="text-[var(--color4)]">
-                {" "}
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              How Affiliate Marketing{" "}
+              <span className="text-[var(--primary-color)]">
                 Improves Your Digital Presence
               </span>
             </h2>
-
-            <p className="text-gray-300 leading-relaxed mb-8">
-              Affiliate marketing isn’t just about sales — it amplifies your
-              entire digital footprint.
+            <p className="text-gray-700 leading-relaxed mb-8">
+              Affiliate marketing isn’t just about sales — it strengthens your
+              entire digital ecosystem.
             </p>
-
             <ul className="space-y-5">
               {[
                 "Enhances SEO through backlink building and brand mentions.",
-                "Boosts social visibility via influencer-powered promotions.",
-                "Improves brand credibility through trusted third-party recommendations.",
-                "Strengthens omnichannel presence for a smoother customer journey.",
-              ].map((point, i) => (
-                <li key={i} className="flex items-start gap-3 group">
-                  <span className="w-3 h-3 rounded-full bg-[var(--color5)] mt-2 group-hover:scale-125 transition-all"></span>
-                  <p className="text-gray-300 group-hover:text-[var(--color5)] transition-all">
+                "Increases social visibility via influencer partnerships.",
+                "Improves brand credibility by leveraging trusted third-party voices.",
+                "Supports omnichannel marketing for a seamless customer journey.",
+              ].map((point, index) => (
+                <li key={index} className="flex items-start space-x-3 group">
+                  <div className="w-3 h-3 rounded-full bg-[var(--primary-color)] mt-2 group-hover:scale-125 transition-transform"></div>
+                  <p className="text-gray-800 group-hover:text-[var(--primary-color)] transition-colors">
                     {point}
                   </p>
                 </li>
@@ -554,123 +448,84 @@ function AffiliateMarketingDubai() {
             </ul>
           </div>
 
-          {/* RIGHT CARD */}
-          <div
-            className="
-        relative p-10 rounded-3xl
-        bg-[var(--color1)]/70 backdrop-blur-xl
-        border border-[var(--color5)]/20
-        shadow-[0_0_30px_rgba(0,0,0,0.5)]
-        hover:shadow-[0_0_40px_rgba(167,235,242,0.3)]
-        transition-all duration-300
-      "
-          >
-            {/* Matrix BG Overlay */}
-            <div
-              className="
-        absolute inset-0 opacity-[0.12]
-        bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')]
-        bg-cover bg-center mix-blend-screen pointer-events-none
-      "
-            ></div>
-
-            <div className="relative z-10">
-              <h3 className="text-2xl font-semibold text-[var(--color4)] mb-4">
-                Local Advantage — Why Dubai Businesses Trust Us
-              </h3>
-
-              <p className="text-gray-300 leading-relaxed mb-8">
-                Dubai’s fast-paced environment demands fast results, clarity,
-                and performance. Our localized approach ensures:
-              </p>
-
-              <ul className="space-y-4">
-                {[
-                  "Affiliate partnerships with UAE-based creators and media publishers.",
-                  "Campaigns aligned with Dubai’s culture, language & buying behavior.",
-                  "Real-time tracking & reporting synced to UAE business hours.",
-                ].map((point, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="w-3 h-3 rounded-full bg-[var(--color3)] mt-2"></span>
-                    <p className="text-gray-300">{point}</p>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="text-gray-300 mt-8 leading-relaxed">
-                With{" "}
-                <strong className="text-[var(--color5)]">
-                  BigWig Media Digital
-                </strong>
-                , your brand grows with precision, trust, and powerful
-                partnerships.
-              </p>
-            </div>
+          <div className="bg-gradient-to-br from-blue-50 via-white to-blue-100 border border-blue-200 rounded-3xl shadow-md p-10">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              Local Advantage — Why Dubai Businesses Trust Us
+            </h3>
+            <p className="text-gray-700 mb-8 leading-relaxed">
+              Dubai’s business environment demands fast results, transparency,
+              and scalability. Our localized approach ensures:
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Affiliate partnerships with UAE-based creators and media publishers.",
+                "Campaigns that align with Dubai’s language, culture, and buying trends.",
+                "Real-time campaign tracking and reporting via Dubai time zone operations.",
+              ].map((point, index) => (
+                <li key={index} className="flex items-start space-x-3">
+                  <div className="w-3 h-3 rounded-full bg-blue-400 mt-2"></div>
+                  <p className="text-gray-800">{point}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="text-gray-700 mt-8 leading-relaxed">
+              With <strong>BigWig Media Digital</strong>, your brand grows with
+              precision and purpose.
+            </p>
           </div>
         </div>
 
         {/* SECTION 2: CTA */}
-        <div
-          className="
-      text-center py-16 px-6 rounded-3xl
-      bg-[var(--color1)]/70 backdrop-blur-xl
-      border border-[var(--color5)]/20
-      shadow-[0_0_30px_rgba(0,0,0,0.5)] 
-      hover:shadow-[0_0_45px_rgba(167,235,242,0.3)]
-      transition-all
-      relative overflow-hidden
-    "
-        >
-          {/* BG Effects */}
-          <div className="absolute inset-0 opacity-[0.09] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover"></div>
+        <div className="text-center bg-gradient-to-r from-[var(--primary-color)]/10 via-white to-[var(--primary-color)]/10 border border-blue-100 rounded-3xl py-16 px-6 shadow-inner">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Let’s Build a Profitable Affiliate Network for Your Brand
+          </h2>
 
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)] mb-6">
-              Let’s Build a Profitable Affiliate Network for Your Brand
-            </h2>
+          <p className="text-gray-700 max-w-3xl mx-auto mb-6 leading-relaxed">
+            Your business deserves consistent sales growth — without
+            overspending. Our{" "}
+            <strong>Affiliate Marketing Services in Dubai</strong> empower your
+            brand with a sustainable, performance-driven growth model that
+            delivers measurable success.
+          </p>
 
-            <p className="text-gray-300 max-w-3xl mx-auto mb-6 leading-relaxed">
-              Your business deserves steady growth — powered by a
-              performance-based model that boosts your revenue without
-              overspending.
-            </p>
+          <p className="text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
+            Don’t rely on traditional ads alone; let affiliates promote your
+            business and drive real results.
+          </p>
 
-            <p className="text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Don’t rely on traditional ads alone — let vetted affiliates scale
-              your conversions.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
-              <ButtonFill
-                onClick={() => setIsPopupOpen(true)}
-                text=" Get Free Consultation"
-              />
-
-              <a
-                href="mailto:support@bigwigmediadigital.com"
-                className="bg-[var(--color5)] font-medium  text-[var(--color1)] px-6 py-2 rounded-lg hover:bg-[var(--color1)] border hover:border-[var(--color5)] hover:text-[var(--color5)]"
-              >
-                📩 Email us today
-              </a>
-            </div>
-
-            <p className="text-gray-300 mt-8 font-semibold text-lg">
-              🚀 Partner with
-              <span className="text-[var(--color5)]">
-                {" "}
-                BigWig Media Digital
-              </span>{" "}
-              — Dubai’s trusted Affiliate Marketing Specialists.
-            </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
+            <button
+              onClick={() => setIsPopupOpen(true)}
+              className="bg-[var(--primary-color)] text-white font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              Get Free Consultation
+            </button>
+            <a
+              href="mailto:vipul@bigwigmedia.in"
+              className="text-[var(--primary-color)] font-medium hover:underline"
+            >
+              📩 Email us today
+            </a>
           </div>
+
+          <p className="text-gray-800 mt-8 font-semibold text-lg">
+            🚀 Partner with{" "}
+            <span className="text-[var(--primary-color)]">
+              BigWig Media Digital
+            </span>{" "}
+            — the leaders in Affiliate Marketing Services in Dubai — and watch
+            your profits grow every day.
+          </p>
         </div>
       </section>
 
       <OurProcess />
       <WhyBigwig />
-      <ServicesNavigation />
-      <GetInTouch />
+      <CTABanner
+        title="Boost Sales and Partnerships with Expert Affiliate Marketing Services in Dubai."
+        buttonText="Get Started Today"
+      />
 
       <Footer />
       <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />

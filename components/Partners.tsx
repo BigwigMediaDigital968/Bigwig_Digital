@@ -28,18 +28,18 @@ const awards = [
     image: award4,
   },
 
-  // {
-  //   title: "Best SEO Company",
-  //   image: award5,
-  // },
+  {
+    title: "Best SEO Company",
+    image: award5,
+  },
   {
     title: "Top Digital Marketing Agency 2024",
     image: award6,
   },
-  // {
-  //   title: "Google Premier Partner",
-  //   image: award7,
-  // },
+  {
+    title: "Google Premier Partner",
+    image: award7,
+  },
   {
     title: "Microsoft Partner",
     image: award8,
@@ -50,22 +50,22 @@ const awards = [
 
 const Partners: React.FC = () => {
   return (
-    <section className="bg-[#011c40] text-[#a7ebf2] py-4">
-      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center gap-4 md:gap-16">
+    <section className="bg-gray-100 py-4 px-4 md:px-16">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-4 md:gap-16">
         {/* Left: Title */}
         <div className="text-center md:text-left">
-          <h2 className="text-xl ">PARTNERSHIPS</h2>
+          <h2 className="text-xl text-gray-800">PARTNERSHIPS</h2>
         </div>
 
         {/* Right: Awards as images */}
-        <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-20">
+        <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-8">
           {awards.map((award, index) => (
             <Image
               key={index}
               src={award.image}
               alt={award.title}
               title={award.title}
-              className="w-12 h-10 md:w-20 md:h-16 object-contain hover:scale-105 transition invert"
+              className="w-12 h-10 md:w-20 md:h-16 object-contain hover:scale-105 transition"
               draggable="false"
             />
           ))}

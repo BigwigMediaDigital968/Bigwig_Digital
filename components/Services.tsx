@@ -1,10 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode } from "swiper/modules";
-import "swiper/css";
-
 import {
   Search,
   Globe,
@@ -12,211 +8,138 @@ import {
   Mail,
   Cpu,
   PenTool,
+  MessageCircle,
   Users,
-  Megaphone,
   ThumbsUp,
+  Megaphone,
 } from "lucide-react";
-
-import ButtonFill from "./Button";
 
 const services = [
   {
     title: "Search Engine Optimization (SEO)",
     slug: "services/search-engine-optimization",
-    desc: "Improve your search rankings and grow organic traffic with proven SEO methods.",
+    desc: "Rank higher on Google and attract organic traffic with proven SEO strategies.",
     icon: Search,
   },
   {
     title: "Social Media Marketing (SMM)",
     slug: "/services/social-media-marketing",
-    desc: "Expand your brand presence using targeted ads across top social platforms.",
+    desc: "Grow your brand with targeted ad campaigns on Facebook, Instagram & more.",
     icon: Globe,
   },
   {
     title: "Performance Marketing",
     slug: "/services/performance-marketing",
-    desc: "Drive high-quality leads and conversions through optimized paid campaigns.",
+    desc: "Maximize ROI with conversion-driven paid advertising.",
     icon: MonitorSmartphone,
   },
   {
-    title: "Content\nMarketing",
+    title: "Content Marketing",
     slug: "/services/content-marketing",
-    desc: "Build authority with engaging blogs, articles, and creative brand content.",
+    desc: "Engaging blogs, articles, and creatives that build authority.",
     icon: PenTool,
   },
   {
     title: "Website Designing & Development",
     slug: "/services/website-design-development",
-    desc: "Get fast, modern, and conversion-focused websites tailored to your brand.",
+    desc: "High-performance websites built for conversions.",
     icon: Cpu,
   },
   {
-    title: "Email\nMarketing",
+    title: "Email Marketing",
     slug: "/services/email-marketing",
-    desc: "Boost customer engagement using automated, personalized email campaigns.",
+    desc: "Automation and personalization that improves conversions.",
     icon: Mail,
   },
+  //   {
+  //     title: "WhatsApp Marketing",
+  //     slug: "#",
+  //     desc: "Instant customer engagement with automated flows.",
+  //     icon: MessageCircle,
+  //   },
   {
     title: "Social Media Optimization (SMO)",
     slug: "/services/social-media-optimization",
-    desc: "Enhance visibility with professionally optimized and active social profiles.",
+    desc: "Improve your online presence with optimized profiles.",
     icon: ThumbsUp,
   },
   {
     title: "Graphic Designing & Video Editing",
     slug: "/services/graphic-designing",
-    desc: "Create stunning visuals and videos that strengthen your brand identity.",
+    desc: "Eye-catching visuals and creative video edits.",
     icon: PenTool,
   },
   {
-    title: "Affiliate\nMarketing",
+    title: "Affiliate Marketing",
     slug: "/services/affiliate-marketing",
-    desc: "Increase sales through a scalable network of trusted affiliate partners.",
+    desc: "Boost sales with strategic affiliate networks.",
     icon: Users,
   },
   {
-    title: "Influencer\nMarketing",
+    title: "Influencer Marketing",
     slug: "/services/influencer-marketing",
-    desc: "Reach new audiences by collaborating with trusted influencers in your niche.",
+    desc: "Work with influencers to expand brand reach.",
     icon: Megaphone,
   },
   {
     title: "Online Reputation Management (ORM)",
     slug: "/services/online-reputation-management",
-    desc: "Protect your brand image with monitoring, reviews, and reputation strategy.",
+    desc: "Protect & enhance your brand reputation.",
     icon: ThumbsUp,
   },
 ];
 
-// Split rows
-const row1 = services.slice(0, 6);
-const row2 = services.slice(6, 11);
-
 export default function ServicesPage() {
   return (
-    <section className="relative py-12 bg-[var(--color1)] overflow-hidden">
-      {/* Background Blobs */}
-      {/* <div className="absolute -top-10 -left-24 w-50 h-50 bg-[var(--color5)]/50 blur-[70px] rounded-full z-20"></div>
-      <div className="absolute -bottom-10 -right-24 w-50 h-50 bg-[var(--color5)]/50 blur-[70px] rounded-full z-20"></div> */}
+    <section className="w-11/12 md:w-5/6 mx-auto py-12">
+      {/* Heading */}
+      <div className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Explore Our{" "}
+          <span className="text-[var(--primary-color)]">Premium Services</span>
+        </h1>
+        <p className="text-gray-600 md:text-lg max-w-3xl mx-auto">
+          Cutting-edge digital solutions crafted to grow your brand faster in
+          the modern world.
+        </p>
+      </div>
 
-      <div className="w-11/12 md:w-5/6 mx-auto relative z-10">
-        {/* Heading */}
-        <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
-          <div>
-            <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 tracking-widest">
-              OUR SERVICES
-            </p>
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg">
-              Transforming Brands with Modern Digital Solutions
-            </h1>
-          </div>
+      {/* Services Grid */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {services.map((service, index) => {
+          const Icon = service.icon;
 
-          <Link href="/services">
-            <ButtonFill text="View All Services" />
-          </Link>
-        </div>
+          return (
+            <Link
+              key={index}
+              href={`/${service.slug}`}
+              className="group relative bg-white rounded-3xl p-8 border border-gray-200 shadow-lg
+              hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+            >
+              {/* Soft gradient glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-color)]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
-        {/* --------------------- ROW 1 --------------------- */}
-        <Swiper
-          modules={[Autoplay, FreeMode]}
-          freeMode={true}
-          loop={true}
-          slidesPerView={"auto"}
-          spaceBetween={30}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-          }}
-          speed={5000}
-          className="mb-10"
-        >
-          {row1.map((service, i) => {
-            const Icon = service.icon;
-            return (
-              <SwiperSlide key={i} style={{ width: "350px" }}>
-                <Link
-                  href={service.slug}
-                  className="group flex items-start gap-6 p-6 rounded-3xl  
-                    border border-white/20 hover:border-[var(--color3)]/50
-                    hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
-                >
-                  <div
-                    className="w-20 h-20 rounded-2xl bg-gradient-to-b 
-                    from-[var(--color3)] to-[var(--color1)]
-                    flex items-center justify-center text-white shadow-md 
-                    group-hover:scale-105 transition-all duration-500"
-                  >
-                    <Icon size={32} />
-                  </div>
+              {/* Icon */}
+              <div
+                className="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-100 text-[var(--primary-color)]
+              group-hover:bg-[var(--primary-color)] group-hover:text-white transition-all duration-300 shadow-inner"
+              >
+                <Icon size={32} />
+              </div>
 
-                  <div className="flex-1">
-                    <h3 className="text-xl whitespace-pre-wrap font-semibold text-[var(--color5)] group-hover:text-[var(--color4)] transition-all">
-                      {service.title}
-                    </h3>
-                    <p className="mt-3 text-sm text-gray-200 leading-relaxed">
-                      {service.desc}
-                    </p>
-                    <div
-                      className="mt-4 w-24 h-[3px] rounded-full bg-gradient-to-r 
-                      from-[var(--color4)] to-[var(--color5)] opacity-50 group-hover:opacity-90 transition-all"
-                    ></div>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+              {/* Title */}
+              <h3 className="text-2xl font-semibold text-gray-900 mt-6 mb-3 group-hover:text-[var(--primary-color)] transition-all">
+                {service.title}
+              </h3>
 
-        {/* --------------------- ROW 2 --------------------- */}
-        <Swiper
-          modules={[Autoplay, FreeMode]}
-          freeMode={true}
-          loop={true}
-          slidesPerView={"auto"}
-          spaceBetween={30}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-            reverseDirection: true,
-          }}
-          speed={5000}
-        >
-          {row2.map((service, i) => {
-            const Icon = service.icon;
-            return (
-              <SwiperSlide key={i} style={{ width: "350px" }}>
-                <Link
-                  href={service.slug}
-                  className="group flex items-start gap-6 p-6 rounded-3xl  
-                    border border-white/20 hover:border-[var(--color3)]/50
-                    hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
-                >
-                  <div
-                    className="w-20 h-20 rounded-2xl bg-gradient-to-b 
-                    from-[var(--color3)] to-[var(--color1)]
-                    flex items-center justify-center text-white shadow-md 
-                    group-hover:scale-105 transition-all duration-500"
-                  >
-                    <Icon size={32} />
-                  </div>
+              {/* Description */}
+              <p className="text-gray-600 leading-relaxed">{service.desc}</p>
 
-                  <div className="flex-1">
-                    <h3 className="text-xl whitespace-pre-wrap font-semibold text-[var(--color5)] group-hover:text-[var(--color4)] transition-all">
-                      {service.title}
-                    </h3>
-                    <p className="mt-3 text-sm text-gray-200 leading-relaxed">
-                      {service.desc}
-                    </p>
-                    <div
-                      className="mt-4 w-24 h-[3px] rounded-full bg-gradient-to-r 
-                      from-[var(--color4)] to-[var(--color5)] opacity-50 group-hover:opacity-90 transition-all"
-                    ></div>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+              {/* Hover bottom bar */}
+              <div className="absolute bottom-0 left-0 h-1 w-0 bg-[var(--primary-color)] group-hover:w-full transition-all duration-500"></div>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
