@@ -40,12 +40,15 @@ import {
 
 import Image from "next/image";
 import { useState } from "react";
+import ButtonFill from "../../../../components/Button";
+import GetInTouch from "../../../../components/GetInTouch";
+import ServicesNavigation from "../../../../components/UAEServicesDirectory";
 
 function SMODubai() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <div className="bg-white text-black font-raleway">
+    <div className="bg-[var(--color1)]">
       <Nav />
       {/* Hero Section */}
       <section
@@ -82,7 +85,7 @@ function SMODubai() {
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto py-12 bg-white">
+      <section className="w-11/12 md:w-5/6 mx-auto py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Image */}
           <div className="flex justify-center">
@@ -95,30 +98,30 @@ function SMODubai() {
 
           {/* Right Side - Content */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl font-bold mb-6 text-[var(--color5)]">
               Why Social Media Optimization Matters More Than Ever
             </h2>
 
-            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300  mb-4 leading-relaxed">
               Social Media Optimization (SMO) is more than posting appealing
               visuals or catchy captions, it’s about building a consistent,
               optimized brand presence that drives engagement, increases
               followers, and boosts conversions.
             </p>
 
-            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300  mb-4 leading-relaxed">
               Dubai’s digital audience is smart, global, and highly active
               across platforms like Instagram and LinkedIn. To capture attention
               in this fast-paced environment, your brand needs a strategy rooted
               in creativity, structure, and data.
             </p>
 
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-gray-300  leading-relaxed">
               Our <strong>Social Media Optimization Services in Dubai</strong>{" "}
               help you:
             </p>
 
-            <ul className="list-disc pl-6 mt-4 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+            <ul className="list-disc pl-6 mt-4 space-y-2 text-gray-300  leading-relaxed">
               <li>Improve brand visibility across all major platforms.</li>
               <li>
                 Increase website traffic through optimized profiles and posts.
@@ -130,169 +133,215 @@ function SMODubai() {
         </div>
       </section>
 
-      <section className="bg-white py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto px-6">
+      <section className="py-12 relative ">
+        <div className="w-11/12 md:w-5/6 mx-auto">
           {/* SECTION HEADING */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center md:text-left mb-8">
-            Our Proven Approach to{" "}
-            <span className="text-[var(--primary-color)]">
-              Social Media Optimization
-            </span>
-          </h2>
+          <div className="text-center md:text-left mb-10">
+            <h2 className="text-3xl  font-bold text-[var(--color5)] mb-4">
+              Our Proven Approach to Social Media Optimization
+            </h2>
 
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-12">
-            At <strong>BigWig Media Digital</strong>, we combine creativity with
-            analytics to deliver measurable results. Every campaign starts with
-            a clear understanding of your business goals, followed by a tailored
-            social media strategy designed to maximize engagement, visibility,
-            and growth.
-          </p>
+            <p className="text-white/80 leading-relaxed text-base max-w-3xl">
+              At <strong>BigWig Media Digital</strong>, we combine creativity
+              with analytics to deliver measurable results. Every campaign
+              starts with a clear understanding of your business goals, followed
+              by a tailored SMO strategy designed to maximize engagement,
+              visibility, and growth.
+            </p>
+          </div>
 
           {/* STEPS GRID */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {[
               {
                 step: "1.",
                 title: "Comprehensive Social Media Audit",
-                desc: "We evaluate your current profiles to identify gaps, content weaknesses, and growth opportunities through engagement analysis, audience insights, and competitor benchmarking.",
+                desc: "We evaluate your current profiles to identify gaps, content weaknesses, and growth opportunities using competitor benchmarks, engagement metrics, and audience insights.",
               },
               {
                 step: "2.",
                 title: "Strategic Content Planning",
-                desc: "Our team crafts a monthly content calendar aligned with your brand tone, demographics, and industry trends — from Instagram reels to LinkedIn articles.",
+                desc: "We create a monthly content calendar aligned with your brand voice, audience behavior, and Dubai market trends — from viral reels to professional LinkedIn posts.",
               },
               {
                 step: "3.",
                 title: "Profile Optimization",
-                desc: "We refine every detail — bio, visuals, CTAs, and keywords — to improve discoverability and ensure consistency across all social platforms.",
+                desc: "From bios to CTAs to visual branding, we refine everything to improve searchability, engagement, and follower growth.",
               },
               {
                 step: "4.",
                 title: "Hashtag & Trend Research",
-                desc: "Our experts track Dubai’s latest trends, hashtags, and cultural moments to keep your brand relevant in local conversations.",
+                desc: "We track Dubai-specific trends and hashtags to ensure your content reaches real, relevant audiences actively engaging in your niche.",
               },
               {
                 step: "5.",
                 title: "Performance Monitoring & Reporting",
-                desc: "We monitor engagement, reach, and conversions with detailed reports that highlight what’s working and what can improve.",
+                desc: "You get transparent insights on reach, engagement, conversions, and recommendations for ongoing improvement.",
               },
             ].map((step, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-b from-yellow-50 to-yellow-100 border border-yellow-200 rounded-2xl shadow-md p-6 hover:shadow-lg transition"
+                className="
+            relative p-6 rounded-2xl overflow-hidden
+            bg-[var(--color1)]/60 backdrop-blur-xl
+            border border-white/10 shadow-[0_0_25px_rgba(0,0,0,0.45)]
+            hover:shadow-[0_0_40px_rgba(167,235,242,0.3)]
+            transition-all duration-500
+          "
               >
-                <div className="text-[var(--primary-color)] font-bold text-2xl mb-2">
-                  {step.step} {step.title}
+                {/* Matrix Overlay */}
+                <div className="absolute inset-0 opacity-[0.15] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>
+
+                {/* Glow Border */}
+                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all duration-500"></div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="text-[var(--color5)] font-bold text-2xl mb-2">
+                    {step.step} {step.title}
+                  </div>
+                  <p className="text-white/80 leading-relaxed">{step.desc}</p>
                 </div>
-                <p className="text-gray-700 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
 
           {/* CTA CARD */}
-          <div className="text-center bg-[var(--primary-color)] py-10 px-6 rounded-2xl shadow-inner">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              📊 Want a Free Social Media Audit for Your Brand?
-            </h3>
-            <p className="text-white text-lg mb-6">
-              Discover what’s working and unlock new opportunities with the best{" "}
-              <strong>Social Media Optimization Services in Dubai</strong>.
-            </p>
+          <div
+            className="
+        relative text-center p-10 rounded-2xl overflow-hidden 
+        bg-[var(--color1)]/70 border border-white/10 backdrop-blur-xl
+        shadow-[0_0_35px_rgba(167,235,242,0.15)]
+      "
+          >
+            {/* Glow Layer */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color3)]/20 via-[var(--color4)]/20 to-[var(--color3)]/20 blur-3xl opacity-30"></div>
+
+            {/* Matrix Overlay */}
+            <div className="absolute inset-0 opacity-[0.15] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen"></div>
+
+            <div className="relative z-10">
+              <h3 className="text-2xl md:text-3xl font-bold text-[var(--color5)] mb-4">
+                📊 Want a Free Social Media Audit for Your Brand?
+              </h3>
+              <p className="text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
+                Discover what&#39;s working, and unlock new opportunities with
+                the best
+                <strong> Social Media Optimization Services in Dubai</strong>.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto px-6">
+      <section className="py-12 ">
+        <div className="w-11/12 md:w-5/6 mx-auto">
           {/* SECTION HEADING */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center md:text-left mb-10">
+          <h2 className="text-3xl font-bold text-[var(--color5)] mb-6">
             Platforms We Optimize for{" "}
-            <span className="text-[var(--primary-color)]">Maximum Impact</span>
+            <span className="text-[var(--color5)]">Maximum Impact</span>
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-12">
-            Our expertise covers every major social media platform relevant to
-            businesses in Dubai and across the UAE — ensuring your brand
-            maintains a powerful and consistent presence wherever your audience
-            engages.
+          <p className="text-white/80 leading-relaxed text-base mb-8 max-w-3xl">
+            Our expertise spans all major social media platforms across Dubai &
+            the UAE, ensuring a consistent, high-impact presence wherever your
+            audience engages.
           </p>
 
           {/* PLATFORM GRID */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               {
                 icon: FaInstagram,
                 title: "Instagram",
-                desc: "Visual storytelling through reels, influencer collaborations, and trend-based hashtags.",
+                desc: "Visual storytelling with reels, influencers, aesthetics, and trend-based content.",
               },
               {
                 icon: FaFacebookF,
                 title: "Facebook",
-                desc: "Community engagement, ad management, and lead generation via Facebook Business Suite.",
+                desc: "Community engagement, ad campaigns, lead generation & conversion-focused funnels.",
               },
               {
                 icon: FaLinkedinIn,
                 title: "LinkedIn",
-                desc: "Thought leadership content and B2B audience targeting for professional brand positioning.",
+                desc: "B2B positioning, industry authority building, and leadership content publishing.",
               },
               {
                 icon: FaTwitter,
                 title: "Twitter (X)",
-                desc: "Brand voice building, news amplification, and impactful hashtag campaigns.",
+                desc: "Real-time audience engagement with trending topics & rapid brand communication.",
               },
               {
                 icon: FaYoutube,
                 title: "YouTube",
-                desc: "Channel branding, SEO optimization, and data-driven video content strategies.",
+                desc: "High-ROI video SEO, optimized channel design & retention-based content strategies.",
               },
               {
                 icon: FaTiktok,
                 title: "TikTok",
-                desc: "Creative video marketing campaigns crafted to align with viral trends and audience behavior.",
+                desc: "Short-form creative content aligned with viral trends & youth engagement behavior.",
               },
             ].map((platform, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-b from-yellow-50 to-yellow-100 border border-yellow-200 rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-start"
+                className="
+            relative group p-6 rounded-2xl overflow-hidden
+            bg-[var(--color1)]/60 backdrop-blur-xl
+            border border-white/10 shadow-[0_0_30px_rgba(1,10,40,0.5)]
+            hover:shadow-[0_0_40px_rgba(167,235,242,0.25)]
+            transition duration-300
+          "
               >
-                <platform.icon className="w-10 h-10 text-[var(--primary-color)] mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {platform.title}
-                </h3>
-                <p className="text-gray-700 leading-relaxed">{platform.desc}</p>
+                {/* Blob gradient light */}
+                <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-gradient-to-br from-[var(--color3)] to-[var(--color4)] blur-3xl opacity-30 pointer-events-none" />
+
+                {/* Matrix hologram overlay */}
+                <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] opacity-[0.17] mix-blend-screen bg-cover bg-center pointer-events-none" />
+
+                {/* CONTENT */}
+                <div className="relative z-10 flex flex-col items-start">
+                  <platform.icon className="w-10 h-10 mb-4 text-[var(--color5)] drop-shadow-[0_0_15px_rgba(167,235,242,0.4)]" />
+
+                  <h3 className="text-xl font-semibold text-[var(--color5)] mb-2 tracking-wide">
+                    {platform.title}
+                  </h3>
+
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {platform.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
 
           {/* CTA CARD */}
-          <div className="text-center bg-[var(--primary-color)] py-10 px-6 rounded-2xl shadow-inner">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <div className="mt-16 bg-[var(--color1)]/70 border border-white/10 backdrop-blur-xl rounded-2xl p-10 shadow-[inset_0_0_25px_rgba(167,235,242,0.15)] text-center">
+            {/* Glow Line */}
+            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent mb-6 animate-pulse" />
+
+            <h3 className="text-2xl md:text-3xl font-bold text-[var(--color5)] mb-4">
               💡 Your Audience Is Everywhere — Let’s Connect Everywhere.
             </h3>
-            <p className="text-white text-lg mb-6">
-              Start your journey with{" "}
-              <strong>
-                BigWig Media Digital’s Social Media Optimization Services in
-                Dubai
+
+            <p className="text-white/80 text-lg max-w-3xl mx-auto">
+              Start with{" "}
+              <strong className="text-[var(--color5)]">
+                BigWig Media Digital’s Social Media Optimization Services
               </strong>{" "}
-              and make your brand impossible to ignore.
+              and make your brand impossible to ignore across Dubai & UAE.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto px-6">
+      <section className="py-12 relative ">
+        <div className="w-11/12 md:w-5/6 mx-auto">
           {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center md:text-left mb-10">
-            What Makes Our{" "}
-            <span className="text-[var(--primary-color)]">
-              Social Media Optimization Services in Dubai
-            </span>{" "}
-            Different
+          <h2 className="text-3xl font-bold text-[var(--color5)] text-center md:text-left mb-6">
+            What Makes Our Social Media Optimization Services in Dubai Different
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-12">
+          <p className="text-gray-300 leading-relaxed text-base mb-10">
             When you choose <strong>BigWig Media Digital</strong>, you’re not
             just hiring a digital agency — you’re partnering with storytellers,
             strategists, and social experts who understand Dubai’s fast-moving,
@@ -331,108 +380,154 @@ function SMODubai() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-b from-yellow-50 to-yellow-100 border border-yellow-200 rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-start"
+                className="
+            group relative p-6 rounded-2xl overflow-hidden
+            bg-[var(--color1)]/70 border border-white/10
+            shadow-[0_0_25px_rgba(0,0,0,0.45)]
+            hover:shadow-[0_0_35px_rgba(167,235,242,0.3)]
+            hover:border-[var(--color5)]
+            transition-all duration-500
+          "
               >
-                <feature.icon className="w-10 h-10 text-[var(--primary-color)] mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-700 leading-relaxed">{feature.desc}</p>
+                {/* Matrix hologram */}
+                <div
+                  className="
+              absolute inset-0 opacity-[0.12]
+              bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')]
+              bg-cover bg-center mix-blend-screen pointer-events-none
+            "
+                />
+
+                {/* Glow Border */}
+                <div
+                  className="
+              absolute inset-0 rounded-2xl border border-transparent 
+              group-hover:border-[var(--color5)] 
+              transition-all duration-500
+            "
+                />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col items-start">
+                  <feature.icon className="w-10 h-10 text-[var(--color5)] mb-4" />
+
+                  <h3 className="text-xl font-semibold text-[var(--color5)] mb-2">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-gray-300 leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto px-6 text-center md:text-left">
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+      <section className="py-12 relative bg-gradient-to-b from-[var(--color1)] via-[var(--color2)] to-[var(--color1)]">
+        <div className="w-11/12 md:w-5/6 mx-auto">
+          {/* HEADING */}
+          <h2 className="text-3xl  font-bold text-[var(--color5)] mb-6 text-center md:text-left">
             Industries We Serve
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-12">
+          <p className="text-gray-300 text-lg leading-relaxed mb-12 max-w-3xl">
             Our <strong>Social Media Optimization Services in Dubai</strong>{" "}
-            cater to a diverse range of industries, each with its own voice,
-            audience, and goals. We tailor every strategy to suit your
-            industry’s unique dynamics and deliver measurable growth.
+            cater to a wide range of industries. Every strategy is uniquely
+            crafted to match your sector’s audience, message, and growth
+            objectives.
           </p>
 
-          {/* Industry List */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-12">
-            <div className="flex items-center space-x-3">
-              <FaBuilding className="text-[var(--primary-color)] text-2xl" />
-              <span className="text-lg text-gray-800 font-medium">
-                Real Estate
-              </span>
-            </div>
+          {/* GRID */}
+          <div
+            className="
+      grid sm:grid-cols-2 lg:grid-cols-3 gap-8
+    "
+          >
+            {[
+              { icon: FaBuilding, label: "Real Estate" },
+              { icon: FaHotel, label: "Hospitality & Tourism" },
+              { icon: FaShoppingBag, label: "Retail & E-commerce" },
+              { icon: FaGraduationCap, label: "Education & Coaching" },
+              { icon: FaDumbbell, label: "Fitness & Wellness" },
+              { icon: FaChartPie, label: "Finance & Consulting" },
+              { icon: FaLaptopCode, label: "Technology & Startups" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="
+            group relative p-6 rounded-2xl overflow-hidden
+            bg-[var(--color1)]/70 border border-white/10
+            shadow-[0_0_25px_rgba(0,0,0,0.45)]
+            hover:shadow-[0_0_40px_rgba(167,235,242,0.25)]
+            hover:border-[var(--color5)]
+            transition-all duration-500 flex items-center gap-4
+          "
+              >
+                {/* MATRIX OVERLAY */}
+                <div
+                  className="
+            absolute inset-0 opacity-[0.15]
+            bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')]
+            bg-cover bg-center mix-blend-screen pointer-events-none
+          "
+                ></div>
 
-            <div className="flex items-center space-x-3">
-              <FaHotel className="text-[var(--primary-color)] text-2xl" />
-              <span className="text-lg text-gray-800 font-medium">
-                Hospitality & Tourism
-              </span>
-            </div>
+                {/* GLOW BORDER */}
+                <div
+                  className="
+            absolute inset-0 rounded-2xl border border-transparent
+            group-hover:border-[var(--color5)]
+            transition-all duration-500
+          "
+                ></div>
 
-            <div className="flex items-center space-x-3">
-              <FaShoppingBag className="text-[var(--primary-color)] text-2xl" />
-              <span className="text-lg text-gray-800 font-medium">
-                Retail & E-commerce
-              </span>
-            </div>
+                {/* ICON */}
+                <div
+                  className="
+            relative z-10 flex items-center justify-center
+            w-12 h-12 rounded-xl bg-[var(--color5)]/10
+            border border-[var(--color5)]/30
+            text-[var(--color5)] shadow-[0_0_12px_rgba(167,235,242,0.35)]
+          "
+                >
+                  <item.icon className="w-6 h-6" />
+                </div>
 
-            <div className="flex items-center space-x-3">
-              <FaGraduationCap className="text-[var(--primary-color)] text-2xl" />
-              <span className="text-lg text-gray-800 font-medium">
-                Education & Coaching
-              </span>
-            </div>
-
-            <div className="flex items-center space-x-3">
-              <FaDumbbell className="text-[var(--primary-color)] text-2xl" />
-              <span className="text-lg text-gray-800 font-medium">
-                Fitness & Wellness
-              </span>
-            </div>
-
-            <div className="flex items-center space-x-3">
-              <FaChartPie className="text-[var(--primary-color)] text-2xl" />
-              <span className="text-lg text-gray-800 font-medium">
-                Finance & Consulting
-              </span>
-            </div>
-
-            <div className="flex items-center space-x-3">
-              <FaLaptopCode className="text-[var(--primary-color)] text-2xl" />
-              <span className="text-lg text-gray-800 font-medium">
-                Technology & Startups
-              </span>
-            </div>
+                {/* TEXT */}
+                <span className="relative z-10 text-lg text-gray-200 font-medium">
+                  {item.label}
+                </span>
+              </div>
+            ))}
           </div>
 
-          {/* Footer Note */}
-          <p className="text-gray-700 dark:text-gray-300 text-lg mt-12 leading-relaxed ">
-            Each industry demands a distinct storytelling approach, and we craft
-            every <strong>SMO strategy</strong> to resonate with your target
-            audience and maximize ROI.
+          {/* FOOTER TEXT */}
+          <p className="text-gray-300 text-lg mt-12 leading-relaxed max-w-3xl">
+            Each industry demands a unique storytelling approach — we craft
+            every
+            <strong> SMO strategy </strong> to resonate with your target
+            audience and deliver measurable ROI.
           </p>
         </div>
       </section>
 
-      <section className="bg-white py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto px-6">
+      <section className="py-12 space-y-10">
+        <div className="w-11/12 md:w-5/6 mx-auto">
           {/* ================== Section 1: Benefits ================== */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center md:text-left mb-8">
+          <h2 className="text-3xl  font-bold text-[var(--color5)] text-center md:text-left mb-8">
             Benefits of Social Media Optimization for Your Business
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-10 max-w-3xl">
+          <p className="text-gray-300 leading-relaxed text-lg mb-10 max-w-3xl">
             A well-optimized social presence delivers measurable impact. Here’s
             what you can achieve with our{" "}
             <strong>Social Media Optimization Services in Dubai</strong>:
           </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {/* BENEFITS GRID */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
             {[
               {
                 icon: FaEye,
@@ -460,78 +555,89 @@ function SMODubai() {
                 desc: "Convert engaged followers into loyal customers.",
               },
             ].map((item, index) => (
-              <div key={index} className="flex items-start space-x-4">
-                <item.icon className="text-[var(--primary-color)] text-3xl flex-shrink-0" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
+              <div
+                key={index}
+                className="
+            group relative p-6 rounded-2xl overflow-hidden
+            bg-[var(--color1)]/70 border border-white/10
+            shadow-[0_0_25px_rgba(0,0,0,0.45)]
+            hover:shadow-[0_0_40px_rgba(167,235,242,0.3)]
+            hover:border-[var(--color5)]
+            transition-all duration-500 flex items-start gap-4
+          "
+              >
+                {/* Matrix overlay */}
+                <div className="absolute inset-0 opacity-[0.08] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>
+
+                {/* Icon */}
+                <item.icon className="w-10 h-10 text-[var(--color5)] relative z-10" />
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="text-lg font-semibold text-[var(--color5)]">
                     {item.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-300 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8 text-center shadow-inner mb-20">
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+          {/* FIRST CTA */}
+          <div
+            className="
+      bg-[var(--color2)]/50 backdrop-blur-xl rounded-2xl p-10 text-center 
+      border border-white/10 shadow-[inset_0_0_30px_rgba(167,235,242,0.12)]
+    "
+          >
+            <h3 className="text-2xl font-bold text-[var(--color5)] mb-3">
               📈 Want your social media to generate real business?
             </h3>
-            <p className="text-gray-700 text-lg mb-5">
+            <p className="text-gray-300 text-lg mb-5">
               Let’s optimize your digital presence with{" "}
               <strong>Social Media Optimization Services in Dubai</strong> that
               deliver results.
             </p>
-            <button
-              onClick={() => setIsPopupOpen(true)}
-              className="bg-[var(--primary-color)] cursor-pointer text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition"
-            >
-              Get Started Now
-            </button>
+            <div className="flex justify-center">
+              <ButtonFill
+                onClick={() => setIsPopupOpen(true)}
+                text="Get Started Now"
+              />
+            </div>
           </div>
 
           {/* ================== Section 2: Local SEO Advantage ================== */}
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center md:text-left mb-8">
+          <h2 className="text-3xl  font-bold text-[var(--color5)] text-center md:text-left pt-12 mb-6">
             Local SEO Advantage for Dubai Businesses from SMO
           </h2>
 
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg ">
+          <p className="text-gray-300 leading-relaxed text-lg max-w-3xl">
             What makes our service stand out is our{" "}
             <strong>local SEO integration</strong>. Every post, profile, and
-            caption is optimized for Dubai-based searches — ensuring your brand
-            is discovered faster by local audiences.
+            caption is optimized for Dubai-based searches — ensuring maximum
+            visibility in local markets.
           </p>
 
-          <div className="flex flex-col gap-4 mb-12">
-            <p className="text-gray-700 text-lg">
-              Whether you’re a <strong>café in Jumeirah</strong>, a{" "}
-              <strong>fitness studio in Downtown</strong>, or a{" "}
-              <strong>tech firm in Business Bay</strong>, we make sure your
-              brand is visible to the right people, at the right time, on the
-              right platform.
-            </p>
-          </div>
+          <p className="text-gray-300 text-lg mt-4">
+            Whether you’re a <strong>café in Jumeirah</strong>, a
+            <strong> fitness studio in Downtown</strong>, or a
+            <strong> tech firm in Business Bay</strong> — we ensure your brand
+            stays in front of the right audience.
+          </p>
 
-          <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8 text-center shadow-inner mb-20">
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+          {/* SECOND CTA */}
+          <div
+            className="
+      bg-[var(--color2)]/50 backdrop-blur-xl rounded-2xl p-10 text-center mt-10
+      border border-white/10 shadow-[inset_0_0_30px_rgba(167,235,242,0.12)]
+    "
+          >
+            <h3 className="text-2xl font-bold text-[var(--color5)] mb-3">
               🌍 Grow your business visibility locally.
             </h3>
-            <p className="text-gray-700 text-lg mb-5">
+            <p className="text-gray-300 text-lg mb-5">
               Contact us for customized{" "}
-              <strong>Social Media Optimization Services in Dubai</strong>{" "}
-              tailored to your goals.
-            </p>
-          </div>
-
-          {/* ================== Section 3: Final CTA ================== */}
-          <div className="bg-[var(--primary-color)] text-white py-16 px-8 rounded-2xl text-center shadow-lg">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Let’s Build Your Brand’s Social Presence Today
-            </h2>
-            <p className="text-lg max-w-3xl mx-auto mb-8 leading-relaxed">
-              Your brand deserves more than just followers — it deserves a
-              loyal, engaged community. At <strong>BigWig Media Digital</strong>
-              , we turn that vision into reality through creative storytelling,
-              consistent engagement, and data-backed optimization.
+              <strong>Social Media Optimization Services in Dubai</strong>.
             </p>
           </div>
         </div>
@@ -539,10 +645,8 @@ function SMODubai() {
 
       <OurProcess />
       <WhyBigwig />
-      <CTABanner
-        title="Let’s optimize your social media to boost visibility, engagement, and growth for your brand in Dubai."
-        buttonText="Get Started Today"
-      />
+      <ServicesNavigation />
+      <GetInTouch />
 
       <Footer />
       <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />

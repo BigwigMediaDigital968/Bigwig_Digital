@@ -5,6 +5,8 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import Nav from "../../../../../components/Nav";
 import Footer from "../../../../../components/Footer";
+import Image from "next/image";
+import GetInTouch from "../../../../../components/GetInTouch";
 
 interface BlogPost {
   _id: string;
@@ -14,6 +16,7 @@ interface BlogPost {
   author: string;
   datePublished: string;
   categoryName: string;
+  readTime?: string;
 }
 
 const categories = [
@@ -44,11 +47,12 @@ export default function CategoryBlogs() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { categoryName } = useParams(); // ✅ next/navigation
+  const { categoryName } = useParams();
   const router = useRouter();
 
   useEffect(() => {
     if (!categoryName) return;
+
     window.scrollTo(0, 0);
 
     const fetchCategoryBlogs = async () => {
@@ -94,104 +98,160 @@ export default function CategoryBlogs() {
     currentPage * ITEMS_PER_PAGE
   );
 
+  const currentSlug = String(categoryName).toLowerCase();
+
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-[var(--color2)] text-black">
       <Nav />
-      <div className="w-11/12 md:w-5/6 mx-auto py-8 flex flex-col lg:flex-row gap-6">
-        {/* Left: Blog Posts */}
+
+      {/* Page Layout */}
+      <div className="w-11/12 md:w-5/6 mx-auto py-12 flex gap-8 px-4">
+        {/* LEFT SECTION */}
         <div className="flex-1">
-          <h1 className="text-2xl font-semibold mb-4 capitalize">
-            Category: {String(categoryName).replace(/-/g, " ")}
-          </h1>
+          <div className="bg-white rounded-3xl shadow-sm p-8 md:p-10 bg-gradient-to-bl from-[var(--color2)] via-[var(--color1)] to-[var(--color2)]">
+            {/* HEADING */}
+            <h1 className="text-3xl font-semibold mb-8 capitalize text-[var(--color5)] ">
+              Category: {String(categoryName).replace(/-/g, " ")}
+            </h1>
 
-          {/* Search Input */}
-          <input
-            type="text"
-            placeholder="Search by title or author"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded mb-6"
-          />
+            {/* SEARCH */}
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full p-3 border rounded-lg bg-white text-black shadow-sm mb-8"
+            />
 
-          {loading ? (
-            <p className="text-gray-500">Loading blogs...</p>
-          ) : currentBlogs.length === 0 ? (
-            <p>No blogs found.</p>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {currentBlogs.map((blog) => (
-                  <div
-                    key={blog._id}
-                    onClick={() => router.push(`/blogs/${blog.slug}`)}
-                    className="bg-white border rounded-lg shadow-sm hover:shadow-lg cursor-pointer overflow-hidden transition-shadow"
-                  >
-                    <img
-                      src={blog.coverImage}
-                      alt={blog.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-4">
-                      <h2 className="text-lg font-bold mb-2">{blog.title}</h2>
-                      <p className="text-sm text-gray-500 mb-1">
-                        {new Date(blog.datePublished).toLocaleDateString()}
-                      </p>
-                      <p className="text-sm text-gray-700">
-                        By <strong>{blog.author}</strong>
-                      </p>
+            {/* BLOG CARDS */}
+            {loading ? (
+              <p className="text-gray-500">Loading blogs...</p>
+            ) : currentBlogs.length === 0 ? (
+              <p>No blogs found.</p>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                  {currentBlogs.map((blog) => (
+                    <div
+                      key={blog._id}
+                      onClick={() => router.push(`/blogs/${blog.slug}`)}
+                      className="
+      group relative
+      bg-white rounded-2xl shadow-sm border border-gray-100 p-4
+      transition-all duration-300 cursor-pointer
+      hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl
+    "
+                    >
+                      {/* Glow Border */}
+                      <div
+                        className="
+        absolute inset-0 rounded-2xl pointer-events-none
+        opacity-0 group-hover:opacity-100 
+        transition-all duration-300
+        border-[2px] border-blue-400/50
+        shadow-[0_0_20px_4px_rgba(59,130,246,0.4)]
+      "
+                      ></div>
+
+                      {/* Image */}
+                      <div className="w-full h-48 bg-[#e8eff4] rounded-xl overflow-hidden mb-4">
+                        <Image
+                          src={blog.coverImage}
+                          alt={blog.title}
+                          width={600}
+                          height={300}
+                          className="w-full h-full object-cover rounded-xl"
+                        />
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-lg font-semibold text-gray-900 leading-snug mb-2 line-clamp-2">
+                        {blog.title}
+                      </h3>
+
+                      {/* Author + Date */}
+                      <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <span className="px-3 py-1 text-xs rounded-full bg-[#eaf4f6] text-[#5aa1b4]">
+                          {blog.author ?? "General"}
+                        </span>
+                        <span>
+                          {new Date(blog.datePublished).toLocaleDateString()}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-2 mt-8 flex-wrap">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => (
-                      <button
-                        key={page}
-                        onClick={() => setCurrentPage(page)}
-                        className={`px-3 py-1 border rounded ${
-                          page === currentPage
-                            ? "bg-black text-white"
-                            : "bg-white text-black border-gray-400"
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    )
-                  )}
+                  ))}
                 </div>
-              )}
-            </>
-          )}
+
+                {/* PAGINATION */}
+                {totalPages > 1 && (
+                  <div className="flex justify-center items-center gap-2 mt-8 flex-wrap">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <button
+                          key={page}
+                          onClick={() => setCurrentPage(page)}
+                          className={`px-4 py-2 rounded-lg border ${
+                            page === currentPage
+                              ? "bg-blue-600 text-white"
+                              : "bg-white text-black hover:bg-gray-100"
+                          }`}
+                        >
+                          {page}
+                        </button>
+                      )
+                    )}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
         </div>
 
-        {/* Right: Category List */}
-        <div className="lg:w-64 bg-gray-100 p-4 rounded-sm shrink-0 h-fit lg:sticky top-28">
-          <h2 className="text-xl font-semibold mb-4">Categories</h2>
-          <ul className="space-y-2">
-            {categories.map((cat, idx) => {
-              const slug = cat.replace(/\s+/g, "-").toLowerCase();
-              const currentSlug = String(categoryName).toLowerCase();
-              return (
-                <li
-                  key={idx}
-                  onClick={() => router.push(`/blogs/category/${slug}`)}
-                  className={`text-sm cursor-pointer hover:underline ${
-                    slug === currentSlug
-                      ? "text-black font-semibold"
-                      : "text-blue-600"
-                  }`}
-                >
-                  {cat}
-                </li>
-              );
-            })}
-          </ul>
+        {/* RIGHT SIDEBAR */}
+        <div className="w-72 hidden lg:block sticky top-32 self-start">
+          <div className="bg-gradient-to-bl from-[var(--color2)] via-[var(--color1)] to-[var(--color2)] rounded-2xl shadow-md p-6 ">
+            <h3 className="text-xl font-semibold mb-5 text-[var(--color5)] ">
+              Categories
+            </h3>
+
+            <ul className="space-y-3">
+              {categories.map((cat, idx) => {
+                const slug = cat.replace(/\s+/g, "-").toLowerCase();
+                return (
+                  <li
+                    key={idx}
+                    onClick={() => router.push(`/blogs/category/${slug}`)}
+                    className={`
+    group relative
+    px-4 py-2 rounded-xl text-sm capitalize transition-all duration-300 cursor-pointer
+    ${
+      slug === currentSlug
+        ? "-translate-x-3 bg-blue-100 text-blue-700 font-semibold shadow-lg"
+        : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:-translate-y-1 hover:translate-x-1 hover:shadow-lg"
+    }
+  `}
+                  >
+                    {/* Glow border */}
+                    <div
+                      className={`
+      absolute inset-0 rounded-xl pointer-events-none transition-all duration-300
+      ${
+        slug === currentSlug
+          ? "opacity-100 border border-blue-400/60 shadow-[0_0_15px_3px_rgba(59,130,246,0.55)]"
+          : "opacity-0 group-hover:opacity-100 border border-blue-300/40 shadow-[0_0_10px_2px_rgba(59,130,246,0.3)]"
+      }
+    `}
+                    ></div>
+
+                    {cat}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
+      <GetInTouch />
       <Footer />
     </div>
   );

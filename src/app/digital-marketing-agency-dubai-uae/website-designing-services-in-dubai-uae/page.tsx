@@ -12,12 +12,14 @@ import WhyBigwig from "../../../../components/WhyBigwig";
 import CTABanner from "../../../../components/CTABanner";
 
 import Image from "next/image";
+import GetInTouch from "../../../../components/GetInTouch";
+import ServicesNavigation from "../../../../components/UAEServicesDirectory";
 
 function WebDesignInDubai() {
   //   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
-    <div className="bg-white text-black font-raleway">
+    <div className="bg-[var(--color1)]">
       <Nav />
       {/* Hero Section */}
       <section
@@ -56,7 +58,7 @@ function WebDesignInDubai() {
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto pt-12 bg-white">
+      <section className="w-11/12 md:w-5/6 mx-auto py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Image */}
           <div className="flex justify-center">
@@ -69,11 +71,11 @@ function WebDesignInDubai() {
 
           {/* Right Side - Content */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl  font-bold mb-6 text-[var(--color5)]">
               Best Web Development Company in Dubai, UAE
             </h2>
 
-            <p className="text-gray-700 mb-6 leading-relaxed text-lg">
+            <p className="text-gray-300 mb-4 leading-relaxed text-base">
               At <strong>BigWig Digital</strong>, we go beyond coding — we craft
               high-performing, visually stunning, and conversion-optimized
               websites that fuel your business growth. We specialize in creating
@@ -81,29 +83,29 @@ function WebDesignInDubai() {
               tailored to your goals.
             </p>
 
-            <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-2xl shadow-md border border-yellow-200 mb-6">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <div className="bg-gradient-to-r from-var(--color1) to-[var(--color2)] p-4 rounded-2xl shadow-md border border-[var(--color5)]">
+              <h3 className="text-2xl font-semibold text-[var(--color5)] mb-4">
                 Why Clients Choose Us
               </h3>
-              <ul className="space-y-3 text-gray-700 text-lg">
+              <ul className="space-y-3 text-gray-300 text-lg">
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 font-bold">•</span>
+                  <span className="text-[var(--color5)] font-bold">•</span>
                   High-quality, mobile-responsive websites
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 font-bold">•</span>
+                  <span className="text-[var(--color5)] font-bold">•</span>
                   Cost-effective and easy-to-manage web solutions
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 font-bold">•</span>
+                  <span className="text-[var(--color5)] font-bold">•</span>
                   Attractive, conversion-focused landing pages
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 font-bold">•</span>
+                  <span className="text-[var(--color5)] font-bold">•</span>
                   SEO-friendly website structures
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 font-bold">•</span>
+                  <span className="text-[var(--color5)] font-bold">•</span>
                   More than 900 successful projects delivered
                 </li>
               </ul>
@@ -112,110 +114,233 @@ function WebDesignInDubai() {
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto py-12">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            We Focus on Your Growth, Not Just Websites
-          </h2>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            At <strong>BigWig Digital</strong>, we’re more than a website
-            designing agency in Dubai — we are your growth partners. Whether
-            it’s digital marketing, website design, or full-scale development,
-            our services are backed by expertise, creativity, and a
-            results-oriented approach.
-          </p>
+      <section className="w-11/12 md:w-5/6 mx-auto py-12 ">
+        {/* Wrapper Box with Inner Shadow */}
+        <div
+          className="
+      relative rounded-3xl p-10 md:p-14 
+      bg-[var(--color1)]/60 backdrop-blur-xl
+      border border-white/10 
+      shadow-[0_0_30px_rgba(0,0,0,0.45)]
+      ring-1 ring-white/5
+      overflow-hidden
+    "
+        >
+          {/* Inner shadow effect */}
+          <div
+            className="absolute inset-0 rounded-3xl 
+        shadow-[inset_0_0_40px_rgba(0,0,0,0.6)] pointer-events-none"
+          ></div>
+
+          {/* Content */}
+          <div className="relative z-10 text-center">
+            <h2 className="text-3xl  font-bold text-[var(--color5)] mb-6 tracking-wide drop-shadow-[0_0_12px_rgba(167,235,242,0.45)]">
+              We Focus on Your Growth, Not Just Websites
+            </h2>
+
+            <p className="text-lg text-white/85 leading-relaxed max-w-3xl mx-auto">
+              At{" "}
+              <strong className="text-[var(--color5)]">BigWig Digital</strong>,
+              we’re more than a website designing agency in Dubai — we are your
+              growth partners. Whether it’s digital marketing, website design,
+              or full-scale development, our services are backed by expertise,
+              creativity, and a results-oriented approach.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="w-11/12 md:w-5/6 mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <section className="w-11/12 md:w-5/6 mx-auto py-12">
+        {/* HEADER */}
+        <div className="text-center mb-14 relative">
+          <h2 className="text-3xl font-bold mb-4 text-[var(--color5)]">
             Custom Web Development for Every Business Need
           </h2>
-          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
-            We deliver custom solutions, including high-performance,
-            user-friendly, and scalable digital platforms tailored to your
-            business goals in the UAE market.
+          <p className="text-white/80 text-lg max-w-3xl mx-auto leading-relaxed">
+            We deliver high-performance, user-friendly, scalable platforms
+            tailored to your business goals in the UAE market — built with the
+            latest tech and a growth-first mindset.
           </p>
+
+          {/* Soft Glow Behind Heading */}
+          <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-[var(--color4)]/20 rounded-full mx-auto w-40 h-40"></div>
         </div>
 
-        {/* Key Services */}
+        {/* KEY SERVICES */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {[
-            "User-friendly, high-performance websites",
-            "eCommerce platforms",
-            "CMS-based sites",
-            "Web apps & SaaS solutions",
-            "Enterprise portals",
+            "User-Friendly, High-Performance Websites",
+            "eCommerce Platforms (Shopify / WooCommerce / Custom)",
+            "CMS Websites (WordPress, Webflow, Headless CMS)",
+            "Web Apps & SaaS Products",
+            "Enterprise Portals & Internal Systems",
           ].map((point, i) => (
             <div
               key={i}
-              className="p-6 border border-gray-200 rounded-2xl hover:shadow-lg transition"
+              className="
+          relative p-6 rounded-2xl overflow-hidden
+          bg-[var(--color1)]/60 border border-white/10 
+          backdrop-blur-xl shadow-[0_10px_25px_rgba(0,0,0,0.45)]
+          hover:shadow-[0_0_25px_var(--color5)] hover:-translate-y-1
+          transition-all duration-300
+        "
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--primary-color)] text-white font-bold">
-                  {i + 1}
+              {/* Matrix Overlay */}
+              <div
+                className="
+          absolute inset-0 opacity-[0.12] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')]
+          bg-cover bg-center mix-blend-soft-light pointer-events-none
+        "
+              ></div>
+
+              {/* Neon Border Glow */}
+              <div
+                className="
+          absolute inset-0 rounded-2xl border border-transparent
+          group-hover:border-[var(--color5)] transition-all duration-300
+        "
+              ></div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className="
+              w-10 h-10 flex items-center justify-center
+              rounded-full bg-[var(--color5)]/20 border border-[var(--color5)]/40
+              shadow-[0_0_12px_var(--color5)]
+              text-[var(--color5)] font-bold
+            "
+                  >
+                    {i + 1}
+                  </div>
+                  <h3 className="text-base font-semibold text-[var(--color4)]">
+                    {point}
+                  </h3>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">{point}</h3>
+
+                <p className="text-white/70 text-sm leading-relaxed">
+                  Tailored to the unique needs of UAE businesses, ensuring
+                  performance, security, and long-term scalability.
+                </p>
               </div>
-              <p className="text-gray-600 text-sm">
-                Tailored to meet the unique needs of your business in the UAE
-                market.
-              </p>
             </div>
           ))}
         </div>
 
-        {/* Advanced Capabilities */}
+        {/* ADVANCED CAPABILITIES – 4 CARDS */}
         <div className="grid lg:grid-cols-2 gap-12">
-          <div className="flex flex-col space-y-8">
-            <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-md mx-auto flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+          {/* LEFT COLUMN */}
+          <div className="flex flex-col space-y-10">
+            {/* Card 1 */}
+            <div
+              className="
+        p-6 rounded-2xl bg-[var(--color1)]/60 border border-white/10
+        shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]
+        backdrop-blur-xl 
+        transition-all duration-300 relative overflow-hidden
+      "
+            >
+              {/* Glow Blob */}
+              <div
+                className="
+          absolute -right-10 -top-10 w-44 h-44 rounded-full 
+          bg-[var(--color4)]/20 blur-3xl opacity-30
+        "
+              ></div>
+
+              <h3 className="text-2xl font-bold text-[var(--color5)] mb-4">
                 Future-Ready Technologies for Scalable Solutions
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We use modern technologies like{" "}
-                <strong>React.js, Angular, Vue.js, Node.js,</strong> and{" "}
-                <strong>PWAs</strong> to build secure, scalable, and
-                high-performing websites. With AI-powered tools, automation, and
-                API integrations, your site stays ahead of the curve.
+              <p className="text-white/70">
+                We use{" "}
+                <strong>
+                  React.js, Angular, Vue.js, Node.js, PWAs, AI tools,
+                  automation, cloud APIs
+                </strong>{" "}
+                and more to build systems that last — and grow as your business
+                grows.
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-md mx-auto flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                Designed for Experience and Engagement
+            {/* Card 2 */}
+            <div
+              className="
+        p-6 rounded-2xl bg-[var(--color1)]/60 border border-white/10
+        shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]
+        backdrop-blur-xl
+        transition-all duration-300 relative overflow-hidden
+      "
+            >
+              <div
+                className="
+          absolute -right-10 -top-10 w-44 h-44 rounded-full 
+          bg-[var(--color3)]/20 blur-3xl opacity-30
+        "
+              ></div>
+
+              <h3 className="text-2xl font-bold text-[var(--color5)] mb-4">
+                Designed for Experience & Engagement
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Our designs combine aesthetics and usability — ensuring visitors
-                stay longer and convert better. From chatbots and voice search
-                to intuitive navigation, every touchpoint delivers engagement.
+              <p className="text-white/70">
+                Every design is built with user psychology, engagement flow, and
+                conversion science — including chatbots, smart navigation, and
+                mobile-first UI.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col space-y-8">
-            <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-md mx-auto flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+          {/* RIGHT COLUMN */}
+          <div className="flex flex-col space-y-10">
+            {/* Card 3 */}
+            <div
+              className="
+        p-6 rounded-2xl bg-[var(--color1)]/60 border border-white/10
+        shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]
+        backdrop-blur-xl
+        transition-all duration-300 relative overflow-hidden
+      "
+            >
+              <div
+                className="
+          absolute -right-10 -top-10 w-44 h-44 rounded-full 
+          bg-[var(--color2)]/20 blur-3xl opacity-30
+        "
+              ></div>
+
+              <h3 className="text-2xl font-bold text-[var(--color5)] mb-4">
                 Creative Design Backed by Strategy
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                As a trusted website designing agency in Dubai, we go beyond
-                visuals — crafting experiences aligned with your brand strategy
-                to build trust and visibility.
+              <p className="text-white/70">
+                As a trusted web design agency in Dubai, we merge creativity
+                with business strategy — building credibility, trust, and brand
+                presence.
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-md mx-auto flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+            {/* Card 4 */}
+            <div
+              className="
+        p-6 rounded-2xl bg-[var(--color1)]/60 border border-white/10
+        shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]
+        backdrop-blur-xl 
+        transition-all duration-300 relative overflow-hidden
+      "
+            >
+              <div
+                className="
+          absolute -right-10 -top-10 w-44 h-44 rounded-full 
+          bg-[var(--color4)]/10 blur-3xl opacity-30
+        "
+              ></div>
+
+              <h3 className="text-2xl font-bold text-[var(--color5)] mb-4">
                 Trusted by Brands Worldwide
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                With over <strong>900+ successful projects</strong> across
-                industries — from healthcare to education to retail — we’ve
-                earned client trust in India and are expanding across the UAE
-                market.
+              <p className="text-white/70">
+                With <strong>900+ successful projects</strong> across
+                industries, we are one of the fastest-growing technology
+                partners expanding from India to the UAE.
               </p>
             </div>
           </div>
@@ -224,10 +349,8 @@ function WebDesignInDubai() {
 
       <OurProcess />
       <WhyBigwig />
-      <CTABanner
-        title="Let’s build websites that attract visitors, convert leads, and elevate your brand in Dubai."
-        buttonText="Get Started Today"
-      />
+      <ServicesNavigation />
+      <GetInTouch />
 
       <Footer />
       {/* <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} /> */}

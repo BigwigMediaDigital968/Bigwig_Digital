@@ -8,8 +8,12 @@ import {
   faXTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import logo from "../Assets/bigwig digital logo (11).png";
+import {
+  faEnvelope,
+  faLocation,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
+import logo from "../Assets/Bigwig_logo__final.png";
 import line2 from "../Assets/line2.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,23 +21,24 @@ import Link from "next/link";
 function Footer() {
   return (
     <div className="relative">
-      <Image
+      {/* <Image
         src={line2}
         alt=""
         className="absolute top-0 left-0"
         draggable="false"
-      />
-      <footer className="bg-[#1f1f1f] text-white pt-12 pb-6">
+      /> */}
+      <hr className="border-0 h-[2px] bg-[#A7EBF2]" />
+      <footer className="bg-gradient-to-tr from-[var(--color1)] via-[var(--color2)] to-[var(--color1)] text-white pt-12 pb-6">
         <div className="w-11/12 mx-auto px-2">
           {/* Top Section */}
           <div className="flex flex-col md:flex-row gap-14 mb-8">
             {/* Branding */}
             <div className="md:w-1/3">
-              <div className="py-2 flex justify-center md:justify-start mb-4">
+              <div className=" flex justify-center md:justify-start ">
                 <Image
                   src={logo}
                   alt="Bigwig Logo"
-                  className="w-60"
+                  className="w-32 md:w-64"
                   draggable="false"
                 />
               </div>
@@ -42,7 +47,7 @@ function Footer() {
                 unmatched creativity. Let’s build something extraordinary
                 together.
               </p>
-              <div className="flex gap-3 mt-4">
+              {/* <div className="flex gap-3 mt-4">
                 {[
                   "https://media.istockphoto.com/id/482478655/photo/arab-emirates-flag.jpg?s=612x612&w=0&k=20&c=fJfB5DUYTEWrJ96RbIxJoLo7uQrYkCPqo0F2BTNNp8A=",
                   "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/1200px-Flag_of_New_Zealand.svg.png",
@@ -59,14 +64,16 @@ function Footer() {
                     draggable="false"
                   />
                 ))}
-              </div>
+              </div> */}
             </div>
 
             {/* Columns */}
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {/* Quick Links */}
               <div>
-                <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+                <h3 className="text-lg font-semibold mb-3 text-[var(--color5)]">
+                  Quick Links
+                </h3>
                 <ul className="space-y-2 text-sm">
                   {[
                     { name: "Careers", path: "/career" },
@@ -83,7 +90,7 @@ function Footer() {
                     <li key={link.path}>
                       <Link
                         href={link.path}
-                        className="hover:text-blue-600 transition"
+                        className="hover:text-[var(--color5)] transition"
                       >
                         {link.name}
                       </Link>
@@ -94,7 +101,7 @@ function Footer() {
 
               {/* Industries */}
               <div>
-                <h3 className="text-lg font-semibold mb-3">
+                <h3 className="text-lg font-semibold mb-3 text-[var(--color5)]">
                   Industries We Serve
                 </h3>
                 <ul className="space-y-2 text-sm">
@@ -115,20 +122,26 @@ function Footer() {
 
               {/* Contact */}
               <div>
-                <h3 className="text-lg font-semibold mb-3">Contact Info</h3>
+                <h3 className="text-lg font-semibold mb-3 text-[var(--color5)]">
+                  Contact Info
+                </h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center">
                     <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-                    <a
-                      href="mailto:vipul@bigwigmedia.in"
+                    <Link
+                      href="support@bigwigmediadigital.com"
                       className="hover:underline"
                     >
-                      support@bigwigmedia.in
-                    </a>
+                      support@bigwigmediadigital.com
+                    </Link>
                   </li>
                   <li className="flex items-center">
                     <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                    +91 96858 92813
+                    +91 78279 77879
+                  </li>
+                  <li className="flex items-center">
+                    <FontAwesomeIcon icon={faLocation} className="mr-2" />
+                    Plot # 2, Sanjay Nagar, Gulabi Bagh, Delhi 110007, India
                   </li>
                 </ul>
               </div>
@@ -136,7 +149,7 @@ function Footer() {
           </div>
 
           {/* Category Sections */}
-          <div className="border-t border-gray-700 pt-6 space-y-6 text-sm">
+          <div className="border-t-1 border-[var(--color5)] pt-6 space-y-6 text-sm">
             {[
               {
                 title: "Popular Services",
@@ -226,14 +239,16 @@ function Footer() {
               // },
             ].map((section, idx) => (
               <div key={idx}>
-                <h4 className="font-semibold mb-2">{section.title}</h4>
+                <h4 className="font-semibold mb-2 text-[var(--color5)] text-lg">
+                  {section.title}
+                </h4>
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   {section.links.map((link, i) => (
                     <span key={i} className="flex items-center">
                       {section.clickable && "path" in link ? (
                         <Link
                           href={link.path}
-                          className="hover:text-blue-600 cursor-pointer"
+                          className="hover:text-[var(--color5)] cursor-pointer"
                         >
                           {link.name}
                         </Link>
@@ -253,7 +268,7 @@ function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-gray-500 pt-6 flex flex-col items-center gap-6 md:flex-row md:justify-between mt-6">
+          <div className="border-t-1 border-[var(--color5)] pt-6 flex flex-col items-center gap-6 md:flex-row md:justify-between mt-6">
             {/* Social Links */}
             <div className="flex space-x-4">
               {[

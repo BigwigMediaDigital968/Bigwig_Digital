@@ -5,6 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
+import ButtonFill from "./Button";
+import PopupForm from "./PopupForm";
 const CaseCard: React.FC = () => {
   useEffect(() => {
     AOS.init({
@@ -59,6 +62,7 @@ const CaseCard: React.FC = () => {
 
   // Mobile view detection: consider width less than 768px as mobile
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -83,85 +87,100 @@ const CaseCard: React.FC = () => {
   };
 
   return (
-    <div className=" w-11/12 md:w-5/6 mb-10 py-4 mx-auto">
-      {/* Header Section */}
-      <h1 className="text-5xl font-bold  mb-4 text-center">Why Bigwig?</h1>
-      <p className="text-center mb-6 text-gray-800 text-md md:text-xl">
-        Let us be your <strong>3rd Eye &amp; 6th Sense</strong> and make your
-        end results to be nothing but <strong>ROI</strong> spectacular.
-      </p>
+    <section className="py-12  bg-[var(--color1)] text-white">
+      <div className=" w-11/12 md:w-5/6 mx-auto">
+        {/* Header Section */}
+        <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
+          <div>
+            <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 uppercase tracking-widest">
+              Why Bigwig
+            </p>
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg">
+              Creative intelligence powering real growth
+            </h1>
+          </div>
 
-      {isMobile ? (
-        // Mobile view: Render slider
-        <Slider {...sliderSettings}>
-          {cases.map((caseItem, index) => (
-            <div key={index} className="px-2">
-              <img
-                src={caseItem.image}
-                alt={caseItem.title}
-                className="w-full h-64 object-cover rounded-3xl transition-transform duration-300 hover:rotate-3 hover:scale-105 hover:shadow-2xl"
-              />
-              <div className="p-4">
-                <h3 className="text-md md:text-xl font-semibold text-gray-800">
-                  {caseItem.title}
-                </h3>
-                <hr className="my-3 border-t-2" />
-                <p className="text-gray-700 mt-2 text-sm md:text-md">
-                  {caseItem.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {caseItem.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className={`text-sm md:text-md font-medium px-4 py-2 rounded-full ${
-                        tagColorMap[tag] || "bg-gray-200"
-                      } text-gray-700`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      ) : (
-        // Desktop/Tablet view: Render grid layout
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-4">
-          {cases.map((caseItem, index) => (
-            <div key={index} data-aos="zoom-in">
-              <img
-                src={caseItem.image}
-                alt={caseItem.title}
-                className="w-full h-64 object-cover rounded-3xl transition-transform duration-300 hover:rotate-3 hover:scale-105 hover:shadow-2xl"
-                draggable="false"
-              />
-              <div className="p-4">
-                <h3 className="text-md md:text-xl font-semibold text-gray-800">
-                  {caseItem.title}
-                </h3>
-                <hr className="my-3 border-t-2" />
-                <p className="text-gray-700 mt-2 text-sm md:text-md">
-                  {caseItem.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {caseItem.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className={`text-sm md:text-md font-medium px-4 py-2 rounded-full ${
-                        tagColorMap[tag] || "bg-gray-200"
-                      } text-gray-700`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+          {/* 👉 View All Services Button */}
+
+          <ButtonFill
+            onClick={() => setIsPopupOpen(true)}
+            text="Get In Touch "
+          />
         </div>
-      )}
-    </div>
+
+        {isMobile ? (
+          // Mobile view: Render slider
+          <Slider {...sliderSettings}>
+            {cases.map((caseItem, index) => (
+              <div key={index} className=" mt-6">
+                <img
+                  src={caseItem.image}
+                  alt={caseItem.title}
+                  className="w-full h-64 object-cover rounded-3xl transition-transform duration-300 hover:rotate-3 hover:scale-105 hover:shadow-2xl"
+                />
+                <div className="p-4">
+                  <h3 className="text-md md:text-xl font-semibold text-[var(--color5)]">
+                    {caseItem.title}
+                  </h3>
+                  <hr className="my-3 border-t-2" />
+                  <p className="text-gray-200 mt-2 text-sm md:text-md">
+                    {caseItem.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {caseItem.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className={`text-sm md:text-md font-medium px-4 py-2 rounded-full ${
+                          tagColorMap[tag] || "bg-gray-200"
+                        } text-gray-700`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          // Desktop/Tablet view: Render grid layout
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
+            {cases.map((caseItem, index) => (
+              <div key={index} data-aos="zoom-in">
+                <img
+                  src={caseItem.image}
+                  alt={caseItem.title}
+                  className="w-full h-64 object-cover rounded-3xl transition-transform duration-300 hover:rotate-3 hover:scale-105 hover:shadow-2xl"
+                  draggable="false"
+                />
+                <div className="p-4">
+                  <h3 className="text-md md:text-xl font-semibold text-[var(--color5)]">
+                    {caseItem.title}
+                  </h3>
+                  <hr className="my-3 border-t-2" />
+                  <p className="text-gray-200 mt-2 text-sm md:text-base">
+                    {caseItem.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {caseItem.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className={`text-sm md:text-md font-medium px-3 py-2 rounded-full ${
+                          tagColorMap[tag] || "bg-gray-200"
+                        } text-gray-700`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+    </section>
   );
 };
 
