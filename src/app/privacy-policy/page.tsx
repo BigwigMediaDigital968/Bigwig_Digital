@@ -3,9 +3,9 @@ import Nav from "../../../components/Nav";
 
 export default function PrivacyPolicy() {
   return (
-    <div>
+    <div className="bg-[var(--color1)] text-white">
       <Nav />
-      <div className="pt-16 md:pt-16 bg-white min-h-screen text-black">
+      <div className="py-12  min-h-screen">
         <div>
           <title>Privacy Policy</title>
           <meta
@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
           <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6">
             Privacy Policy
           </h1>
-          <p className="text-center text-sm text-gray-500 mb-10">
+          <p className="text-center text-sm text-gray-500 mb-5">
             Last Modified: July 23, 2025
           </p>
 
@@ -161,8 +161,11 @@ export default function PrivacyPolicy() {
               contact us regarding any matter relating to this Privacy Policy
               at: www.bigwigdigital.in Bigwig Media Digital, Plot No – 2, Sanjay
               Nagar, Gulabi Bagh, Delhi – 110007,{" "}
-              <a href="mailto:vipul@bigwigmedia.in" className="text-blue-600">
-                vipul@bigwigmedia.in
+              <a
+                href="mailto:support@bigwigmediadigital.com"
+                className="text-[var(--color5)]"
+              >
+                support@bigwigmediadigital.com
               </a>
             </p>
           </section>

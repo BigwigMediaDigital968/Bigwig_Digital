@@ -3,6 +3,11 @@
 :root {
   --primary-color: #4e6cba;
   --secondary-color: #d10b0b;
+  --color1: #011c40;
+  --color2: #023859;
+  --color3: #26658c;
+  --color4: #54acbf;
+  --color5: #a7ebf2;
 }
 
 /* Clients.css */
@@ -50,7 +55,6 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-
 
 .blog-content {
   margin: 0 auto;
@@ -188,5 +192,37 @@
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
-
 }
+
+/* Curtain open */
+@keyframes curtainDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Curtain close */
+@keyframes curtainUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.popup-open {
+  animation: curtainDown 0.6s ease forwards;
+}
+
+.popup-close {
+  animation: curtainUp 0.6s ease forwards;
+}
+
+/* html,
+body {
+  overflow-x: hidden !important;
+} */

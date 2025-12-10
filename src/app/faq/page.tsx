@@ -9,7 +9,7 @@ const faqData = [
   {
     question:
       "Who can benefit from BigWig Digital’s digital marketing services?",
-    answer: `<strong> <a href="https://www.bigwigmediadigital.com/" class="text-blue-600  font-medium">BigWig Digital</a></strong>’s digital marketing services are perfect for startups, small businesses, and growing brands looking to increase online visibility, leads, and conversions through expert strategies.`,
+    answer: `<strong> <a href="https://www.bigwigmediadigital.com/" class="text-[var(--color5)]  font-medium">BigWig Digital</a></strong>’s digital marketing services are perfect for startups, small businesses, and growing brands looking to increase online visibility, leads, and conversions through expert strategies.`,
   },
   {
     question: "Do you offer digital marketing services outside India?",
@@ -118,44 +118,59 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div>
+    <div className="bg-[var(--color1)] text-white min-h-screen">
       <Nav />
       <title>FAQs - BigWig Digital</title>
       <meta
         name="description"
-        content="Have questions? Check out our FAQ section for quick answers to common queries."
+        content="Frequently asked questions about our services."
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/faq" />
-      <div className="md:w-5/6 w-11/12 mx-auto py-16 px-6">
-        <h1 className="text-center text-3xl font-serif font-semibold mb-5">
-          FAQ
+
+      <div className="md:w-3/4 w-11/12 mx-auto py-12">
+        <h1 className="text-center text-3xl md:text-4xl font-bold mb-10 text-[var(--color5)]">
+          Frequently Asked Questions
         </h1>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {faqData.map((item, index) => (
             <div
               key={index}
-              className="border-b pb-5 cursor-pointer"
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              className="cursor-pointer rounded-xl p-5 
+                         backdrop-blur-md bg-white/10
+                         border border-white/10 
+                         hover:bg-white/20 transition-all duration-300"
             >
+              {/* Question Row */}
               <div className="flex justify-between items-center">
-                <p className="font-medium text-gray-900">Q: {item.question}</p>
+                <p className="text-lg font-semibold text-[var(--color5)] drop-shadow">
+                  {item.question}
+                </p>
+
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
+                  className={`w-5 h-5 text-white transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : ""
                   }`}
                 />
               </div>
-              {openIndex === index && (
+
+              {/* Answer */}
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  openIndex === index ? "max-h-40 mt-3" : "max-h-0"
+                }`}
+              >
                 <p
-                  className="mt-2 text-gray-700 text-sm"
-                  dangerouslySetInnerHTML={{ __html: `A: ${item.answer}` }}
+                  className="text-gray-200 text-base leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: item.answer }}
                 ></p>
-              )}
+              </div>
             </div>
           ))}
         </div>
       </div>
+
       <Footer />
     </div>
   );

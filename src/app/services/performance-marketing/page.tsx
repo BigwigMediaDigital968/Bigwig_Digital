@@ -1,5 +1,4 @@
 "use client";
-import { TypeAnimation } from "react-type-animation";
 import Footer from "../../../../components/Footer";
 import Nav from "../../../../components/Nav";
 import OurProcess from "../../../../components/OurProcess";
@@ -11,135 +10,184 @@ import ppc from "../../../../Assets/services/7.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-  FaSearchDollar,
-  FaPhotoVideo,
-  FaFacebookF,
-  FaRetweet,
-  FaMobileAlt,
-  FaShoppingCart,
-} from "react-icons/fa";
+
 import ContactForm from "../../../../components/ContactForm";
-import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { SetStateAction, useState } from "react";
 import Image from "next/image";
+import ButtonFill from "../../../../components/Button";
+import PopupForm from "../../../../components/PopupForm";
+import GetInTouch from "../../../../components/GetInTouch";
 
-const ppcBenefits = [
+const whyPartnerData = [
   {
-    title: "Achieve Business Goals Faster",
+    title: "Strategic Insights",
     content:
-      "Unlike traditional marketing, PPC advertising delivers instant results. With one click, you can reach thousands of potential customers through Google Ads and social media campaigns. Whether your goal is more leads, sales, video views, or app downloads, PPC helps you achieve it quickly.",
+      "As a leading performance marketing company in Delhi, we take the time to understand your business model, market landscape, and customer behavior. This allows us to craft strategies that truly connect with your audience and consistently drive conversions.",
   },
   {
-    title: "Fast & Measurable Results",
+    title: "Data-Driven Campaigns",
     content:
-      "PPC campaigns bring immediate traffic to your website by targeting users on Google, YouTube, Gmail, apps, and social media platforms. With BigWig Media Digital, every ad is trackable — from clicks and visits to leads and sales. This transparency allows you to measure ROI and improve campaigns for maximum results.",
+      "Every campaign we run is powered by data. Following the principles of a performance-focused digital marketing agency, we make decisions based on analytics not assumptions. This ensures your budget is optimized for maximum ROI, making us one of the most effective performance-based marketing teams in the region.",
   },
   {
-    title: "Reach a Targeted Audience",
+    title: "Comprehensive Service Spectrum",
     content:
-      "Our PPC services in India ensure your ads are shown to the right people at the right time. You can target users based on their location, age, interests, and online behavior. Whether it’s travel, fashion, food, or technology, PPC ensures your business reaches the audience most likely to convert.",
+      "Our performance marketing services in Delhi cover the full range of digital growth channels. From SEO and PPC to social media, content marketing, and conversion optimization, you get a complete, integrated marketing solution under one roof.",
   },
   {
-    title: "Build Strong Brand Recognition",
+    title: "Transparent Reporting",
     content:
-      "By using high-intent keywords and smart ad placements, PPC ads keep your brand visible at the top of search results. This not only boosts sales but also increases brand awareness among your target customers. Social media ads further strengthen your online presence.",
+      "Clarity is at the core of our approach. As a trusted performance marketing agency in Delhi, we provide clear, easy-to-understand reports that highlight your campaign’s progress, insights, and opportunities for future improvement.",
   },
   {
-    title: "Budget-Friendly PPC Campaigns",
+    title: "Adaptive and Agile",
     content:
-      "With BigWig Media Digital, a top PPC company in India, you have complete control over your ad spend. You decide how much to invest, and campaigns can be scaled up or down depending on performance. This flexibility makes PPC a cost-effective way to grow your business.",
+      "The digital world moves fast, and staying static means falling behind. Our team stays ahead of trends, algorithm updates, and consumer shifts to ensure your marketing strategies remain relevant, competitive, and future-ready.",
   },
   {
-    title: " Increased Website Traffic",
+    title: "Continuous Optimization",
     content:
-      "Well-optimized PPC ads attract quality visitors who are actively searching for your products or services. By targeting relevant keywords, our PPC experts in India help your business gain more clicks, boost visibility, and increase website traffic significantly.",
-  },
-  {
-    title: "  Generate More Leads ",
-    content:
-      "Through strategic keyword research, engaging ad copy, and retargeting campaigns, PPC helps you generate high-quality leads. Our PPC agency in India ensures your campaigns are designed to reach users who are most likely to take action.",
-  },
-  {
-    title: "Drive More Sales and Conversions",
-    content:
-      "PPC advertising doesn’t just bring traffic; it brings buyers. By optimizing landing pages and using persuasive call-to-actions, PPC campaigns guide users through the sales funnel, helping you increase conversions and sales effectively.",
-  },
-  {
-    title: "Boost In-Store Visits",
-    content:
-      "If you run a physical store, PPC ads with location-based targeting can drive nearby customers directly to your business. Adding a “Visit Us Today” call-to-action motivates users to walk into your store.",
-  },
-  {
-    title: "Get More Phone Calls",
-    content:
-      "With call-only ads and click-to-call extensions, PPC makes it easier for customers to connect with your business instantly. Our PPC services in India also include call tracking, so you know exactly which ads bring the most valuable leads.",
-  },
-  {
-    title: "Better Brand Awareness ",
-    content:
-      "PPC not only drives sales but also builds long-term recognition for your brand. By running display ads, video ads, and remarketing campaigns, our PPC agency in India helps your business stay in front of your audience - making your brand stronger and more trusted.",
+      "Top performance marketing agencies in Delhi succeed by constantly refining strategies. We actively monitor industry trends, audience behavior, and platform changes to ensure your campaigns not only perform but continue outperforming in a crowded marketplace.",
   },
 ];
 
-const features = [
+const industriesData = [
   {
-    title: "Top PPC Services Provider",
-    text: "With Google Ads-certified experts, BigWig Digital is a top PPC provider that serves customers worldwide.",
+    title: "Fashion Industry",
+    content:
+      "Our expertise in the fashion sector enables us to create visually compelling, trend-focused campaigns that showcase collections, attract enthusiasts, and drive sales through targeted performance marketing.",
   },
   {
-    title: "Instant Lead Generation with Cost-Efficiency",
-    text: "With the help of our PPC services, you can swiftly and affordably draw in targeted customers with clever sponsored advertising campaigns.",
+    title: "Electronics & Technology",
+    content:
+      "Whether it’s smartphones, accessories, or advanced gadgets, we use precision targeting to reach tech-savvy audiences, increasing brand awareness and boosting product sales.",
   },
   {
-    title: "Expert Management of Google & Social Media Ads",
-    text: "We oversee effective PPC campaigns on social media and Google Ads to immediately increase your visibility and traffic.",
+    title: "Healthcare Sector",
+    content:
+      "As a knowledgeable performance marketing company in Delhi, we build compliant, informative, and high-performing campaigns that educate, engage, and convert, helping healthcare providers reach the right patients ethically and effectively.",
   },
   {
-    title: "Affordable PPC Campaigns That Deliver Results",
-    text: "Our digital marketing services are at competitive prices while maintaining high quality, unlike many other agencies",
+    title: "Hospitality & Travel",
+    content:
+      "Hotels, restaurants, and travel agencies trust us to craft captivating visuals and persuasive messaging that attract travelers, boost bookings, and enhance brand visibility.",
   },
   {
-    title: "Guaranteed Top Search Placement",
-    text: "With high-intent keywords, our SEO team gets your website on the front page of search results when it matters most.",
+    title: "Education & E-Learning",
+    content:
+      "We help institutions and e-learning platforms connect with potential students by promoting courses and programs through targeted, high-intent advertising campaigns.",
   },
   {
-    title: "Transparent & Scalable PPC Strategy",
-    text: "With BigWig Digital, you maintain budgetary control while we assist in growing your company with ROI-focused, data-driven campaigns.",
+    title: "Retail & E-Commerce",
+    content:
+      "From apparel to home goods, we create performance-driven strategies that increase traffic, boost online sales, and enhance customer retention across diverse e-commerce niches.",
+  },
+  {
+    title: "Finance & Banking",
+    content:
+      "With an emphasis on security and compliance, we develop campaigns for banks, fintech brands, and financial institutions, promoting loans, investments, and financial products to highly targeted audiences.",
+  },
+  {
+    title: "Automotive Industry",
+    content:
+      "From dealerships to manufacturers, we create campaigns that highlight vehicle features, build interest, and generate qualified leads from potential buyers.",
   },
 ];
+
 const faqs = [
   {
-    q: "Why choose BigWig Digital for PPC services?",
-    a: " BigWig Digital is a trusted name for PPC services in India, known for delivering ROI-driven campaigns. Our experts focus on targeting the right audience, optimizing ad spend, and ensuring maximum returns for your business.",
+    q: "What is Performance Marketing, and How Can a Performance Marketing Agency in Delhi Benefit My Business?",
+    a: `Performance marketing is a results-driven approach where you pay only for measurable actions such as clicks, leads, sales, or conversions.
+Partnering with a performance marketing agency in Delhi helps you scale faster using data, targeting, and optimization techniques to reach the right audience and maximize ROI. Whether you're a startup or an established business, performance marketing ensures every rupee spent moves you closer to growth.`,
   },
   {
-    q: "How do PPC services help my business?",
-    a: "With professional PPC advertising services, your business gets instant visibility, high-quality leads, and measurable growth. Unlike traditional marketing, PPC ensures you reach the right customers at the right time.",
+    q: "How Do Performance Marketing Agencies in Delhi Measure Success?",
+    a: `A performance marketing company in Delhi measures success using metrics such as:
+
+• Click-through rates (CTR)
+• Cost per lead (CPL)
+• Return on ad spend (ROAS)
+• Conversion rate
+• Customer acquisition cost (CAC)
+
+These KPIs ensure transparency and help refine campaigns for better performance.`,
   },
   {
-    q: "  Do you offer affordable PPC packages?",
-    a: "Yes, we provide affordable PPC services customized for every budget. Whether you’re a startup or an established brand, our packages are designed to maximize ROI without overspending.",
+    q: "What Makes a Performance Marketing Company in Delhi Different From Traditional Marketing Agencies?",
+    a: `Traditional agencies focus on reach and visibility, while a performance-based digital marketing agency prioritizes measurable outcomes.
+Unlike traditional marketing, performance marketing offers:
+
+• Real-time tracking
+• Targeted campaigns
+• ROI-focused strategies
+• Pay-for-performance models
+
+This means you only invest in strategies that bring tangible results.`,
   },
   {
-    q: "Which platforms do you cover in PPC?",
-    a: "Our PPC management services cover Google Ads, Bing, Facebook, Instagram, and LinkedIn campaigns. This multi-platform approach ensures your business captures leads across different online channels.",
+    q: "Can Performance-Based Digital Marketing Agencies Help with Brand Awareness?",
+    a: `Absolutely. While performance marketing is known for conversions, it also boosts brand visibility.
+A performance-based marketing agency uses precise audience targeting, engaging creatives, and strategic placements to increase brand recall and build trust.`,
   },
   {
-    q: " How fast can I see results with PPC?",
-    a: " The best part of PPC marketing services is that you start seeing traffic and leads within a few days of campaign launch. With proper optimization, conversions and ROI improve consistently over time.",
+    q: "What Services Do Performance-Based Marketing Agencies Offer?",
+    a: `A full-service performance marketing agency in Delhi typically provides:
+
+• Google Ads & PPC
+• Social Media Ads (Meta, Instagram, YouTube, LinkedIn)
+• SEO (Search Engine Optimization)
+• Content marketing
+• Landing page optimization
+• Email & automation funnels
+• Conversion rate optimization (CRO)
+
+These services work together to attract, nurture, and convert customers.`,
   },
   {
-    q: "  Is PPC better than SEO?",
-    a: "  PPC services provide quick results with instant traffic and leads, while SEO builds long-term organic growth. For the best results, both PPC and SEO should work together as part of your digital strategy.",
+    q: "How Do I Choose the Right Performance Marketing Services in Delhi for My Business?",
+    a: `Look for a performance marketing agency near you that offers:
+
+• Proven industry experience
+• Transparent reporting
+• Data-driven decision-making
+• Customized strategies
+• A strong portfolio of results
+
+Choose an agency that understands your goals and aligns strategies accordingly.`,
   },
   {
-    q: " Do you provide PPC reports?",
-    a: " Yes, we share detailed PPC reports highlighting clicks, conversions, cost per lead, and ROI. This transparency ensures you know exactly how your ad budget is being utilized.",
+    q: "What Can We Do for You to Be the Best?",
+    a: `As a dedicated performance marketing company in Delhi, we focus on:
+
+• Understanding your business deeply – goals, audience, challenges
+• Building high-impact marketing systems for consistent growth
+• Continuous optimization to stay ahead of competitors
+
+Our mission: help you outperform your market with smart, scalable performance marketing.`,
+  },
+  {
+    q: "Is Performance Marketing Expensive?",
+    a: `Costs depend on goals, competition, and industry. The good news?
+
+Performance marketing is one of the most cost-effective digital strategies because you only pay for measurable outcomes.
+
+With the right agency, even small budgets can generate strong returns through precise targeting and optimization.`,
+  },
+  {
+    q: "Is Performance Marketing Necessary?",
+    a: `Yes, especially in today’s competitive digital ecosystem. Performance marketing:
+
+• Reduces wasted ad spend
+• Improves targeting accuracy
+• Delivers faster results
+• Provides clear, trackable ROI
+• Helps businesses scale predictably
+
+For any brand aiming for growth, performance marketing is a strategic necessity.`,
   },
 ];
 
-const sliderSettings = {
+const settings = {
   dots: false,
   infinite: true,
   speed: 800,
@@ -151,23 +199,17 @@ const sliderSettings = {
   pauseOnHover: false,
 };
 
-const featureSettings = {
-  dots: true,
-  infinite: true,
-  speed: 800,
-  slidesToShow: 1,
-  arrows: false,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2500,
-  pauseOnHover: false,
-};
-
 function PerformanceMarketing() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  const toggleItem = (index: SetStateAction<number | null>) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <div>
+    <div className="bg-[var(--color1)]">
       <title>ROI-Driven Performance Marketing</title>
       <meta
         name="description"
@@ -185,37 +227,37 @@ function PerformanceMarketing() {
       >
         <div className="bg-black/40 absolute inset-0 z-0" />
 
-        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           {/* Left Content */}
-          <div className="text-white space-y-6 md:pr-8">
-            <h1 className="text-3xl md:text-4xl font-semibold text-white leading-snug">
-              Top PPC Company in India
+          <div className="text-white space-y-4 md:pr-8">
+            <h1 className="text-2xl md:text-3xl font-semibold text-white leading-snug">
+              Performance Marketing Company in Delhi
             </h1>
+            <h2 className="text-xl font-semibold text-white leading-snug text-justify">
+              We’re more than just another performance marketing agency in Delhi
+            </h2>
 
-            <p
-              className="text-3xl md:text-4xl font-semibold flex items-center gap-2 text-[#4e6cba]"
-              style={{
-                textShadow: "0 2px 6px rgba(0,0,0,0.6)",
-                letterSpacing: "0.5px",
-              }}
-            >
-              Be&nbsp;
-              <TypeAnimation
-                sequence={["Seen", 2000, "Clicked", 2000, "Remembered", 2000]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-              />
+            <p className="text-base max-w-xl text-white/90 text-justify">
+              At Bigwig Media Digital, we’re more than just another performance
+              marketing agency in Delhi - we’re a team driven by results,
+              creativity, and a genuine commitment to your brand’s growth.
             </p>
-
-            <p className="text-base md:text-lg max-w-md text-white/90">
-              Turn Clicks into Customers with Our ROI-Focused PPC Campaigns
+            <p className="text-base  max-w-xl text-white/90 text-justify">
+              Based in the heart of Delhi, our performance marketing company in
+              Delhi proudly serves businesses across the entire Delhi NCR
+              region, including Noida and Gurgaon.
             </p>
-            <a href="/contact">
-              <button className="mt-4 px-6 py-3 bg-[var(--primary-color)] text-white rounded-full font-semibold hover:bg-opacity-80 transition">
-                Contact Us
-              </button>
-            </a>
+            <p className="text-base max-w-xl text-white/90 text-justify">
+              Whether you&#39;re searching for a reliable Google Ads agency in
+              Delhi, a trusted Google Ads company in Delhi, or simply a growth
+              partner “near me,” our team is here to help you boost visibility,
+              increase engagement, and maximize ROI with data-backed strategies
+              that actually work.
+            </p>
+            <ButtonFill
+              onClick={() => setIsPopupOpen(true)}
+              text="Get Free Consultation"
+            />
           </div>
 
           {/* Right Form */}
@@ -223,42 +265,31 @@ function PerformanceMarketing() {
         </div>
       </section>
 
-      <section className="bg-white text-black  py-12">
+      <section className=" text-white  py-12">
         <div className="w-11/12 md:w-5/6 mx-auto space-y-20">
           {/* Intro */}
 
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left Content */}
             <div className="space-y-6 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--primary-color)]">
-                Best PPC Company in India
+              <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)]">
+                Performance Marketing Company in Delhi
               </h2>
-              <p className="text-lg leading-relaxed text-justify md:text-left">
-                At{" "}
-                <strong>
-                  <a href="https://www.bigwigdigital.in/">BigWig Digital</a>
-                </strong>
-                , we are recognized as one of the best PPC companies in India,
-                trusted by startups, SMEs, and enterprises for delivering
-                measurable growth. As a leading PPC agency in India, our
-                certified experts design and manage high-performance campaigns
-                that ensure maximum ROI with complete transparency.
+              <p className=" leading-relaxed text-justify ">
+                In the fast-moving digital pulse of India’s capital, businesses
+                need more than just presence - they need performance. At Bigwig
+                Media Digital, we stand as a trusted performance marketing
+                company in Delhi, helping brands cut through the noise and reach
+                their true growth potential.
               </p>
-              <p className="text-lg leading-relaxed text-justify md:text-left">
-                We combine data-driven insights with innovative strategies to
-                create impactful PPC services in India that help brands achieve
-                higher visibility, quality leads, and stronger conversions. Our
-                approach focuses on understanding your business goals,
-                optimizing ad spends, and maximizing every click’s value.
-              </p>
-              <p className="text-lg leading-relaxed text-justify md:text-left">
-                With years of proven experience, our passionate team of PPC
-                professionals helps businesses stay ahead of the competition. At
-                BigWig Digital, we believe true success comes from smart
-                strategies that drive real impact—not just hard work. That’s why
-                we encourage our clients to focus on their core business while
-                we accelerate their online growth with tailored PPC campaigns in
-                India.
+              <p className=" leading-relaxed text-justify">
+                Amidst the energy, competition, and constant innovation of
+                Delhi, our performance marketing agency in Delhi has built a
+                reputation for delivering strategies that aren’t just creative,
+                but measurable and ROI-driven. With a full suite of performance
+                marketing services tailored to your goals, we help position your
+                brand exactly where it needs to be - right at the forefront of
+                your industry.
               </p>
             </div>
 
@@ -267,304 +298,691 @@ function PerformanceMarketing() {
               <Image
                 src={ppc}
                 alt="Top PPC Company"
-                className="w-full h-auto rounded-xl shadow-lg"
+                className="w-full h-[50vh] rounded-xl shadow-lg"
               />
-            </div>
-          </div>
-
-          {/* Why Choose Us */}
-          <div className="space-y-6">
-            <h3 className="text-3xl md:text-4xl font-bold text-[var(--primary-color)] text-center">
-              Why Choose BigWig Media Digital – The Best PPC Company in India
-              for Your Business?
-            </h3>
-
-            {/* Mobile Slider */}
-            <div className="block lg:hidden">
-              <Slider {...featureSettings}>
-                {features.map((item, i) => (
-                  <div key={i}>
-                    <div className="bg-white  border-l-4 border-[var(--primary-color)] p-6 rounded-xl shadow">
-                      <h4 className="text-lg font-semibold mb-2 text-[var(--primary-color)]">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-gray-700 ">{item.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </Slider>
-            </div>
-
-            {/* Desktop Grid */}
-            <div className="hidden lg:grid grid-cols-3 gap-6">
-              {features.map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white  border-l-4 border-[var(--primary-color)] p-6 rounded-xl shadow"
-                >
-                  <h4 className="text-lg font-semibold mb-2 text-[var(--primary-color)]">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm text-gray-700 ">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Our Team */}
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-[var(--primary-color)]">
-                Dedicated PPC Experts for Your Business Growth
-              </h3>
-              <p className="text-lg leading-relaxed">
-                At BigWig Media Digital, we have a team of highly skilled PPC
-                consultants who specialize in running performance-driven
-                campaigns. From keyword research, ad copywriting, audience
-                targeting, and landing page optimization to conversion tracking,
-                every aspect of your campaign is handled with precision and
-                expertise.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Many businesses approach us after facing challenges with other
-                agencies - seeking better leads, improved ROI, and lower ad
-                spend. With our data-driven PPC strategies, we’ve helped them
-                achieve measurable growth, and most of them continue to stay
-                with us for the long term
-              </p>
-              <p className="text-lg leading-relaxed">
-                Our PPC experts manage campaigns across Google Ads, Facebook
-                Ads, Bing Ads, and other platforms, ensuring maximum visibility
-                for your brand. Every campaign is carefully planned and
-                customized to align with your unique business objectives. Get in
-                touch today to explore a PPC package designed exclusively for
-                your business success.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center text-black ">
-              {[
-                { icon: <FaSearchDollar />, label: "Search Advertising" },
-                {
-                  icon: <FaPhotoVideo />,
-                  label: "Display & Video Advertising",
-                },
-                { icon: <FaFacebookF />, label: "Social Media Advertising" },
-                { icon: <FaRetweet />, label: "Remarketing" },
-                { icon: <FaMobileAlt />, label: "Mobile Advertising" },
-                { icon: <FaShoppingCart />, label: "Shopping Advertising" },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center gap-2 p-6 border border-gray-200  shadow-md rounded-xl bg-white "
-                >
-                  <div className="text-[var(--primary-color)] text-3xl">
-                    {item.icon}
-                  </div>
-                  <span className="text-lg font-medium">{item.label}</span>
-                </div>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-gray py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[var(--primary-color)]">
-            Benefits of PPC Services in India for Your Business
+      <section className="w-11/12 md:w-5/6 mx-auto  py-12">
+        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-8 leading-snug">
+          Build Your Brand with a Leading Performance Marketing Agency in Delhi
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-justify">
+          {/* Left Column */}
+          <div className="space-y-4">
+            <p className="text-white/90 text-base">
+              As one of the top performance marketing agencies in Delhi, we
+              focus on creating tailored strategies that fit your business goals
+              – not generic templates. Every brand is unique, and your marketing
+              approach should be too.
+            </p>
+          </div>
+
+          {/* Right Column */}
+          <div>
+            <p className="text-white/90 text-base">
+              Recognized as one of the most reliable performance marketing
+              companies in Delhi, our team understands the complexities of
+              today’s digital landscape. We go beyond generating traffic to
+              deliver meaningful interactions that actually convert. From
+              awareness to acquisition, every step is optimized to drive
+              measurable, revenue-focused outcomes.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Full-Width Paragraph */}
+        <div className="mt-8 text-center space-y-4 p-6 md:p-8 border border-[var(--color5)] rounded-xl shadow-[inset_0_0_25px_var(--color3)] bg-[var(--color1)]/40">
+          <p className="text-white/90 text-base md:text-lg">
+            When you’re searching for a performance-driven partner who
+            understands what real growth looks like, we’re here to make it
+            happen.
+          </p>
+
+          <div className="flex justify-center">
+            <ButtonFill
+              text="Get Started Today"
+              onClick={() => setIsPopupOpen(true)}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            Why Partner with a Premier Performance Marketing Company in Delhi?
           </h2>
-          {/* Mobile View: Slider */}
+        </div>
+
+        {/* CONTAINER */}
+        <div className="relative z-10">
+          {/* ========= MOBILE SLIDER ========= */}
           <div className="block lg:hidden">
-            <Slider {...sliderSettings}>
-              {ppcBenefits.map((benefit, index) => (
-                <div key={index}>
-                  <div className="bg-white h-[300px] rounded-2xl gap-5 shadow-lg border-l-4 border-[var(--primary-color)] p-6 flex flex-col">
-                    <h3 className="text-lg font-semibold mb-2 text-[var(--primary-color)]">
-                      {benefit.title}
+            <Slider {...settings}>
+              {whyPartnerData.map((item, index) => (
+                <div key={index} className="px-2">
+                  <div
+                    className="
+                relative flex flex-col p-6 rounded-2xl
+                backdrop-blur-xl bg-white/5 
+                border border-white/10
+                shadow-[0_0_25px_rgba(0,255,255,0.1)]
+                hover:shadow-[0_0_40px_var(--color5)]
+                space-y-5 overflow-hidden group
+                transition-all duration-500
+                hover:-translate-y-2
+              "
+                  >
+                    {/* Shine Line */}
+                    <div
+                      className="
+                  absolute -top-full left-0 w-full h-full
+                  bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                  rotate-45 group-hover:animate-shineLine
+                "
+                    />
+
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                      {item.title}
                     </h3>
-                    <p className="text-gray-700  text-sm leading-relaxed">
-                      {benefit.content}
+
+                    {/* Description */}
+                    <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
+                      {item.content}
                     </p>
+
+                    {/* Glow Border */}
+                    <div
+                      className="
+                  absolute inset-0 rounded-2xl border border-transparent
+                  group-hover:border-[var(--color5)] transition-all duration-500
+                "
+                    />
                   </div>
                 </div>
               ))}
             </Slider>
           </div>
-          {/* Desktop View: Grid */}
-          <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {ppcBenefits.map((benefit, index) => (
+
+          {/* ========= DESKTOP GRID ========= */}
+          <div
+            className="
+        hidden lg:grid 
+        grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+        gap-10 auto-rows-fr
+      "
+          >
+            {whyPartnerData.map((item, index) => (
               <div
                 key={index}
-                className="relative bg-white rounded-2xl shadow-lg border-l-4 border-[var(--primary-color)] p-6 pl-6"
+                className="
+            group relative overflow-hidden rounded-2xl 
+            transition-transform duration-500 
+            hover:-translate-y-3 h-full
+          "
               >
-                <h3 className="text-lg font-semibold mb-2 text-[var(--primary-color)]">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-700  text-sm leading-relaxed">
-                  {benefit.content}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="py-12 bg-white text-black">
-        <div className="w-11/12 md:w-5/6 mx-auto space-y-10">
-          <h2 className="text-3xl font-bold text-center text-[var(--primary-color)]">
-            How is PPC Service Helpful for New Business?
-          </h2>
-
-          <div className="space-y-6 leading-relaxed text-lg ">
-            <p>
-              Following PPC promotion, a business can receive immediate results
-              in a matter of seconds. Compared to SEO or SMO services, PPC
-              services drive traffic to a website considerably more quickly.
-              Either way, it&#39;s an inorganic or paid service. Each time the
-              advertisement is clicked, we must pay. Clicks, appearances, lead
-              generation, app installs, and many more actions can be considered
-              activities.
-            </p>
-
-            <p>
-              The PPC sector is quite competitive. Managing many specialized
-              components is part of PPC. These focus elements can be obtained by
-              downgrading a dedicated PPC company for PPC management and
-              organization work promotion.
-            </p>
-          </div>
-        </div>
-      </section>
-      {/* FAQ Section */}
-      <section className="bg-gray-50 py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto space-y-10">
-          <h2 className="text-3xl md:text-3xl font-bold text-[var(--primary-color)] text-center">
-            Frequently Asked Questions (FAQs) – Social Media Marketing Agency in
-            India
-          </h2>
-
-          <div className="space-y-4">
-            {faqs.map((item, index) => (
-              <div
-                key={index}
-                className="border border-gray-200 rounded-lg shadow-sm bg-white"
-              >
-                <button
-                  className="flex justify-between items-center w-full p-4 text-left text-gray-900 font-medium focus:outline-none"
-                  onClick={() =>
-                    setOpenIndex(openIndex === index ? null : index)
-                  }
+                <div
+                  className="
+              relative z-10 p-6 rounded-2xl 
+              backdrop-blur-xl bg-white/5
+              border border-white/10
+              shadow-[0_0_25px_rgba(0,255,255,0.15)]
+              hover:shadow-[0_0_45px_var(--color5)]
+              flex flex-col h-full space-y-5
+              transition-all duration-500
+            "
                 >
-                  <span>{item.q}</span>
-                  {openIndex === index ? (
-                    <ChevronUp className="w-5 h-5 text-gray-500" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-500" />
-                  )}
-                </button>
+                  {/* Shine Line */}
+                  <div
+                    className="
+                absolute -top-full left-0 w-full h-full
+                bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+                rotate-45 group-hover:animate-shineLine
+              "
+                  />
 
-                {openIndex === index && (
-                  <div className="p-4 pt-0 text-gray-700">{item.a}</div>
-                )}
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
+                    {item.content}
+                  </p>
+
+                  {/* Glow Border */}
+                  <div
+                    className="
+                absolute inset-0 rounded-2xl border border-transparent 
+                group-hover:border-[var(--color5)] transition-all duration-500
+              "
+                  />
+                </div>
               </div>
             ))}
           </div>
+
+          {/* Animations */}
+          <style>{`
+      @keyframes shineLine {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+      .animate-shineLine {
+        animation: shineLine 1.5s ease-in-out forwards;
+      }
+    `}</style>
         </div>
       </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        {/* Outer Container */}
+        <div
+          className="
+      relative rounded-3xl p-8 md:p-12
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden
+    "
+        >
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full 
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
+        rotate-45 opacity-70
+        animate-[shineMove_4s_ease-in-out_infinite]
+      "
+          ></div>
+
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6">
+            Why Bigwig Media Digital – and No One Else?
+          </h2>
+
+          {/* Content */}
+          <div className="space-y-5 text-gray-200  leading-relaxed text-justify">
+            <p>
+              When you’re investing serious money into growth, you deserve to
+              work with the best. And that’s exactly what you get with us. At
+              Bigwig Media Digital, our team lives and breathes performance
+              marketing - we’re obsessed with the numbers, the strategy behind
+              them, and the results they create.
+            </p>
+
+            <p>
+              We offer complete, end-to-end performance marketing solutions
+              across every channel that matters to your business. From crafting
+              compelling ad creatives to decoding analytics, our team of
+              creative thinkers, problem-solvers, and data-driven doers ensures
+              every campaign is built for impact.
+            </p>
+
+            <p>
+              Day or night, we’re constantly refining ideas, exploring trends,
+              and pushing boundaries. That’s how we deliver fresh,
+              high-performing concepts and campaigns that don’t just compete —
+              but stand out.
+            </p>
+
+            <p>
+              If you want a team that’s committed, creative, and relentlessly
+              performance-focused, you won’t find a better partner.
+            </p>
+          </div>
+        </div>
+
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineMove {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        {/* Block 1 */}
+        <div
+          className="
+      relative rounded-3xl p-8 md:p-12 
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden mb-12
+    "
+        >
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+        rotate-45 opacity-70
+        animate-[shineMove_4s_ease-in-out_infinite]
+      "
+          ></div>
+
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6">
+            Most Trusted Performance Marketing Agency in Delhi
+          </h2>
+
+          <p className="text-gray-200  leading-relaxed text-justify">
+            In today’s highly competitive digital world, choosing the right
+            performance marketing agency in Delhi can make all the difference.
+            With countless options in the market, only a few stand out for their
+            expertise, innovation, and proven results. Businesses looking to
+            scale through social media and digital performance channels need a
+            partner that understands how to turn visibility into conversions,
+            and conversions into sustainable growth.
+          </p>
+        </div>
+
+        {/* Block 2 */}
+        <div
+          className="
+      relative rounded-3xl p-8
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden
+    "
+        >
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+        rotate-45 opacity-70
+        animate-[shineMove_4s_ease-in-out_infinite]
+      "
+          ></div>
+
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6">
+            Partner with the Best Performance Marketing Company in Delhi
+          </h2>
+
+          <div className="space-y-5 text-gray-200  leading-relaxed text-justify">
+            <p>
+              Boosting your brand’s presence and engagement requires a strategy
+              that goes beyond generic marketing. Working with a top-tier
+              performance marketing company in Delhi ensures that every campaign
+              is tailored to your audience, built to spark meaningful
+              interactions, and designed to deliver measurable results.
+            </p>
+
+            <p>
+              With our commitment to excellence and a strong track record of
+              successful campaigns, we offer performance-driven solutions
+              crafted around your specific goals. Every strategy, every
+              creative, and every optimization is built with your growth in
+              mind.
+            </p>
+
+            {/* CTA */}
+            <div className="text-center">
+              <ButtonFill
+                text="Boost Your Performance Today"
+                onClick={() => setIsPopupOpen(true)}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineMove {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            Industries That Benefit from a Performance Marketing Agency in Delhi
+          </h2>
+        </div>
+
+        {/* CONTAINER */}
+        <div className="relative z-10">
+          {/* ========= MOBILE SLIDER ========= */}
+          <div className="block lg:hidden">
+            <Slider {...settings}>
+              {industriesData.map((item, index) => (
+                <div key={index} className="px-2">
+                  <div
+                    className="
+                relative flex flex-col p-6 rounded-2xl
+                backdrop-blur-xl bg-white/5 
+                border border-white/10
+                shadow-[0_0_25px_rgba(0,255,255,0.1)]
+                hover:shadow-[0_0_40px_var(--color5)]
+                space-y-5 overflow-hidden group
+                transition-all duration-500
+                hover:-translate-y-2
+              "
+                  >
+                    {/* Shine Line */}
+                    <div
+                      className="
+                  absolute -top-full left-0 w-full h-full
+                  bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                  rotate-45 group-hover:animate-shineLine
+                "
+                    />
+
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
+                      {item.content}
+                    </p>
+
+                    {/* Glow Border */}
+                    <div
+                      className="
+                  absolute inset-0 rounded-2xl border border-transparent
+                  group-hover:border-[var(--color5)] transition-all duration-500
+                "
+                    />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+
+          {/* ========= DESKTOP GRID ========= */}
+          <div
+            className="
+        hidden lg:grid 
+        grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+        gap-10 auto-rows-fr
+      "
+          >
+            {industriesData.map((item, index) => (
+              <div
+                key={index}
+                className="
+            group relative overflow-hidden rounded-2xl 
+            transition-transform duration-500 
+            hover:-translate-y-3 h-full
+          "
+              >
+                <div
+                  className="
+              relative z-10 p-6 rounded-2xl 
+              backdrop-blur-xl bg-white/5
+              border border-white/10
+              shadow-[0_0_25px_rgba(0,255,255,0.15)]
+              hover:shadow-[0_0_45px_var(--color5)]
+              flex flex-col h-full space-y-5
+              transition-all duration-500
+            "
+                >
+                  {/* Shine Line */}
+                  <div
+                    className="
+                absolute -top-full left-0 w-full h-full
+                bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+                rotate-45 group-hover:animate-shineLine
+              "
+                  />
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
+                    {item.content}
+                  </p>
+
+                  {/* Glow Border */}
+                  <div
+                    className="
+                absolute inset-0 rounded-2xl border border-transparent 
+                group-hover:border-[var(--color5)] transition-all duration-500
+              "
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Animations */}
+          <style>{`
+      @keyframes shineLine {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+      .animate-shineLine {
+        animation: shineLine 1.5s ease-in-out forwards;
+      }
+    `}</style>
+        </div>
+      </section>
+
+      <section className="py-12 relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12 text-center">
+          <h2 className="text-xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        {/* FAQ Boxes */}
+        <div className="space-y-6 w-11/12 md:w-5/6 mx-auto relative z-10">
+          {faqs.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => toggleItem(index)}
+              className="
+              p-6 rounded-2xl backdrop-blur-xl bg-white/5 
+              border border-white/10 transition-all duration-300
+              shadow-[0_0_20px_rgba(0,255,255,0.1)]
+              hover:border-[var(--color5)]
+              hover:shadow-[0_0_30px_var(--color5)]
+              cursor-pointer relative overflow-hidden
+            "
+            >
+              {/* Scan Lines */}
+              <div className="absolute inset-0 opacity-30 pointer-events-none">
+                {[...Array(4)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute left-0 w-full h-[2px]
+                    bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+                    animate-cardScan"
+                    style={{
+                      top: `${40 + i * 45}px`,
+                      animationDelay: `${i * 0.25}s`,
+                    }}
+                  ></div>
+                ))}
+              </div>
+
+              {/* Question Row */}
+              <div className="flex justify-between items-center relative z-10">
+                <h3 className="text-lg md:text-xl font-semibold text-[var(--color5)]">
+                  {item.q}
+                </h3>
+
+                <span className="text-[var(--color5)] text-2xl font-bold transition-all">
+                  {openIndex === index ? "−" : "+"}
+                </span>
+              </div>
+
+              {/* Answer */}
+              <div
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
+                  openIndex === index
+                    ? "max-h-96 mt-4 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <p className="leading-relaxed">{item.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="mt-10 flex justify-center">
+          <ButtonFill
+            text="Start Your Project Today"
+            onClick={() => setIsPopupOpen(true)}
+          />
+        </div>
+
+        {/* Animation */}
+        <style>
+          {`
+          @keyframes cardScan {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+          }
+          .animate-cardScan {
+            animation: cardScan 5s linear infinite;
+          }
+        `}
+        </style>
+      </section>
+
+      <OurProcess />
+
+      <WhyBigwig />
       {/* Services Table Section */}
-      <section className="bg-white py-12">
-        <div className="w-11/12 md:w-5/6 mx-auto space-y-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--primary-color)] text-center">
+      <section className="py-20 relative overflow-hidden">
+        {/* Matrix glow background */}
+        <div className="absolute inset-0 opacity-[0.20] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>
+
+        <div className="w-11/12 md:w-5/6 mx-auto space-y-14 relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color5)] text-center tracking-wider ">
             Our Other Services
           </h2>
 
-          <div className="overflow-x-auto rounded-xl shadow-lg">
-            <table className="w-full table-auto border border-gray-300 border-collapse text-center">
+          {/* TABLE WRAPPER */}
+          <div
+            className="
+        rounded-2xl 
+        overflow-hidden 
+        backdrop-blur-xl bg-white/5 
+        border border-white/10 
+        shadow-[0_0_30px_rgba(0,255,255,0.15)] 
+        relative
+      "
+          >
+            {/* Scan Line */}
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent animate-scan"></div>
+
+            <table className="min-w-full text-sm text-gray-200 relative z-10">
               <tbody>
-                <tr className="">
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600  hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/search-engine-optimization">
-                      Search Engine Optimization
-                    </a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600  hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/social-media-marketing">
-                      Social Media Marketing
-                    </a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600  hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/performance-marketing">
-                      Performance Marketing
-                    </a>
-                  </td>
-                </tr>
+                {[
+                  [
+                    "Search Engine Optimization",
+                    "Social Media Marketing",
+                    "Performance Marketing",
+                  ],
+                  [
+                    "Content Marketing",
+                    "Website Designing & Development",
+                    "Email Marketing",
+                  ],
+                  [
+                    "Social Media Optimization",
+                    "Graphic Designing & Video Editing",
+                    "Influencer Marketing",
+                  ],
+                  ["Online Reputation Management", "", "Affiliate Marketing"],
+                ].map((row, rowIndex) => (
+                  <tr key={rowIndex} className="divide-x divide-white/10">
+                    {row.map((cell, colIndex) => (
+                      <td
+                        key={colIndex}
+                        className="
+                    h-20 
+                    border-b border-white/10 
+                    relative group overflow-hidden
+                  "
+                      >
+                        {cell && (
+                          <a
+                            href={`/services/${cell
+                              .toLowerCase()
+                              .replace(/ /g, "-")
+                              .replace(/\&/g, "and")}`}
+                            target="_blank"
+                            className="
+                        flex items-center justify-center 
+                        w-full h-full px-4 text-center 
+                        font-semibold
+                        text-gray-200
+                        transition-all duration-300
+                        hover:text-[var(--color5)]
+                      "
+                          >
+                            {/* Neon card effect */}
+                            <span
+                              className="
+                          absolute inset-0 
+                          rounded-xl 
+                          border border-transparent
+                          group-hover:border-[var(--color5)]
+                          group-hover:shadow-[0_0_20px_var(--color5)]
+                          transition-all duration-300
+                        "
+                            ></span>
 
-                <tr>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/content-marketing">Content Marketing</a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/website-design-development">
-                      Website Designing & Development
-                    </a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/email-marketing">Email Marketing</a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/social-media-optimization">
-                      Social Media Optimization
-                    </a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/graphic-designing">Graphic Designing</a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/ai-cgi-marketing">
-                      AI and CGI Marketing
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/landing-page-optimization">
-                      Landing Page Optimization
-                    </a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/video-shoot">Video Shoot</a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/public-relations">Public Relations</a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/influencer-marketing">
-                      Influencer Marketing
-                    </a>
-                  </td>
-                  <td className="px-6 py-4 border border-gray-300"></td>
-                  <td className="px-6 py-4 border border-gray-300 text-blue-600 hover:underline cursor-pointer hover:bg-indigo-50 transition">
-                    <a href="/services/online-reputation-management">
-                      Online Reputation Management
-                    </a>
-                  </td>
-                </tr>
+                            <span className="relative z-10">{cell}</span>
+                          </a>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
+
+        {/* Animations */}
+        <style>{`
+    @keyframes scan {
+      0% { transform: translateX(-100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+    .animate-scan {
+      animation: scan 4s linear infinite;
+    }
+  `}</style>
       </section>
-      <OurProcess />
-
-      <WhyBigwig />
-
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+      <GetInTouch />
       <Footer />
     </div>
   );

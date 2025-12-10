@@ -1,125 +1,221 @@
 "use client";
+
 import { useEffect } from "react";
-import "./Clients.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Image from "next/image";
+import Link from "next/link";
 import Nav from "../../../components/Nav";
 import Footer from "../../../components/Footer";
-import Image from "next/image";
+import GetInTouch from "../../../components/GetInTouch";
 
-const images = [
-  "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1762152048/logo_npwakv.webp",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493003/Granth_logo_6_kyrd5s.png",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493217/logo-01-C0F3dP5k_y93g4q.svg",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759494155/WhatsApp_Image_2025-10-03_at_17.51.27_4308166d_d3ll1m.jpg",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759494916/Gear_Tek_Logo-removebg-preview_j5p3wc.png",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759495461/Pearls_light_logo_m623gc.png",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493348/Screenshot_2025-10-03_173836_egmouo.png",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493451/Screenshot_2025-10-03_174033_n9gbp7.png",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759494780/Screenshot_2025-10-03_180244_utdinx.png",
-  "https://www.stellarbinge.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.3fb31e53.png&w=384&q=75&dpl=dpl_55KVEMQgqTHhJzShfN5EefE2pTXK",
-  "https://www.integratedlognet.com/assets/ILN%20Logo%20v2-E6ypUoII.png",
-  "https://riverfront.vercel.app/assets/Logo%20for%20riverfront%20-CAIVvev0.png",
-  "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112478/DBN_logo_x7wjzx.webp",
-  "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112443/logo_1_tnncgd.webp",
-  "https://www.homesandlandgoa.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.b166d281.png&w=640&q=75&dpl=dpl_CAHgoDqvf7txY4ReKMyGa6ZD9Ti4",
+const clients = [
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1762152048/logo_npwakv.webp",
+    link: "https://khalsapropertydealers.com/",
+  },
+  {
+    img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493003/Granth_logo_6_kyrd5s.png",
+    link: "https://granthdreamhomes.co.in/",
+  },
+  {
+    img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493217/logo-01-C0F3dP5k_y93g4q.svg",
+    link: "https://www.closefriendstraders.info/",
+  },
+
+  {
+    img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759495461/Pearls_light_logo_m623gc.png",
+    link: "https://pearlsindia.co.in",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826680/bdfx_zvjbi6.gif",
+    link: "https://www.billiondollarfx.com",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826620/logo_mondus_new_4_-TMoOETTP_drjizb.gif",
+    link: "https://mondus.vercel.app",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1765346115/logo_2_qiiitb.webp",
+    link: "https://www.stellarbinge.com",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826183/iln_logo_1_-By-pImIc_lgxxky.png",
+    link: "https://www.integratedlognet.com/",
+  },
+  {
+    img: "https://riverfront.vercel.app/assets/Logo%20for%20riverfront%20-CAIVvev0.png",
+    link: "https://riverfront.vercel.app/",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112478/DBN_logo_x7wjzx.webp",
+    link: "https://www.destinybynumberrs.com/",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112443/logo_1_tnncgd.webp",
+    link: "https://www.ethicalinfrastructures.com/",
+  },
+  {
+    img: "https://www.homesandlandgoa.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.b166d281.png&w=640&q=75&dpl=dpl_CAHgoDqvf7txY4ReKMyGa6ZD9Ti4",
+    link: "https://homesandlandgoa.com",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826338/logo_fz6mbq.png",
+  },
+  {
+    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826497/Gear_Tek_Logo-removebg-preview_j5p3wc-removebg-preview_x7urfm.png",
+  },
 ];
 
-const stylePairs = [
-  {
-    bg: "bg-red-100",
-    border: "border-red-500",
-    hoverBg: "group-hover:bg-red-100",
-    hoverBorder: "group-hover:border-red-500",
-  },
-  {
-    bg: "bg-green-100",
-    border: "border-green-500",
-    hoverBg: "group-hover:bg-green-100",
-    hoverBorder: "group-hover:border-green-500",
-  },
-  {
-    bg: "bg-blue-100",
-    border: "border-blue-500",
-    hoverBg: "group-hover:bg-blue-100",
-    hoverBorder: "group-hover:border-blue-500",
-  },
-  {
-    bg: "bg-yellow-100",
-    border: "border-yellow-500",
-    hoverBg: "group-hover:bg-yellow-100",
-    hoverBorder: "group-hover:border-yellow-500",
-  },
-  {
-    bg: "bg-purple-100",
-    border: "border-purple-500",
-    hoverBg: "group-hover:bg-purple-100",
-    hoverBorder: "group-hover:border-purple-500",
-  },
-  {
-    bg: "bg-pink-100",
-    border: "border-pink-500",
-    hoverBg: "group-hover:bg-pink-100",
-    hoverBorder: "group-hover:border-pink-500",
-  },
-];
-
-function Clients() {
+export default function FluidRippleClients() {
   useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      once: false,
-      mirror: true,
-      easing: "ease-in-out",
-    });
-
-    AOS.refresh(); // Ensures animations re-initialize correctly
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   return (
-    <div>
+    <div className="bg-[var(--color1)] text-white">
       <Nav />
 
-      <title>Our Clients</title>
+      <title>Our Clients — Fluid Ripple UI</title>
       <meta
         name="description"
-        content="Discover the brands and businesses we’ve proudly partnered with for digital transformation."
+        content="A premium fluid ripple water effect showcasing our clients."
       />
-      <link rel="canonical" href="https://www.bigwigmediadigital.com/clients" />
 
-      <div className="px-4 py-8 max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
-          {images.map((img, index) => {
-            const { hoverBg, hoverBorder } =
-              stylePairs[index % stylePairs.length];
-            return (
-              <div
-                className="group aspect-square w-full"
-                data-aos="zoom-in"
-                key={index}
-              >
-                <div
-                  className={`bg-gray-200 border-gray-300 border-8 rounded-sm 
-          flex items-center justify-center w-full h-full 
-          transition duration-300 
-          ${hoverBg} ${hoverBorder}`}
-                >
+      {/* FLUID RIPPLE LIQUID UI STYLES */}
+      <style jsx>{`
+        .ripple-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 9999px;
+          background: radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.03)
+          );
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.35),
+            inset 0 12px 18px rgba(255, 255, 255, 0.12),
+            inset 0 -12px 25px rgba(0, 0, 0, 0.28);
+          overflow: hidden;
+          transition:
+            transform 0.4s ease,
+            box-shadow 0.4s ease;
+        }
+
+        .ripple-container:hover {
+          transform: scale(1.1);
+          box-shadow:
+            0 25px 55px rgba(0, 0, 0, 0.55),
+            inset 0 18px 28px rgba(255, 255, 255, 0.18),
+            inset 0 -15px 25px rgba(0, 0, 0, 0.32);
+        }
+
+        /* RIPPLE WAVES */
+        .ripple-container::before,
+        .ripple-container::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        /* First ripple */
+        .ripple-container::before {
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          animation: ripple 4s infinite ease-out;
+        }
+
+        /* Second ripple */
+        .ripple-container::after {
+          border: 2px solid rgba(255, 255, 255, 0.05);
+          animation: ripple 6s infinite ease-out;
+        }
+
+        @keyframes ripple {
+          0% {
+            transform: scale(0.8);
+            opacity: 0.5;
+          }
+          70% {
+            transform: scale(1.5);
+            opacity: 0;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+
+        /* LOGO INSIDE RIPPLE */
+        .logo {
+          position: relative;
+          z-index: 2;
+          width: 60%;
+          height: 60%;
+          transition:
+            transform 0.35s ease,
+            filter 0.35s ease;
+          filter: grayscale(100%) brightness(0.95);
+        }
+
+        .ripple-container:hover .logo {
+          transform: scale(1.15);
+          filter: grayscale(0%) brightness(1.1);
+        }
+
+        /* floating effect */
+        .float {
+          animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        .cell {
+          aspect-ratio: 1 / 1;
+        }
+      `}</style>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        <h2 className="text-center text-3xl md:text-4xl font-bold text-[var(--color5)] mb-10">
+          OUR CLIENTS
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+          {clients.map((src, index) => (
+            <div className="cell float" key={index} data-aos="zoom-in">
+              <Link href="#">
+                <div className="ripple-container flex items-center justify-center grayscale hover:grayscale-0">
                   <Image
-                    src={img}
-                    alt={`Client ${index + 1}`}
-                    className="w-4/5 object-contain grayscale group-hover:grayscale-0 transition duration-300"
-                    width={200}
-                    height={200}
+                    src={src.img}
+                    alt="Bigwig Media Digital"
+                    className="logo object-contain"
+                    width={160}
+                    height={160}
+                    draggable={false}
                   />
                 </div>
-              </div>
-            );
-          })}
+              </Link>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
+
+      <GetInTouch />
       <Footer />
     </div>
   );
 }
-
-export default Clients;
