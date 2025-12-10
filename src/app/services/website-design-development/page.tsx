@@ -261,7 +261,7 @@ function Website() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left Text Block */}
             <div className="space-y-6 text-white leading-relaxed">
-              <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
+              <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
                 Give your brand a powerful online presence with personalized web
                 design solutions
               </h2>
@@ -442,7 +442,7 @@ function Website() {
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* ================= HEADINGS ================= */}
         <div className="mb-12">
-          <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
             Website Designing Company in Delhi
           </h2>
 
@@ -594,7 +594,7 @@ function Website() {
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* ================= HEADINGS ================= */}
         <div className="mb-12">
-          <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
             Website Design Company Near Me
           </h2>
 
@@ -748,7 +748,7 @@ function Website() {
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* =================== HEADINGS =================== */}
         <div className="mb-12">
-          <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
             Website Designer Near Me
           </h2>
 
@@ -775,12 +775,8 @@ function Website() {
                 className="
             absolute left-0 w-full h-[2px]
             bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-            animate-sectionScan
+            
           "
-                style={{
-                  top: `${50 + i * 60}px`,
-                  animationDelay: `${i * 0.25}s`,
-                }}
               ></div>
             ))}
           </div>
@@ -801,10 +797,9 @@ function Website() {
               </p>
 
               <p>
-                As a leading website design agency in South Delhi, we ensure
-                your website is responsive, visually appealing, easy to
-                navigate, mobile-friendly, and perfectly aligned with your
-                brand.
+                As a leading website design agency in Delhi, we ensure your
+                website is responsive, visually appealing, easy to navigate,
+                mobile-friendly, and perfectly aligned with your brand.
               </p>
 
               <p>
@@ -912,12 +907,8 @@ function Website() {
                 className="
             absolute left-0 w-full h-[2px]
             bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-            animate-scanBars
+          
           "
-                style={{
-                  top: `${60 + i * 60}px`,
-                  animationDelay: `${i * 0.3}s`,
-                }}
               ></div>
             ))}
           </div>
@@ -954,7 +945,7 @@ function Website() {
               </p>
 
               <p>
-                As a leading website designing agency in South Delhi, we support
+                As a leading website designing agency in Delhi, we support
                 businesses across industries—eCommerce, manufacturing, services,
                 education, and more. If you want to refresh your existing
                 website, our redesign experts can transform it into a modern,
@@ -980,12 +971,8 @@ function Website() {
                     className="
                 absolute left-0 w-full h-[2px]
                 bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                animate-scanBars
+              
               "
-                    style={{
-                      top: `${40 + i * 50}px`,
-                      animationDelay: `${i * 0.3}s`,
-                    }}
                   ></div>
                 ))}
               </div>
@@ -1211,11 +1198,7 @@ function Website() {
                     key={i}
                     className="absolute left-0 w-full h-[2px]
                     bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                    animate-cardScan"
-                    style={{
-                      top: `${40 + i * 45}px`,
-                      animationDelay: `${i * 0.25}s`,
-                    }}
+                    "
                   ></div>
                 ))}
               </div>
