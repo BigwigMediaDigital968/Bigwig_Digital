@@ -205,11 +205,25 @@ const PopupFormC: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
         <div className="sparkles"></div>
 
         {/* LIGHTS BORDER */}
+        {/* FULL SCREEN LIGHTS */}
         <div className="christmas-lights">
-          {Array.from({ length: 25 }).map((_, i) => (
-            <div key={i} className="bulb"></div>
+          {Array.from({ length: 80 }).map((_, i) => (
+            <div
+              key={i}
+              className="bulb"
+              style={{
+                animationDuration: `${1 + (i % 3) * 0.4}s`,
+                backgroundColor: ["#ff4f4f", "#00e676", "#ffd700", "#29b6f6"][
+                  i % 4
+                ],
+                boxShadow: `0 0 12px ${
+                  ["#ff4f4f", "#00e676", "#ffd700", "#29b6f6"][i % 4]
+                }`,
+              }}
+            ></div>
           ))}
         </div>
+
         {/* CHRISTMAS ICON LIGHTS */}
         <div className="christmas-lights flex items-center justify-between w-full px-4 py-1">
           {Array.from({ length: 20 }).map((_, i) => {
@@ -231,6 +245,12 @@ const PopupFormC: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
             );
           })}
         </div>
+
+        {/* Santa Flying */}
+        <img src="/santa.webp" alt="Santa" className="santa" />
+
+        {/* Christmas Tree */}
+        <img src="/tree.png" alt="Christmas Tree" className="tree" />
 
         {/* CLOSE BUTTON */}
         <div className="w-full flex justify-center mb-4">

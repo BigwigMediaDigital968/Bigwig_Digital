@@ -289,13 +289,62 @@ body {
 }
 
 .christmas-lights {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
   justify-content: space-between;
   pointer-events: none;
   z-index: 50;
+  padding: 20px;
+}
+.bulb {
+  width: 12px;
+  height: 12px;
+  background-color: #ff4f4f;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff4f4f;
+  animation: glow 1.4s infinite alternate;
+}
+
+.santa {
+  position: fixed;
+  bottom: 40px;
+  left: -100px;
+  width: 180px;
+  animation: santaRide 12s linear infinite;
+  z-index: 60;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+@keyframes santaRide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(94vw));
+  }
+}
+
+.tree {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+  z-index: 60;
+  pointer-events: none;
+  animation: treeGlow 2s infinite alternate;
+}
+
+@keyframes treeGlow {
+  from {
+    filter: drop-shadow(0 0 5px #0f0);
+  }
+  to {
+    filter: drop-shadow(0 0 20px #0f0);
+  }
 }

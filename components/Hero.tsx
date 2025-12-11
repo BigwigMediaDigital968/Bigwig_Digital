@@ -28,14 +28,7 @@ const slides = [
     ctaText: "Get Your Growth Plan Now",
     action: "popup2",
   },
-  {
-    image: slide3,
-    title: "This Christmas, Give Your Brand the Gift of Massive Growth",
-    subtitle:
-      "Unwrap exclusive Christmas benefits across SEO, Social Media, and Performance Marketing - crafted to boost visibility, drive conversions, and launch your brand into 2026 with unstoppable momentum.",
-    ctaText: "Claim Your Christmas Growth Plan",
-    action: "popup2",
-  },
+
   {
     image: slide4,
     title: "We Make Your Brand Impossible to Ignore",
@@ -43,6 +36,14 @@ const slides = [
       "In a world of endless scroll, we create the moments that make people stop - and take action. Bigwig Media Digital blends bold creativity with performance science to turn attention into real business outcomes.",
     ctaText: "Get a Winning Strategy",
     action: "popup1",
+  },
+  {
+    image: slide3,
+    title: "This Christmas, Give Your Brand the Gift of Massive Growth",
+    subtitle:
+      "Unwrap exclusive Christmas benefits across SEO, Social Media, and Performance Marketing - crafted to boost visibility, drive conversions, and launch your brand into 2026 with unstoppable momentum.",
+    ctaText: "Claim Your Christmas Growth Plan",
+    action: "popup2",
   },
 ];
 
