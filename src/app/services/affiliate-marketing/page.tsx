@@ -737,6 +737,403 @@ function AffiliateMarketing() {
         </style>
       </section>
 
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            Key Features of Our Affiliate Marketing Services in Delhi
+          </h2>
+        </div>
+
+        {(() => {
+          const data = [
+            {
+              title: "Data & Insights for Smarter Decisions",
+              points: [
+                "We provide data-backed insights on affiliate performance, customer behavior, sales trends, and traffic quality.",
+              ],
+            },
+            {
+              title: "Flexible Strategies Tailored to Your Business",
+              points: [
+                "Whether you want to scale aggressively or grow steadily, our affiliate marketing services in Delhi can be fully customized.",
+              ],
+            },
+            {
+              title: "Full Transparency & Real-Time Reporting",
+              points: [
+                "You get complete visibility into clicks, conversions, partner performance, and payouts.",
+              ],
+            },
+          ];
+
+          return (
+            <>
+              {/* MOBILE SLIDER */}
+              <div className="block lg:hidden">
+                <Slider {...settings}>
+                  {data.map((item, index) => (
+                    <div key={index} className="px-2">
+                      <div
+                        className="
+                    relative flex flex-col p-6 rounded-2xl
+                    backdrop-blur-xl bg-white/5 
+                    border border-white/10
+                    shadow-[0_0_25px_rgba(0,255,255,0.1)]
+                    hover:shadow-[0_0_40px_var(--color5)]
+                    space-y-4 overflow-hidden group
+                    transition-all duration-500
+                    hover:-translate-y-2
+                  "
+                      >
+                        {/* Shine */}
+                        <div
+                          className="
+                      absolute -top-full left-0 w-full h-full
+                      bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                      rotate-45 group-hover:animate-shineLine
+                    "
+                        />
+
+                        {/* Title */}
+                        <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                          {item.title}
+                        </h3>
+
+                        {/* Description */}
+                        <ul className="space-y-2 text-gray-200 relative z-10">
+                          {item.points.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+
+                        {/* Glow Border */}
+                        <div
+                          className="
+                      absolute inset-0 rounded-2xl border border-transparent
+                      group-hover:border-[var(--color5)] transition-all duration-500
+                    "
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+
+              {/* DESKTOP GRID */}
+              <div
+                className="
+            hidden lg:grid 
+            grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+            gap-10 auto-rows-fr
+          "
+              >
+                {data.map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+                group relative overflow-hidden rounded-2xl 
+                transition-transform duration-500 
+                hover:-translate-y-3 h-full
+              "
+                  >
+                    <div
+                      className="
+                  relative z-10 p-6 rounded-2xl 
+                  backdrop-blur-xl bg-white/5
+                  border border-white/10
+                  shadow-[0_0_25px_rgba(0,255,255,0.15)]
+                  hover:shadow-[0_0_45px_var(--color5)]
+                  flex flex-col h-full space-y-4
+                  transition-all duration-500
+                "
+                    >
+                      {/* Shine */}
+                      <div
+                        className="
+                    absolute -top-full left-0 w-full h-full
+                    bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+                    rotate-45 group-hover:animate-shineLine
+                  "
+                      />
+
+                      {/* Title */}
+                      <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                        {item.title}
+                      </h3>
+
+                      {/* Description */}
+                      <ul className="space-y-2 text-gray-200 relative z-10">
+                        {item.points.map((p, i) => (
+                          <li key={i}>{p}</li>
+                        ))}
+                      </ul>
+
+                      {/* Glow Border */}
+                      <div
+                        className="
+                    absolute inset-0 rounded-2xl border border-transparent 
+                    group-hover:border-[var(--color5)] transition-all duration-500
+                  "
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          );
+        })()}
+
+        {/* Animation */}
+        <style>{`
+    @keyframes shineLine {
+      0% { transform: translateY(-150%); }
+      100% { transform: translateY(150%); }
+    }
+    .animate-shineLine {
+      animation: shineLine 1.5s ease-in-out forwards;
+    }
+  `}</style>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        {/* Title */}
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[var(--color5)] mb-4">
+          Industries We Serve Across Delhi & NCR
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-center text-gray-300 mb-10">
+          We provide affiliate marketing in Delhi for:
+        </p>
+
+        {/* Flex Wrap Boxes */}
+        <div className="flex flex-wrap justify-center gap-5">
+          {[
+            "E-commerce & Retail",
+            "Education & EdTech",
+            "Healthcare & Wellness",
+            "Finance & Insurance",
+            "Real Estate",
+            "Automobile",
+            "SaaS & Tech Companies",
+            "Travel & Hospitality",
+            "Lifestyle & Fashion",
+            "B2B Services",
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="
+          px-6 py-3 rounded-full 
+          bg-white/5 backdrop-blur-xl
+          border border-[var(--color5)]/40
+          text-gray-200 text-sm md:text-base
+          shadow-[0_0_20px_rgba(0,255,255,0.08)]
+          hover:shadow-[0_0_30px_var(--color5)]
+          hover:bg-[var(--color5)]/15
+          hover:border-[var(--color5)]
+          transition-all duration-300
+          flex items-center gap-2
+        "
+            >
+              <span className="text-[var(--color4)] text-lg">✔</span>
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            Why We Are the Most Preferred Affiliate Marketing Agency in Delhi
+          </h2>
+        </div>
+
+        {(() => {
+          const data = [
+            {
+              title: "Proven Track Record",
+              points: [
+                "We have helped brands across India achieve high-performance affiliate results with consistent ROI improvements.",
+              ],
+            },
+            {
+              title: "Expert Affiliate Managers",
+              points: [
+                "Our team deeply understands affiliate strategies, tools, and partner psychology - making us a top affiliate marketing company in Delhi.",
+              ],
+            },
+            {
+              title: "Strong Communication & Collaboration",
+              points: [
+                "We work closely with your internal team and affiliates to ensure marketing goals are met with precision.",
+              ],
+            },
+          ];
+
+          return (
+            <>
+              {/* MOBILE SLIDER */}
+              <div className="block lg:hidden">
+                <Slider {...settings}>
+                  {data.map((item, index) => (
+                    <div key={index} className="px-2">
+                      <div
+                        className="
+                    relative flex flex-col p-6 rounded-2xl
+                    backdrop-blur-xl bg-white/5 
+                    border border-white/10
+                    shadow-[0_0_25px_rgba(0,255,255,0.1)]
+                    hover:shadow-[0_0_40px_var(--color5)]
+                    space-y-5 overflow-hidden group
+                    transition-all duration-500
+                    hover:-translate-y-2
+                  "
+                      >
+                        {/* Shine */}
+                        <div
+                          className="
+                      absolute -top-full left-0 w-full h-full
+                      bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                      rotate-45 group-hover:animate-shineLine
+                    "
+                        />
+
+                        <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                          {item.title}
+                        </h3>
+
+                        <ul className="space-y-2 text-gray-200 relative z-10">
+                          {item.points.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+
+                        <div
+                          className="
+                      absolute inset-0 rounded-2xl border border-transparent
+                      group-hover:border-[var(--color5)] transition-all duration-500
+                    "
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+
+              {/* DESKTOP GRID */}
+              <div
+                className="
+            hidden lg:grid 
+            grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+            gap-10 auto-rows-fr
+          "
+              >
+                {data.map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+                group relative overflow-hidden rounded-2xl 
+                transition-transform duration-500 
+                hover:-translate-y-3 h-full
+              "
+                  >
+                    <div
+                      className="
+                  relative z-10 p-6 rounded-2xl 
+                  backdrop-blur-xl bg-white/5
+                  border border-white/10
+                  shadow-[0_0_25px_rgba(0,255,255,0.15)]
+                  hover:shadow-[0_0_45px_var(--color5)]
+                  flex flex-col h-full space-y-5
+                  transition-all duration-500
+                "
+                    >
+                      {/* Shine */}
+                      <div
+                        className="
+                    absolute -top-full left-0 w-full h-full
+                    bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+                    rotate-45 group-hover:animate-shineLine
+                  "
+                      />
+
+                      <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                        {item.title}
+                      </h3>
+
+                      <ul className="space-y-2 text-gray-200 relative z-10">
+                        {item.points.map((p, i) => (
+                          <li key={i}>{p}</li>
+                        ))}
+                      </ul>
+
+                      <div
+                        className="
+                    absolute inset-0 rounded-2xl border border-transparent 
+                    group-hover:border-[var(--color5)] transition-all duration-500
+                  "
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          );
+        })()}
+
+        {/* Animation */}
+        <style>{`
+    @keyframes shineLine {
+      0% { transform: translateY(-150%); }
+      100% { transform: translateY(150%); }
+    }
+    .animate-shineLine {
+      animation: shineLine 1.5s ease-in-out forwards;
+    }
+  `}</style>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        {/* CTA Box */}
+        <div
+          className="
+      bg-white/5 backdrop-blur-xl border border-[var(--color5)]/40 
+      rounded-3xl p-8 md:p-10 mx-auto
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_45px_rgba(0,255,255,0.25)]
+      transition-all duration-300
+      flex flex-col items-center gap-5
+    "
+        >
+          {/* Title */}
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-[var(--color5)] mb-4">
+            Ready to Grow with Performance-Driven Affiliate Marketing in Delhi?
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-center text-white/70 max-w-4xl mx-auto">
+            If you're ready to scale your sales, increase your visibility, and
+            achieve predictable growth, our affiliate marketing services in
+            Delhi are designed to deliver results.
+          </p>
+
+          <p className="text-white/70 text-center max-w-4xl">
+            Get in touch today for a customized strategy tailored to your
+            business goals. Our experts at the leading affiliate marketing
+            agency in Delhi are here to help you achieve measurable success.
+          </p>
+
+          {/* CTA Button - Trigger Form */}
+          <ButtonFill
+            onClick={() => setIsPopupOpen(true)} // your form trigger
+            text="Get Started Today"
+          />
+        </div>
+      </section>
+
       <section className="py-12 relative overflow-hidden">
         {/* Heading */}
         <div className="mb-12 text-center">
@@ -767,11 +1164,7 @@ function AffiliateMarketing() {
                     key={i}
                     className="absolute left-0 w-full h-[2px]
                     bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                    animate-cardScan"
-                    style={{
-                      top: `${40 + i * 45}px`,
-                      animationDelay: `${i * 0.25}s`,
-                    }}
+                   "
                   ></div>
                 ))}
               </div>

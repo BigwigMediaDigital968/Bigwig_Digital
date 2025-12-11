@@ -230,10 +230,10 @@ function Website() {
         <div className="relative z-10 w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6 md:pr-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white leading-snug">
+            <h1 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] leading-snug">
               Take your digital experience to the next level with our fresh,
               innovative Web Design solutions.
-            </h2>
+            </h1>
 
             <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify">
               We’re a leading website design company in Delhi NCR, creating
@@ -266,9 +266,9 @@ function Website() {
                 design solutions
               </h2>
               {/* Heading */}
-              <h1 className=" text-2xl md:text-3xl font-semibold  mb-2 ">
+              <h2 className=" text-2xl md:text-3xl font-semibold  mb-2 ">
                 Best Website Designing Company in Delhi NCR
-              </h1>
+              </h2>
               <p className="text-justify">
                 As a top web design company in Delhi, we know exactly what it
                 takes to create websites that attract attention and bring in

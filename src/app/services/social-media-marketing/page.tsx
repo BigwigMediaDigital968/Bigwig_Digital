@@ -170,7 +170,7 @@ function SocialMediaMarketing() {
         <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6 md:pr-8">
-            <h1 className="text-3xl md:text-4xl font-semibold text-white leading-snug">
+            <h1 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] leading-snug">
               Best SMM Services in Delhi to Grow Your Brand Online
             </h1>
 

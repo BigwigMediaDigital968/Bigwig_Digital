@@ -219,7 +219,7 @@ function Seo() {
         <div className="relative z-10 w-11/12 md:w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6 md:pr-8">
-            <h1 className="text-3xl md:text-4xl font-semibold text-white leading-snug">
+            <h1 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] leading-snug">
               SEO Services in Delhi NCR
             </h1>
 
@@ -249,7 +249,7 @@ function Seo() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left content */}
             <div className="space-y-6">
-              <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
                 SEO Company in Delhi Focused on Visibility, Traffic &
                 Conversions
               </h2>
@@ -300,10 +300,10 @@ function Seo() {
         </div>
       </section>
 
-      <section className="py-16 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* Heading */}
         <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
             Expert SEO Services in Delhi to Maximise Your Online Success
           </h2>
 
@@ -459,7 +459,7 @@ function Seo() {
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* Heading */}
         <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
             Why Your Business Should Invest in SEO Services in Delhi
           </h2>
 
@@ -478,47 +478,52 @@ function Seo() {
               <div key={index} className="px-2">
                 <div
                   className="
-              flex flex-col 
-              p-6 rounded-2xl 
-              backdrop-blur-xl bg-white/5
-              border border-transparent
-              hover:border-[var(--color5)]
-              shadow-[0_0_25px_rgba(0,255,255,0.15)]
-              hover:shadow-[0_0_35px_var(--color5)]
-              space-y-5 relative overflow-hidden group
-              transition-all duration-300
+              relative flex flex-col p-6 rounded-2xl
+              backdrop-blur-xl bg-white/5 
+              border border-white/10
+              shadow-[0_0_25px_rgba(0,255,255,0.1)]
+              hover:shadow-[0_0_40px_var(--color5)]
+              space-y-5 overflow-hidden group
+              transition-all duration-500
+              hover:-translate-y-2
             "
                 >
-                  {/* Scan Lines */}
-                  <div className="absolute inset-0 opacity-40 pointer-events-none">
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="
-                    absolute left-0 w-full h-[2px]
-                    bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                    animate-cardScan
-                  "
-                        style={{
-                          top: `${60 + i * 55}px`,
-                          animationDelay: `${i * 0.2}s`,
-                        }}
-                      ></div>
-                    ))}
-                  </div>
+                  {/* Shine Gradient Overlay */}
+                  <div
+                    className="
+                absolute inset-0 bg-gradient-to-br 
+                from-transparent via-white/5 to-transparent
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-500
+              "
+                  />
+
+                  {/* Diagonal Shine Line */}
+                  <div
+                    className="
+                absolute -top-full left-0 w-full h-full
+                bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                rotate-45 group-hover:animate-shineLine
+              "
+                  />
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide">
+                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                     {item.title}
                   </h3>
 
                   {/* Content */}
-                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify">
+                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
                     {item.content}
                   </p>
 
                   {/* Glow Border */}
-                  <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
+                  <div
+                    className="
+                absolute inset-0 rounded-2xl border border-transparent
+                group-hover:border-[var(--color5)] transition-all duration-500
+              "
+                  />
                 </div>
               </div>
             ))}
@@ -532,66 +537,60 @@ function Seo() {
               key={index}
               className="
           group relative overflow-hidden rounded-2xl 
-          transition-transform duration-300 
-          hover:-translate-y-2 h-full
+          transition-transform duration-500 
+          hover:-translate-y-3 h-full
         "
             >
               <div
                 className="
             relative z-10 p-6 rounded-2xl 
             backdrop-blur-xl bg-white/5
-            border border-transparent
-            hover:border-[var(--color5)]
+            border border-white/10
             shadow-[0_0_25px_rgba(0,255,255,0.15)]
-            hover:shadow-[0_0_35px_var(--color5)]
-            flex flex-col  
-            h-full space-y-5
-            transition-all duration-300
+            hover:shadow-[0_0_45px_var(--color5)]
+            flex flex-col h-full space-y-5
+            transition-all duration-500
           "
               >
-                {/* Scan Lines */}
-                <div className="absolute inset-0 pointer-events-none opacity-40">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="
-                  absolute left-0 w-full h-[2px]
-                  bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                  animate-cardScan
-                "
-                      style={{
-                        top: `${60 + i * 50}px`,
-                        animationDelay: `${i * 0.25}s`,
-                      }}
-                    ></div>
-                  ))}
-                </div>
+                {/* Diagonal Shine */}
+                <div
+                  className="
+              absolute -top-full left-0 w-full h-full
+              bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+              rotate-45 group-hover:animate-shineLine
+            "
+                />
 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide">
+                <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify">
+                <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
                   {item.content}
                 </p>
 
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
+                {/* Glow Border */}
+                <div
+                  className="
+              absolute inset-0 rounded-2xl border border-transparent 
+              group-hover:border-[var(--color5)] transition-all duration-500
+            "
+                />
               </div>
             </div>
           ))}
         </div>
 
-        {/* ANIMATION */}
+        {/* Shine Animation */}
         <style>{`
-    @keyframes cardScan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
+    @keyframes shineLine {
+      0% { transform: translateY(-150%); }
+      100% { transform: translateY(150%); }
     }
-    .animate-cardScan {
-      animation: cardScan 4s linear infinite;
+    .animate-shineLine {
+      animation: shineLine 1.5s ease-in-out forwards;
     }
   `}</style>
 
@@ -607,7 +606,7 @@ function Seo() {
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* Heading */}
         <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
             The Best SEO Services in Delhi - and Beyond!
           </h2>
 
@@ -620,7 +619,7 @@ function Seo() {
           </p>
         </div>
 
-        <h3 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">
+        <h3 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6">
           What Makes Us Truly Different as an SEO Services Provider in Delhi?
         </h3>
 
@@ -631,47 +630,52 @@ function Seo() {
               <div key={index} className="px-2">
                 <div
                   className="
-              flex flex-col  
-              p-6 rounded-2xl 
-              backdrop-blur-xl bg-white/5
-              border border-transparent
-              hover:border-[var(--color5)]
-              shadow-[0_0_25px_rgba(0,255,255,0.15)]
-              hover:shadow-[0_0_35px_var(--color5)]
-              space-y-5 relative overflow-hidden group
-              transition-all duration-300
+              relative flex flex-col p-6 rounded-2xl
+              backdrop-blur-xl bg-white/5 
+              border border-white/10
+              shadow-[0_0_25px_rgba(0,255,255,0.1)]
+              hover:shadow-[0_0_40px_var(--color5)]
+              space-y-5 overflow-hidden group
+              transition-all duration-500
+              hover:-translate-y-2
             "
                 >
-                  {/* Scan Lines */}
-                  <div className="absolute inset-0 opacity-40 pointer-events-none">
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="
-                    absolute left-0 w-full h-[2px]
-                    bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                    animate-cardScan
-                  "
-                        style={{
-                          top: `${60 + i * 55}px`,
-                          animationDelay: `${i * 0.2}s`,
-                        }}
-                      ></div>
-                    ))}
-                  </div>
+                  {/* Shine Gradient Overlay */}
+                  <div
+                    className="
+                absolute inset-0 bg-gradient-to-br 
+                from-transparent via-white/5 to-transparent
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-500
+              "
+                  />
+
+                  {/* Diagonal Shine Line */}
+                  <div
+                    className="
+                absolute -top-full left-0 w-full h-full
+                bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                rotate-45 group-hover:animate-shineLine
+              "
+                  />
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide">
+                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                     {item.title}
                   </h3>
 
                   {/* Content */}
-                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify">
+                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
                     {item.content}
                   </p>
 
                   {/* Glow Border */}
-                  <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
+                  <div
+                    className="
+                absolute inset-0 rounded-2xl border border-transparent
+                group-hover:border-[var(--color5)] transition-all duration-500
+              "
+                  />
                 </div>
               </div>
             ))}
@@ -685,66 +689,60 @@ function Seo() {
               key={index}
               className="
           group relative overflow-hidden rounded-2xl 
-          transition-transform duration-300 
-          hover:-translate-y-2 h-full
+          transition-transform duration-500 
+          hover:-translate-y-3 h-full
         "
             >
               <div
                 className="
             relative z-10 p-6 rounded-2xl 
             backdrop-blur-xl bg-white/5
-            border border-transparent
-            hover:border-[var(--color5)]
+            border border-white/10
             shadow-[0_0_25px_rgba(0,255,255,0.15)]
-            hover:shadow-[0_0_35px_var(--color5)]
-            flex flex-col 
-            h-full space-y-5
-            transition-all duration-300
+            hover:shadow-[0_0_45px_var(--color5)]
+            flex flex-col h-full space-y-5
+            transition-all duration-500
           "
               >
-                {/* Scan Lines */}
-                <div className="absolute inset-0 pointer-events-none opacity-40">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="
-                  absolute left-0 w-full h-[2px]
-                  bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                  animate-cardScan
-                "
-                      style={{
-                        top: `${60 + i * 50}px`,
-                        animationDelay: `${i * 0.25}s`,
-                      }}
-                    ></div>
-                  ))}
-                </div>
+                {/* Diagonal Shine */}
+                <div
+                  className="
+              absolute -top-full left-0 w-full h-full
+              bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+              rotate-45 group-hover:animate-shineLine
+            "
+                />
 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide">
+                <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify">
+                <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
                   {item.content}
                 </p>
 
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
+                {/* Glow Border */}
+                <div
+                  className="
+              absolute inset-0 rounded-2xl border border-transparent 
+              group-hover:border-[var(--color5)] transition-all duration-500
+            "
+                />
               </div>
             </div>
           ))}
         </div>
 
-        {/* ANIMATION */}
+        {/* Shine Animation */}
         <style>{`
-    @keyframes cardScan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
+    @keyframes shineLine {
+      0% { transform: translateY(-150%); }
+      100% { transform: translateY(150%); }
     }
-    .animate-cardScan {
-      animation: cardScan 4s linear infinite;
+    .animate-shineLine {
+      animation: shineLine 1.5s ease-in-out forwards;
     }
   `}</style>
 
@@ -757,50 +755,45 @@ function Seo() {
         </div>
       </section>
 
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* Heading */}
-        <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-6">
-          Choosing the Right SEO Consultant for Your Business in Delhi
-        </h2>
-
-        {/* Content Box */}
+      <section className="py-12 relative overflow-hidden">
+        {/* Outer Container */}
         <div
           className="
-      relative p-8 md:p-10 rounded-2xl 
-      backdrop-blur-xl bg-white/5 
-      border border-white/10 
-      shadow-[0_0_25px_rgba(0,255,255,0.15)]
-      overflow-hidden
-      mb-10
+      relative rounded-3xl p-8 md:p-12
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden w-11/12 md:w-5/6 mx-auto
     "
         >
-          {/* Scan Lines */}
-          <div className="absolute inset-0 pointer-events-none opacity-40">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="
-            absolute left-0 w-full h-[2px]            
-          "
-                style={{
-                  top: `${50 + i * 55}px`,
-                  animationDelay: `${i * 0.3}s`,
-                }}
-              ></div>
-            ))}
-          </div>
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full 
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
+        rotate-45 opacity-70
+        animate-[shineSlide_5s_ease-in-out_infinite]
+      "
+          ></div>
 
-          {/* Paragraphs */}
-          <div className="relative z-10 space-y-6 text-gray-200 leading-relaxed text-justify">
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide mb-6">
+            Choosing the Right SEO Consultant for Your Business in Delhi
+          </h2>
+
+          {/* Content */}
+          <div className="space-y-6 text-gray-200 leading-relaxed text-justify relative z-10">
             <p>
               In today’s digital-first world, where online presence defines
               business success, partnering with the best SEO consultant in Delhi
               has become essential. A skilled SEO consultant in Delhi can
               significantly enhance your website’s visibility, outrank
               competitors, attract quality traffic, and ultimately boost
-              conversions and sales. Whether you&#39;re a small business in
-              Delhi, NCR, hiring a professional who offers expert SEO services
-              can bring remarkable benefits to your organisation.
+              conversions and sales. Whether you're a small business in Delhi,
+              NCR, hiring a professional who offers expert SEO services can
+              bring remarkable benefits to your organisation.
             </p>
 
             <p>
@@ -808,7 +801,7 @@ function Seo() {
               strategic insight. They analyse your audience, your competitors,
               and your industry landscape to ensure your business ranks high for
               the most relevant search terms. Their work goes far beyond basic
-              optimisations - from keyword research and on-page optimisation to
+              optimisations—from keyword research and on-page optimisation to
               link building and local SEO strategies. A dedicated SEO consultant
               equips your business with the right tools, techniques, and
               resources to reach your target audience effectively.
@@ -821,29 +814,24 @@ function Seo() {
             </p>
           </div>
 
-          {/* CTA BUTTON */}
-          <div className="flex justify-center">
+          {/* CTA */}
+          <div className="flex justify-center mt-8">
             <ButtonFill
               text="Connect With an SEO Consultant"
               onClick={() => setIsPopupOpen(true)}
             />
           </div>
-
-          {/* Glow Border */}
-          <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
         </div>
 
-        {/* Scan Animation */}
-        <style>{`
-    @keyframes cardScan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    .animate-cardScan {
-      animation: cardScan 5s linear infinite;
-    }
-  `}</style>
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineSlide {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
       </section>
 
       <section className="py-12 relative overflow-hidden">

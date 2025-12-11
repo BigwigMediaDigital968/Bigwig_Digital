@@ -19,7 +19,7 @@ function GetInTouch() {
         </p>
         <div className="flex justify-center">
           <ButtonFill
-            text="Get Free Consultation"
+            text="Get In Touch"
             onClick={() => setIsPopupOpen(true)}
             className="px-8 py-3 text-lg font-semibold"
           />

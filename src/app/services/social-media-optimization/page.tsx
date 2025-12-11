@@ -189,7 +189,7 @@ function SocialMediaOptimization() {
         <div className="relative z-10 w-5/6 mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
           {/* Left Content - 2/3 */}
           <div className="w-full md:w-2/3 text-white space-y-6 pr-0 ">
-            <h1 className="text-3xl md:text-4xl font-semibold text-white leading-snug">
+            <h1 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] leading-snug">
               SMO Services in Delhi to Boost Your Social Media Presence
             </h1>
 
@@ -255,22 +255,22 @@ function SocialMediaOptimization() {
         </div>
       </div>
 
-      <section className="py-16 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+      <section className="py-12  relative overflow-hidden">
         {/* Heading */}
-        <div className="mb-6">
+        <div className=" w-11/12 md:w-5/6 mx-auto mb-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
             Experience. Expertise. Excellence in SMO Services
           </h2>
         </div>
 
         {/* Intro Text */}
-        <p className="text-gray-200 text-base md:text-lg leading-relaxed mb-10">
+        <p className="w-11/12 md:w-5/6 mx-auto text-gray-200 text-base md:text-lg leading-relaxed mb-10">
           With more than a decade of industry experience, our team has
           successfully helped clients achieve:
         </p>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <div className="w-11/12 md:w-5/6 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {[
             "2X to 6X increase in overall engagement",
             "50% to 400% growth in qualified leads",
@@ -297,11 +297,7 @@ function SocialMediaOptimization() {
                     key={i}
                     className="absolute left-0 w-full h-[2px]
                 bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                animate-smoScan"
-                    style={{
-                      top: `${35 + i * 55}px`,
-                      animationDelay: `${i * 0.25}s`,
-                    }}
+              "
                   ></div>
                 ))}
               </div>
@@ -318,7 +314,7 @@ function SocialMediaOptimization() {
         </div>
 
         {/* Closing Paragraph */}
-        <p className="text-gray-300 text-base md:text-lg leading-relaxed mt-10">
+        <p className="w-11/12 md:w-5/6 mx-auto  text-gray-300 text-base md:text-lg leading-relaxed mt-10">
           Our consistent results and client satisfaction are backed by authentic
           reviews across platforms like Google. As a trusted Social Media
           Optimization Company in Delhi, delivering measurable growth and high
@@ -339,7 +335,7 @@ function SocialMediaOptimization() {
       </section>
 
       <section className="py-12 w-11/12 md:w-5/6 mx-auto">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6">
+        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
           Comprehensive Social Media Optimization Services in Delhi
         </h2>
 
@@ -662,53 +658,88 @@ function SocialMediaOptimization() {
         </div>
       </section>
 
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
-        {/* Heading */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6 tracking-wide">
-          A Trusted SMO Company in Delhi Delivering Proven Results
-        </h2>
-
-        {/* Intro Paragraph */}
-        <p className="text-gray-200 text-base md:text-lg leading-relaxed mb-8">
-          Our positive reviews and strong portfolio make us one of the most
-          reliable names for SMO Services in Delhi. Clients across India
-          appreciate our commitment to growth, transparency, and innovation. We
-          focus on delivering long-term value, whether you want to:
-        </p>
-
-        {/* TWO COLUMN LIST */}
+      <section className="py-12 relative overflow-hidden">
+        {/* Outer Container */}
         <div
           className="
-      grid grid-cols-1 md:grid-cols-2 
-      gap-y-4 gap-x-10 
-     
-  "
+      relative rounded-3xl p-8 md:p-12
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden w-11/12 md:w-5/6 mx-auto
+    "
         >
-          {[
-            "Increase your social media followers",
-            "Improve brand visibility",
-            "Strengthen online reputation",
-            "Generate more leads",
-            "Boost website traffic",
-            "Build an active online community",
-          ].map((item, index) => (
-            <div key={index} className="flex items-start gap-3">
-              {/* Bullet */}
-              <span className="text-[var(--color5)] text-xl leading-6">•</span>
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full 
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
+        rotate-45 opacity-70
+        animate-[shineSlide_5s_ease-in-out_infinite]
+      "
+          ></div>
 
-              {/* Text */}
-              <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-                {item}
-              </p>
-            </div>
-          ))}
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide mb-6">
+            A Trusted SMO Company in Delhi Delivering Proven Results
+          </h2>
+
+          {/* Intro Paragraph */}
+          <p className="text-gray-200 text-base md:text-lg leading-relaxed mb-8 relative z-10">
+            Our positive reviews and strong portfolio make us one of the most
+            reliable names for SMO Services in Delhi. Clients across India
+            appreciate our commitment to growth, transparency, and innovation.
+            We focus on delivering long-term value, whether you want to:
+          </p>
+
+          {/* Two-Column List */}
+          <div
+            className="
+        grid grid-cols-1 md:grid-cols-2 
+        gap-y-4 gap-x-10 
+        relative z-10
+      "
+          >
+            {[
+              "Increase your social media followers",
+              "Improve brand visibility",
+              "Strengthen online reputation",
+              "Generate more leads",
+              "Boost website traffic",
+              "Build an active online community",
+            ].map((item, index) => (
+              <div key={index} className="flex items-start gap-3">
+                {/* Bullet */}
+                <span className="text-[var(--color5)] text-xl leading-6">
+                  •
+                </span>
+
+                {/* Text */}
+                <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Paragraph */}
+          <p className="text-gray-200 text-base md:text-lg leading-relaxed mt-8 relative z-10">
+            Every strategy we create is personalized to your industry, goals,
+            and target audience.
+          </p>
         </div>
 
-        {/* Bottom Paragraph */}
-        <p className="text-gray-200 text-base md:text-lg leading-relaxed mt-8">
-          Every strategy we create is personalized to your industry, goals, and
-          target audience.
-        </p>
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineSlide {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
       </section>
 
       <section className="py-12 relative overflow-hidden">
@@ -741,11 +772,7 @@ function SocialMediaOptimization() {
                     key={i}
                     className="absolute left-0 w-full h-[2px]
                     bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                    animate-cardScan"
-                    style={{
-                      top: `${40 + i * 45}px`,
-                      animationDelay: `${i * 0.25}s`,
-                    }}
+                  "
                   ></div>
                 ))}
               </div>

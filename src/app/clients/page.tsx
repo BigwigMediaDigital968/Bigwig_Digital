@@ -76,11 +76,12 @@ export default function FluidRippleClients() {
     <div className="bg-[var(--color1)] text-white">
       <Nav />
 
-      <title>Our Clients — Fluid Ripple UI</title>
+      <title>Our Clients</title>
       <meta
         name="description"
-        content="A premium fluid ripple water effect showcasing our clients."
+        content="Discover the brands and businesses we’ve proudly partnered with for digital transformation."
       />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/clients" />
 
       {/* FLUID RIPPLE LIQUID UI STYLES */}
       <style jsx>{`

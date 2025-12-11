@@ -299,15 +299,23 @@ const Nav: React.FC = () => {
                   </div>
                 </div>
               </li>
-
               <li>
+                <Link
+                  href="/clients"
+                  className="px-2 py-2 hover:text-[#A7EBF2]"
+                >
+                  Clients
+                </Link>
+              </li>
+
+              {/* <li>
                 <Link
                   href="/our-works"
                   className="px-2 py-2 hover:text-[#A7EBF2]"
                 >
                   Our Works
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/about" className="px-2 py-2 hover:text-[#A7EBF2]">
                   About
@@ -318,14 +326,7 @@ const Nav: React.FC = () => {
                   Blog
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/clients"
-                  className="px-2 py-2 hover:text-[#A7EBF2]"
-                >
-                  Clients
-                </Link>
-              </li>
+
               <li>
                 <Link
                   href="/contact"
