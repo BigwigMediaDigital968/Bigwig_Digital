@@ -10,99 +10,168 @@ import Slider from "react-slick";
 import ContactForm from "../../../../components/ContactForm";
 import Image from "next/image";
 import ButtonFill from "../../../../components/Button";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
+
+const whyChooseUs = [
+  {
+    title: "SEO-Driven Content That Ranks",
+    description:
+      "Every content piece is optimized for search intent, keywords, readability, and semantic relevance. We ensure your brand captures the right audience at the right time through strategic SEO-led content creation.",
+  },
+  {
+    title: "End-to-End Content Marketing Execution",
+    description:
+      "From research to writing, design to distribution — we manage everything. Our content marketing in Delhi services cover blogs, videos, case studies, newsletters, website copy, social content, and more.",
+  },
+  {
+    title: "Experienced Content Strategists & Industry Experts",
+    description:
+      "Your content ecosystem is managed by writers, editors, SEO specialists, designers, and strategists who understand your market and create content that resonates.",
+  },
+  {
+    title: "Consistent Delivery & Quality Assurance",
+    description:
+      "We follow strict editorial guidelines, plagiarism checks, and quality reviews to ensure every piece of content is accurate, engaging, and conversion-focused.",
+  },
+  {
+    title: "Customized Strategies for Every Business",
+    description:
+      "We tailor your content roadmap based on your industry, audience intent, and business goals — whether you’re looking to increase traffic, build thought leadership, or drive leads.",
+  },
+];
+
+const contentMarketingServices = [
+  {
+    title: "SEO-Friendly Blogs & Articles",
+    description:
+      "Informative, keyword-rich blogs that improve rankings, attract organic traffic, and establish domain authority.",
+  },
+  {
+    title: "Website Copywriting & Landing Page Content",
+    description:
+      "High-converting copy optimized for user experience, messaging clarity, and search intent — crafted by professional writers.",
+  },
+  {
+    title: "Social Media Content Creation",
+    description:
+      "Platform-specific content, including creatives, scripts, captions, memes, carousels, reels, and storytelling posts.",
+  },
+  {
+    title: "Video Scripts & Storyboards",
+    description:
+      "Engaging scripts for brand films, explainer videos, testimonials, YouTube videos, short reels, and educational content.",
+  },
+  {
+    title: "Email Newsletter Content",
+    description:
+      "Conversion-focused newsletters and drip sequences to nurture leads and strengthen brand relationships.",
+  },
+  {
+    title: "Case Studies & Success Stories",
+    description:
+      "Data-driven narratives that highlight your achievements and build trust with high-intent prospects.",
+  },
+  {
+    title: "E-books & Whitepapers",
+    description:
+      "In-depth, research-backed resources that build authority and attract qualified leads.",
+  },
+  {
+    title: "Infographics & Visual Content",
+    description:
+      "High-quality graphics, visual storytelling assets, and educational illustrations that simplify complex information.",
+  },
+  {
+    title: "Content Strategy & Editorial Planning",
+    description:
+      "Full content roadmap including topics, formats, SEO opportunities, funnel mapping, and publishing schedules.",
+  },
+  {
+    title: "Content Distribution & Amplification",
+    description:
+      "We promote your content across social media, email, communities, PR, and paid channels to maximize reach and engagement.",
+  },
+];
+
+const contentMarketingProcess = [
+  {
+    step: "Research & Competitor Analysis",
+    description:
+      "We start by studying your audience, competitors, keyword ecosystem, market trends, and search behavior. This becomes the backbone of your strategy.",
+  },
+  {
+    step: "Content Strategy Development",
+    description:
+      "We define your content goals, messaging pillars, formats, tonality, SEO themes, and publishing calendar.",
+  },
+  {
+    step: "Content Creation",
+    description:
+      "Our writers and designers create high-quality content tailored to each stage of your funnel — Awareness, Consideration, and Conversion.",
+  },
+  {
+    step: "Optimization & Editing",
+    description:
+      "Each piece undergoes SEO optimization, readability enhancements, grammar checks, and quality review.",
+  },
+  {
+    step: "Publishing & Distribution",
+    description:
+      "We publish your content across your website, social media, email, PR, and other channels for maximum exposure.",
+  },
+  {
+    step: "Performance Tracking & Reporting",
+    description:
+      "We track rankings, traffic, engagement, lead flow, and conversions — then refine the strategy to improve ROI.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What is content marketing, and how does it help businesses?",
+    a: "Content marketing is the strategic creation and distribution of valuable content to attract, educate, and convert customers. Working with a content marketing agency in Delhi helps you build authority, grow organic traffic, and generate qualified leads.",
+  },
+  {
+    q: "How long does content marketing take to show results?",
+    a: "You’ll see engagement improvements in 30–45 days. SEO, traffic growth, and consistent lead generation typically take 3–6 months.",
+  },
+  {
+    q: "Do you provide SEO along with content marketing services?",
+    a: "Yes. As a full-service content marketing company in Delhi, we include keyword research, on-page SEO, and content optimization in all strategies.",
+  },
+  {
+    q: "Can you create content for any industry?",
+    a: "Absolutely. We work across healthcare, real estate, finance, SaaS, e-commerce, education, and more.",
+  },
+  {
+    q: "Do you offer content for social media and video platforms?",
+    a: "Yes — reels, scripts, shorts, animations, carousels, captions, and more.",
+  },
+];
 
 function ContentMarketing() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const sliderSettings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleItem = (index: SetStateAction<number | null>) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
-  const boxes = [
-    {
-      title: "Get found",
-      description: "Optimized for search engines with SEO-rich strategies.",
-      icon: "🔍",
-    },
-    {
-      title: "Get read",
-      description: "Engaging content that keeps your audience hooked.",
-      icon: "📖",
-    },
-    {
-      title: "Get results",
-      description: "Drives conversions through value-driven messaging.",
-      icon: "🎯",
-    },
-  ];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    arrows: false,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    pauseOnHover: false,
+  };
 
-  const services = [
-    {
-      title: "SEO Blog & Article Writing",
-      description:
-        "Our blogs rank well and attract repeat visitors. Every article is keyword-optimized, well-researched, and aligned with your industry voice.",
-    },
-    {
-      title: "Social Media Content Creation",
-      description:
-        "From Instagram captions to carousel copy and LinkedIn thought pieces, we build content that earns reach and engagement, organically.",
-    },
-    {
-      title: "Website Copywriting",
-      description:
-        "We deliver clean, conversion-focused website copy that guides your visitors, reflects your brand voice, and encourages action.",
-    },
-    {
-      title: "Video Scriptwriting",
-      description:
-        "Whether it’s a reel, explainer video, YouTube ad, or brand story, we write compelling scripts that connect and convert.",
-    },
-    {
-      title: "Email Campaign Content",
-      description:
-        "From irresistible subject lines to high-converting email bodies, we help you nurture leads and drive clicks.",
-    },
-    {
-      title: "Whitepapers, Case Studies & eBooks",
-      description:
-        "Create content that is thorough, insightful, and generates trust in order to establish thought leadership and generate excellent leads.",
-    },
-  ];
-
-  const agencyPoints = [
-    {
-      title: "SEO at the Heart",
-      description:
-        "We focus on rankings from the start. Keyword research, on-page SEO, topic clusters, internal linking. We create content that search engines and users both love.",
-      icon: "🔍",
-    },
-    {
-      title: "Unique Brand Voice",
-      description:
-        "Every brand is different, and we ensure your content reflects that. Whether it’s formal B2B tone or quirky D2C personality. We get it right every time.",
-      icon: "🗣️",
-    },
-    {
-      title: "Consistency and Scale",
-      description:
-        "Need a few blogs a month or hundreds of pages for a product launch? We’ve got you. Our team is built for both quality and volume.",
-      icon: "📈",
-    },
-    {
-      title: "Research & Result-Driven",
-      description:
-        "We dig deep into industry trends, user intent, and analytics to write content that’s not just creative, but commercially effective.",
-      icon: "📊",
-    },
-  ];
   return (
     <div className="bg-[var(--color1)]">
       <title>Creative Content Marketing Agency</title>
@@ -122,37 +191,29 @@ function ContentMarketing() {
       >
         <div className="bg-black/40 absolute inset-0 z-0" />
 
-        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6 md:pr-8">
-            <h1 className="text-3xl md:text-4xl font-semibold text-white leading-snug">
-              Best Content Marketing Services That Speak for Your Brand
+            <h1 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] leading-snug">
+              Content Marketing Services in Delhi
             </h1>
 
-            <p
-              className="text-2xl md:text-4xl font-semibold text-[var(--color5)]"
-              style={{
-                letterSpacing: "0.7px",
-              }}
-            >
-              <span className="inline">Content That&nbsp;</span>
-              <span className="inline-block whitespace-nowrap">
-                <TypeAnimation
-                  sequence={["Connects", 2000, "Engages ", 2000, "Sells", 2000]}
-                  wrapper="span"
-                  speed={50}
-                  repeat={Infinity}
-                />
-              </span>
+            <p className=" max-w-xl text-white/90 text-justify">
+              Content is no longer optional - it’s the backbone of brand
+              authority, customer engagement, and sustainable digital growth. As
+              a leading content marketing agency in Delhi, we help brands create
+              powerful stories, high-performing content assets, and data-driven
+              strategies that educate, engage, and convert.
             </p>
-
-            <p className="text-base md:text-lg max-w-md text-white/90">
-              From blog strategy to brand storytelling,we build content that
-              connects.
+            <p className=" max-w-xl text-white/90 text-justify">
+              Whether you’re looking to build awareness, outrank competitors,
+              improve SEO visibility, or nurture leads, our content marketing
+              services in Delhi are designed to elevate your brand and deliver
+              measurable results.
             </p>
             <ButtonFill
               onClick={() => setIsPopupOpen(true)}
-              text="Contact Us"
+              text="Get Started Today"
             />
           </div>
 
@@ -165,34 +226,25 @@ function ContentMarketing() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left Content */}
             <div className="space-y-6 text-center md:text-left">
-              <h2 className="text-2xl md:text-4xl md:font-bold font-semibold text-[var(--color5)]">
-                World&#39;s Top Content Marketing Company Creating Content That
-                Cuts Through the Noise.
+              <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)]">
+                Leading Content Marketing Company in Delhi for High-Impact
+                Growth
               </h2>
-              <p className="text-lg text-white text-justify ">
-                Content is now the foundation of your entire marketing plan and
-                is no longer optional in today&#39;s digital-first society. We
-                as{" "}
-                <strong>
-                  <a href="https://www.bigwigdigital.in/">
-                    Leading Content Marketing Firm
-                  </a>
-                </strong>
-                , BigWig Digital, do more than just create content. We create
-                digital experiences that engage your audience directly, improve
-                your search engine rankings, and convert infrequent readers into
-                devoted clients.
+              <p className=" text-white text-justify ">
+                Delhi’s digital landscape is competitive - thousands of brands
+                are fighting for attention every day. To stand out, you need
+                more than just blogs and social media posts; you need strategy,
+                storytelling, and consistent content execution.
               </p>
-              <p className="text-lg text-white text-justify ">
-                We provide informational, motivating, and influencing content,
-                ranging from in-depth blogs to witty social media updates. We
-                help brands stand out from the competition thanks to our
-                in-depth knowledge of both algorithms and human behavior.
+              <p className=" text-white text-justify ">
+                As a full-stack content marketing company in Delhi, we combine
+                research, creativity, SEO, and distribution to create content
+                that drives organic traffic, enhances credibility, and supports
+                every stage of your customer journey.
               </p>
-              <p className="text-lg text-white text-justify">
-                You&#39;ve come to the perfect spot if you&#39;re searching for
-                strategic content marketing services that combine conversion,
-                clarity, and creativity.
+              <p className=" text-white text-justify">
+                Our approach ensures your brand becomes discoverable, memorable,
+                and trusted.
               </p>
             </div>
 
@@ -208,365 +260,65 @@ function ContentMarketing() {
         </div>
       </section>
 
-      <section className="py-16 relative overflow-hidden w-11/12 md:w-5/6 mx-auto">
-        {/* Background */}
-        <div className="absolute inset-0 opacity-[0.15] pointer-events-none"></div>
-
-        {/* MAIN WRAPPER */}
-        <div className="relative z-10 space-y-10">
-          {/* TITLE CAPSULE */}
-          <div
-            className="
-        rounded-full w-fit mx-auto px-8 py-3 
-        backdrop-blur-xl bg-white/10 
-        border border-white/20 shadow-[0_0_25px_rgba(0,255,255,0.25)]
-      "
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-[var(--color5)] tracking-wide text-center">
-              Why Content Marketing Is the Future of Digital Success.
-            </h2>
-          </div>
-
-          {/* PARAGRAPHS */}
-          <div className="space-y-6 text-gray-200 text-lg leading-relaxed">
-            <p>
-              Content marketing is more than writing—it&#39;s about building
-              <span className="text-[var(--color5)] font-semibold ">
-                {" "}
-                authority, trust, and long-term visibility
-              </span>{" "}
-              in an increasingly competitive digital world. When executed
-              effectively, it turns your website into a lead generator, your
-              social media into a community hub, and your brand into a trusted
-              expert.
-            </p>
-
-            <p>
-              With our expertise as a global{" "}
-              <strong>
-                <a
-                  href="https://www.bigwigdigital.in/"
-                  className="text-[var(--color5)] underline"
-                >
-                  content marketing company
-                </a>
-              </strong>
-              , we know that impactful content must achieve three things:
-            </p>
-          </div>
-
-          {/* ========================= MOBILE SLIDER ========================= */}
-          <div className="md:hidden">
-            <Slider {...sliderSettings}>
-              {boxes.map((item, index) => (
-                <div key={index} className="pr-3">
-                  <div
-                    className="
-                relative p-6 rounded-xl 
-                backdrop-blur-xl bg-white/10 
-                border border-white/10 
-                shadow-[0_0_20px_rgba(0,255,255,0.15)]
-                hover:border-[var(--color5)] 
-                hover:shadow-[0_0_25px_var(--color5)]
-                transition-all 
-              "
-                  >
-                    <div className="text-3xl text-[var(--color5)] drop-shadow-[0_0_10px_var(--color5)]">
-                      {item.icon}
-                    </div>
-                    <h4 className="text-xl font-semibold text-[var(--color5)] mt-3">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-200 text-sm mt-1">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </Slider>
-          </div>
-
-          {/* ========================= DESKTOP GRID ========================= */}
-          <div className="hidden md:grid grid-cols-3 gap-6">
-            {boxes.map((item, index) => (
-              <div
-                key={index}
-                className="
-            relative p-6 rounded-xl 
-            backdrop-blur-xl bg-white/5 
-            border border-white/10
-            shadow-[0_0_20px_rgba(0,255,255,0.15)]
-            hover:border-[var(--color5)] 
-            hover:shadow-[0_0_25px_var(--color5)]
-            transition-all duration-300
-            overflow-hidden group
-          "
-              >
-                {/* Hologram scan lines */}
-                <div className="absolute inset-0 pointer-events-none opacity-40">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="
-                  absolute left-0 w-full h-[2px]
-                  bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                  animate-contentScan
-                "
-                      style={{
-                        top: `${30 + i * 40}px`,
-                        animationDelay: `${i * 0.25}s`,
-                      }}
-                    ></div>
-                  ))}
-                </div>
-
-                <div className="text-3xl drop-shadow-[0_0_10px_var(--color5)]">
-                  {item.icon}
-                </div>
-
-                <h4 className="text-xl font-semibold text-[var(--color5)] mt-3 relative z-10">
-                  {item.title}
-                </h4>
-
-                <p className="text-gray-200 text-sm mt-1 relative z-10">
-                  {item.description}
-                </p>
-
-                {/* Glow Border */}
-                <div
-                  className="
-              absolute inset-0 rounded-xl 
-              border border-transparent 
-              group-hover:border-[var(--color5)] 
-              transition-all
-            "
-                ></div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-lg text-gray-200 leading-relaxed text-justify">
-            And we build strategies that accomplish exactly that—across every
-            content format, channel, and growth objective.
-          </p>
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            How Our Influencer Marketing in Delhi Works
+          </h2>
         </div>
 
-        {/* ANIMATIONS */}
-        <style>{`
-    @keyframes contentScan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    .animate-contentScan {
-      animation: contentScan 4s linear infinite;
-    }
-  `}</style>
-      </section>
-
-      <section className="py-16 relative overflow-hidden w-11/12 md:w-5/6 mx-auto">
-        {/* Matrix Glow Background */}
-        <div className="absolute inset-0 opacity-[0.15]  pointer-events-none"></div>
-
-        <div className="relative z-10 space-y-10">
-          {/* TITLE */}
-          <h3
-            className="
-      text-2xl md:text-3xl font-bold 
-      text-[var(--color5)] 
-      text-center md:text-left
-    "
-          >
-            Our Core Content Marketing Services
-          </h3>
-
-          {/* ================= MOBILE SLIDER ================= */}
-          <div className="md:hidden">
-            <Slider {...sliderSettings}>
-              {services.map((item, idx) => (
-                <div key={idx} className="px-2">
-                  <div
-                    className="
-                relative p-6 rounded-xl 
-                backdrop-blur-xl bg-white/10 
-                border border-white/10 
-                shadow-[0_0_20px_rgba(0,255,255,0.15)]
-                hover:border-[var(--color5)]
-                hover:shadow-[0_0_25px_var(--color5)]
-                transition-all
-                overflow-hidden group
-              "
-                  >
-                    {/* Hologram Scan Lines */}
-                    <div className="absolute inset-0 pointer-events-none opacity-40">
-                      {[...Array(5)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="
-                      absolute left-0 w-full h-[2px]
-                      bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                      animate-scanCore
-                    "
-                          style={{
-                            top: `${25 + i * 35}px`,
-                            animationDelay: `${i * 0.25}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-
-                    <h4 className="text-lg font-semibold text-[var(--color5)] mb-2 relative z-10">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-200 text-sm relative z-10">
-                      {item.description}
-                    </p>
-
-                    {/* Glow Border */}
-                    <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
-                  </div>
-                </div>
-              ))}
-            </Slider>
-          </div>
-
-          {/* ================= DESKTOP GRID ================= */}
-          <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((item, idx) => (
-              <div
-                key={idx}
-                className="
-            relative p-6 rounded-xl 
-            backdrop-blur-xl bg-white/5 
-            border border-white/10
-            shadow-[0_0_20px_rgba(0,255,255,0.15)]
-            hover:border-[var(--color5)]
-            hover:shadow-[0_0_25px_var(--color5)]
-            transition-all duration-300
-            overflow-hidden group
-          "
-              >
-                {/* Hologram Scan Lines */}
-                <div className="absolute inset-0 pointer-events-none opacity-40">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="
-                  absolute left-0 w-full h-[2px]
-                  bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                  animate-scanCore
-                "
-                      style={{
-                        top: `${30 + i * 35}px`,
-                        animationDelay: `${i * 0.25}s`,
-                      }}
-                    ></div>
-                  ))}
-                </div>
-
-                <h4 className="text-lg font-semibold text-[var(--color5)] mb-2 relative z-10">
-                  {item.title}
-                </h4>
-
-                <p className="text-gray-200 text-sm relative z-10">
-                  {item.description}
-                </p>
-
-                {/* Glow Border */}
-                <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Animations */}
-        <style>{`
-    @keyframes scanCore {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    .animate-scanCore {
-      animation: scanCore 4s linear infinite;
-    }
-  `}</style>
-      </section>
-
-      <section className="py-16 relative overflow-hidden w-11/12 md:w-5/6 mx-auto">
-        {/* Background */}
-        <div className="absolute inset-0 opacity-[0.15] pointer-events-none"></div>
-
-        <div className="relative z-10 space-y-8">
-          {/* TITLE */}
-          <h3
-            className="
-      text-2xl md:text-3xl font-bold 
-      text-[var(--color5)]
-      text-center md:text-left
-    "
-          >
-            What Makes BigWig Digital a Top Content Marketing Agency?
-          </h3>
-
-          <p className="text-base text-gray-200 md:pr-4 leading-relaxed text-justify">
-            We’re not just a content writing team — we’re strategic content
-            partners. At BigWig Digital, we combine creativity with the science
-            of digital marketing. Here’s why brands across the world trust us:
-          </p>
-
-          {/* ================= MOBILE SLIDER ================= */}
-          <div className="md:hidden">
-            <Slider {...sliderSettings}>
-              {agencyPoints.map((item, index) => (
+        {/* ================== CONTENT WRAPPER ================== */}
+        <div className="relative mb-12 z-10">
+          {/* MOBILE SLIDER */}
+          <div className="block lg:hidden">
+            <Slider {...settings}>
+              {whyChooseUs.map((item, index) => (
                 <div key={index} className="px-2">
                   <div
                     className="
-                relative flex flex-col gap-3 p-5 
-                rounded-xl 
-                backdrop-blur-xl bg-white/10 
-                border border-white/10
-                shadow-[0_0_20px_rgba(0,255,255,0.15)]
-                hover:border-[var(--color5)]
-                hover:shadow-[0_0_25px_var(--color5)]
-                transition-all overflow-hidden group
-              "
+              relative flex flex-col p-6 rounded-2xl
+              backdrop-blur-xl bg-white/5 border border-white/10
+              shadow-[0_0_25px_rgba(0,255,255,0.1)]
+              hover:shadow-[0_0_40px_var(--color5)]
+              space-y-5 overflow-hidden group
+              transition-all duration-500 hover:-translate-y-2
+            "
                   >
-                    {/* Scan Lines */}
-                    <div className="absolute inset-0 pointer-events-none opacity-40">
-                      {[...Array(5)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="
-                      absolute left-0 w-full h-[2px]
-                      bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                      animate-scanAgency
-                    "
-                          style={{
-                            top: `${25 + i * 40}px`,
-                            animationDelay: `${i * 0.25}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
+                    {/* Shine Overlay */}
+                    <div
+                      className="
+                absolute inset-0 bg-gradient-to-br 
+                from-transparent via-white/5 to-transparent
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-500
+              "
+                    />
 
-                    <div className="text-3xl text-[var(--color5)] drop-shadow-[0_0_10px_var(--color5)]">
-                      {item.icon}
-                    </div>
+                    {/* Shine Line */}
+                    <div
+                      className="
+                absolute -top-full left-0 w-full h-full
+                bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                rotate-45 group-hover:animate-shineLine
+              "
+                    />
 
-                    <h4 className="text-lg font-semibold text-[var(--color5)] relative z-10">
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                       {item.title}
-                    </h4>
+                    </h3>
 
-                    <p className="text-sm text-gray-200 relative z-10 text-justify">
+                    {/* Description */}
+                    <p className="text-gray-200 text-sm md:text-base leading-relaxed relative z-10 text-justify">
                       {item.description}
                     </p>
 
+                    {/* Border Glow */}
                     <div
                       className="
-                absolute inset-0 rounded-xl 
-                border border-transparent 
-                group-hover:border-[var(--color5)]
-                transition-all
+                absolute inset-0 rounded-2xl border border-transparent
+                group-hover:border-[var(--color5)] transition-all duration-500
               "
                     ></div>
                   </div>
@@ -575,209 +327,620 @@ function ContentMarketing() {
             </Slider>
           </div>
 
-          {/* ================= DESKTOP GRID ================= */}
-          <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {agencyPoints.map((item, index) => (
+          {/* DESKTOP GRID */}
+          <div
+            className="
+      hidden lg:grid 
+      grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+      gap-10 auto-rows-fr
+    "
+          >
+            {whyChooseUs.map((item, index) => (
               <div
                 key={index}
                 className="
-            relative flex flex-col gap-3 p-6 
-            rounded-xl 
-            backdrop-blur-xl bg-white/5
-            border border-white/10 
-            shadow-[0_0_20px_rgba(0,255,255,0.15)]
-            hover:border-[var(--color5)]
-            hover:shadow-[0_0_25px_var(--color5)]
-            transition-all overflow-hidden group
-          "
+          group relative overflow-hidden rounded-2xl 
+          transition-transform duration-500 hover:-translate-y-3 h-full
+        "
               >
-                {/* Scan Lines */}
-                <div className="absolute inset-0 pointer-events-none opacity-40">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="
-                  absolute left-0 w-full h-[2px]
-                  bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                  animate-scanAgency
-                "
-                      style={{
-                        top: `${30 + i * 40}px`,
-                        animationDelay: `${i * 0.25}s`,
-                      }}
-                    ></div>
-                  ))}
-                </div>
-
-                <div className="text-3xl text-[var(--color5)] drop-shadow-[0_0_10px_var(--color5)]">
-                  {item.icon}
-                </div>
-
-                <h4 className="text-lg font-semibold text-[var(--color5)] relative z-10">
-                  {item.title}
-                </h4>
-
-                <p className="text-sm text-gray-200 relative z-10 text-justify">
-                  {item.description}
-                </p>
-
                 <div
                   className="
-            absolute inset-0 rounded-xl border border-transparent 
-            group-hover:border-[var(--color5)]
-            transition-all
+            relative z-10 p-6 rounded-2xl backdrop-blur-xl bg-white/5
+            border border-white/10 shadow-[0_0_25px_rgba(0,255,255,0.15)]
+            hover:shadow-[0_0_45px_var(--color5)]
+            flex flex-col h-full space-y-5 transition-all duration-500
           "
-                ></div>
+                >
+                  {/* Shine Line */}
+                  <div
+                    className="
+              absolute -top-full left-0 w-full h-full
+              bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+              rotate-45 group-hover:animate-shineLine
+            "
+                  />
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    {item.title}
+                  </h3>
+
+                  {/* Content */}
+                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
+                    {item.description}
+                  </p>
+
+                  {/* Glow Border */}
+                  <div
+                    className="
+              absolute inset-0 rounded-2xl border border-transparent 
+              group-hover:border-[var(--color5)] transition-all duration-500
+            "
+                  ></div>
+                </div>
               </div>
             ))}
           </div>
 
           {/* ANIMATIONS */}
           <style>{`
-      @keyframes scanAgency {
-        0% { transform: translateX(-100%); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateX(100%); opacity: 0; }
+      @keyframes shineLine {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
       }
-      .animate-scanAgency {
-        animation: scanAgency 4s linear infinite;
+      .animate-shineLine {
+        animation: shineLine 1.5s ease-in-out forwards;
+      }
+    `}</style>
+        </div>
+
+        {/* CTA BUTTON */}
+        <div className="flex justify-center">
+          <ButtonFill
+            text="Get Started Today"
+            onClick={() => setIsPopupOpen(true)}
+          />
+        </div>
+      </section>
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            Our Complete Content Marketing Services in Delhi
+          </h2>
+          <p className=" text-gray-200">
+            We offer end-to-end services to help brands build a strong content
+            foundation and scale organically
+          </p>
+        </div>
+
+        {/* ================== CONTENT WRAPPER ================== */}
+        <div className="relative mb-12 z-10">
+          {/* MOBILE SLIDER */}
+          <div className="block lg:hidden">
+            <Slider {...settings}>
+              {contentMarketingServices.map((item, index) => (
+                <div key={index} className="px-2">
+                  <div
+                    className="
+              relative flex flex-col p-6 rounded-2xl
+              backdrop-blur-xl bg-white/5 border border-white/10
+              shadow-[0_0_25px_rgba(0,255,255,0.1)]
+              hover:shadow-[0_0_40px_var(--color5)]
+              space-y-5 overflow-hidden group
+              transition-all duration-500 hover:-translate-y-2
+            "
+                  >
+                    {/* Shine Overlay */}
+                    <div
+                      className="
+                absolute inset-0 bg-gradient-to-br 
+                from-transparent via-white/5 to-transparent
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-500
+              "
+                    />
+
+                    {/* Shine Line */}
+                    <div
+                      className="
+                absolute -top-full left-0 w-full h-full
+                bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                rotate-45 group-hover:animate-shineLine
+              "
+                    />
+
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-200 text-sm md:text-base leading-relaxed relative z-10 text-justify">
+                      {item.description}
+                    </p>
+
+                    {/* Border Glow */}
+                    <div
+                      className="
+                absolute inset-0 rounded-2xl border border-transparent
+                group-hover:border-[var(--color5)] transition-all duration-500
+              "
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+
+          {/* DESKTOP GRID */}
+          <div
+            className="
+      hidden lg:grid 
+      grid-cols-1 md:grid-cols-2 lg:grid-cols-4 
+      gap-10 auto-rows-fr
+    "
+          >
+            {contentMarketingServices.map((item, index) => (
+              <div
+                key={index}
+                className="
+          group relative overflow-hidden rounded-2xl 
+          transition-transform duration-500 hover:-translate-y-3 h-full
+        "
+              >
+                <div
+                  className="
+            relative z-10 p-6 rounded-2xl backdrop-blur-xl bg-white/5
+            border border-white/10 shadow-[0_0_25px_rgba(0,255,255,0.15)]
+            hover:shadow-[0_0_45px_var(--color5)]
+            flex flex-col h-full space-y-5 transition-all duration-500
+          "
+                >
+                  {/* Shine Line */}
+                  <div
+                    className="
+              absolute -top-full left-0 w-full h-full
+              bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+              rotate-45 group-hover:animate-shineLine
+            "
+                  />
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    {item.title}
+                  </h3>
+
+                  {/* Content */}
+                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
+                    {item.description}
+                  </p>
+
+                  {/* Glow Border */}
+                  <div
+                    className="
+              absolute inset-0 rounded-2xl border border-transparent 
+              group-hover:border-[var(--color5)] transition-all duration-500
+            "
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ANIMATIONS */}
+          <style>{`
+      @keyframes shineLine {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+      .animate-shineLine {
+        animation: shineLine 1.5s ease-in-out forwards;
       }
     `}</style>
         </div>
       </section>
 
-      <section className="py-16 relative overflow-hidden w-11/12 md:w-5/6 mx-auto">
-        {/* MATRIX CYBER BACKGROUND */}
-        <div className="absolute inset-0 opacity-[0.15] pointer-events-none"></div>
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            Our Process for Strategic Content Marketing in Delhi
+          </h2>
+        </div>
 
-        <div className="relative z-10 space-y-10">
-          {/* TITLE CAPSULE */}
-          <div
-            className="w-fit mx-auto md:mx-0 px-8 py-3 rounded-full 
-        backdrop-blur-xl bg-white/10 border border-white/20 
-        shadow-[0_0_20px_rgba(0,255,255,0.25)]"
-          >
-            <h3 className="text-3xl font-bold text-[var(--color5)] ">
-              How We Build Your Content Engine
-            </h3>
+        {/* ================== CONTENT WRAPPER ================== */}
+        <div className="relative mb-12 z-10">
+          {/* MOBILE SLIDER */}
+          <div className="block lg:hidden">
+            <Slider {...settings}>
+              {contentMarketingProcess.map((item, index) => (
+                <div key={index} className="px-2">
+                  <div
+                    className="
+              relative flex flex-col p-6 rounded-2xl
+              backdrop-blur-xl bg-white/5 border border-white/10
+              shadow-[0_0_25px_rgba(0,255,255,0.1)]
+              hover:shadow-[0_0_40px_var(--color5)]
+              space-y-5 overflow-hidden group
+              transition-all duration-500 hover:-translate-y-2
+            "
+                  >
+                    {/* Shine Overlay */}
+                    <div
+                      className="
+                absolute inset-0 bg-gradient-to-br 
+                from-transparent via-white/5 to-transparent
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-500
+              "
+                    />
+
+                    {/* Shine Line */}
+                    <div
+                      className="
+                absolute -top-full left-0 w-full h-full
+                bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                rotate-45 group-hover:animate-shineLine
+              "
+                    />
+
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                      {item.step}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-200 text-sm md:text-base leading-relaxed relative z-10 text-justify">
+                      {item.description}
+                    </p>
+
+                    {/* Border Glow */}
+                    <div
+                      className="
+                absolute inset-0 rounded-2xl border border-transparent
+                group-hover:border-[var(--color5)] transition-all duration-500
+              "
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
           </div>
 
-          {/* FUTURISTIC BULLET LIST */}
-          <ul className="space-y-6 text-gray-200 text-base md:text-lg max-w-4xl">
-            {[
-              [
-                "Discovery & Goal Mapping:",
-                "We understand your goals, brand personality, audience, and business model.",
-              ],
-              [
-                "Topic & SEO Planning:",
-                "We use keyword research and competitor analysis to create a strategic content roadmap.",
-              ],
-              [
-                "Creation & Optimization:",
-                "Our writers, editors, and SEO experts deliver high-quality, search-ready content.",
-              ],
-              [
-                "Publishing & Promotion:",
-                "We help distribute content across platforms to ensure maximum visibility and reach.",
-              ],
-              [
-                "Tracking & Reporting:",
-                "Performance is monitored, and strategies are refined to hit goals efficiently.",
-              ],
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4">
-                {/* Neon bullet */}
-                <div className="w-3 h-3 mt-2 rounded-full bg-[var(--color5)] shadow-[0_0_10px_var(--color5)]"></div>
-
-                <span>
-                  <strong className="text-[var(--color5)]">{item[0]}</strong>{" "}
-                  {item[1]}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          {/* CTA FUTURISTIC CARD */}
+          {/* DESKTOP GRID */}
           <div
             className="
-      relative p-8 rounded-2xl 
-      backdrop-blur-xl bg-white/5 
-      border border-white/10 
-      shadow-[0_0_30px_rgba(0,255,255,0.2)]
-      overflow-hidden group
+      hidden lg:grid 
+      grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+      gap-10 auto-rows-fr
     "
           >
-            {/* Hologram Scan Lines */}
-            <div className="absolute inset-0 pointer-events-none opacity-40">
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="
-              absolute left-0 w-full h-[2px]
-              bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-              animate-engineScan
-            "
-                  style={{
-                    top: `${30 + i * 40}px`,
-                    animationDelay: `${i * 0.25}s`,
-                  }}
-                ></div>
-              ))}
-            </div>
-
-            <h4
-              className="
-        text-2xl md:text-3xl font-bold text-[var(--color5)]
-        mb-4 relative z-10 text-center md:text-left
-      "
-            >
-              Why Settle for Ordinary Content?
-            </h4>
-
-            <p className="text-gray-200 text-base md:text-lg leading-relaxed relative z-10 text-justify">
-              Your audience expects value. Your brand deserves visibility.{" "}
-              <br />
-              Let BigWig Digital help you stand out with content that’s
-              strategic, scalable, and search-ready. <br />
-              <br />
-              Whether you&#39;re a growing startup or an established brand, our{" "}
-              <strong>
-                <a
-                  href="https://www.bigwigdigital.in/"
-                  className="text-[var(--color5)] underline"
-                >
-                  content marketing services
-                </a>
-              </strong>{" "}
-              are designed to fuel your growth one word at a time.
-            </p>
-
-            {/* Glow Border */}
-            <div
-              className="
-          absolute inset-0 rounded-2xl
-          border border-transparent 
-          group-hover:border-[var(--color5)]
-          transition-all duration-300
+            {contentMarketingProcess.map((item, index) => (
+              <div
+                key={index}
+                className="
+          group relative overflow-hidden rounded-2xl 
+          transition-transform duration-500 hover:-translate-y-3 h-full
         "
-            ></div>
+              >
+                <div
+                  className="
+            relative z-10 p-6 rounded-2xl backdrop-blur-xl bg-white/5
+            border border-white/10 shadow-[0_0_25px_rgba(0,255,255,0.15)]
+            hover:shadow-[0_0_45px_var(--color5)]
+            flex flex-col h-full space-y-5 transition-all duration-500
+          "
+                >
+                  {/* Shine Line */}
+                  <div
+                    className="
+              absolute -top-full left-0 w-full h-full
+              bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+              rotate-45 group-hover:animate-shineLine
+            "
+                  />
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    {item.step}
+                  </h3>
+
+                  {/* Content */}
+                  <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
+                    {item.description}
+                  </p>
+
+                  {/* Glow Border */}
+                  <div
+                    className="
+              absolute inset-0 rounded-2xl border border-transparent 
+              group-hover:border-[var(--color5)] transition-all duration-500
+            "
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ANIMATIONS */}
+          <style>{`
+      @keyframes shineLine {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+      .animate-shineLine {
+        animation: shineLine 1.5s ease-in-out forwards;
+      }
+    `}</style>
+        </div>
+      </section>
+
+      <section className="py-12 relative overflow-hidden">
+        {/* Outer Container */}
+        <div
+          className="
+      relative rounded-3xl p-8 md:p-12
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden w-11/12 md:w-5/6 mx-auto
+    "
+        >
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full 
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
+        rotate-45 opacity-70
+        animate-[shineSlide_5s_ease-in-out_infinite]
+      "
+          ></div>
+
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide mb-6">
+            The Power of Content Marketing for Your Business
+          </h2>
+
+          {/* Two-Column List */}
+          <div
+            className="
+        grid grid-cols-1 md:grid-cols-2 
+        gap-y-6 gap-x-10 
+        relative z-10
+      "
+          >
+            {[
+              {
+                heading: "Build Long-Term Authority",
+                text: "Consistent content builds trust, credibility, and industry leadership.",
+              },
+              {
+                heading: "Generate High-Quality Leads",
+                text: "Content marketing attracts customers who are actively searching for solutions in your niche.",
+              },
+              {
+                heading: "Improve Search Engine Rankings",
+                text: "Google rewards brands that publish valuable, fresh, and optimized content regularly.",
+              },
+              {
+                heading: "Increase Website Traffic & Engagement",
+                text: "Strategic content helps you reach a broader audience and keep them engaged longer.",
+              },
+              {
+                heading: "Boost Conversions With Educative Content",
+                text: "Case studies, guides, landing pages, and webinars help customers make confident buying decisions.",
+              },
+            ].map((item, index) => (
+              <div key={index} className="flex flex-col gap-1">
+                <h3 className="text-xl font-semibold text-[var(--color5)]">
+                  {item.heading}
+                </h3>
+                <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-10 relative z-10">
+            <ButtonFill
+              onClick={() => setIsPopupOpen(true)}
+              text="Get Started Today"
+            />
           </div>
         </div>
 
-        {/* ANIMATIONS */}
-        <style>{`
-    @keyframes engineScan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    .animate-engineScan {
-      animation: engineScan 4.5s linear infinite;
-    }
-  `}</style>
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineSlide {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
       </section>
 
+      <section className="py-12 relative overflow-hidden">
+        <div
+          className="
+      relative rounded-3xl p-8 md:p-12
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden w-11/12 md:w-5/6 mx-auto
+    "
+        >
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full 
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
+        rotate-45 opacity-70
+        animate-[shineSlide_5s_ease-in-out_infinite]
+      "
+          ></div>
+
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide mb-6">
+            Industries We Serve
+          </h2>
+
+          {/* Two-Column List */}
+          <div
+            className="
+        grid grid-cols-1 md:grid-cols-2 
+        gap-y-6 gap-x-10 
+        relative z-10
+      "
+          >
+            {[
+              {
+                heading: "Healthcare Content Marketing",
+                text: "Accurate, trustworthy healthcare content that makes you a credible authority.",
+              },
+              {
+                heading: "E-Commerce Content Marketing",
+                text: "Product descriptions, SEO pages, buying guides, and sales-driven content.",
+              },
+              {
+                heading: "EdTech Content Marketing",
+                text: "Educational blogs, course content, curriculum storytelling, and SEO-led funnels.",
+              },
+              {
+                heading: "Real Estate Content Marketing",
+                text: "Hyperlocal SEO content, brochures, property descriptions, and project storytelling.",
+              },
+              {
+                heading: "Finance & Banking Content Marketing",
+                text: "Compliance-friendly and research-backed content for financial institutions.",
+              },
+              {
+                heading: "Technology & SaaS Content Marketing",
+                text: "Technical blogs, product pages, feature explanations, and automation guides.",
+              },
+              {
+                heading: "Automotive Content Marketing",
+                text: "Content that educates buyers about vehicles, technology, and brand differentiation.",
+              },
+            ].map((item, index) => (
+              <div key={index} className="flex flex-col gap-1">
+                {/* Heading With Bullet */}
+                <div className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full border-2 border-[var(--color5)] mt-2"></span>
+                  <h3 className="text-xl font-semibold text-[var(--color5)]">
+                    {item.heading}
+                  </h3>
+                </div>
+
+                {/* Description */}
+                <p className="text-gray-200 text-base md:text-lg leading-relaxed ml-6">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-10 relative z-10">
+            <ButtonFill
+              onClick={() => setIsPopupOpen(true)}
+              text="Get Started Today"
+            />
+          </div>
+        </div>
+
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineSlide {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
+      </section>
+
+      <section className="py-12 relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12 text-center">
+          <h2 className="text-xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        {/* FAQ Boxes */}
+        <div className="space-y-6 w-11/12 md:w-5/6 mx-auto relative z-10">
+          {faqs.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => toggleItem(index)}
+              className="
+              p-6 rounded-2xl backdrop-blur-xl bg-white/5 
+              border border-white/10 transition-all duration-300
+              shadow-[0_0_20px_rgba(0,255,255,0.1)]
+              hover:border-[var(--color5)]
+              hover:shadow-[0_0_30px_var(--color5)]
+              cursor-pointer relative overflow-hidden
+            "
+            >
+              {/* Scan Lines */}
+              <div className="absolute inset-0 opacity-30 pointer-events-none">
+                {[...Array(4)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute left-0 w-full h-[2px]
+                    bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+                  "
+                  ></div>
+                ))}
+              </div>
+
+              {/* Question Row */}
+              <div className="flex justify-between items-center relative z-10">
+                <h3 className="text-lg md:text-xl font-semibold text-[var(--color5)]">
+                  {item.q}
+                </h3>
+
+                <span className="text-[var(--color5)] text-2xl font-bold transition-all">
+                  {openIndex === index ? "−" : "+"}
+                </span>
+              </div>
+
+              {/* Answer */}
+              <div
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
+                  openIndex === index
+                    ? "max-h-96 mt-4 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <p className="leading-relaxed">{item.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Animation */}
+        <style>
+          {`
+          @keyframes cardScan {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+          }
+          .animate-cardScan {
+            animation: cardScan 5s linear infinite;
+          }
+        `}
+        </style>
+      </section>
       <OurProcess />
       <WhyBigwig />
 

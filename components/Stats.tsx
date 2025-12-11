@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import aboutImg from "../Assets/ORM.png";
+import aboutImg from "../Assets/hero/2 (1).png";
 
 export default function AboutSection() {
   const stats = [
