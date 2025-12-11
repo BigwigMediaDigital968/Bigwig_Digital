@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-import slide1 from "../Assets/12983062_5109267.jpg";
-import slide2 from "../Assets/52267.jpg";
-import slide3 from "../Assets/53607.jpg";
+import slide1 from "../Assets/hero/2 (2).png";
+import slide2 from "../Assets/hero/3.png";
+import slide3 from "../Assets/hero/1.png";
+import slide4 from "../Assets/hero/Website Banner.png";
 import ButtonFill from "./Button";
 import PopupForm from "./PopupForm";
 
@@ -24,6 +25,12 @@ const slides = [
   },
   {
     image: slide3,
+    title: "Build Something Exceptional",
+    subtitle: "Your story deserves powerful visuals and great execution",
+    cta: "Get Started",
+  },
+  {
+    image: slide4,
     title: "Build Something Exceptional",
     subtitle: "Your story deserves powerful visuals and great execution",
     cta: "Get Started",
@@ -51,7 +58,7 @@ export default function SliceRevealSlider() {
 
     const interval = setInterval(() => {
       nextSlide();
-    }, 12000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
@@ -103,7 +110,7 @@ export default function SliceRevealSlider() {
   };
 
   return (
-    <div className="relative w-full h-[60vh] md:h-[70vh] lg:[100vh] overflow-hidden overflow-x-hidden bg-black">
+    <div className="relative w-full h-[40vh] md:h-[70vh] lg:h-[85vh] overflow-hidden  overflow-x-hidden bg-black">
       {/* IMAGE SLICES */}
       {Array.from({ length: slices }).map((_, i) => (
         <div

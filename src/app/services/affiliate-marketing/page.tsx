@@ -9,23 +9,6 @@ import Footer from "../../../../components/Footer";
 import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
-import {
-  FaShoppingBag,
-  FaLaptopCode,
-  FaGraduationCap,
-  FaTshirt,
-  FaMoneyCheckAlt,
-} from "react-icons/fa";
-
-import {
-  FaChartLine,
-  FaShieldAlt,
-  FaGlobe,
-  FaThumbsUp,
-  FaSearch,
-  FaClipboardCheck,
-  FaPuzzlePiece,
-} from "react-icons/fa";
 import Slider from "react-slick";
 import ContactForm from "../../../../components/ContactForm";
 import { SetStateAction, useState } from "react";
@@ -206,6 +189,552 @@ function AffiliateMarketing() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        {/* Outer Container */}
+        <div
+          className="
+      relative rounded-3xl p-8 md:p-12
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden
+    "
+        >
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full 
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
+        rotate-45 opacity-70
+        animate-[shineMove_4s_ease-in-out_infinite]
+      "
+          ></div>
+
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6">
+            Why Choose Our Affiliate Marketing Agency in Delhi?
+          </h2>
+
+          {/* Content */}
+          {/* Content → Now Two Columns on Desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-200 leading-relaxed text-justify">
+            {[
+              {
+                title: "Industry Expertise & Trusted Affiliate Network",
+                desc: `We work with a strong network of high-quality publishers,
+      influencers, and performance marketers across India. This ensures 
+      your brand is promoted through trusted, relevant, and result-oriented 
+      channels – making us a preferred affiliate marketing agency in Delhi 
+      for high-growth brands.`,
+              },
+              {
+                title: "Complete End-to-End Affiliate Management",
+                desc: `From strategy creation to onboarding affiliates, tracking performance, 
+      managing payouts, and optimizing results, our affiliate marketing company in 
+      Delhi handles everything so you can focus on scaling your business.`,
+              },
+              {
+                title: "Data-Driven Performance Optimization",
+                desc: `We use advanced affiliate tracking tools and analytics to identify 
+      top-performing partners, eliminate low-quality traffic, and maximize ROI. 
+      Our data-driven approach ensures you get the most from your affiliate 
+      marketing services in Delhi.`,
+              },
+              {
+                title: "Transparent, Performance-Based Growth",
+                desc: `With affiliate marketing, you only pay for actual results – clicks, leads, 
+      or sales. This makes our affiliate marketing in Delhi extremely cost-effective 
+      and risk-free.`,
+              },
+            ].map((item, i) => (
+              <div key={i}>
+                <h3 className="text-xl font-semibold text-[var(--color4)] mb-2">
+                  {item.title}
+                </h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Button stays below */}
+          <div className="mt-6">
+            <ButtonFill
+              text="Get Started Today"
+              onClick={() => setIsPopupOpen(true)}
+            />
+          </div>
+
+          {/* Glow Border */}
+          <div
+            className="
+        absolute inset-0 rounded-3xl border border-transparent 
+        group-hover:border-[var(--color5)]/80 transition-all duration-500
+      "
+          />
+        </div>
+
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineMove {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            Our Affiliate Marketing Services in Delhi
+          </h2>
+
+          <p className="text-gray-200 leading-relaxed text-justify">
+            We provide complete affiliate marketing solutions designed to help
+            businesses scale their conversions, strengthen partnerships, and
+            maximize ROI. Our structured approach ensures every part of your
+            affiliate ecosystem—from planning to payouts—is professionally
+            managed for consistent and reliable performance.
+          </p>
+        </div>
+
+        {/* DATA ARRAY (your provided content) */}
+        {/* Do NOT modify this content */}
+        {(() => {
+          const data = [
+            {
+              title: "Campaign Planning & Strategy Development",
+              points: [
+                "We design customized affiliate strategies based on your industry, goals, and customer behavior.",
+                "Each campaign is tailored to bring high-quality traffic and maximize conversions.",
+              ],
+            },
+            {
+              title: "Affiliate Recruitment & Partner Selection",
+              points: [
+                "Our affiliate marketing agency in Delhi connects you with vetted affiliates who align with your brand’s audience.",
+                "We carefully onboard partners who can bring real business value.",
+              ],
+            },
+            {
+              title: "Affiliate Training & Support",
+              points: [
+                "We provide marketing materials, creatives, guidelines, and continuous support to affiliates.",
+                "This ensures they can promote your brand effectively.",
+              ],
+            },
+            {
+              title: "Tracking, Analytics & Compliance Management",
+              points: [
+                "Our advanced tracking systems monitor clicks, leads, sales, conversions, and ROI.",
+                "We also implement fraud-prevention measures to protect your brand.",
+              ],
+            },
+            {
+              title: "Commission Structuring & Payout Management",
+              points: [
+                "We create fair, motivating commission models that drive high performance.",
+                "We manage payments smoothly to keep affiliates engaged and productive.",
+              ],
+            },
+          ];
+
+          return (
+            <>
+              {/* MOBILE SLIDER */}
+              <div className="block lg:hidden">
+                <Slider {...settings}>
+                  {data.map((item, index) => (
+                    <div key={index} className="px-2">
+                      <div
+                        className="
+                    relative flex flex-col p-6 rounded-2xl
+                    backdrop-blur-xl bg-white/5 
+                    border border-white/10
+                    shadow-[0_0_25px_rgba(0,255,255,0.1)]
+                    hover:shadow-[0_0_40px_var(--color5)]
+                    space-y-5 overflow-hidden group
+                    transition-all duration-500
+                    hover:-translate-y-2
+                  "
+                      >
+                        {/* Shine */}
+                        <div
+                          className="
+                      absolute -top-full left-0 w-full h-full
+                      bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                      rotate-45 group-hover:animate-shineLine
+                    "
+                        />
+
+                        {/* Title */}
+                        <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                          {item.title}
+                        </h3>
+
+                        {/* Points */}
+                        <ul className="space-y-2 text-gray-200 relative z-10">
+                          {item.points.map((p, i) => (
+                            <li key={i} className="list-disc ml-5">
+                              {p}
+                            </li>
+                          ))}
+                        </ul>
+
+                        {/* Glow Border */}
+                        <div
+                          className="
+                      absolute inset-0 rounded-2xl border border-transparent
+                      group-hover:border-[var(--color5)] transition-all duration-500
+                    "
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+
+              {/* DESKTOP GRID */}
+              <div
+                className="
+            hidden lg:grid 
+            grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+            gap-10 auto-rows-fr
+          "
+              >
+                {data.map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+                group relative overflow-hidden rounded-2xl 
+                transition-transform duration-500 
+                hover:-translate-y-3 h-full
+              "
+                  >
+                    <div
+                      className="
+                  relative z-10 p-6 rounded-2xl 
+                  backdrop-blur-xl bg-white/5
+                  border border-white/10
+                  shadow-[0_0_25px_rgba(0,255,255,0.15)]
+                  hover:shadow-[0_0_45px_var(--color5)]
+                  flex flex-col h-full space-y-5
+                  transition-all duration-500
+                "
+                    >
+                      {/* Shine */}
+                      <div
+                        className="
+                    absolute -top-full left-0 w-full h-full
+                    bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+                    rotate-45 group-hover:animate-shineLine
+                  "
+                      />
+
+                      {/* Title */}
+                      <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                        {item.title}
+                      </h3>
+
+                      {/* Points */}
+                      <ul className="space-y-2 text-gray-200 relative z-10">
+                        {item.points.map((p, i) => (
+                          <li key={i} className="list-disc ml-5">
+                            {p}
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Glow Border */}
+                      <div
+                        className="
+                    absolute inset-0 rounded-2xl border border-transparent 
+                    group-hover:border-[var(--color5)] transition-all duration-500
+                  "
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          );
+        })()}
+
+        {/* Animation */}
+        <style>{`
+    @keyframes shineLine {
+      0% { transform: translateY(-150%); }
+      100% { transform: translateY(150%); }
+    }
+    .animate-shineLine {
+      animation: shineLine 1.5s ease-in-out forwards;
+    }
+  `}</style>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
+            How Our Affiliate Marketing in Delhi Works
+          </h2>
+
+          <p className="text-gray-200 leading-relaxed text-justify">
+            Our step-by-step affiliate marketing process ensures your business
+            gets qualified traffic, consistent conversions, and measurable ROI.
+            Here's how we create performance-driven affiliate systems that scale
+            smoothly and profitably.
+          </p>
+        </div>
+
+        {/* DATA ARRAY – using your exact content */}
+        {(() => {
+          const data = [
+            {
+              title: "Understanding Your Business Goals",
+              points: [
+                "We analyze your industry, competitors, target audience, and business objectives to build a strong affiliate marketing blueprint.",
+              ],
+            },
+            {
+              title: "Identifying High-Value Affiliates",
+              points: [
+                "Our affiliate marketing company in Delhi connects you with niche-specific affiliates who can bring qualified traffic and genuine conversions.",
+              ],
+            },
+            {
+              title: "Creating Campaign Assets",
+              points: [
+                "We design banners, landing pages, coupon codes, custom creatives, and content required for affiliate promotions.",
+              ],
+            },
+            {
+              title: "Continuous Optimization",
+              points: [
+                "We measure every affiliate’s performance and optimize partnerships, creatives, and promotions for maximum profitability.",
+              ],
+            },
+            {
+              title: "ROI Reporting & Insights",
+              points: [
+                "We provide transparent reports highlighting sales, conversions, revenue generated, top affiliates, and campaign improvements.",
+              ],
+            },
+          ];
+
+          return (
+            <>
+              {/* MOBILE SLIDER */}
+              <div className="block lg:hidden">
+                <Slider {...settings}>
+                  {data.map((item, index) => (
+                    <div key={index} className="px-2">
+                      <div
+                        className="
+                    relative flex flex-col p-6 rounded-2xl
+                    backdrop-blur-xl bg-white/5 
+                    border border-white/10
+                    shadow-[0_0_25px_rgba(0,255,255,0.1)]
+                    hover:shadow-[0_0_40px_var(--color5)]
+                    space-y-5 overflow-hidden group
+                    transition-all duration-500
+                    hover:-translate-y-2
+                  "
+                      >
+                        {/* Shine */}
+                        <div
+                          className="
+                      absolute -top-full left-0 w-full h-full
+                      bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent
+                      rotate-45 group-hover:animate-shineLine
+                    "
+                        />
+
+                        {/* Title */}
+                        <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                          {item.title}
+                        </h3>
+
+                        {/* Points */}
+                        <ul className="space-y-2 text-gray-200 relative z-10">
+                          {item.points.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+
+                        {/* Glow Border */}
+                        <div
+                          className="
+                      absolute inset-0 rounded-2xl border border-transparent
+                      group-hover:border-[var(--color5)] transition-all duration-500
+                    "
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+
+              {/* DESKTOP GRID */}
+              <div
+                className="
+            hidden lg:grid 
+            grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+            gap-10 auto-rows-fr
+          "
+              >
+                {data.map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+                group relative overflow-hidden rounded-2xl 
+                transition-transform duration-500 
+                hover:-translate-y-3 h-full
+              "
+                  >
+                    <div
+                      className="
+                  relative z-10 p-6 rounded-2xl 
+                  backdrop-blur-xl bg-white/5
+                  border border-white/10
+                  shadow-[0_0_25px_rgba(0,255,255,0.15)]
+                  hover:shadow-[0_0_45px_var(--color5)]
+                  flex flex-col h-full space-y-5
+                  transition-all duration-500
+                "
+                    >
+                      {/* Shine */}
+                      <div
+                        className="
+                    absolute -top-full left-0 w-full h-full
+                    bg-gradient-to-r from-transparent via-[var(--color5)]/25 to-transparent
+                    rotate-45 group-hover:animate-shineLine
+                  "
+                      />
+
+                      {/* Title */}
+                      <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                        {item.title}
+                      </h3>
+
+                      {/* Points */}
+                      <ul className="space-y-2 text-gray-200 relative z-10">
+                        {item.points.map((p, i) => (
+                          <li key={i}>{p}</li>
+                        ))}
+                      </ul>
+
+                      {/* Glow Border */}
+                      <div
+                        className="
+                    absolute inset-0 rounded-2xl border border-transparent 
+                    group-hover:border-[var(--color5)] transition-all duration-500
+                  "
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          );
+        })()}
+
+        {/* Animation */}
+        <style>{`
+    @keyframes shineLine {
+      0% { transform: translateY(-150%); }
+      100% { transform: translateY(150%); }
+    }
+    .animate-shineLine {
+      animation: shineLine 1.5s ease-in-out forwards;
+    }
+  `}</style>
+      </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto">
+        {/* Outer Container */}
+        <div
+          className="
+      relative rounded-3xl p-8 md:p-12
+      backdrop-blur-2xl bg-white/5
+      border border-[var(--color5)]/30
+      shadow-[0_0_35px_rgba(0,255,255,0.15)]
+      hover:shadow-[0_0_25px_var(--color5)]
+      transition-all duration-700
+      overflow-hidden
+    "
+        >
+          {/* Shine Line */}
+          <div
+            className="
+        absolute -top-full left-0 w-full h-full 
+        bg-gradient-to-r from-transparent via-[var(--color5)]/20 to-transparent 
+        rotate-45 opacity-70
+        animate-[shineMove_4s_ease-in-out_infinite]
+      "
+          ></div>
+
+          {/* Heading */}
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-6">
+            Benefits of Hiring an Affiliate Marketing Company in Delhi
+          </h2>
+
+          {/* Content - Two Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-200 leading-relaxed">
+            {[
+              "Increased sales & revenue through targeted partner promotions",
+              "Higher brand visibility with strategic affiliate placements",
+              "Expanded audience reach across Delhi & NCR",
+              "Cost-effective marketing with performance-based payouts",
+              "Strong brand credibility from established affiliate endorsements",
+              "Boosted website traffic from high-intent visitors",
+              "Better conversions with targeted affiliate audiences",
+              "Low-risk, high-reward growth model",
+            ].map((text, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="text-[var(--color4)] text-lg">✔</span>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-gray-300 mt-6">
+            These advantages prove why many brands trust an expert affiliate
+            marketing agency in Delhi instead of running campaigns manually.
+          </p>
+
+          {/* CTA Button */}
+          <div className="mt-6">
+            <ButtonFill
+              text="Get Started Today"
+              onClick={() => setIsPopupOpen(true)}
+            />
+          </div>
+
+          {/* Glow Border */}
+          <div
+            className="
+        absolute inset-0 rounded-3xl border border-transparent 
+        group-hover:border-[var(--color5)]/80 transition-all duration-500
+      "
+          />
+        </div>
+
+        {/* Shine Animation */}
+        <style>
+          {`
+      @keyframes shineMove {
+        0% { transform: translateY(-150%); }
+        100% { transform: translateY(150%); }
+      }
+    `}
+        </style>
       </section>
 
       <section className="py-12 relative overflow-hidden">
