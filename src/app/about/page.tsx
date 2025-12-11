@@ -10,28 +10,10 @@ import aboutImg2 from "../../../Assets/map-lying-wooden-table.jpg";
 import { useState } from "react";
 import PopupForm from "../../../components/PopupForm";
 import ButtonFill from "../../../components/Button";
-import {
-  Award,
-  BarChart3,
-  Cog,
-  Facebook,
-  FileText,
-  Globe2,
-  Layers,
-  Linkedin,
-  ListChecks,
-  Rocket,
-  ScanSearch,
-  Send,
-  Sparkles,
-  TrendingUp,
-  Twitter,
-} from "lucide-react";
-import why from "../../../Assets/Handleey-Social-Media-Post.webp";
+import { Award, Globe2 } from "lucide-react";
 import owner from "../../../Assets/owner.webp";
 import GetInTouch from "../../../components/GetInTouch";
 import Client from "../../../components/Clients";
-import RainbowSteps from "../../../components/RainbowSteps";
 import process from "../../../Assets/ircle.svg";
 import imgae3 from "../../../Assets/Untitled design (1).svg";
 

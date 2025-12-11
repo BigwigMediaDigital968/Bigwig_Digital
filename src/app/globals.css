@@ -226,3 +226,76 @@
 body {
   overflow-x: hidden !important;
 } */
+
+/* Christmas Snow Animation */
+/* ----------------- SNOW ----------------- */
+.snow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 10px 10px, white, transparent),
+    radial-gradient(3px 3px at 40px 40px, white, transparent),
+    radial-gradient(2px 2px at 70px 70px, white, transparent);
+  background-size: 200px 200px;
+  animation: snowfall 7s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes snowfall {
+  from {
+    background-position: 0 -200px;
+  }
+  to {
+    background-position: 0 200px;
+  }
+}
+
+/* ----------------- GOLD SPARKLES ----------------- */
+.sparkles {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 215, 0, 0.8) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255, 215, 0, 0.6) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    80px 80px;
+  animation: sparkleMove 6s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes sparkleMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* ----------------- CHRISTMAS LIGHTS ----------------- */
+
+@keyframes glow {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.christmas-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 50;
+}

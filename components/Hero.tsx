@@ -9,31 +9,40 @@ import slide3 from "../Assets/hero/1.png";
 import slide4 from "../Assets/hero/4.png";
 import ButtonFill from "./Button";
 import PopupForm from "./PopupForm";
+import PopupFormC from "./PopupC";
 
 const slides = [
   {
     image: slide1,
-    title: "Creative Digital Solutions",
-    subtitle: "We craft stunning experiences through design and technology",
-    cta: "Get Started",
+    title: "We Don’t Market Brands. We Build Digital Authority.",
+    subtitle:
+      "Bigwig Media Digital transforms businesses into category leaders. With platform-obsessed creators and data-led strategists, we craft marketing ecosystems that compound growth - not just campaigns that fade out.",
+    ctaText: "Build Your Digital Authority",
+    action: "popup1",
   },
   {
     image: slide2,
-    title: "Where Ideas Come Alive",
-    subtitle: "Transforming brands with innovation and strategy",
-    cta: "Get Started",
+    title: "Marketing That Builds Brands & Breaks Limits",
+    subtitle:
+      "We don’t just run campaigns - we engineer digital experiences that make your brand impossible to ignore. From strategy to execution, Bigwig Media Digital turns attention into loyal customers.",
+    ctaText: "Get Your Growth Plan Now",
+    action: "popup2",
   },
   {
     image: slide3,
-    title: "Build Something Exceptional",
-    subtitle: "Your story deserves powerful visuals and great execution",
-    cta: "Get Started",
+    title: "This Christmas, Give Your Brand the Gift of Massive Growth",
+    subtitle:
+      "Unwrap exclusive Christmas benefits across SEO, Social Media, and Performance Marketing - crafted to boost visibility, drive conversions, and launch your brand into 2026 with unstoppable momentum.",
+    ctaText: "Claim Your Christmas Growth Plan",
+    action: "popup2",
   },
   {
     image: slide4,
-    title: "Build Something Exceptional",
-    subtitle: "Your story deserves powerful visuals and great execution",
-    cta: "Get Started",
+    title: "We Make Your Brand Impossible to Ignore",
+    subtitle:
+      "In a world of endless scroll, we create the moments that make people stop - and take action. Bigwig Media Digital blends bold creativity with performance science to turn attention into real business outcomes.",
+    ctaText: "Get a Winning Strategy",
+    action: "popup1",
   },
 ];
 
@@ -42,66 +51,53 @@ export default function SliceRevealSlider() {
 
   const [active, setActive] = useState(0);
   const [animateSlices, setAnimateSlices] = useState(false);
-
   const [showTextBlock, setShowTextBlock] = useState(false);
 
-  const [titleWordsVisible, setTitleWordsVisible] = useState(0);
-  const [subtitleWordsVisible, setSubtitleWordsVisible] = useState(0);
-  const [showCTA, setShowCTA] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [titleVisible, setTitleVisible] = useState(false);
+  const [subtitleVisible, setSubtitleVisible] = useState(false);
+  const [ctaVisible, setCtaVisible] = useState(false);
 
-  const titleWords = slides[active].title.split(" ");
-  const subtitleWords = slides[active].subtitle.split(" ");
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopup2Open, setIsPopup2Open] = useState(false);
 
   useEffect(() => {
     runAnimationSequence();
 
     const interval = setInterval(() => {
       nextSlide();
-    }, 8000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // ⭐ Dynamic animation timing (based on word count)
   const runAnimationSequence = () => {
     // Reset
     setAnimateSlices(false);
     setShowTextBlock(false);
-    setTitleWordsVisible(0);
-    setSubtitleWordsVisible(0);
-    setShowCTA(false);
 
-    // Start slices
+    setTitleVisible(false);
+    setSubtitleVisible(false);
+    setCtaVisible(false);
+
+    // Start image animation
     setTimeout(() => setAnimateSlices(true), 80);
 
-    const sliceDuration = 1500;
-    const extraDelay = 500;
+    const totalSliceTime = 1500 + 300;
 
-    // Only show text block AFTER full image animation
+    // After image animation, show text
     setTimeout(() => {
       setShowTextBlock(true);
-      animateTitle();
-    }, sliceDuration + extraDelay);
-  };
 
-  const animateTitle = () => {
-    titleWords.forEach((_, i) => {
-      setTimeout(() => {
-        setTitleWordsVisible((prev) => prev + 1);
-      }, i * 260);
-    });
+      // Title fade up
+      setTimeout(() => setTitleVisible(true), 200);
 
-    setTimeout(() => animateSubtitle(), titleWords.length * 260 + 300);
-  };
+      // Subtitle fade up
+      setTimeout(() => setSubtitleVisible(true), 600);
 
-  const animateSubtitle = () => {
-    subtitleWords.forEach((_, i) => {
-      setTimeout(() => {
-        setSubtitleWordsVisible((prev) => prev + 1);
-      }, i * 220);
-    });
-
-    setTimeout(() => setShowCTA(true), subtitleWords.length * 220 + 400);
+      // CTA fade up
+      setTimeout(() => setCtaVisible(true), 1000);
+    }, totalSliceTime);
   };
 
   const nextSlide = () => {
@@ -110,12 +106,12 @@ export default function SliceRevealSlider() {
   };
 
   return (
-    <div className="relative w-full h-[40vh] md:h-[70vh] lg:h-[85vh] overflow-hidden  overflow-x-hidden bg-black">
-      {/* IMAGE SLICES */}
+    <div className="relative w-full h-[40vh] md:h-[70vh] lg:h-[85vh] overflow-hidden bg-black">
+      {/** IMAGE SLICES */}
       {Array.from({ length: slices }).map((_, i) => (
         <div
           key={`${active}-slice-${i}`}
-          className="absolute inset-0 w-full h-full transition-all duration-[1500ms] will-change-transform"
+          className="absolute inset-0 w-full h-full transition-all duration-[1500ms]"
           style={{
             clipPath: `polygon(
               ${(100 / slices) * i}% 0%,
@@ -130,78 +126,65 @@ export default function SliceRevealSlider() {
           <Image
             src={slides[active].image}
             fill
-            priority
-            sizes="100vw"
-            className="object-cover pointer-events-none select-none"
+            className="object-cover select-none pointer-events-none"
             alt=""
           />
         </div>
       ))}
 
-      {/* TEXT BLOCK */}
+      {/** TEXT BLOCK */}
       {showTextBlock && (
         <div className="absolute inset-0 flex flex-col justify-center px-10 md:px-20 lg:px-36 z-20">
           {/* Title */}
-          <h1 className="text-4xl md:text-6xl font-bold text-white max-w-3xl flex flex-wrap gap-3">
-            {titleWords.map((word, i) => (
-              <span
-                key={i}
-                className={`
-                  inline-block transition-all duration-[800ms] ease-out
-                  ${
-                    i < titleWordsVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
-                  }
-                `}
-              >
-                {word}
-              </span>
-            ))}
+          <h1
+            className={`
+        text-3xl md:text-4xl font-bold text-[var(--color5)] max-w-3xl
+        transition-all duration-[700ms]
+        ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+      `}
+          >
+            {slides[active].title}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-2xl text-white/90 mt-6 max-w-2xl flex flex-wrap gap-2">
-            {subtitleWords.map((word, i) => (
-              <span
-                key={i}
-                className={`
-                  inline-block transition-all duration-[800ms] ease-out
-                  ${
-                    i < subtitleWordsVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-3"
-                  }
-                `}
-              >
-                {word}
-              </span>
-            ))}
+          <p
+            className={`
+        text-lg md:text-xl text-white/80 mt-6 max-w-2xl
+        transition-all duration-[700ms] delay-100
+        ${subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+      `}
+          >
+            {slides[active].subtitle}
           </p>
 
-          {/* CTA → UPDATED TO USE ButtonFill */}
+          {/* Button */}
           <div
             className={`
-              mt-10 transition-all duration-[900ms] ease-out w-max
-              ${
-                showCTA
-                  ? "opacity-100 translate-y-0 scale-100"
-                  : "opacity-0 translate-y-6 scale-75"
-              }
-            `}
+        mt-10 w-max transition-all duration-[900ms]
+        ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+      `}
           >
             <ButtonFill
-              onClick={() => setIsPopupOpen(true)}
-              text={slides[active].cta}
+              text={slides[active].ctaText}
               className="px-8 py-3"
+              onClick={() => {
+                const slide = slides[active];
+                slide.action === "popup1"
+                  ? setIsPopupOpen(true)
+                  : setIsPopup2Open(true);
+              }}
             />
           </div>
         </div>
       )}
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 z-10" />
+
       <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+      <PopupFormC
+        isOpen={isPopup2Open}
+        onClose={() => setIsPopup2Open(false)}
+      />
     </div>
   );
 }
