@@ -139,7 +139,7 @@ export default function SliceRevealSlider() {
           {/* Title */}
           <h1
             className={`
-        text-3xl md:text-4xl font-bold text-[var(--color5)] max-w-3xl
+        text-3xl md:text-4xl font-bold text-white max-w-3xl
         transition-all duration-[700ms]
         ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
       `}

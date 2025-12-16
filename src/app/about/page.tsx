@@ -44,7 +44,7 @@ export default function About() {
             The Bigwig Story
           </p>
 
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color4)] mb-6">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
             Building Brands That Win in the Digital Age
           </h2>
 
@@ -97,7 +97,7 @@ export default function About() {
             Who We Are
           </p>
 
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color4)] mb-6">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
             A team built to power brands digitally.
           </h2>
 
@@ -149,7 +149,7 @@ export default function About() {
             <p className="text-[var(--color5)] uppercase text-lg font-semibold mb-3 tracking-widest inline-block border-b-2 border-[var(--color5)]">
               Our Blueprint for Success
             </p>
-            <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color4)] mb-6">
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
               Turning smart ideas into measurable outcomes.
             </h2>
           </div>
@@ -220,7 +220,7 @@ export default function About() {
             <p className="text-[var(--color5)] uppercase text-lg font-semibold border-b mb-3 w-fit tracking-widest">
               Why We’re the Right Partner
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color4)] mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Digital Excellence, Delivered Consistently
             </h2>
             <p className="text-gray-200 mb-8">
@@ -299,7 +299,7 @@ export default function About() {
             <p className="text-[var(--color5)] uppercase font-semibold mb-2 tracking-widest inline-block border-b-2 border-[var(--color5)]">
               The Mind Behind Bigwig
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color4)] mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               A Message from Our Founder
             </h2>
             <p className="text-gray-200 mb-6 whitespace-pre-wrap">

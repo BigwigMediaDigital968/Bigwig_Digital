@@ -78,7 +78,7 @@ export default function RainbowSteps() {
           How We Work
         </p>
 
-        <h2 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg max-w-2xl">
+        <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg max-w-2xl">
           A Journey That Builds Brands,
           <br /> Step by Step
         </h2>

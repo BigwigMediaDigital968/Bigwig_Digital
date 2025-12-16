@@ -49,7 +49,7 @@ export default function Client() {
             Our Clientele
           </p>
 
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg mb-5">
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg mb-5">
             Brands That Believe in What We Build
           </h2>
           <p className="text-gray-200 mb-6 whitespace-pre-wrap">

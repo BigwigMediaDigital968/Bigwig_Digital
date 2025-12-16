@@ -62,7 +62,7 @@ export default function AboutSection() {
               ABOUT US
             </p>
 
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg">
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
               We Build Digital Experiences That Create Impact
             </h2>
 

@@ -59,7 +59,7 @@ const Blogs = () => {
             Our Blog
           </p>
 
-          <h1 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
             Insights that Inspire Smarter Decisions
           </h1>
         </div>

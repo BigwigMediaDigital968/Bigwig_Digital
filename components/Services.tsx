@@ -106,7 +106,7 @@ export default function ServicesPage() {
             <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 tracking-widest">
               OUR SERVICES
             </p>
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--color4)] drop-shadow-lg">
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
               Transforming Brands with Modern Digital Solutions
             </h1>
           </div>
