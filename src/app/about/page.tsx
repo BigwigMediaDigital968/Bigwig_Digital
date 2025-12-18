@@ -312,7 +312,7 @@ export default function About() {
               committed to building success with you, every step of the way.”
             </p>
             <h3 className="text-xl font-semibold text-[var(--color5)] mb-1">
-              Neha Verma
+              Amandeep Singh
             </h3>
             <p className="text-gray-300">Founder</p>
           </div>
