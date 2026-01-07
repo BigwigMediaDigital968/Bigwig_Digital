@@ -6,6 +6,7 @@ import axios from "axios";
 import Navbar from "../../../../components/Nav";
 import Footer from "../../../../components/Footer";
 import GetInTouch from "../../../../components/GetInTouch";
+import PopupForm from "../../../../components/PopupForm";
 
 interface BlogType {
   title: string;
@@ -44,6 +45,20 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [relatedBlogs, setRelatedBlogs] = useState<BlogType[]>([]);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  useEffect(() => {
+    const handlePopupClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      if (target.closest("[data-open-popup='true']")) {
+        setIsPopupOpen(true);
+      }
+    };
+
+    document.addEventListener("click", handlePopupClick);
+    return () => document.removeEventListener("click", handlePopupClick);
+  }, []);
 
   const handleShare = () => {
     if (navigator.share) {
@@ -320,6 +335,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       )}
       <GetInTouch />
       <Footer />
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </div>
   );
 }

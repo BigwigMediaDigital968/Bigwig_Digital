@@ -48,7 +48,7 @@ export default function About() {
             Building Brands That Win in the Digital Age
           </h2>
 
-          <p className="text-base text-gray-200 leading-relaxed mb-6">
+          <p className="text-base text-gray-200 leading-relaxed mb-6 text-justify">
             At Bigwig Media Digital, we don’t just deliver marketing - we craft
             digital experiences that connect, convert, and create lasting
             impact. Based in New Delhi, India, we are a full-stack Digital
@@ -101,7 +101,7 @@ export default function About() {
             A team built to power brands digitally.
           </h2>
 
-          <p className="text-base text-gray-200 leading-relaxed mb-6">
+          <p className="text-base text-gray-200 leading-relaxed mb-6 text-justify">
             We are a team of curious minds and problem-solvers who blend
             creativity with precision. As a 360° digital marketing agency, our
             mission is simple, to power brands with smart, scalable digital
@@ -283,7 +283,7 @@ export default function About() {
 
       <Client />
 
-      {/* <section className="py-12">
+      <section className="py-12">
         <div className="w-11/12 md:w-5/6 mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2 flex justify-center">
             <Image
@@ -300,7 +300,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               A Message from Our Founder
             </h2>
-            <p className="text-gray-200 mb-6 whitespace-pre-wrap">
+            <p className="text-gray-200 mb-6 whitespace-pre-wrap text-justify">
               “Bigwig Media Digital was born from a desire to help brands
               navigate the digital world with clarity and confidence. My vision
               has always been simple, combining smart strategy with meaningful
@@ -317,7 +317,7 @@ export default function About() {
             <p className="text-gray-300">Founder</p>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* ================= FINAL CTA SECTION ================= */}
 

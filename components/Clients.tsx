@@ -52,7 +52,7 @@ export default function Client() {
           <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg mb-5">
             Brands That Believe in What We Build
           </h2>
-          <p className="text-gray-200 mb-6 whitespace-pre-wrap">
+          <p className="text-gray-200 mb-6 whitespace-pre-wrap text-justify">
             Over the years, we’ve collaborated with a wide range of brands each
             with its own vision, challenges, and ambitions. Every partnership
             has strengthened our belief in creating digital experiences that
