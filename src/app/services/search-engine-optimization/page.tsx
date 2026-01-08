@@ -29,7 +29,7 @@ const seoServices = [
   {
     title: "LLM SEO",
     content:
-      "Our LLM SEO specialists optimise your content so it’s easy for large language models to understand, reference, and deliver in search answers. This boosts your authority and significantly improves your online visibility. ",
+      "Our LLM SEO specialists optimise your content so it’s easy for large language models to understand, reference, and deliver in search answers. This boosts your authority and significantly improves your online visibility.",
   },
   {
     title: "AI SEO",
@@ -39,12 +39,12 @@ const seoServices = [
   {
     title: "Local SEO",
     content:
-      "We optimise your Google Business Profile and create location-focused content that helps your business attract nearby customers, build trust, and stay visible in key areas. ",
+      "We optimise your Google Business Profile and create location-focused content that helps your business attract nearby customers, build trust, and stay visible in key areas.",
   },
   {
     title: "E-commerce SEO",
     content:
-      "Our team identifies the right keywords and optimises your product pages so customers can easily discover your products when they search online. ",
+      "Our team identifies the right keywords and optimises your product pages so customers can easily discover your products when they search online.",
   },
   {
     title: "Technical SEO",
@@ -250,41 +250,41 @@ function Seo() {
             {/* Left content */}
             <div className="space-y-6">
               <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] mb-4">
-                SEO Company in Delhi Focused on Visibility, Traffic &
+                SEO Services Company in Delhi Focused on Visibility, Traffic &
                 Conversions
               </h2>
               <p className="text-white leading-relaxed text-justify">
                 SEO plays a crucial role in strengthening your online presence
                 and boosting your visibility on the internet. And choosing the
-                right SEO services company in Delhi can be the difference
-                between a business that struggles and a business that grows year
-                after year. That’s exactly where Bigwig Media Digital comes in.
-                We dig deep into the world of search engine optimisation and use
-                it to fuel your business growth.
+                right SEO services in Delhi can be the difference between a
+                business that struggles and a business that grows year after
+                year. That’s exactly where Bigwig Media Digital comes in. We dig
+                deep into the world of search engine optimisation and use it to
+                fuel your business growth.
               </p>
 
               <p className="text-white leading-relaxed text-justify">
-                As a dedicated SEO services company in Delhi, our goal is
-                simple: to create strategies that are tailored to the unique
-                needs of every client. Our team brings together technical
-                expertise and creative thinking to help your website rise to the
-                top of search engine results pages. With years of experience
-                behind us, we focus on driving organic traffic, increasing
-                visibility, and turning clicks into loyal customers.{" "}
+                As a dedicated SEO services in Delhi, our goal is simple: to
+                create strategies that are tailored to the unique needs of every
+                client. Our team brings together technical expertise and
+                creative thinking to help your website rise to the top of search
+                engine results pages. With years of experience behind us, we
+                focus on driving organic traffic, increasing visibility, and
+                turning clicks into loyal customers.
               </p>
 
               <p className="text-white leading-relaxed text-justify">
                 What truly sets us apart is our approach. We believe in
-                transparency and results you can measure. At Bigwig Media
+                transparency and result you can measure. At Bigwig Media
                 Digital, we use advanced analytics and share clear, actionable
                 reports and roadmaps, so you always know what’s working. Our
                 services are designed for all kinds of businesses - whether
-                you&#39;re just starting out or already established. From
-                keyword research and content optimisation to high-quality
-                backlink building, we use a holistic SEO strategy that supports
-                long-term success for your brand. Choose Bigwig Media Digital, a
-                trusted SEO services company in Delhi, and watch your business
-                reach new heights.
+                you're just starting out or already established. From keyword
+                research and content optimisation to high-quality backlink
+                building, we use a holistic SEO strategy that supports long-term
+                success for your brand. Choose Bigwig Media Digital, a trusted
+                SEO services in Delhi, and watch your business reach new
+                heights.
               </p>
             </div>
 
@@ -614,7 +614,7 @@ function Seo() {
             Choosing the right digital growth partner isn’t just about getting
             higher rankings. It’s about finding a team that values trust,
             transparency, and real business impact. At Bigwig Media Digital, we
-            elevate SEO services in India with strategies designed for
+            elevate SEO services in Delhi with strategies designed for
             meaningful, long-term growth.
           </p>
         </div>
@@ -787,7 +787,7 @@ function Seo() {
           <div className="space-y-6 text-gray-200 leading-relaxed text-justify relative z-10">
             <p>
               In today’s digital-first world, where online presence defines
-              business success, partnering with the best SEO consultant in Delhi
+              business success, partnering with the best SEO services in Delhi
               has become essential. A skilled SEO consultant in Delhi can
               significantly enhance your website’s visibility, outrank
               competitors, attract quality traffic, and ultimately boost
