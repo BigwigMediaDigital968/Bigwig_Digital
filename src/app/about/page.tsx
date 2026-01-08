@@ -283,7 +283,7 @@ export default function About() {
 
       <Client />
 
-      <section className="py-12">
+      {/* <section className="py-12">
         <div className="w-11/12 md:w-5/6 mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2 flex justify-center">
             <Image
@@ -317,7 +317,7 @@ export default function About() {
             <p className="text-gray-300">Founder</p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ================= FINAL CTA SECTION ================= */}
 
