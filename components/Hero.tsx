@@ -37,14 +37,14 @@ const slides = [
     ctaText: "Get a Winning Strategy",
     action: "popup1",
   },
-  {
-    image: slide3,
-    title: "This Christmas, Give Your Brand the Gift of Massive Growth",
-    subtitle:
-      "Unwrap exclusive Christmas benefits across SEO, Social Media, and Performance Marketing - crafted to boost visibility, drive conversions, and launch your brand into 2026 with unstoppable momentum.",
-    ctaText: "Claim Your Christmas Growth Plan",
-    action: "popup2",
-  },
+  // {
+  //   image: slide3,
+  //   title: "This Christmas, Give Your Brand the Gift of Massive Growth",
+  //   subtitle:
+  //     "Unwrap exclusive Christmas benefits across SEO, Social Media, and Performance Marketing - crafted to boost visibility, drive conversions, and launch your brand into 2026 with unstoppable momentum.",
+  //   ctaText: "Claim Your Christmas Growth Plan",
+  //   action: "popup2",
+  // },
 ];
 
 export default function SliceRevealSlider() {
