@@ -16,14 +16,17 @@ const SERVICES_LIST = [
   "Affiliate Marketing",
   "Online Reputation Management",
 ];
+type ContactFormProps = {
+  singleService?: string;
+};
 
-const ContactForm = () => {
+const ContactForm = ({ singleService }: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
-    services: [] as string[],
+    services: singleService ? [singleService] : [],
   });
 
   const [otp, setOtp] = useState("");
@@ -94,7 +97,7 @@ const ContactForm = () => {
     }
 
     // SERVICES
-    if (formData.services.length === 0) {
+    if (!singleService && formData.services.length === 0) {
       newErrors.services = "Select at least one service.";
       valid = false;
     }
@@ -208,7 +211,7 @@ const ContactForm = () => {
           {/* PHONE */}
           <div>
             <div className="flex gap-3">
-              <select
+              {/* <select
                 required
                 className="p-3 border border-white/30 rounded-lg w-32"
                 value={formData.phone.split(" ")[0] || "+91"}
@@ -227,7 +230,7 @@ const ContactForm = () => {
                 <option value="+971">🇦🇪 +971</option>
                 <option value="+81">🇯🇵 +81</option>
                 <option value="+49">🇩🇪 +49</option>
-              </select>
+              </select> */}
 
               <input
                 type="tel"
@@ -248,38 +251,11 @@ const ContactForm = () => {
           </div>
 
           {/* SERVICE SELECT */}
-          <div>
-            <details className="bg-white/5 border border-white/20 rounded-lg p-3">
-              <summary className="cursor-pointer text-white select-none">
-                {formData.services.length > 0
-                  ? `${formData.services.length} Selected`
-                  : "Select Services"}
-              </summary>
-
-              <div className="mt-3 grid grid-cols-2 gap-2 max-h-32 overflow-y-auto pr-1">
-                {SERVICES_LIST.map((service) => {
-                  const selected = formData.services.includes(service);
-                  return (
-                    <button
-                      type="button"
-                      key={service}
-                      onClick={() => handleServiceToggle(service)}
-                      className={`w-full text-left px-3 py-2 rounded border text-sm ${
-                        selected
-                          ? "bg-white text-black border-white"
-                          : "bg-transparent text-white border-white/40 hover:border-white"
-                      }`}
-                    >
-                      {service}
-                    </button>
-                  );
-                })}
-              </div>
-            </details>
-            {errors.services && (
-              <p className="text-red-400 text-sm">{errors.services}</p>
-            )}
-          </div>
+          {singleService && (
+            <div className="text-white/90 text-sm  border border-white/20 rounded-lg px-4 py-4">
+              {singleService}
+            </div>
+          )}
 
           {/* MESSAGE */}
           <div>

@@ -251,7 +251,7 @@ function Website() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Website Development" />
         </div>
       </section>
 
@@ -1251,8 +1251,8 @@ function Website() {
         </style>
       </section>
 
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
 
       <section className="py-12 relative overflow-hidden">
         {/* Matrix glow background */}
