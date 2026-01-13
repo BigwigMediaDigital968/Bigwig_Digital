@@ -279,7 +279,7 @@ function Footer() {
                 },
                 {
                   icon: faInstagram,
-                  href: "https://www.instagram.com/bigwigmediadigital/",
+                  href: "https://www.instagram.com/bigwig.media.digital?igsh=ODhpeTJzcDRpa25q",
                   color: "#E1306C",
                 },
                 {

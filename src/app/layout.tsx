@@ -82,7 +82,7 @@ export default function RootLayout({
               sameAs: [
                 "https://www.facebook.com/bigwigdigital/",
                 "https://x.com/bigwig_digital",
-                "https://www.instagram.com/bigwigmediadigital/",
+                "https://www.instagram.com/bigwig.media.digital?igsh=ODhpeTJzcDRpa25q",
                 "https://www.youtube.com/@BigwigMediaDigital",
                 "https://www.linkedin.com/company/106698073/admin/dashboard/",
                 "https://in.pinterest.com/bigwigmediadigital/",

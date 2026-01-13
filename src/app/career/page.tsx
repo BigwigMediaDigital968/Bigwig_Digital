@@ -29,12 +29,20 @@ export default function Career() {
 
   useEffect(() => {
     fetch("https://bigwigdigitalbackend.onrender.com/api/jobs")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         setJobs(data);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((error) => {
+        console.error("Failed to fetch jobs:", error);
+        setLoading(false);
+      });
   }, []);
 
   const benefits = [
