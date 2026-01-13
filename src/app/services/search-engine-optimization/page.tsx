@@ -239,7 +239,7 @@ function Seo() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Search Engine Optimization"/>
         </div>
       </section>
 
@@ -921,8 +921,8 @@ function Seo() {
         </style>
       </section>
 
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
       {/* Services Table Section */}
       <section className="py-12 relative overflow-hidden">
         {/* Matrix glow background */}

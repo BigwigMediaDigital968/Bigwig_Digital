@@ -136,7 +136,7 @@ function AffiliateMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Affiliate Marketing"/>
         </div>
       </section>
 
@@ -1217,8 +1217,8 @@ function AffiliateMarketing() {
         </style>
       </section>
 
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
 
       <section className="py-20 relative overflow-hidden">
         {/* Matrix glow background */}

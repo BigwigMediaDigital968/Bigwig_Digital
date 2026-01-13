@@ -201,7 +201,7 @@ function GraphicDesigning() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Graphic Designing & Video Editing"/>
         </div>
       </section>
       <section className="py-12">
@@ -950,8 +950,8 @@ function GraphicDesigning() {
         </style>
       </section>
 
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
 
       <section className="py-12 relative overflow-hidden">
         {/* Matrix glow background */}

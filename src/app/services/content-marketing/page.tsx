@@ -218,7 +218,7 @@ function ContentMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Content Marketing"/>
         </div>
       </section>
       <section className=" py-10">
@@ -941,8 +941,8 @@ function ContentMarketing() {
         `}
         </style>
       </section>
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
 
       <section className="py-12 relative overflow-hidden">
         {/* Matrix glow background */}

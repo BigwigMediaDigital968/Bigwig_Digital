@@ -211,7 +211,7 @@ function SocialMediaOptimization() {
           </div>
 
           {/* Right Form - 1/3 */}
-          <ContactForm />
+          <ContactForm singleService="Social Media Optimization"/>
         </div>
       </section>
 
@@ -825,8 +825,8 @@ function SocialMediaOptimization() {
         </style>
       </section>
 
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
 
       <section className="py-12 relative overflow-hidden">
         {/* Matrix glow background */}

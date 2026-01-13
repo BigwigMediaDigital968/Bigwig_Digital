@@ -261,7 +261,7 @@ function PerformanceMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Performance Marketing"/>
         </div>
       </section>
 
@@ -872,9 +872,9 @@ function PerformanceMarketing() {
         </style>
       </section>
 
-      <OurProcess />
+      {/* <OurProcess />
 
-      <WhyBigwig />
+      <WhyBigwig /> */}
       {/* Services Table Section */}
       <section className="py-20 relative overflow-hidden">
         {/* Matrix glow background */}

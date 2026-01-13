@@ -245,7 +245,7 @@ function OnlineReputationManagement() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Online Reputation Management"/>
         </div>
       </section>
 
@@ -935,8 +935,8 @@ function OnlineReputationManagement() {
         </style>
       </section>
 
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
       <section className="py-20 relative overflow-hidden">
         {/* Matrix glow background */}
         <div className="absolute inset-0 opacity-[0.20] bg-[url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764569855/5079835_mfzfld.jpg')] bg-cover bg-center mix-blend-screen pointer-events-none"></div>

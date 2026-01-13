@@ -191,7 +191,7 @@ function SocialMediaMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Social Media Marketing"/>
         </div>
       </section>
 
@@ -850,8 +850,8 @@ function SocialMediaMarketing() {
         </style>
       </section>
 
-      <OurProcess />
-      <WhyBigwig />
+      {/* <OurProcess />
+      <WhyBigwig /> */}
       {/* Services Table Section */}
       <section className="py-12 relative overflow-hidden">
         {/* Matrix glow background */}
