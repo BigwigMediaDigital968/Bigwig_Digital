@@ -257,7 +257,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
 
             {/* PHONE */}
             <div className="flex gap-3">
-              <select
+              {/* <select
                 className="p-3 border rounded-lg bg-[var(--color1)] text-white w-32"
                 value={formData.phone.split(" ")[0] || "+91"}
                 onChange={(e) =>
@@ -277,7 +277,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
                 <option value="+971">🇦🇪 +971</option>
                 <option value="+81">🇯🇵 +81</option>
                 <option value="+49">🇩🇪 +49</option>
-              </select>
+              </select> */}
 
               <input
                 type="tel"

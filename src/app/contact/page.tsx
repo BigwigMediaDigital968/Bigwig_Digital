@@ -241,7 +241,7 @@ export default function ContactPage() {
                 <div>
                   <label>Phone</label>
                   <div className="flex gap-3 items-center mt-2">
-                    <select
+                    {/* <select
                       className="p-3 rounded-md bg-[#050504] text-white outline-none focus:ring-2 focus:ring-[var(--color5)]"
                       value={formData.countryCode}
                       onChange={(e) =>
@@ -259,7 +259,7 @@ export default function ContactPage() {
                       <option value="+971">🇦🇪 +971</option>
                       <option value="+81">🇯🇵 +81</option>
                       <option value="+49">🇩🇪 +49</option>
-                    </select>
+                    </select> */}
 
                     <input
                       type="text"
