@@ -16,7 +16,7 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (email === "admin@gmail.com" && password === "Bigwig@2025") {
+    if (email === "harsh@gmail.com" && password === "Harsh@0502") {
       sessionStorage.setItem("login", "true");
       await Swal.fire("Success", "Welcome, Admin!", "success");
       router.push("/admin");
