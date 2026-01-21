@@ -90,7 +90,7 @@ const faqs = [
   },
   {
     q: "How does BigWig Media Digital measure the success of social media campaigns?",
-    a: "We use advanced tracking tools and detailed analytics to measure KPIs like engagement rate, reach, impressions, CPC, CTR, conversions, ROAS, and follower growth. Our performance reports offer complete transparency, and our team optimizes campaigns weekly to ensure continuous improvement. Whether it's organic growth or Social Media Advertising, we focus on delivering measurable and meaningful results.",
+    a: "We use advanced tracking tools and detailed analytics to measure KPIs like engagement rate, reach, impressions, CPC, CTR, conversions, ROAS, and follower growth. Our performance reports offer complete transparency, and our team optimizes campaigns weekly to ensure continuous improvement. Whether it&apos;s organic growth or Social Media Advertising, we focus on delivering measurable and meaningful results.",
   },
   {
     q: "Can you help with social media advertising?",

@@ -98,7 +98,7 @@ const faqs = [
   {
     q: "What is Performance Marketing, and How Can a Performance Marketing Agency in Delhi Benefit My Business?",
     a: `Performance marketing is a results-driven approach where you pay only for measurable actions such as clicks, leads, sales, or conversions.
-Partnering with a performance marketing agency in Delhi helps you scale faster using data, targeting, and optimization techniques to reach the right audience and maximize ROI. Whether you're a startup or an established business, performance marketing ensures every rupee spent moves you closer to growth.`,
+Partnering with a performance marketing agency in Delhi helps you scale faster using data, targeting, and optimization techniques to reach the right audience and maximize ROI. Whether you&apos;re a startup or an established business, performance marketing ensures every rupee spent moves you closer to growth.`,
   },
   {
     q: "How Do Performance Marketing Agencies in Delhi Measure Success?",

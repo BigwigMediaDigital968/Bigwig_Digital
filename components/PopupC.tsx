@@ -228,10 +228,10 @@ const PopupFormC: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
         <div className="christmas-lights flex items-center justify-between w-full px-4 py-1">
           {Array.from({ length: 20 }).map((_, i) => {
             const icons = [
-              <Tree size={18} color="#00e676" weight="fill" />,
-              <StarFour size={18} color="#ffd700" weight="fill" />,
-              <CandyCane size={18} color="#ff1744" height="fill" />,
-              <Gift size={18} color="#29b6f6" weight="fill" />,
+              <Tree key="tree" size={18} color="#00e676" weight="fill" />,
+              <StarFour key="star" size={18} color="#ffd700" weight="fill" />,
+              <CandyCane key="candy" size={18} color="#ff1744" height="fill" />,
+              <Gift key="gift" size={18} color="#29b6f6" weight="fill" />,
             ];
 
             return (

@@ -88,7 +88,7 @@ const customSections = [
   {
     title: "Your Website Reflects Your Brand",
     content:
-      "A website is more than a digital presence, it represents your brand identity, values, and offerings. If you're searching for the best “website designer near me,” we create custom-designed websites that bring your vision to life.",
+      "A website is more than a digital presence, it represents your brand identity, values, and offerings. If you&apos;re searching for the best “website designer near me,” we create custom-designed websites that bring your vision to life.",
   },
   {
     title: "We Shape Digital Experiences",
@@ -143,7 +143,7 @@ const benefitSections = [
 const faqs = [
   {
     q: "Why should you hire a Web Design Company in Delhi?",
-    a: "Partnering with a professional web design company helps increase website traffic, enhance user engagement, and support business growth. A high-quality website is more visually appealing, easier to navigate, and significantly improves user experience. If you're searching for the best website designers near me, our team delivers custom-designed solutions tailored to your brand.",
+    a: "Partnering with a professional web design company helps increase website traffic, enhance user engagement, and support business growth. A high-quality website is more visually appealing, easier to navigate, and significantly improves user experience. If you&apos;re searching for the best website designers near me, our team delivers custom-designed solutions tailored to your brand.",
   },
   {
     q: "How do I hire a web design company?",
@@ -892,159 +892,6 @@ function Website() {
       {/* </section> */}
 
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* =================== HEADINGS =================== */}
-        <div className="mb-12 text-center md:text-left">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
-            Why Choose Bigwig Media Digital Web Designing Experts For Your
-            Business?
-          </h2>
-        </div>
-
-        {/* =================== MAIN CONTENT WRAPPER =================== */}
-        <div
-          className="
-      relative rounded-2xl p-8 md:p-12 
-      backdrop-blur-xl bg-white/5 
-      border border-white/10 
-      shadow-[0_0_25px_rgba(0,255,255,0.15)] 
-      overflow-hidden
-    "
-        >
-          {/* Scan Lines */}
-          <div className="absolute inset-0 opacity-40 pointer-events-none">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="
-            absolute left-0 w-full h-[2px]
-            bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-          
-          "
-              ></div>
-            ))}
-          </div>
-
-          {/* LEFT GLOW STRIP */}
-          <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_25px_var(--color5)]"></div>
-
-          {/* =================== GRID LAYOUT =================== */}
-          <div className="relative z-10 grid md:grid-cols-2 gap-12">
-            {/* LEFT SIDE — FULL CONTENT BLOCK */}
-            <div className="space-y-6 text-gray-200 leading-relaxed">
-              <p>
-                A website is often the first touchpoint between your brand and
-                your online audience. It’s where first impressions are formed
-                and where digital credibility begins. A well-crafted website
-                strengthens your marketing presence and builds trust, influence,
-                and recognition in today’s competitive online space.
-              </p>
-
-              <p>
-                As a trusted web design company in Delhi, we take your vision
-                seriously. Our team blends creativity with advanced technology
-                to deliver modern, high-performing websites that enhance your
-                digital identity. With years of industry expertise, we create
-                professional designs that exceed expectations.
-              </p>
-
-              <p>
-                Our passion for design and attention to detail have made us a
-                preferred web design agency in Delhi. We build visually rich,
-                smooth-functioning websites that remove concerns about slow
-                loading, cluttered layouts, or poor navigation. Every element is
-                crafted to engage users and reflect your brand’s personality.
-              </p>
-
-              <p>
-                As a leading website designing agency in Delhi, we support
-                businesses across industries—eCommerce, manufacturing, services,
-                education, and more. If you want to refresh your existing
-                website, our redesign experts can transform it into a modern,
-                high-impact digital platform.
-              </p>
-            </div>
-
-            {/* RIGHT SIDE — FEATURE LIST PANEL */}
-            <div
-              className="
-          p-6 rounded-2xl 
-          bg-black/40 backdrop-blur-lg
-          border border-white/10 
-          shadow-[0_0_20px_rgba(0,255,255,0.1)]
-          space-y-5 h-fit relative overflow-hidden
-        "
-            >
-              {/* Inside Scan Bars */}
-              <div className="absolute inset-0 opacity-30 pointer-events-none">
-                {[...Array(5)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="
-                absolute left-0 w-full h-[2px]
-                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-              
-              "
-                  ></div>
-                ))}
-              </div>
-
-              <h4 className="text-xl font-semibold text-[var(--color5)]">
-                What We Deliver:
-              </h4>
-
-              <ul className="space-y-4 relative z-10">
-                {[
-                  "A creative and personalized design strategy",
-                  "Modern, adaptive, and innovative layouts",
-                  "Meaningful and value-driven content",
-                  "An easy-to-use CMS for smooth management",
-                  "Scalable features that grow with your business",
-                  "Complete testing for flawless performance",
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span
-                      className="
-                  w-3 h-3 mt-1 rounded-full 
-                  bg-[var(--color5)] 
-                  shadow-[0_0_12px_var(--color5)]
-                "
-                    ></span>
-                    <span className="text-gray-200">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Right Glow Bar */}
-              <div className="absolute right-0 top-0 h-full w-[5px] bg-[var(--color5)] opacity-70 shadow-[0_0_25px_var(--color5)]"></div>
-            </div>
-          </div>
-
-          {/* Hover Glow Border */}
-          <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
-
-          {/* ANIMATIONS */}
-          <style>{`
-      @keyframes scanBars {
-        0% { transform: translateX(-100%); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateX(100%); opacity: 0; }
-      }
-      .animate-scanBars {
-        animation: scanBars 6s linear infinite;
-      }
-    `}</style>
-        </div>
-
-        {/* CTA BUTTON */}
-        <div className="flex justify-center mt-12">
-          <ButtonFill
-            text="Start Your Website in 7 Days"
-            onClick={() => setIsPopupOpen(true)}
-          />
-        </div>
-      </section>
-
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* Heading */}
         <div className="mb-12 text-center">
           <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
@@ -1178,6 +1025,161 @@ function Website() {
     }
   `}</style>
       </section>
+
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* =================== HEADINGS =================== */}
+        <div className="mb-12 text-center md:text-left">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
+            Why Choose Bigwig Media Digital Web Designing Experts For Your
+            Business?
+          </h2>
+        </div>
+
+        {/* =================== MAIN CONTENT WRAPPER =================== */}
+        <div
+          className="
+      relative rounded-2xl p-8 md:p-12 
+      backdrop-blur-xl bg-white/5 
+      border border-white/10 
+      shadow-[0_0_25px_rgba(0,255,255,0.15)] 
+      overflow-hidden
+    "
+        >
+          {/* Scan Lines */}
+          <div className="absolute inset-0 opacity-40 pointer-events-none">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="
+            absolute left-0 w-full h-[2px]
+            bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+          
+          "
+              ></div>
+            ))}
+          </div>
+
+          {/* LEFT GLOW STRIP */}
+          <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_25px_var(--color5)]"></div>
+
+          {/* =================== GRID LAYOUT =================== */}
+          <div className="relative z-10 grid md:grid-cols-2 gap-12">
+            {/* LEFT SIDE — FULL CONTENT BLOCK */}
+            <div className="space-y-6 text-gray-200 leading-relaxed">
+              <p>
+                A website is often the first touchpoint between your brand and
+                your online audience. It’s where first impressions are formed
+                and where digital credibility begins. A well-crafted website
+                strengthens your marketing presence and builds trust, influence,
+                and recognition in today’s competitive online space.
+              </p>
+
+              <p>
+                As a trusted web design company in Delhi, <a href="https://www.bigwigmediadigital.com" style={{ color: "#a7ebf2" }}>website design company </a> take your vision
+                seriously. Our team blends creativity with advanced technology
+                to deliver modern, high-performing websites that enhance your
+                digital identity. With years of industry expertise, we create
+                professional designs that exceed expectations.
+              </p>
+
+              <p>
+                Our passion for design and attention to detail have made us a
+                preferred web design agency in Delhi. We build visually rich,
+                smooth-functioning websites that remove concerns about slow
+                loading, cluttered layouts, or poor navigation. Every element is
+                crafted to engage users and reflect your brand’s personality.
+              </p>
+
+              <p>
+                As a leading website designing agency in Delhi, we support
+                businesses across industries—eCommerce, manufacturing, services,
+                education, and more. If you want to refresh your existing
+                website, our redesign experts can transform it into a modern,
+                high-impact digital platform.
+              </p>
+            </div>
+
+            {/* RIGHT SIDE — FEATURE LIST PANEL */}
+            <div
+              className="
+          p-6 rounded-2xl 
+          bg-black/40 backdrop-blur-lg
+          border border-white/10 
+          shadow-[0_0_20px_rgba(0,255,255,0.1)]
+          space-y-5 h-fit relative overflow-hidden
+        "
+            >
+              {/* Inside Scan Bars */}
+              <div className="absolute inset-0 opacity-30 pointer-events-none">
+                {[...Array(5)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="
+                absolute left-0 w-full h-[2px]
+                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+              
+              "
+                  ></div>
+                ))}
+              </div>
+
+              <h4 className="text-xl font-semibold text-[var(--color5)]">
+                What We Deliver:
+              </h4>
+
+              <ul className="space-y-4 relative z-10">
+                {[
+                  "A creative and personalized design strategy",
+                  "Modern, adaptive, and innovative layouts",
+                  "Meaningful and value-driven content",
+                  "An easy-to-use CMS for smooth management",
+                  "Scalable features that grow with your business",
+                  "Complete testing for flawless performance",
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <span
+                      className="
+                  w-3 h-3 mt-1 rounded-full 
+                  bg-[var(--color5)] 
+                  shadow-[0_0_12px_var(--color5)]
+                "
+                    ></span>
+                    <span className="text-gray-200">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Right Glow Bar */}
+              <div className="absolute right-0 top-0 h-full w-[5px] bg-[var(--color5)] opacity-70 shadow-[0_0_25px_var(--color5)]"></div>
+            </div>
+          </div>
+
+          {/* Hover Glow Border */}
+          <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
+
+          {/* ANIMATIONS */}
+          <style>{`
+      @keyframes scanBars {
+        0% { transform: translateX(-100%); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+      }
+      .animate-scanBars {
+        animation: scanBars 6s linear infinite;
+      }
+    `}</style>
+        </div>
+
+        {/* CTA BUTTON */}
+        <div className="flex justify-center mt-12">
+          <ButtonFill
+            text="Start Your Website in 7 Days"
+            onClick={() => setIsPopupOpen(true)}
+          />
+        </div>
+      </section>
+
+      
 
       
 
@@ -1350,15 +1352,15 @@ function Website() {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-10 flex justify-center">
+        {/* <div className="mt-10 flex justify-center">
           <ButtonFill
             text="Start Your Project Today"
             onClick={() => setIsPopupOpen(true)}
           />
-        </div>
+        </div> */}
 
         {/* Animation */}
-        <style>
+        {/* <style>
           {`
           @keyframes cardScan {
             0% { transform: translateX(-100%); opacity: 0; }
@@ -1369,7 +1371,7 @@ function Website() {
             animation: cardScan 5s linear infinite;
           }
         `}
-        </style>
+        </style> */}
       </section>   
 
       </section>
