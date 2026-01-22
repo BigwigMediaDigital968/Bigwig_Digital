@@ -351,7 +351,7 @@ function Website({ value }: { value: number }) {
 
       <link
         rel="canonical"
-        href="https://www.bigwigmediadigital.com/services/website-design-development"
+        href="https://www.bigwigmediadigital.com/services/website-development-company-in-delhi"
       />
 
       {/* Page Section 1 */}
