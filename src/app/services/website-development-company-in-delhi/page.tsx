@@ -213,67 +213,67 @@ type Review = {
 const reviews: Review[] = [
   {
     id: 1,
-    name: "JASWANT Singh",
-    time: "6 days ago",
-    avatarLetter: "J",
+    name: "Ravinder Bisala",
+    time: "3 days ago",
+    avatarLetter: "R",
     rating: 5,
-    text: "Best services for my website designing. I had a great working experience...",
+    text: "I recently partnered with bigwig media digital for my business online campaign and I must say they truly live up to their reputation. They created the best website which helped us a lot in boosting our business.",
   },
   {
     id: 2,
-    name: "Manmeet kaur",
-    time: "6 days ago",
-    avatarLetter: "M",
+    name: "Amit Gambhir",
+    time: "5 days ago",
+    avatarLetter: "A",
     rating: 5,
-    text: "Highly recommended for ecommerce website development services",
+    text: "We wanted a complete digital marketing strategy for our startup, and BigWig delivered beyond expectations. From website design and SEO to content marketing and paid ads, they covered everything. The best part is their personalized approach—no generic strategies, just tailor-made solutions. Thank you guys.",
   },
   {
     id: 3,
-    name: "Gurpreet Kaur",
-    time: "6 days ago",
-    avatarLetter: "G",
+    name: "Chetan Pandey",
+    time: "1 week ago",
+    avatarLetter: "C",
     rating: 5,
-    text: "Hired the professional website development company in Ghaziabad",
+    text: "We have been working with Big Wig Media digital for nearly a year and their Website and SEO combination strategy is giving us steady results. Unlike agencies that over promise they deliver consistent improvements and focus on long term growth.",
   },
   {
     id: 4,
-    name: "IE Consultants",
-    time: "7 days ago",
-    avatarLetter: "I",
+    name: "Aparajita Pandey",
+    time: "1 week ago",
+    avatarLetter: "A",
     rating: 5,
-    text: "Best website development company in Ghaziabad. We recently hired...",
+    text: "I liked how Big Wig media digital took time to analyse our competitors before suggesting a plan. Their Website Creation services helped our restaurant.",
   },
   {
     id: 5,
-    name: "Rohit Sharma",
+    name: "Vaibhav Soni",
     time: "1 week ago",
-    avatarLetter: "R",
+    avatarLetter: "V",
     rating: 5,
-    text: "Excellent support and fast delivery. Highly satisfied with the results...",
+    text: "They are professional, experienced and enthusiastic in their profession. Best digital marketing services in all verticals specially website creation.",
   },
   {
     id: 6,
-    name: "Simran Kaur",
+    name: "Eshaan Aggarwal",
     time: "2 weeks ago",
-    avatarLetter: "S",
+    avatarLetter: "E",
     rating: 5,
-    text: "Great team and amazing design quality. Communication was smooth...",
+    text: "What I loved most is that they didn’t offer me a one-size-fits-all plan. The website they created was tailor-made for my startup’s goals, and it worked beautifully.",
   },
   {
     id: 7,
-    name: "Amit Verma",
+    name: "Suresh kumar",
     time: "3 weeks ago",
-    avatarLetter: "A",
+    avatarLetter: "S",
     rating: 5,
-    text: "Professional work with strong attention to detail. Recommended!",
+    text: "Their transparency and data-driven strategies won me over. They have the best website creation strategies. I can easily check and manage my data at the backend.",
   },
   {
     id: 8,
-    name: "Neha Gupta",
+    name: "Chesta Gupta",
     time: "1 month ago",
-    avatarLetter: "N",
+    avatarLetter: "C",
     rating: 5,
-    text: "They improved our website speed and UI. Very happy with the service...",
+    text: "I have an ecommerce business for which I took help from Bigwig Media Digital for an online e-commerce store setup. They have given me the best solution for it and now my website is booming.",
   },
 ];
 
@@ -1442,6 +1442,7 @@ function Website({ value }: { value: number }) {
   `}</style>
       </section>
 
+      {/* FAQ Section */}
       <section className="py-12 relative overflow-hidden">
         {/* Heading */}
         <div className="mb-12 text-center">
@@ -1684,12 +1685,13 @@ function ReviewCard({ review }: { review: Review }) {
             {review.text}
           </p>
 
-          <button
-            type="button"
+          <a
+            href="https://share.google/8vsMUxNf6JUCWCLH4"
+            target="_blank"
             className="mt-2 text-xs font-semibold text-gray-500 hover:text-gray-700"
           >
             Read more
-          </button>
+          </a>
         </div>
       </div>
     </div>
