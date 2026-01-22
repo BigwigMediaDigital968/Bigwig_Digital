@@ -13,14 +13,15 @@ import Image from "next/image";
 import GetInTouch from "../../../../components/GetInTouch";
 import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
-import { SetStateAction, useState } from "react";
-import { color } from "framer-motion";
-import Partners from "../../../../components/Partners";
+import { SetStateAction, useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import Client from "../../../app/clients/Client";
+
 const sections = [
   {
     title: "Responsive Web Design",
     content:
-      "As a leading web design company in South Delhi, we specialize in creating fully responsive websites that look great and work smoothly on every device. Your audience enjoys a seamless browsing experience across mobile, tablet, and desktop.",
+      "As a leading web design company in Delhi, we specialize in creating fully responsive websites that look great and work smoothly on every device. Your audience enjoys a seamless browsing experience across mobile, tablet, and desktop.",
   },
   {
     title: "Static Website Design",
@@ -54,8 +55,20 @@ const sections = [
   },
   {
     title: "SEO-Friendly Website Design",
-    content:
-      "We build SEO-friendly websites optimized for search visibility. From clean coding to fast loading and structured content, our websites help you rank higher and gain more organic traffic.",
+    content: (
+      <>
+        We build{" "}
+        <Link
+          href="/services/search-engine-optimization"
+          className="text-[var(--color5)] underline underline-offset-4 hover:opacity-90"
+        >
+          SEO-friendly websites
+        </Link>{" "}
+        optimized for search visibility. From clean coding to fast loading and
+        structured content, our websites help you rank higher and gain more
+        organic traffic.
+      </>
+    ),
   },
   {
     title: "PSD to HTML Design",
@@ -88,12 +101,12 @@ const customSections = [
   {
     title: "Your Website Reflects Your Brand",
     content:
-      "A website is more than a digital presence, it represents your brand identity, values, and offerings. If you&apos;re searching for the best “website designer near me,” we create custom-designed websites that bring your vision to life.",
+      "A website is more than a digital presence, it represents your brand identity, values, and offerings. If you're searching for the best “website designer near me,” we create custom-designed websites that bring your vision to life.",
   },
   {
     title: "We Shape Digital Experiences",
     content:
-      "We go beyond traditional web design, we shape connected, meaningful experiences that empower brands with extraordinary websites that truly stand out.",
+      "We go beyond traditional web design we shape connected, meaningful experiences that empower brands with extraordinary websites that truly stand out.",
   },
 ];
 
@@ -143,7 +156,7 @@ const benefitSections = [
 const faqs = [
   {
     q: "Why should you hire a Web Design Company in Delhi?",
-    a: "Partnering with a professional web design company helps increase website traffic, enhance user engagement, and support business growth. A high-quality website is more visually appealing, easier to navigate, and significantly improves user experience. If you&apos;re searching for the best website designers near me, our team delivers custom-designed solutions tailored to your brand.",
+    a: "Partnering with a professional web design company helps increase website traffic, enhance user engagement, and support business growth. A high-quality website is more visually appealing, easier to navigate, and significantly improves user experience. If you're searching for the best website designers near me, our team delivers custom-designed solutions tailored to your brand.",
   },
   {
     q: "How do I hire a web design company?",
@@ -188,7 +201,83 @@ const faqs = [
   },
 ];
 
-function Website() {
+type Review = {
+  id: number;
+  name: string;
+  time: string;
+  avatarLetter: string;
+  rating: number; // 1-5
+  text: string;
+};
+
+const reviews: Review[] = [
+  {
+    id: 1,
+    name: "JASWANT Singh",
+    time: "6 days ago",
+    avatarLetter: "J",
+    rating: 5,
+    text: "Best services for my website designing. I had a great working experience...",
+  },
+  {
+    id: 2,
+    name: "Manmeet kaur",
+    time: "6 days ago",
+    avatarLetter: "M",
+    rating: 5,
+    text: "Highly recommended for ecommerce website development services",
+  },
+  {
+    id: 3,
+    name: "Gurpreet Kaur",
+    time: "6 days ago",
+    avatarLetter: "G",
+    rating: 5,
+    text: "Hired the professional website development company in Ghaziabad",
+  },
+  {
+    id: 4,
+    name: "IE Consultants",
+    time: "7 days ago",
+    avatarLetter: "I",
+    rating: 5,
+    text: "Best website development company in Ghaziabad. We recently hired...",
+  },
+  {
+    id: 5,
+    name: "Rohit Sharma",
+    time: "1 week ago",
+    avatarLetter: "R",
+    rating: 5,
+    text: "Excellent support and fast delivery. Highly satisfied with the results...",
+  },
+  {
+    id: 6,
+    name: "Simran Kaur",
+    time: "2 weeks ago",
+    avatarLetter: "S",
+    rating: 5,
+    text: "Great team and amazing design quality. Communication was smooth...",
+  },
+  {
+    id: 7,
+    name: "Amit Verma",
+    time: "3 weeks ago",
+    avatarLetter: "A",
+    rating: 5,
+    text: "Professional work with strong attention to detail. Recommended!",
+  },
+  {
+    id: 8,
+    name: "Neha Gupta",
+    time: "1 month ago",
+    avatarLetter: "N",
+    rating: 5,
+    text: "They improved our website speed and UI. Very happy with the service...",
+  },
+];
+
+function Website({ value }: { value: number }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -209,20 +298,63 @@ function Website() {
     pauseOnHover: false,
   };
 
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [page, setPage] = useState(0);
+
+  // responsive cards per view
+  const [perView, setPerView] = useState(4);
+
+  useEffect(() => {
+    const calc = () => {
+      const w = window.innerWidth;
+      if (w < 640) return setPerView(1); // mobile
+      if (w < 1024) return setPerView(2); // tablet
+      return setPerView(4); // desktop
+    };
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+
+  const pagesCount = useMemo(
+    () => Math.max(1, Math.ceil(reviews.length / perView)),
+    [perView],
+  );
+
+  // keep page valid when perView changes
+  useEffect(() => {
+    setPage((p) => Math.min(p, pagesCount - 1));
+  }, [pagesCount]);
+
+  const goTo = (p: number) => setPage(Math.max(0, Math.min(p, pagesCount - 1)));
+  const next = () => goTo(page + 1);
+  const prev = () => goTo(page - 1);
+
+  // smooth translate by page (each page = 100% width)
+  const translateX = `-${page * 100}%`;
+
   return (
     <div className="bg-[var(--color1)]">
       <Nav />
 
-      <title>Website Design & Development</title>
+      {/* SEO Meta Deta */}
+      <title>Best Website Development Company in Delhi NCR</title>
       <meta
         name="description"
-        content="Build user-friendly and high-converting websites with our expert design and development team."
+        content="Hire a website development company in Delhi to build custom, responsive & SEO-friendly websites that generate leads. Contact us today."
       />
+
+      <meta
+        name="keywords"
+        content="website development company in Delhi, website development company in delhi NCR, website development company in south delhi, website development company in north delhi, website development company in east delhi, website development company in west delhi, website design company in delhi, website design company in south delhi, website design company in north delhi, website design company in east delhi, website design company in west delhi, website design company in delhi ncr, website designing company near me, website design company near me, website development company near me, website designing services near me, website designing agency near me, web design company near me, website designing services in delhi ncr, website designing services in delhi, website designing services in south delhi, website designing services in north delhi, website designing services in east delhi, website designing services in west delhi, website designing agency in delhi, website designing agency in delhi ncr, website designing agency in north delhi, website designing agency in south delhi, website designing agency in east delhi, website designing agency in west delhi, Web design company in delhi, Web design company in delhi ncr, Web design company in south delhi, Web design company in north delhi, Web design company in west delhi, Web design company in east delhi"
+      />
+
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/website-design-development"
       />
 
+      {/* Page Section 1 */}
       <section
         className="relative bg-cover bg-center bg-no-repeat py-10 px-4"
         style={{ backgroundImage: `url(${hero.src})` }}
@@ -232,14 +364,13 @@ function Website() {
         <div className="relative z-10 w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6 md:pr-8">
-            <h1 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] leading-snug">
+            <h2 className="text-2xl md:text-3xl font-semibold text-white leading-snug">
               Take your digital experience to the next level with our fresh,
               innovative Web Design solutions.
-            </h1>
+            </h2>
 
             <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify">
-              We’re a leading <a href="https://www.bigwigmediadigital.com" style={{ color: "#a7ebf2" }}>website design company </a>
-             in Delhi NCR, creating
+              We’re a leading website design company in Delhi NCR, creating
               custom web experiences that truly fit your business needs. Our
               team of skilled professionals works closely with you to enhance
               your digital presence and bring your vision to life. We craft
@@ -249,12 +380,12 @@ function Website() {
 
             <ButtonFill
               onClick={() => setIsPopupOpen(true)}
-              text="Request a Free Website Consultation"
+              text="Contact Us"
             />
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Website Development" />
+          <ContactForm />
         </div>
       </section>
 
@@ -264,21 +395,20 @@ function Website() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left Text Block */}
             <div className="space-y-6 text-white leading-relaxed">
-              {/* <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+              <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
                 Give your brand a powerful online presence with personalized web
                 design solutions
-              </h2> */}
-              {/* Heading */}
-              <h2 className=" text-2xl md:text-3xl font-semibold  mb-2 ">
-                Best Website Development Company in Delhi NCR
               </h2>
+              {/* Heading */}
+              <h1 className=" text-2xl md:text-3xl font-semibold  mb-2 ">
+                Best Website Designing Company in Delhi NCR
+              </h1>
               <p className="text-justify">
                 As a top web design company in Delhi, we know exactly what it
                 takes to create websites that attract attention and bring in
                 more visitors. Our experienced designers craft custom websites
                 tailored to your industry and aligned with your business goals.
               </p>
-              
 
               <p className="text-justify">
                 So if you&#39;re searching for the best{" "}
@@ -286,9 +416,7 @@ function Website() {
                 deliver optimized digital experiences that help your brand grow,
                 connect, and convert.
               </p>
-              
             </div>
-            
 
             {/* Right Image Block */}
             <div>
@@ -299,15 +427,11 @@ function Website() {
               />
             </div>
           </div>
-          
         </div>
-        <div className="pt-12">
-          <Partners />
-        </div>
-        
       </section>
 
-      <section className="py-6 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+      {/* Service showcase section */}
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* Heading */}
         <div className="mb-6">
           <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
@@ -450,10 +574,11 @@ function Website() {
         </div>
       </section>
 
+      {/* Custom Web Designs section */}
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* ================= HEADINGS ================= */}
         <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
             Website Designing Company in Delhi
           </h2>
 
@@ -596,16 +721,17 @@ function Website() {
         {/* CTA BUTTON */}
         <div className="flex justify-center">
           <ButtonFill
-            text="Book a Website Strategy Call"
+            text="Get Started Today"
             onClick={() => setIsPopupOpen(true)}
           />
         </div>
       </section>
 
+      {/* Hiring A Web Design Company Section */}
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* ================= HEADINGS ================= */}
         <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+          <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
             Website Design Company Near Me
           </h2>
 
@@ -750,55 +876,60 @@ function Website() {
         {/* CTA BUTTON */}
         <div className="flex justify-center">
           <ButtonFill
-            text="Get Expert Website Advice"
+            text="Get Started Today"
             onClick={() => setIsPopupOpen(true)}
           />
         </div>
       </section>
 
-      {/* <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden"> */}
+      {/* Best Website Designing Agency */}
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* =================== HEADINGS =================== */}
-        {/* <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--color5)] mb-4">
+        <div className="mb-12">
+          <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
             Website Designer Near Me
           </h2>
 
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-4">
             What Does the Best Website Designing Agency in Delhi Do?
           </h3>
-        </div> */}
+        </div>
 
         {/* =================== MAIN GLASS BOX =================== */}
-        {/* <div
+        <div
           className="
       relative rounded-2xl p-8 md:p-12 
       backdrop-blur-xl bg-white/5 
       border border-white/10 
       shadow-[0_0_25px_rgba(0,255,255,0.15)] 
       overflow-hidden
-    " */}
-        {/* > */}
+    "
+        >
           {/* Background Scan Bars */}
-          {/* <div className="absolute inset-0 opacity-40 pointer-events-none">
+          <div className="absolute inset-0 opacity-40 pointer-events-none">
             {[...Array(7)].map((_, i) => (
               <div
                 key={i}
                 className="
             absolute left-0 w-full h-[2px]
             bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-            
+            animate-sectionScan
           "
+                style={{
+                  top: `${50 + i * 60}px`,
+                  animationDelay: `${i * 0.25}s`,
+                }}
               ></div>
             ))}
-          </div> */}
+          </div>
 
           {/* LEFT GLOW STRIP */}
-          {/* <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_20px_var(--color5)]"></div> */}
+          <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_20px_var(--color5)]"></div>
 
           {/* =================== CONTENT =================== */}
-          {/* <div className="relative z-10 grid md:grid-cols-2 gap-10"> */}
+          <div className="relative z-10 grid md:grid-cols-2 gap-10">
             {/* LEFT TEXT BLOCK */}
-            {/* <div className="space-y-6 text-gray-200 leading-relaxed">
+            <div className="space-y-6 text-gray-200 leading-relaxed">
               <p>
                 A website should be designed with careful thought and purpose so
                 it can function at its highest potential. Only a skilled and
@@ -808,15 +939,16 @@ function Website() {
               </p>
 
               <p>
-                As a leading website design agency in Delhi, we ensure your
-                website is responsive, visually appealing, easy to navigate,
-                mobile-friendly, and perfectly aligned with your brand.
+                As a leading website design agency in South Delhi, we ensure
+                your website is responsive, visually appealing, easy to
+                navigate, mobile-friendly, and perfectly aligned with your
+                brand.
               </p>
 
               <p>
-                No matter what industry you belong to—real estate,
+                No matter what industry you belong to real estate,
                 manufacturing, education, pharmaceuticals, travel, fitness
-                coaching, legal services, and more—we help you build an
+                coaching, legal services, and more we help you build an
                 impressive online presence tailored to your specific needs.
               </p>
 
@@ -826,10 +958,10 @@ function Website() {
                 Our solutions are cost-effective, innovative, and accessible for
                 businesses of all sizes across Delhi NCR.
               </p>
-            </div> */}
+            </div>
 
             {/* RIGHT FEATURE LIST */}
-            {/* <div
+            <div
               className="
           p-6 rounded-2xl 
           bg-black/40 backdrop-blur-lg
@@ -864,13 +996,13 @@ function Website() {
                 ))}
               </ul>
             </div>
-          </div> */}
+          </div>
 
           {/* GLOW BORDER HOVER EFFECT */}
-          {/* <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div> */}
+          <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
 
           {/* SCAN ANIMATION */}
-          {/* <style>{`
+          <style>{`
       @keyframes sectionScan {
         0% { transform: translateX(-100%); opacity: 0; }
         50% { opacity: 1; }
@@ -880,17 +1012,301 @@ function Website() {
         animation: sectionScan 6s linear infinite;
       }
     `}</style>
-        </div> */}
+        </div>
 
         {/* CTA BUTTON */}
-        {/* <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-12">
           <ButtonFill
             text="Get Started Today"
             onClick={() => setIsPopupOpen(true)}
           />
-        </div> */}
-      {/* </section> */}
+        </div>
+      </section>
 
+      <Client />
+
+      {/* Why choose section */}
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* =================== HEADINGS =================== */}
+        <div className="mb-12 text-center md:text-left">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
+            Why Choose Bigwig Media Digital Web Designing Experts For Your
+            Business?
+          </h2>
+        </div>
+
+        {/* =================== MAIN CONTENT WRAPPER =================== */}
+        <div
+          className="
+      relative rounded-2xl p-8 md:p-12 
+      backdrop-blur-xl bg-white/5 
+      border border-white/10 
+      shadow-[0_0_25px_rgba(0,255,255,0.15)] 
+      overflow-hidden
+    "
+        >
+          {/* Scan Lines */}
+          <div className="absolute inset-0 opacity-40 pointer-events-none">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="
+            absolute left-0 w-full h-[2px]
+            bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+            animate-scanBars
+          "
+                style={{
+                  top: `${60 + i * 60}px`,
+                  animationDelay: `${i * 0.3}s`,
+                }}
+              ></div>
+            ))}
+          </div>
+
+          {/* LEFT GLOW STRIP */}
+          <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_25px_var(--color5)]"></div>
+
+          {/* =================== GRID LAYOUT =================== */}
+          <div className="relative z-10 grid md:grid-cols-2 gap-12">
+            {/* LEFT SIDE — FULL CONTENT BLOCK */}
+            <div className="space-y-6 text-gray-200 leading-relaxed">
+              <p>
+                A website is often the first touchpoint between your brand and
+                your online audience. It’s where first impressions are formed
+                and where digital credibility begins. A well-crafted website
+                strengthens your marketing presence and builds trust, influence,
+                and recognition in today’s competitive online space.
+              </p>
+
+              <p>
+                As a trusted web design company in Delhi, we take your vision
+                seriously. Our team blends creativity with advanced technology
+                to deliver modern, high-performing websites that enhance your
+                digital identity. With years of industry expertise, we create
+                professional designs that exceed expectations.
+              </p>
+
+              <p>
+                Our passion for design and attention to detail have made us a
+                preferred web design agency in Delhi. We build visually rich,
+                smooth-functioning websites that remove concerns about slow
+                loading, cluttered layouts, or poor navigation. Every element is
+                crafted to engage users and reflect your brand’s personality.
+              </p>
+
+              <p>
+                As a leading website designing agency in South Delhi, we support
+                businesses across industries - eCommerce, manufacturing,
+                services, education, and more. If you want to refresh your
+                existing website, our redesign experts can transform it into a
+                modern, high-impact digital platform.
+              </p>
+            </div>
+
+            {/* RIGHT SIDE — FEATURE LIST PANEL */}
+            <div
+              className="
+          p-6 rounded-2xl 
+          bg-black/40 backdrop-blur-lg
+          border border-white/10 
+          shadow-[0_0_20px_rgba(0,255,255,0.1)]
+          space-y-5 h-fit relative overflow-hidden
+        "
+            >
+              {/* Inside Scan Bars */}
+              <div className="absolute inset-0 opacity-30 pointer-events-none">
+                {[...Array(5)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="
+                absolute left-0 w-full h-[2px]
+                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+                animate-scanBars
+              "
+                    style={{
+                      top: `${40 + i * 50}px`,
+                      animationDelay: `${i * 0.3}s`,
+                    }}
+                  ></div>
+                ))}
+              </div>
+
+              <h4 className="text-xl font-semibold text-[var(--color5)]">
+                What We Deliver:
+              </h4>
+
+              <ul className="space-y-4 relative z-10">
+                {[
+                  "A creative and personalized design strategy",
+                  "Modern, adaptive, and innovative layouts",
+                  "Meaningful and value-driven content",
+                  "An easy-to-use CMS for smooth management",
+                  "Scalable features that grow with your business",
+                  "Complete testing for flawless performance",
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <span
+                      className="
+                  w-3 h-3 mt-1 rounded-full 
+                  bg-[var(--color5)] 
+                  shadow-[0_0_12px_var(--color5)]
+                "
+                    ></span>
+                    <span className="text-gray-200">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Right Glow Bar */}
+              <div className="absolute right-0 top-0 h-full w-[5px] bg-[var(--color5)] opacity-70 shadow-[0_0_25px_var(--color5)]"></div>
+            </div>
+          </div>
+
+          {/* Hover Glow Border */}
+          <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
+
+          {/* ANIMATIONS */}
+          <style>{`
+      @keyframes scanBars {
+        0% { transform: translateX(-100%); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+      }
+      .animate-scanBars {
+        animation: scanBars 6s linear infinite;
+      }
+    `}</style>
+        </div>
+
+        {/* CTA BUTTON */}
+        <div className="flex justify-center mt-12">
+          <ButtonFill
+            text="Get Started Today"
+            onClick={() => setIsPopupOpen(true)}
+          />
+        </div>
+      </section>
+
+      {/* Google Review Section */}
+      <section className="w-full">
+        <div className="mx-auto max-w-6xl px-4 py-10">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide text-center">
+            What our customers say
+          </h2>
+
+          <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-4 sm:p-5">
+            {/* Header row */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-3">
+                {/* Google "G" placeholder */}
+                <div className="grid h-10 w-10 place-items-center rounded-md bg-white shadow-sm overflow-hidden">
+                  <Image
+                    src="/google-logo.png"
+                    alt="Google"
+                    width={40}
+                    height={40}
+                    className="h-8 w-8 object-contain"
+                    priority
+                  />
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold text-gray-900">
+                      Google Reviews
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold text-gray-900">
+                      5.0
+                    </span>
+                    <Stars value={5} />
+                    <span className="text-xs text-gray-500">(71)</span>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="https://g.page/r/CQli6MeZs3tiEBM/review"
+                className="inline-flex w-fit items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+                target="_blank"
+              >
+                Review us on Google
+              </a>
+            </div>
+
+            {/* Slider */}
+            <div className="relative mt-5">
+              {/* Track viewport */}
+              <div className="overflow-hidden">
+                <div
+                  ref={trackRef}
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{ transform: `translateX(${translateX})` }}
+                >
+                  {/* Each "page" is 100% width; inside we render cards chunked by perView */}
+                  {Array.from({ length: pagesCount }).map((_, pageIndex) => {
+                    const start = pageIndex * perView;
+                    const slice = reviews.slice(start, start + perView);
+
+                    return (
+                      <div
+                        key={pageIndex}
+                        className="w-full flex-none"
+                        aria-hidden={pageIndex !== page}
+                      >
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                          {slice.map((r) => (
+                            <ReviewCard key={r.id} review={r} />
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Arrows */}
+              <button
+                type="button"
+                onClick={prev}
+                disabled={page === 0}
+                className="absolute right-11 top-1/2 hidden -translate-y-1/2 rounded-full border border-gray-200 bg-white p-2 text-gray-700 shadow-sm hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 sm:inline-flex"
+                aria-label="Previous reviews"
+              >
+                <ChevronLeft />
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                disabled={page === pagesCount - 1}
+                className="absolute right-2 top-1/2 hidden -translate-y-1/2 rounded-full border border-gray-200 bg-white p-2 text-gray-700 shadow-sm hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 sm:inline-flex"
+                aria-label="Next reviews"
+              >
+                <ChevronRight />
+              </button>
+
+              {/* Dots */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                {Array.from({ length: pagesCount }).map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => goTo(i)}
+                    className={`h-2 w-2 rounded-full ${
+                      i === page ? "bg-gray-900" : "bg-gray-300"
+                    }`}
+                    aria-label={`Go to reviews page ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Section */}
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* Heading */}
         <div className="mb-12 text-center">
@@ -1026,165 +1442,95 @@ function Website() {
   `}</style>
       </section>
 
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* =================== HEADINGS =================== */}
-        <div className="mb-12 text-center md:text-left">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
-            Why Choose Bigwig Media Digital Web Designing Experts For Your
-            Business?
+      <section className="py-12 relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12 text-center">
+          <h2 className="text-xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
+            Frequently Asked Questions
           </h2>
         </div>
 
-        {/* =================== MAIN CONTENT WRAPPER =================== */}
-        <div
-          className="
-      relative rounded-2xl p-8 md:p-12 
-      backdrop-blur-xl bg-white/5 
-      border border-white/10 
-      shadow-[0_0_25px_rgba(0,255,255,0.15)] 
-      overflow-hidden
-    "
-        >
-          {/* Scan Lines */}
-          <div className="absolute inset-0 opacity-40 pointer-events-none">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="
-            absolute left-0 w-full h-[2px]
-            bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-          
-          "
-              ></div>
-            ))}
-          </div>
-
-          {/* LEFT GLOW STRIP */}
-          <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_25px_var(--color5)]"></div>
-
-          {/* =================== GRID LAYOUT =================== */}
-          <div className="relative z-10 grid md:grid-cols-2 gap-12">
-            {/* LEFT SIDE — FULL CONTENT BLOCK */}
-            <div className="space-y-6 text-gray-200 leading-relaxed">
-              <p>
-                A website is often the first touchpoint between your brand and
-                your online audience. It’s where first impressions are formed
-                and where digital credibility begins. A well-crafted website
-                strengthens your marketing presence and builds trust, influence,
-                and recognition in today’s competitive online space.
-              </p>
-
-              <p>
-                As a trusted web design company in Delhi, <a href="https://www.bigwigmediadigital.com" style={{ color: "#a7ebf2" }}>website design company </a> take your vision
-                seriously. Our team blends creativity with advanced technology
-                to deliver modern, high-performing websites that enhance your
-                digital identity. With years of industry expertise, we create
-                professional designs that exceed expectations.
-              </p>
-
-              <p>
-                Our passion for design and attention to detail have made us a
-                preferred web design agency in Delhi. We build visually rich,
-                smooth-functioning websites that remove concerns about slow
-                loading, cluttered layouts, or poor navigation. Every element is
-                crafted to engage users and reflect your brand’s personality.
-              </p>
-
-              <p>
-                As a leading website designing agency in Delhi, we support
-                businesses across industries—eCommerce, manufacturing, services,
-                education, and more. If you want to refresh your existing
-                website, our redesign experts can transform it into a modern,
-                high-impact digital platform.
-              </p>
-            </div>
-
-            {/* RIGHT SIDE — FEATURE LIST PANEL */}
+        {/* FAQ Boxes */}
+        <div className="space-y-6 w-11/12 md:w-5/6 mx-auto relative z-10">
+          {faqs.map((item, index) => (
             <div
+              key={index}
+              onClick={() => toggleItem(index)}
               className="
-          p-6 rounded-2xl 
-          bg-black/40 backdrop-blur-lg
-          border border-white/10 
-          shadow-[0_0_20px_rgba(0,255,255,0.1)]
-          space-y-5 h-fit relative overflow-hidden
-        "
+              p-6 rounded-2xl backdrop-blur-xl bg-white/5 
+              border border-white/10 transition-all duration-300
+              shadow-[0_0_20px_rgba(0,255,255,0.1)]
+              hover:border-[var(--color5)]
+              hover:shadow-[0_0_30px_var(--color5)]
+              cursor-pointer relative overflow-hidden
+            "
             >
-              {/* Inside Scan Bars */}
+              {/* Scan Lines */}
               <div className="absolute inset-0 opacity-30 pointer-events-none">
-                {[...Array(5)].map((_, i) => (
+                {[...Array(4)].map((_, i) => (
                   <div
                     key={i}
-                    className="
-                absolute left-0 w-full h-[2px]
-                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-              
-              "
+                    className="absolute left-0 w-full h-[2px]
+                    bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+                    animate-cardScan"
+                    style={{
+                      top: `${40 + i * 45}px`,
+                      animationDelay: `${i * 0.25}s`,
+                    }}
                   ></div>
                 ))}
               </div>
 
-              <h4 className="text-xl font-semibold text-[var(--color5)]">
-                What We Deliver:
-              </h4>
+              {/* Question Row */}
+              <div className="flex justify-between items-center relative z-10">
+                <h3 className="text-lg md:text-xl font-semibold text-[var(--color5)]">
+                  {item.q}
+                </h3>
 
-              <ul className="space-y-4 relative z-10">
-                {[
-                  "A creative and personalized design strategy",
-                  "Modern, adaptive, and innovative layouts",
-                  "Meaningful and value-driven content",
-                  "An easy-to-use CMS for smooth management",
-                  "Scalable features that grow with your business",
-                  "Complete testing for flawless performance",
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span
-                      className="
-                  w-3 h-3 mt-1 rounded-full 
-                  bg-[var(--color5)] 
-                  shadow-[0_0_12px_var(--color5)]
-                "
-                    ></span>
-                    <span className="text-gray-200">{item}</span>
-                  </li>
-                ))}
-              </ul>
+                <span className="text-[var(--color5)] text-2xl font-bold transition-all">
+                  {openIndex === index ? "−" : "+"}
+                </span>
+              </div>
 
-              {/* Right Glow Bar */}
-              <div className="absolute right-0 top-0 h-full w-[5px] bg-[var(--color5)] opacity-70 shadow-[0_0_25px_var(--color5)]"></div>
+              {/* Answer */}
+              <div
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
+                  openIndex === index
+                    ? "max-h-96 mt-4 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <p className="leading-relaxed">{item.a}</p>
+              </div>
             </div>
-          </div>
-
-          {/* Hover Glow Border */}
-          <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
-
-          {/* ANIMATIONS */}
-          <style>{`
-      @keyframes scanBars {
-        0% { transform: translateX(-100%); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateX(100%); opacity: 0; }
-      }
-      .animate-scanBars {
-        animation: scanBars 6s linear infinite;
-      }
-    `}</style>
+          ))}
         </div>
 
-        {/* CTA BUTTON */}
-        <div className="flex justify-center mt-12">
+        {/* CTA Button */}
+        <div className="mt-10 flex justify-center">
           <ButtonFill
-            text="Start Your Website in 7 Days"
+            text="Start Your Project Today"
             onClick={() => setIsPopupOpen(true)}
           />
         </div>
+
+        {/* Animation */}
+        <style>
+          {`
+          @keyframes cardScan {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+          }
+          .animate-cardScan {
+            animation: cardScan 5s linear infinite;
+          }
+        `}
+        </style>
       </section>
 
-      
-
-      
-
-      {/* <OurProcess  />
-      <WhyBigwig /> */}
+      <OurProcess />
+      <WhyBigwig />
 
       <section className="py-12 relative overflow-hidden">
         {/* Matrix glow background */}
@@ -1290,90 +1636,6 @@ function Website() {
       animation: scan 4s linear infinite;
     }
   `}</style>
-
-  <section className="py-12 relative overflow-hidden">
-        {/* Heading */}
-        <div className="mb-12 text-center">
-          <h2 className="text-xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
-            Frequently Asked Questions
-          </h2>
-        </div>
-
-        {/* FAQ Boxes */}
-        <div className="space-y-6 w-11/12 md:w-5/6 mx-auto relative z-10">
-          {faqs.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => toggleItem(index)}
-              className="
-              p-6 rounded-2xl backdrop-blur-xl bg-white/5 
-              border border-white/10 transition-all duration-300
-              shadow-[0_0_20px_rgba(0,255,255,0.1)]
-              hover:border-[var(--color5)]
-              hover:shadow-[0_0_30px_var(--color5)]
-              cursor-pointer relative overflow-hidden
-            "
-            >
-              {/* Scan Lines */}
-              <div className="absolute inset-0 opacity-30 pointer-events-none">
-                {[...Array(4)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute left-0 w-full h-[2px]
-                    bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-                    "
-                  ></div>
-                ))}
-              </div>
-
-              {/* Question Row */}
-              <div className="flex justify-between items-center relative z-10">
-                <h3 className="text-lg md:text-xl font-semibold text-[var(--color5)]">
-                  {item.q}
-                </h3>
-
-                <span className="text-[var(--color5)] text-2xl font-bold transition-all">
-                  {openIndex === index ? "−" : "+"}
-                </span>
-              </div>
-
-              {/* Answer */}
-              <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <p className="leading-relaxed">{item.a}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA Button */}
-        {/* <div className="mt-10 flex justify-center">
-          <ButtonFill
-            text="Start Your Project Today"
-            onClick={() => setIsPopupOpen(true)}
-          />
-        </div> */}
-
-        {/* Animation */}
-        {/* <style>
-          {`
-          @keyframes cardScan {
-            0% { transform: translateX(-100%); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%); opacity: 0; }
-          }
-          .animate-cardScan {
-            animation: cardScan 5s linear infinite;
-          }
-        `}
-        </style> */}
-      </section>   
-
       </section>
       <GetInTouch />
       <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
@@ -1384,3 +1646,108 @@ function Website() {
 }
 
 export default Website;
+
+function ReviewCard({ review }: { review: Review }) {
+  return (
+    <div className="rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-100">
+      <div className="flex items-start gap-3">
+        <div className="grid h-10 w-10 flex-none place-items-center rounded-full bg-orange-500 text-sm font-bold text-white">
+          {review.avatarLetter}
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center justify-between gap-2">
+            <p className="truncate text-sm font-semibold text-gray-900">
+              {review.name}
+            </p>
+
+            {/* tiny Google badge placeholder */}
+            <div className="grid h-9 w-9 place-items-center rounded-md bg-white shadow-sm overflow-hidden">
+              <Image
+                src="/google-logo.png"
+                alt="Google"
+                width={36}
+                height={36}
+                className="h-6 w-6 object-contain"
+                priority
+              />
+            </div>
+          </div>
+
+          <p className="mt-0.5 text-xs text-gray-500">{review.time}</p>
+
+          <div className="mt-1.5">
+            <Stars value={review.rating} />
+          </div>
+
+          <p className="mt-2 text-sm text-gray-700 line-clamp-3">
+            {review.text}
+          </p>
+
+          <button
+            type="button"
+            className="mt-2 text-xs font-semibold text-gray-500 hover:text-gray-700"
+          >
+            Read more
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Stars({ value }: { value: number }) {
+  const stars = Array.from({ length: 5 }).map((_, i) => i < value);
+  return (
+    <div className="flex items-center gap-0.5" aria-label={`${value} stars`}>
+      {stars.map((on, idx) => (
+        <span
+          key={idx}
+          className={`text-sm ${on ? "text-yellow-400" : "text-gray-300"}`}
+        >
+          ★
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ChevronLeft() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M15 18l-6-6 6-6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ChevronRight() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M9 6l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

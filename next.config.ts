@@ -119,6 +119,11 @@ const nextConfig: NextConfig = {
         destination: "/services/graphic-designing",
         permanent: true,
       },
+      {
+        source: "/services/website-design-development",
+        destination: "/services/website-development-company-in-delhi",
+        permanent: true, // 301
+      },
     ];
   },
 };

@@ -54,15 +54,11 @@ export default function Blogs() {
     setLoading(true);
     try {
       let res;
-      if (categoryName) {
-        res = await axios.get<BlogPost[]>(
-          `${process.env.NEXT_PUBLIC_API_BASE}/blogs/category/${categoryName}`
-        );
-      } else {
-        res = await axios.get<BlogPost[]>(
-          `${process.env.NEXT_PUBLIC_API_BASE}/viewblog`
-        );
-      }
+
+      res = await axios.get<BlogPost[]>(
+        `${process.env.NEXT_PUBLIC_API_BASE}/viewblog`
+      );
+
       setBlogs(res.data);
       setFilteredBlogs(res.data);
       setCurrentPage(1);
