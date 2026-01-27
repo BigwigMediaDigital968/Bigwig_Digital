@@ -34,7 +34,7 @@ const data = [
   {
     title:"Website Development and Management",
     content:(<>
-      "As a key component of our Online Reputation Management (ORM) services, Bigwig Media Digital offers end-to-end {" "}<Link href="/" className="text-[var(--color5)]  hover:opacity-90" >
+      "As a key component of our Online Reputation Management (ORM) services, Bigwig Media Digital offers end-to-end {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
  	Website Development
 </Link>{" "} solutions to strengthen your brand’s digital credibility."
     </>)
