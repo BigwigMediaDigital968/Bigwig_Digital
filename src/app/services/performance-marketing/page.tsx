@@ -17,6 +17,7 @@ import Image from "next/image";
 import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
+import Link from "next/link";
 
 const whyPartnerData = [
   {
@@ -31,8 +32,12 @@ const whyPartnerData = [
   },
   {
     title: "Comprehensive Service Spectrum",
-    content:
-      "Our performance marketing services in Delhi cover the full range of digital growth channels. From SEO and PPC to social media, content marketing, and conversion optimization, you get a complete, integrated marketing solution under one roof.",
+    content:(<>
+      "Our performance marketing services in Delhi cover the full range of digital growth channels. From {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
+ 	Web Development 
+</Link>{" "} to SEO and PPC to social media, content marketing, and conversion optimization, you get a complete, integrated marketing solution under one roof.",
+    </>)
+      
   },
   {
     title: "Transparent Reporting",

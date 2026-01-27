@@ -14,6 +14,7 @@ import Image from "next/image";
 import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
+import Link from "next/link";
 
 const seoServices = [
   {
@@ -23,8 +24,10 @@ const seoServices = [
   },
   {
     title: "International SEO",
-    content:
-      "Expanding globally? We help optimize your website for multiple countries and languages so your brand can connect with audiences across borders. From hreflang implementation to region-specific keyword strategies, we ensure your global presence is strong, consistent, and search-friendly. ",
+    content:(<>
+      "Expanding globally? We help optimize &{" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
+ 	Develop your website
+</Link>{" "}for multiple countries and languages so your brand can connect with audiences across borders. From hreflang implementation to region-specific keyword strategies, we ensure your global presence is strong, consistent, and search-friendly. "</>),
   },
   {
     title: "LLM SEO",
@@ -267,8 +270,8 @@ function Seo() {
                 As a dedicated SEO services in Delhi, our goal is simple: to
                 create strategies that are tailored to the unique needs of every
                 client. Our team brings together technical expertise and
-                creative thinking to help your website rise to the top of search
-                engine results pages. With years of experience behind us, we
+                creative thinking to help you to {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" > Develop a Website </Link>{" "} and rise to the top of search
+                engine results results. With years of experience behind us, we
                 focus on driving organic traffic, increasing visibility, and
                 turning clicks into loyal customers.
               </p>

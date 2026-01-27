@@ -13,6 +13,8 @@ import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
 import { SetStateAction, useState } from "react";
+import { title } from "process";
+import Link from "next/link";
 const data = [
   {
     title: "Online Reputation Audit",
@@ -28,6 +30,14 @@ const data = [
     title: "Brand Monitoring",
     content:
       "We track brand mentions across all platforms and respond promptly to any negativity to safeguard your reputation.",
+  },
+  {
+    title:"Website Development and Management",
+    content:(<>
+      "As a key component of our Online Reputation Management (ORM) services, Bigwig Media Digital offers end-to-end {" "}<Link href="/" className="text-[var(--color5)]  hover:opacity-90" >
+ 	Website Development
+</Link>{" "} solutions to strengthen your brand’s digital credibility."
+    </>)
   },
   {
     title: "Social Media Management",

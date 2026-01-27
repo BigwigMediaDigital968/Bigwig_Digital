@@ -14,6 +14,7 @@ import PopupForm from "../../../../components/PopupForm";
 import { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 import GetInTouch from "../../../../components/GetInTouch";
+import Link from "next/link";
 
 const smoAds = [
   {
@@ -246,6 +247,11 @@ function SocialMediaMarketing() {
             increase brand visibility, generate leads, and maximize ROI. Our
             performance-focused Social Media Ads help businesses connect with
             their ideal audience across the most influential platforms in India.
+          </p>
+          <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+            To ensure maximum conversions, Bigwig Media Digital also specializes in high-converting {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
+ 	Landing Page Development.
+</Link>{" "}Our landing pages are strategically designed with compelling UI/UX, persuasive copy, and conversion-optimized layouts that perfectly complement your social media campaigns, turning clicks into customers and ad spend into measurable growth.
           </p>
         </div>
 
