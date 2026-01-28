@@ -38,7 +38,7 @@ const ContactSidebar: React.FC = () => {
           </a>
 
           <a
-            href="https://wa.me/+918368573451"
+            href="https://wa.me/+9196858 92813"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-14 bg-green-500 flex items-center justify-center text-white cursor-pointer"
@@ -47,7 +47,7 @@ const ContactSidebar: React.FC = () => {
           </a>
 
           <a
-            href="tel:+918368573451"
+            href="tel:+9196858 92813"
             className="w-12 h-14 bg-[var(--secondary-color)] flex items-center justify-center text-white cursor-pointer"
           >
             <FaPhoneAlt />

@@ -137,7 +137,7 @@ function Footer() {
                   </li>
                   <li className="flex items-center">
                     <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                    +91 78279 77879
+                    +91 96858 92813
                   </li>
                   <li className="flex items-center">
                     <FontAwesomeIcon icon={faLocation} className="mr-2" />
