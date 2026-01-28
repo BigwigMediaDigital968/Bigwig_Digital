@@ -37,7 +37,7 @@ const categories = [
   "Online Reputation Management",
   "Digital Marketing",
 ];
-//hello
+//hell
 const ITEMS_PER_PAGE = 6;
 
 export default function CategoryBlogs() {
