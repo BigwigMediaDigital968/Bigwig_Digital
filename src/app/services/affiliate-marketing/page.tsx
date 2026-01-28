@@ -13,6 +13,7 @@ import Slider from "react-slick";
 import ContactForm from "../../../../components/ContactForm";
 import { SetStateAction, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -154,7 +155,9 @@ function AffiliateMarketing() {
               <p className="text-white leading-relaxed text-justify">
                 Affiliate marketing is one of the most cost-effective growth
                 channels - but only when done with proper strategy, vetted
-                affiliates, and performance monitoring. As a top-rated affiliate
+                affiliates, and performance monitoring. Successful affiliate marketing also depends heavily on a high-performing, conversion-optimized website. Our affiliate marketing strategies are supported by professional {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
+ 	Website Development Services
+</Link>{" "}  that ensure faster load times, seamless user experience, and higher conversion rates from affiliate traffic. As a top-rated affiliate
                 marketing company in Delhi, we help brands build profitable
                 affiliate ecosystems, minimize fraud, and maximize genuine
                 conversions.
@@ -510,8 +513,12 @@ function AffiliateMarketing() {
             },
             {
               title: "Creating Campaign Assets",
-              points: [
-                "We design banners, landing pages, coupon codes, custom creatives, and content required for affiliate promotions.",
+              points: [ 
+                (<>
+                  We design banners, landing pages, coupon codes, custom creatives, and content required for affiliate promotions. Our team also builds and optimizes high-converting landing pages through our {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
+ 	 Website Development
+</Link>{" "}  expertise to ensure affiliate traffic converts into real leads and sales.
+                </>),
               ],
             },
             {

@@ -17,6 +17,8 @@ import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
 import { SetStateAction, useState } from "react";
+import { title } from "process";
+import Link from "next/link";
 
 const emailPoints = [
   {
@@ -38,6 +40,14 @@ const emailPoints = [
     title: "ROI-Focused & Scalable Solutions",
     content:
       "Whether you need high-volume promotional sends or automated drip journeys, our email marketing services scale to your goals and budget.",
+  },
+  {
+    title: "Creative, Data-Driven Campaigns",
+    content:(<>
+      BigWig Media Digital provide’s {" "}<Link href="/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
+ 	develop a website
+</Link>{" "}  in such an interesting way that admin panel/ dashboard have ability to shoot bulk emails which will help in e-mail marketing.
+    </>),  
   },
 ];
 

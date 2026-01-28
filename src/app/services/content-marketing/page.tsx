@@ -13,6 +13,7 @@ import ButtonFill from "../../../../components/Button";
 import { SetStateAction, useState } from "react";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
+import Link from "next/link";
 
 const whyChooseUs = [
   {
@@ -47,6 +48,14 @@ const contentMarketingServices = [
     title: "SEO-Friendly Blogs & Articles",
     description:
       "Informative, keyword-rich blogs that improve rankings, attract organic traffic, and establish domain authority.",
+  },
+  {
+    title: "Website Development & Landing Page Content",
+    description:(<>
+      We {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
+ 	develop content-driven websites
+</Link>{" "}  and high-converting landing pages as part of our content marketing strategy to engage audiences, strengthen brand messaging, and turn traffic into qualified leads.
+    </>)
   },
   {
     title: "Website Copywriting & Landing Page Content",
