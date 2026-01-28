@@ -98,7 +98,7 @@ export default function CategoryBlogs() {
     currentPage * ITEMS_PER_PAGE
   );
 
-  const currentSlug = String(categoryName).toLowerCase();
+  const currentSlug = decodeURIComponent(String(categoryName)).toLowerCase();
 
   return (
     <div className="min-h-screen bg-[var(--color2)] text-black">
@@ -111,7 +111,7 @@ export default function CategoryBlogs() {
           <div className="bg-white rounded-3xl shadow-sm p-8 md:p-10 bg-gradient-to-bl from-[var(--color2)] via-[var(--color1)] to-[var(--color2)]">
             {/* HEADING */}
             <h1 className="text-3xl font-semibold mb-8 capitalize text-[var(--color5)] ">
-              Category: {String(categoryName).replace(/-/g, " ")}
+              Category: {decodeURIComponent(String(categoryName)).replace(/-/g, " ")}
             </h1>
 
             {/* SEARCH */}
