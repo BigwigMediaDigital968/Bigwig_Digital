@@ -31,7 +31,7 @@ const Blogs = () => {
           .sort(
             (a: BlogPost, b: BlogPost) =>
               new Date(b.datePublished).getTime() -
-              new Date(a.datePublished).getTime()
+              new Date(a.datePublished).getTime(),
           )
           .slice(0, 4);
 
@@ -77,7 +77,7 @@ const Blogs = () => {
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {blogs.map((post) => (
+            {blogs?.map((post) => (
               <div
                 key={post._id}
                 className="group cursor-pointer rounded-xl bg-white/10 backdrop-blur-md border border-white/20 

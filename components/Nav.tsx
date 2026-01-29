@@ -151,7 +151,7 @@ const Nav: React.FC = () => {
   const splitIntoColumns = (items: Service[], columns = 3) => {
     const per = Math.ceil(items.length / columns);
     return Array.from({ length: columns }, (_, i) =>
-      items.slice(i * per, i * per + per)
+      items.slice(i * per, i * per + per),
     );
   };
   const cols = splitIntoColumns(services, 3);
@@ -233,6 +233,7 @@ const Nav: React.FC = () => {
                 alt="Bigwig Digital"
                 className="w-16 md:w-24"
                 draggable={false}
+                priority
               />
             </Link>
           </div>

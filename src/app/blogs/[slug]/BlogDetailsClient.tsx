@@ -80,7 +80,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       setError("");
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE}/viewblog`
+          `${process.env.NEXT_PUBLIC_API_BASE}/viewblog`,
         );
         const blogList: BlogType[] = res.data;
         const found = blogList.find((b) => b.slug === slug);
@@ -93,7 +93,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
             .filter(
               (b) =>
                 b.slug !== slug &&
-                b.category?.toLowerCase() === found.category?.toLowerCase()
+                b.category?.toLowerCase() === found.category?.toLowerCase(),
             )
             .slice(0, 4);
           setRelatedBlogs(related);
@@ -265,7 +265,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
             </h3>
 
             <ul className="space-y-3">
-              {categories.map((cat, idx) => {
+              {categories?.map((cat, idx) => {
                 const slug = cat.replace(/\s+/g, "-").toLowerCase();
                 const active = slug === currentSlug;
 
@@ -305,7 +305,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       </div>
 
       {/* Related Blogs */}
-      {relatedBlogs.length > 0 && (
+      {relatedBlogs?.length > 0 && (
         <div className="w-11/12 md:w-5/6 mx-auto my-10">
           <h2 className="text-2xl font-semibold mb-4">Related Blogs</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
