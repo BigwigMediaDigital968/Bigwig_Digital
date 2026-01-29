@@ -56,7 +56,7 @@ export default function Blogs() {
       let res;
 
       res = await axios.get<BlogPost[]>(
-        `${process.env.NEXT_PUBLIC_API_BASE}/viewblog`
+        `${process.env.NEXT_PUBLIC_API_BASE}/viewblog`,
       );
 
       setBlogs(res.data);
@@ -214,7 +214,7 @@ export default function Blogs() {
                     (page) =>
                       page === 1 ||
                       page === totalPages ||
-                      (page >= currentPage - 2 && page <= currentPage + 2)
+                      (page >= currentPage - 2 && page <= currentPage + 2),
                   )
                   .map((page, i, arr) => (
                     <>
@@ -272,7 +272,7 @@ export default function Blogs() {
                   key={idx}
                   onClick={() =>
                     router.push(
-                      `/blogs/category/${cat.toLowerCase().replace(/\s+/g, "-")}`
+                      `/blogs/category/${cat.toLowerCase().replace(/\s+/g, "-")}`,
                     )
                   }
                   className="

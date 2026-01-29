@@ -271,7 +271,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
 
                 return (
                   <li
-                    key={idx}
+                    key={slug}
                     onClick={() => router.push(`/blogs/category/${slug}`)}
                     className={`
                     group relative cursor-pointer select-none

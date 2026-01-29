@@ -89,7 +89,7 @@ export default function AdminBlogsPage() {
         {
           method: "PATCH",
           body: formData,
-        }
+        },
       );
 
       if (!res.ok) throw new Error("Failed to update image");
@@ -131,7 +131,7 @@ export default function AdminBlogsPage() {
   const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
   const paginatedBlogs = filteredBlogs.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   return (
@@ -184,7 +184,7 @@ export default function AdminBlogsPage() {
               </tr>
             </thead>
             <tbody>
-              {paginatedBlogs.map((blog) => (
+              {paginatedBlogs?.map((blog) => (
                 <tr
                   key={blog._id}
                   className="even:bg-[#111] hover:bg-[#222] transition"
@@ -262,7 +262,7 @@ export default function AdminBlogsPage() {
                   >
                     {num}
                   </button>
-                )
+                ),
               )}
               <button
                 onClick={() =>
@@ -313,7 +313,7 @@ export default function AdminBlogsPage() {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ content: htmlContent }),
-                      }
+                      },
                     );
                     if (!res.ok) throw new Error("Failed to update blog");
                     alert("Blog updated successfully");
