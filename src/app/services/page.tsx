@@ -164,10 +164,14 @@ function Services() {
   return (
     <div className="min-h-screen bg-[var(--color1)] text-white">
       <Nav />
-      <title>Full Digital Marketing Services</title>
+      <title>Digital Marketing Services in Delhi | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Digital Marketing Services in Delhi | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Explore our full suite of digital marketing services customized for businesses of all sizes."
+        content="Explore result-driven digital marketing services in Delhi including SEO, website development, social media marketing & ORM solutions."
       />
       <link
         rel="canonical"

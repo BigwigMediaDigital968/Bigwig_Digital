@@ -89,7 +89,7 @@ export default function ContactPage() {
           phone: `${formData.countryCode}${formData.phone}`,
           services: formData.services,
           message: formData.message,
-        }
+        },
       );
 
       setStep("otp");
@@ -97,7 +97,7 @@ export default function ContactPage() {
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;
       setStatusMessage(
-        error.response?.data?.message || "Something went wrong."
+        error.response?.data?.message || "Something went wrong.",
       );
     } finally {
       setLoading(false);
@@ -115,7 +115,7 @@ export default function ContactPage() {
         {
           email: formData.email,
           otp,
-        }
+        },
       );
 
       setShowSuccessPopup(true);
@@ -142,6 +142,17 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen text-white">
+      <title>Contact Bigwig Media Digital | Digital Marketing Agency</title>
+      <meta
+        name="title"
+        content="Contact Bigwig Media Digital | Digital Marketing Agency"
+      />
+      <meta
+        name="description"
+        content="Get in touch with Bigwig Media Digital for SEO, website development and digital marketing services."
+      />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/contact" />
+
       <Nav />
 
       <div

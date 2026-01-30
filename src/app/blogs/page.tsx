@@ -98,12 +98,17 @@ export default function Blogs() {
   return (
     <div className="min-h-screen bg-[var(--color2)] text-black">
       <Nav />
-      <title>BigWig Digital Blog</title>
+      <title>Digital Marketing Blogs & Insights | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Digital Marketing Blogs & Insights | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Explore insights, strategies, and trends in digital marketing through our expert-written blogs."
+        content="Read expert-written digital marketing blogs, SEO tips, social media strategies and growth insights."
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/blogs" />
+
       {/* Page Main Wrapper */}
       <div className="w-11/12 md:w-5/6 mx-auto flex gap-8 py-12 ">
         {/* LEFT SECTION (BLOG GRID AREA INSIDE WHITE BOX) */}

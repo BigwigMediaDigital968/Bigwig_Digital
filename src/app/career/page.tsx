@@ -65,6 +65,17 @@ export default function Career() {
 
   return (
     <div className="min-h-screen bg-[var(--color1)] text-white">
+      <title>Careers at Bigwig Media Digital | Join Our Team</title>
+      <meta
+        name="title"
+        content="Careers at Bigwig Media Digital | Join Our Team"
+      />
+      <meta
+        name="description"
+        content="Discover exciting career opportunities at Bigwig Media Digital and build your future in digital marketing."
+      />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/career" />
+
       <Nav />
 
       {/* HERO */}

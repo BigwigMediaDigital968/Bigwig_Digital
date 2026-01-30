@@ -20,13 +20,17 @@ export default function Home() {
   return (
     <div>
       <link rel="canonical" href="https://www.bigwigmediadigital.com/" />
-      <title>
-        BigWig Digital | Result-Driven Digital Marketing Agency in India
-      </title>
+      <title>Digital Marketing Agency in Delhi | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Digital Marketing Agency in Delhi | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="BigWig Digital is a full-service digital marketing agency helping businesses grow with expert SEO, social media marketing, Google Ads, and creative campaigns. Drive traffic, leads, and sales with our proven strategies"
+        content="Bigwig Media Digital is a leading digital marketing agency in Delhi offering SEO, social media marketing, website development & performance marketing solutions."
       />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/" />
+
       <Nav />
       <Hero />
       <Partners />

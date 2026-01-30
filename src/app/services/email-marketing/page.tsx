@@ -43,11 +43,19 @@ const emailPoints = [
   },
   {
     title: "Creative, Data-Driven Campaigns",
-    content:(<>
-      BigWig Media Digital provide’s {" "}<Link href="/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	develop a website
-</Link>{" "}  in such an interesting way that admin panel/ dashboard have ability to shoot bulk emails which will help in e-mail marketing.
-    </>),  
+    content: (
+      <>
+        BigWig Media Digital provide’s{" "}
+        <Link
+          href="/website-development-company-in-delhi"
+          className="text-[var(--color5)]  hover:opacity-90"
+        >
+          develop a website
+        </Link>{" "}
+        in such an interesting way that admin panel/ dashboard have ability to
+        shoot bulk emails which will help in e-mail marketing.
+      </>
+    ),
   },
 ];
 
@@ -247,14 +255,18 @@ function EmailMarketing() {
   };
   return (
     <div className="bg-[var(--color1)]">
-      <title>Result-Driven Email Marketing</title>
-      <link
-        rel="canonical"
-        href="https://www.bigwigmediadigital.com/services/email-marketing"
+      <title>Email Marketing Services in Delhi | Lead Nurturing</title>
+      <meta
+        name="title"
+        content="Email Marketing Services in Delhi | Lead Nurturing"
       />
       <meta
         name="description"
-        content="Reach your audience with customized email campaigns that drive conversions and brand loyalty."
+        content="High-converting email marketing services in Delhi to engage customers, nurture leads and increase sales."
+      />
+      <link
+        rel="canonical"
+        href="https://www.bigwigmediadigital.com/services/email-marketing"
       />
 
       <Nav />
@@ -289,7 +301,7 @@ function EmailMarketing() {
           </div>
 
           {/* Right Form - 1/3 */}
-          <ContactForm singleService="Email Marketing"/>
+          <ContactForm singleService="Email Marketing" />
         </div>
       </section>
 

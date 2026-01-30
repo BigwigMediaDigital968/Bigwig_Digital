@@ -10,10 +10,11 @@ export default function FluidRippleClients() {
     <div className="bg-[var(--color1)] text-white">
       <Nav />
 
-      <title>Our Clients</title>
+      <title>Our Clients | Bigwig Media Digital</title>
+      <meta name="title" content="Our Clients | Bigwig Media Digital" />
       <meta
         name="description"
-        content="Discover the brands and businesses we’ve proudly partnered with for digital transformation."
+        content="Explore our portfolio of trusted clients and successful digital marketing partnerships across industries."
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/clients" />
 

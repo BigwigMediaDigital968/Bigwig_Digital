@@ -157,14 +157,19 @@ function GraphicDesigning() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Professional Graphic Designing</title>
-      <link
-        rel="canonical"
-        href="https://www.bigwigmediadigital.com/services/graphic-designing"
+      <title>Graphic Designing Services in Delhi | Creative Agency</title>
+      <meta
+        name="title"
+        content="Graphic Designing Services in Delhi | Creative Agency"
       />
       <meta
         name="description"
-        content="Stand out with unique, creative, and impactful graphic design solutions for digital and print."
+        content="Creative graphic designing services in Delhi for branding, social media creatives, brochures and ad designs."
+      />
+
+      <link
+        rel="canonical"
+        href="https://www.bigwigmediadigital.com/services/graphic-designing"
       />
 
       <Nav />
@@ -201,7 +206,7 @@ function GraphicDesigning() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Graphic Designing & Video Editing"/>
+          <ContactForm singleService="Graphic Designing & Video Editing" />
         </div>
       </section>
       <section className="py-12">

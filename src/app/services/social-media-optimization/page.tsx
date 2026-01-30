@@ -169,14 +169,18 @@ function SocialMediaOptimization() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Social Media Optimization (SMO)</title>
-      <link
-        rel="canonical"
-        href="https://www.bigwigmediadigital.com/services/social-media-optimization"
+      <title>Social Media Optimization Services in Delhi | SMO Company</title>
+      <meta
+        name="title"
+        content="Social Media Optimization Services in Delhi | SMO Company"
       />
       <meta
         name="description"
-        content="Improve your social visibility and engagement with strategic SMO services tailored to your brand."
+        content="Boost brand visibility with expert social media optimization services in Delhi including profile and content optimization."
+      />
+      <link
+        rel="canonical"
+        href="https://www.bigwigmediadigital.com/services/social-media-optimization"
       />
 
       <Nav />
@@ -211,7 +215,7 @@ function SocialMediaOptimization() {
           </div>
 
           {/* Right Form - 1/3 */}
-          <ContactForm singleService="Social Media Optimization"/>
+          <ContactForm singleService="Social Media Optimization" />
         </div>
       </section>
 

@@ -6,10 +6,14 @@ export default function TermsOfUse() {
     <div className="bg-[var(--color1)] text-white">
       <Nav />
 
-      <title>Terms & Conditions</title>
+      <title>Terms and Conditions | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Terms and Conditions | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Review the terms and conditions of using BigWig Digital’s services and website."
+        content="Read the terms and conditions governing the use of Bigwig Media Digital’s website and services."
       />
       <link
         rel="canonical"

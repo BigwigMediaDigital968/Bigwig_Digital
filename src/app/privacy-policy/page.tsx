@@ -7,14 +7,15 @@ export default function PrivacyPolicy() {
       <Nav />
       <div className="py-12  min-h-screen">
         <div>
-          <title>Privacy Policy</title>
+          <title>Privacy Policy | Bigwig Media Digital</title>
+          <meta name="title" content="Privacy Policy | Bigwig Media Digital" />
           <meta
             name="description"
-            content="Learn how BigWig Digital collects, uses, and protects your data."
+            content="Understand how Bigwig Media Digital collects, uses and protects your personal information."
           />
           <link
             rel="canonical"
-            href="https://www.bigwigdigital.in/privacy-policy"
+            href="https://www.bigwigmediadigital.com/privacy-policy"
           />
         </div>
         <div className=" pb-10 px-4 sm:px-8 max-w-5xl mx-auto">

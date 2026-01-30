@@ -51,11 +51,20 @@ const contentMarketingServices = [
   },
   {
     title: "Website Development & Landing Page Content",
-    description:(<>
-      We {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	develop content-driven websites
-</Link>{" "}  and high-converting landing pages as part of our content marketing strategy to engage audiences, strengthen brand messaging, and turn traffic into qualified leads.
-    </>)
+    description: (
+      <>
+        We{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className="text-[var(--color5)]  hover:opacity-90"
+        >
+          develop content-driven websites
+        </Link>{" "}
+        and high-converting landing pages as part of our content marketing
+        strategy to engage audiences, strengthen brand messaging, and turn
+        traffic into qualified leads.
+      </>
+    ),
   },
   {
     title: "Website Copywriting & Landing Page Content",
@@ -183,10 +192,14 @@ function ContentMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Creative Content Marketing Agency</title>
+      <title>Content Marketing Services in Delhi | SEO Content</title>
+      <meta
+        name="title"
+        content="Content Marketing Services in Delhi | SEO Content"
+      />
       <meta
         name="description"
-        content="Grow organically with impactful content marketing strategies that attract, engage, and convert."
+        content="Strategic content marketing services in Delhi including blogs, website content and SEO copywriting."
       />
       <link
         rel="canonical"
@@ -227,7 +240,7 @@ function ContentMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Content Marketing"/>
+          <ContactForm singleService="Content Marketing" />
         </div>
       </section>
       <section className=" py-10">

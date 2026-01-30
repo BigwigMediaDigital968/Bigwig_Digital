@@ -138,18 +138,21 @@ function SeoServicesDubai() {
   return (
     <div className="bg-[var(--color1)] text-white">
       <title>
-        Digital Marketing Agency in Dubai, UAE | BigWig Media Digital
+        Digital Marketing Agency in Dubai UAE | Bigwig Media Digital
       </title>
+      <meta
+        name="title"
+        content="Digital Marketing Agency in Dubai UAE | Bigwig Media Digital"
+      />
+      <meta
+        name="description"
+        content="Trusted digital marketing agency in Dubai UAE offering SEO, social media marketing, paid ads and branding solutions."
+      />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/digital-marketing-agency-dubai-uae"
       />
-      <meta
-        name="description"
-        content="BigWig Digital is a leading digital marketing agency in Dubai, UAE. We specialize in SEO,
-social media, performance marketing, content, and web design to help brands grow online.
-"
-      />
+
       <Nav />
 
       {/* Hero Section */}

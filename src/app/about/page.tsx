@@ -21,6 +21,17 @@ export default function About() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
     <div className="bg-[var(--color1)] text-gray-200">
+      <title>About Bigwig Media Digital | Digital Marketing Experts</title>
+      <meta
+        name="title"
+        content="About Bigwig Media Digital | Digital Marketing Experts"
+      />
+      <meta
+        name="description"
+        content="Learn about Bigwig Media Digital, a results-driven digital marketing agency delivering growth-focused solutions."
+      />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/about" />
+
       <Nav />
 
       {/* ================= HERO SECTION ================= */}

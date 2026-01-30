@@ -32,12 +32,21 @@ const whyPartnerData = [
   },
   {
     title: "Comprehensive Service Spectrum",
-    content:(<>
-      "Our performance marketing services in Delhi cover the full range of digital growth channels. From {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	Web Development 
-</Link>{" "} to SEO and PPC to social media, content marketing, and conversion optimization, you get a complete, integrated marketing solution under one roof.",
-    </>)
-      
+    content: (
+      <>
+        "Our performance marketing services in Delhi cover the full range of
+        digital growth channels. From{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className="text-[var(--color5)]  hover:opacity-90"
+        >
+          Web Development
+        </Link>{" "}
+        to SEO and PPC to social media, content marketing, and conversion
+        optimization, you get a complete, integrated marketing solution under
+        one roof.",
+      </>
+    ),
   },
   {
     title: "Transparent Reporting",
@@ -215,10 +224,14 @@ function PerformanceMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>ROI-Driven Performance Marketing</title>
+      <title>Performance Marketing Services in Delhi | PPC Agency</title>
+      <meta
+        name="title"
+        content="Performance Marketing Services in Delhi | PPC Agency"
+      />
       <meta
         name="description"
-        content="Maximize your ROI with data-driven performance marketing services tailored for your business goals."
+        content="ROI-driven performance marketing services in Delhi including Google Ads, Meta Ads and conversion-optimized campaigns."
       />
       <link
         rel="canonical"
@@ -266,7 +279,7 @@ function PerformanceMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Performance Marketing"/>
+          <ContactForm singleService="Performance Marketing" />
         </div>
       </section>
 

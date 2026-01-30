@@ -120,10 +120,14 @@ const FAQ = () => {
   return (
     <div className="bg-[var(--color1)] text-white min-h-screen">
       <Nav />
-      <title>FAQs - BigWig Digital</title>
+      <title>Digital Marketing FAQs | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Digital Marketing FAQs | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Frequently asked questions about our services."
+        content="Find answers to common questions about SEO, social media marketing and digital services."
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/faq" />
 

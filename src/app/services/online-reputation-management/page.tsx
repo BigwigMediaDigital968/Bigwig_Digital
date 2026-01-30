@@ -32,12 +32,20 @@ const data = [
       "We track brand mentions across all platforms and respond promptly to any negativity to safeguard your reputation.",
   },
   {
-    title:"Website Development and Management",
-    content:(<>
-      "As a key component of our Online Reputation Management (ORM) services, Bigwig Media Digital offers end-to-end {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	Website Development
-</Link>{" "} solutions to strengthen your brand’s digital credibility."
-    </>)
+    title: "Website Development and Management",
+    content: (
+      <>
+        "As a key component of our Online Reputation Management (ORM) services,
+        Bigwig Media Digital offers end-to-end{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className="text-[var(--color5)]  hover:opacity-90"
+        >
+          Website Development
+        </Link>{" "}
+        solutions to strengthen your brand’s digital credibility."
+      </>
+    ),
   },
   {
     title: "Social Media Management",
@@ -203,14 +211,18 @@ function OnlineReputationManagement() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Online Reputation Management</title>
-      <link
-        rel="canonical"
-        href="https://www.bigwigmediadigital.com/services/online-reputation-management"
+      <title>Online Reputation Management Services in Delhi | ORM</title>
+      <meta
+        name="title"
+        content="Online Reputation Management Services in Delhi | ORM"
       />
       <meta
         name="description"
-        content="Monitor, manage, and enhance your brand's online image with strategic ORM services."
+        content="Protect and enhance your brand image with professional online reputation management services in Delhi."
+      />
+      <link
+        rel="canonical"
+        href="https://www.bigwigmediadigital.com/services/online-reputation-management"
       />
 
       <Nav />
@@ -255,7 +267,7 @@ function OnlineReputationManagement() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Online Reputation Management"/>
+          <ContactForm singleService="Online Reputation Management" />
         </div>
       </section>
 
