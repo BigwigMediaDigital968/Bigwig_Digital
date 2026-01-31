@@ -163,9 +163,9 @@ const ToggleFAQ = () => {
           FAQs
         </p>
 
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
+        <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
           Helping You Make Smarter Decisions
-        </h1>
+        </h2>
       </div>
 
       <div className="flex flex-col md:flex-row justify-evenly py-3 items-start ">

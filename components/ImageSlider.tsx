@@ -117,9 +117,9 @@ export default function ImageSlider() {
         <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 uppercase tracking-widest">
           Testimonials
         </p>
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
+        <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
           What Our Clients Say About Us
-        </h1>
+        </h2>
 
         <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 mt-5">
           {/* Slider */}
