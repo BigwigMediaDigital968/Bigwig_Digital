@@ -178,6 +178,29 @@ function Services() {
         href="https://www.bigwigmediadigital.com/services"
       />
 
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Digital Marketing Services in Delhi | Bigwig Media Digital"
+      />
+      <meta
+        property="og:description"
+        content="Explore result-driven digital marketing services in
+Delhi including SEO, website development, social media marketing & ORM solutions."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       {/* NEW GRID DESIGN */}
       <div className=" py-12 w-11/12 md:w-5/6 mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">

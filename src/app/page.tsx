@@ -31,6 +31,27 @@ export default function Home() {
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/" />
 
+      {/*<!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Digital Marketing Agency in Delhi | Bigwig Media Digital"
+      />
+      <meta
+        property="og:description"
+        content="Bigwig Media Digital is a leading digital marketing
+agency in Delhi offering SEO, social media marketing, website development & performance
+marketing solutions."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta property="og:url" content="https://www.bigwigmediadigital.com/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       <Nav />
       <Hero />
       <Partners />

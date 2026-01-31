@@ -165,6 +165,29 @@ function SocialMediaMarketing() {
         href="https://www.bigwigmediadigital.com/services/social-media-marketing"
       />
 
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Social Media Marketing Services in Delhi | SMM Agency"
+      />
+      <meta
+        property="og:description"
+        content="Drive leads and engagement with ROI-focused
+social media marketing services in Delhi by Bigwig Media Digital."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/social-media-marketing"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       <Nav />
       <section
         className="relative bg-cover bg-center bg-no-repeat py-10 px-4"
