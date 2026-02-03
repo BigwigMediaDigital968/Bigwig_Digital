@@ -15,6 +15,7 @@ import LocationsSection from "../../components/Location";
 import Footer from "../../components/Footer";
 import ServicesPage from "../../components/Services";
 import RainbowSteps from "../../components/RainbowSteps";
+import OfferPopup from "../../components/OfferPopup";
 
 export default function Home() {
   return (
@@ -67,7 +68,7 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
       {/* <HowWeWork /> */}
       <Blogs />
       <FAQ />
-
+      <OfferPopup />
       {/* <LocationsSection /> */}
       <Footer />
     </div>
