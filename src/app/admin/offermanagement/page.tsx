@@ -145,7 +145,7 @@ export default function OfferAdmin() {
       <div className="absolute inset-0 bg-black/15 backdrop-blur-sm" />
       <div className="relative z-10 p-6 space-y-8">
         {/* Header */}
-        <div className="flex justify-between items-center max-w-6xl mx-auto">
+        <div className="flex justify-between items-center max-w-6xl mx-auto pl-95">
           <h2 className="text-3xl font-bold">Offer Management</h2>
           <button
             onClick={() => setShowForm(true)}
@@ -263,7 +263,7 @@ export default function OfferAdmin() {
 
         {/* TABLE */}
         <div className="bg-color2/90 p-6 rounded-2xl shadow-xl overflow-x-auto">
-          <table className="w-full text-lg border border-color4">
+          <table className="w-full text-md border border-color4">
             <thead className="bg-color3">
               <tr>
                 {["#", "Title", "CTA", "Views", "Clicks", "Status", "Image", "Actions"].map(
@@ -298,6 +298,7 @@ export default function OfferAdmin() {
                       src={`${API_URL}/${offer.image.replace(/\\/g, "/")}`}
                       alt=""
                       fill
+                      
                       className="object-cover rounded"
                       unoptimized
                     />

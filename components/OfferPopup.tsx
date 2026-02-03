@@ -81,7 +81,7 @@ export default function OfferPopup() {
           backgroundColor: "var(--color1)",
           borderColor: "var(--primary-color)",
         }}
-        className={`relative rounded-xl shadow-lg w-[60vw] max-w-xl h-[60vh] overflow-hidden flex flex-col transform transition-all duration-500 ${
+        className={`relative rounded-xl shadow-lg w-[60vw] max-w-md  overflow-hidden flex flex-col transform transition-all duration-500 ${
           visible ? "scale-100 opacity-100" : "scale-90 opacity-0"
         }`}
       >
@@ -99,19 +99,19 @@ export default function OfferPopup() {
           <img
             src={`${API_URL}/${offer.image.replace(/\\/g, "/")}`}
             alt={offer.title}
-            className="w-full h-3/4 object-cover"
+            className="w-full h-3/4 object-contain"
             style={{ borderBottom: "4px solid var(--primary-color)" }}
           />
         )}
 
         <div className="p-6 text-center flex-1 flex flex-col justify-center text-white">
           <h2
-            className="text-3xl font-bold mb-2"
-            style={{ color: "var(--secondary-color)" }}
+            className="text-2xl font-bold mb-2"
+            style={{ color: "white" }}
           >
             {offer.title}
           </h2>
-          <p className="mb-4" style={{ color: "var(--color5)" }}>
+          <p className="mb-4" style={{ color: "white" }}>
             {offer.subtitle}
           </p>
 
