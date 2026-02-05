@@ -32,6 +32,29 @@ export default function About() {
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/about" />
 
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="About Bigwig Media Digital | Digital Marketing Experts"
+      />
+      <meta
+        property="og:description"
+        content="Learn about Bigwig Media Digital, a results-driven
+digital marketing agency delivering growth-focused solutions."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/about"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       <Nav />
 
       {/* ================= HERO SECTION ================= */}

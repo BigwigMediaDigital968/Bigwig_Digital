@@ -153,6 +153,29 @@ export default function ContactPage() {
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/contact" />
 
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Contact Bigwig Media Digital | Digital Marketing Agency"
+      />
+      <meta
+        property="og:description"
+        content="Get in touch with Bigwig Media Digital for SEO,
+website development and digital marketing services."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/contact"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       <Nav />
 
       <div

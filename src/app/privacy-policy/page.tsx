@@ -17,6 +17,28 @@ export default function PrivacyPolicy() {
             rel="canonical"
             href="https://www.bigwigmediadigital.com/privacy-policy"
           />
+          {/* <!-- Open Graph Meta Tags --> */}
+          <meta
+            property="og:title"
+            content="Privacy Policy | Bigwig Media Digital"
+          />
+          <meta
+            property="og:description"
+            content="Understand how Bigwig Media Digital collects,
+uses and protects your personal information."
+          />
+          <meta
+            property="og:image"
+            content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+          />
+          <meta
+            property="og:url"
+            content="https://www.bigwigmediadigital.com/privacy-policy"
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="Bigwig Media Digital" />
+          <meta property="og:locale" content="en_IN" />
         </div>
         <div className=" pb-10 px-4 sm:px-8 max-w-5xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6">
