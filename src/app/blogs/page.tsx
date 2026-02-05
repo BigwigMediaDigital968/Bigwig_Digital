@@ -121,8 +121,7 @@ tips, social media strategies and growth insights."
       />
       <meta
         property="og:image"
-        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
-a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032945/WhatsApp_Image_2026-02-02_at_4.12.04_PM_2_qj4azj.jpg"
       />
       <meta
         property="og:url"
