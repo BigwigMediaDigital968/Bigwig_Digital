@@ -71,67 +71,6 @@ const Dashboard = () => {
   const [gaGraphData, setGaGraphData] = useState<GAStat[]>([]);
   const [trafficSources, setTrafficSources] = useState<TrafficSource[]>([]);
 
-  // useEffect(() => {
-  //   Promise.all([
-  //     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/all`).then((r) =>
-  //       r.json(),
-  //     ),
-  //     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/viewblog`).then((r) =>
-  //       r.json(),
-  //     ),
-  //     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/jobs`).then((r) =>
-  //       r.json(),
-  //     ),
-  //     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/last10days`).then(
-  //       (r) => r.json(),
-  //     ),
-  //     fetch(
-  //       `${process.env.NEXT_PUBLIC_API_BASE}/api/google/analytics-data`,
-  //     ).then((r) => r.json()),
-  //     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/google/summary-data`).then(
-  //       (r) => r.json(),
-  //     ),
-  //   ])
-  //     .then(
-  //       ([leads, blogs, jobApplications, leadStats, gaStats, summaryStats]) => {
-  //         setCounts({
-  //           leads: Array.isArray(leads) ? leads.length : 0,
-  //           blogs: Array.isArray(blogs) ? blogs.length : 0,
-  //           jobApplications: Array.isArray(jobApplications)
-  //             ? jobApplications.length
-  //             : 0,
-  //         });
-
-  //         if (Array.isArray(leadStats)) {
-  //           setLeadGraphData(leadStats);
-  //         }
-
-  //         if (Array.isArray(gaStats?.rows)) {
-  //           const formatted: GAStat[] = gaStats.rows.map((row: GARow) => ({
-  //             city: row.dimensionValues[0]?.value || "Unknown",
-  //             activeUsers: parseInt(row.metricValues[0]?.value || "0", 10),
-  //           }));
-  //           setGaGraphData(formatted);
-  //         }
-
-  //         if (Array.isArray(summaryStats?.rows)) {
-  //           const formattedSources: TrafficSource[] = summaryStats.rows.map(
-  //             (row: GARow) => ({
-  //               source: row.dimensionValues[0]?.value || "Unknown",
-  //               totalUsers: parseInt(row.metricValues[0]?.value || "0", 10),
-  //               sessions: parseInt(row.metricValues[1]?.value || "0", 10),
-  //               activeUsers: parseInt(row.metricValues[2]?.value || "0", 10),
-  //             }),
-  //           );
-  //           setTrafficSources(formattedSources);
-  //         }
-  //       },
-  //     )
-  //     .catch((error) => {
-  //       console.error("Error loading dashboard data:", error);
-  //     });
-  // }, []);
-
   useEffect(() => {
     const loadDashboard = async () => {
       try {

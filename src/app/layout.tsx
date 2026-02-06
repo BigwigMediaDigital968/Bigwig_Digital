@@ -36,9 +36,9 @@ export default function RootLayout({
           hrefLang="x-default"
         />
 
-        <title>
+        {/* <title>
           BigWig Digital | Result-Driven Digital Marketing Agency in India
-        </title>
+        </title> */}
         <meta
           name="description"
           content="BigWig Digital is a full-service digital marketing agency helping businesses grow with expert SEO, social media marketing, Google Ads, and creative campaigns. Drive traffic, leads, and sales with our proven strategies"

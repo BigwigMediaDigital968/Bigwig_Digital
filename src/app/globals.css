@@ -172,7 +172,7 @@
 }
 
 .react-quill-editor {
-  height: 300px; /* or whatever you prefer */
+  height: 500px; /* or whatever you prefer */
   display: flex;
   flex-direction: column;
 }

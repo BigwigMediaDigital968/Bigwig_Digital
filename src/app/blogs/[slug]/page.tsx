@@ -1,16 +1,43 @@
 import { Metadata } from "next";
 import BlogDetailsClient from "./BlogDetailsClient";
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Breadcrumb {
+  name: string;
+  url: string;
+  position: number;
+}
+
+interface SchemaSettings {
+  article: boolean;
+  breadcrumb: boolean;
+  faq: boolean;
+  organization: boolean;
+  speakable: boolean;
+  video: boolean;
+  image: boolean;
+}
+
 interface BlogType {
+  _id: string;
   title: string;
   excerpt: string;
-  coverImage: string;
-  author: string;
-  datePublished: string;
   content: string;
   slug: string;
+  author: string;
   category?: string;
-  schemaMarkup?: string[];
+  tags?: string[];
+  coverImage: string;
+  datePublished: string;
+  lastUpdated?: string;
+  faqs?: FAQ[];
+  breadcrumbs?: Breadcrumb[];
+  schemaSettings?: SchemaSettings;
+  customSchemas?: Record<string, any>[];
 }
 
 // Fetch single blog by slug
@@ -29,27 +56,60 @@ async function getBlog(slug: string): Promise<BlogType | null> {
 }
 
 // Generate metadata for SEO
+
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>; // 👈 mark as Promise
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params; // 👈 await before using
+  const { slug } = await params;
   const blog = await getBlog(slug);
 
   if (!blog) {
     return {
       title: "Blog Not Found",
       description: "This blog does not exist.",
-      alternates: { canonical: "https://www.bigwigmediadigital.com/blogs" },
+      alternates: {
+        canonical: "https://www.bigwigmediadigital.com/blogs",
+      },
     };
   }
+
+  const canonicalUrl = `https://www.bigwigmediadigital.com/blogs/${blog.slug}`;
 
   return {
     title: blog.title,
     description: blog.excerpt,
+    keywords: blog.tags,
+
     alternates: {
-      canonical: `https://www.bigwigmediadigital.com/blogs/${blog.slug}`,
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt,
+      url: canonicalUrl,
+      siteName: "Bigwig Media Digital",
+      images: [
+        {
+          url: blog.coverImage,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+      type: "article",
+      publishedTime: blog.datePublished,
+      modifiedTime: blog.lastUpdated || blog.datePublished,
+      authors: [blog.author],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.excerpt,
+      images: [blog.coverImage],
     },
   };
 }

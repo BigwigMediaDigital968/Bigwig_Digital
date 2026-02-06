@@ -139,7 +139,7 @@ export default function AdminBlogsPage() {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Manage Blogs</h1>
         <button
-          className="bg-transparent hover:text-[var(--primary-color)]"
+          className="bg-transparent hover:text-[var(--primary-color)] cursor-pointer border-2 shadow-lg px-3 py-1 rounded-sm"
           onClick={() => {
             setEditingBlog(null);
             setShowAddModal(true);
