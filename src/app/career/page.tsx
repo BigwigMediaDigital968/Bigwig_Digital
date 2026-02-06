@@ -65,6 +65,39 @@ export default function Career() {
 
   return (
     <div className="min-h-screen bg-[var(--color1)] text-white">
+      <title>Careers at Bigwig Media Digital | Join Our Team</title>
+      <meta
+        name="title"
+        content="Careers at Bigwig Media Digital | Join Our Team"
+      />
+      <meta
+        name="description"
+        content="Discover exciting career opportunities at Bigwig Media Digital and build your future in digital marketing."
+      />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/career" />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Careers at Bigwig Media Digital | Join Our Team"
+      />
+      <meta
+        property="og:description"
+        content="Discover exciting career opportunities at Bigwig
+Media Digital and build your future in digital marketing."
+      />
+      <meta
+        property="og:image"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032945/WhatsApp_Image_2026-02-02_at_4.12.04_PM_2_qj4azj.jpg"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/career"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       <Nav />
 
       {/* HERO */}

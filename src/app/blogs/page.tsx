@@ -98,12 +98,39 @@ export default function Blogs() {
   return (
     <div className="min-h-screen bg-[var(--color2)] text-black">
       <Nav />
-      <title>BigWig Digital Blog</title>
+      <title>Digital Marketing Blogs & Insights | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Digital Marketing Blogs & Insights | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Explore insights, strategies, and trends in digital marketing through our expert-written blogs."
+        content="Read expert-written digital marketing blogs, SEO tips, social media strategies and growth insights."
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/blogs" />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Digital Marketing Blogs & Insights | Bigwig Media Digital"
+      />
+      <meta
+        property="og:description"
+        content="Read expert-written digital marketing blogs, SEO
+tips, social media strategies and growth insights."
+      />
+      <meta
+        property="og:image"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032945/WhatsApp_Image_2026-02-02_at_4.12.04_PM_2_qj4azj.jpg"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/blogs"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       {/* Page Main Wrapper */}
       <div className="w-11/12 md:w-5/6 mx-auto flex gap-8 py-12 ">
         {/* LEFT SECTION (BLOG GRID AREA INSIDE WHITE BOX) */}

@@ -89,15 +89,43 @@ function AffiliateMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Affiliate Marketing Management</title>
+      <title>Affiliate Marketing Services in Delhi | Growth Marketing</title>
+      <meta
+        name="title"
+        content="Affiliate Marketing Services in Delhi | Growth Marketing"
+      />
+
+      <meta
+        name="description"
+        content="Scale your business with performance-based affiliate marketing services in Delhi by Bigwig Media Digital."
+      />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/affiliate-marketing"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
       <meta
-        name="description"
-        content="Grow your business through powerful affiliate partnerships and expert campaign tracking."
+        property="og:title"
+        content="Affiliate Marketing Services in Delhi | Growth Marketing"
       />
+      <meta
+        property="og:description"
+        content="Scale your business with performance-based
+affiliate marketing services in Delhi by Bigwig Media Digital."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/affiliate-marketing"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <Nav />
       <section
@@ -137,7 +165,7 @@ function AffiliateMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Affiliate Marketing"/>
+          <ContactForm singleService="Affiliate Marketing" />
         </div>
       </section>
 
@@ -155,12 +183,21 @@ function AffiliateMarketing() {
               <p className="text-white leading-relaxed text-justify">
                 Affiliate marketing is one of the most cost-effective growth
                 channels - but only when done with proper strategy, vetted
-                affiliates, and performance monitoring. Successful affiliate marketing also depends heavily on a high-performing, conversion-optimized website. Our affiliate marketing strategies are supported by professional {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	Website Development Services
-</Link>{" "}  that ensure faster load times, seamless user experience, and higher conversion rates from affiliate traffic. As a top-rated affiliate
-                marketing company in Delhi, we help brands build profitable
-                affiliate ecosystems, minimize fraud, and maximize genuine
-                conversions.
+                affiliates, and performance monitoring. Successful affiliate
+                marketing also depends heavily on a high-performing,
+                conversion-optimized website. Our affiliate marketing strategies
+                are supported by professional{" "}
+                <Link
+                  href="/services/website-development-company-in-delhi"
+                  className="text-[var(--color5)]  hover:opacity-90"
+                >
+                  Website Development Services
+                </Link>{" "}
+                that ensure faster load times, seamless user experience, and
+                higher conversion rates from affiliate traffic. As a top-rated
+                affiliate marketing company in Delhi, we help brands build
+                profitable affiliate ecosystems, minimize fraud, and maximize
+                genuine conversions.
               </p>
 
               <p className="text-white leading-relaxed text-justify">
@@ -491,8 +528,8 @@ function AffiliateMarketing() {
           <p className="text-gray-200 leading-relaxed text-justify">
             Our step-by-step affiliate marketing process ensures your business
             gets qualified traffic, consistent conversions, and measurable ROI.
-            Here&apos;s how we create performance-driven affiliate systems that scale
-            smoothly and profitably.
+            Here&apos;s how we create performance-driven affiliate systems that
+            scale smoothly and profitably.
           </p>
         </div>
 
@@ -513,12 +550,21 @@ function AffiliateMarketing() {
             },
             {
               title: "Creating Campaign Assets",
-              points: [ 
-                (<>
-                  We design banners, landing pages, coupon codes, custom creatives, and content required for affiliate promotions. Our team also builds and optimizes high-converting landing pages through our {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	 Website Development
-</Link>{" "}  expertise to ensure affiliate traffic converts into real leads and sales.
-                </>),
+              points: [
+                <>
+                  We design banners, landing pages, coupon codes, custom
+                  creatives, and content required for affiliate promotions. Our
+                  team also builds and optimizes high-converting landing pages
+                  through our{" "}
+                  <Link
+                    href="/services/website-development-company-in-delhi"
+                    className="text-[var(--color5)]  hover:opacity-90"
+                  >
+                    Website Development
+                  </Link>{" "}
+                  expertise to ensure affiliate traffic converts into real leads
+                  and sales.
+                </>,
               ],
             },
             {
@@ -1122,8 +1168,8 @@ function AffiliateMarketing() {
 
           {/* Subtitle */}
           <p className="text-center text-white/70 max-w-4xl mx-auto">
-            If you&apos;re ready to scale your sales, increase your visibility, and
-            achieve predictable growth, our affiliate marketing services in
+            If you&apos;re ready to scale your sales, increase your visibility,
+            and achieve predictable growth, our affiliate marketing services in
             Delhi are designed to deliver results.
           </p>
 

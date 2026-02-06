@@ -27,6 +27,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       to: "/admin/job-application",
     },
     { icon: <FileText />, label: "Job Vacancy", to: "/admin/jobs" },
+    {icon:<FileText />, label:"Offer",to:"/admin/offermanagement"}
   ];
 
   // Redirect if not logged in

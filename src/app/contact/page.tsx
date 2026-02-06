@@ -89,7 +89,7 @@ export default function ContactPage() {
           phone: `${formData.countryCode}${formData.phone}`,
           services: formData.services,
           message: formData.message,
-        }
+        },
       );
 
       setStep("otp");
@@ -97,7 +97,7 @@ export default function ContactPage() {
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;
       setStatusMessage(
-        error.response?.data?.message || "Something went wrong."
+        error.response?.data?.message || "Something went wrong.",
       );
     } finally {
       setLoading(false);
@@ -115,7 +115,7 @@ export default function ContactPage() {
         {
           email: formData.email,
           otp,
-        }
+        },
       );
 
       setShowSuccessPopup(true);
@@ -142,6 +142,39 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen text-white">
+      <title>Contact Bigwig Media Digital | Digital Marketing Agency</title>
+      <meta
+        name="title"
+        content="Contact Bigwig Media Digital | Digital Marketing Agency"
+      />
+      <meta
+        name="description"
+        content="Get in touch with Bigwig Media Digital for SEO, website development and digital marketing services."
+      />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/contact" />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Contact Bigwig Media Digital | Digital Marketing Agency"
+      />
+      <meta
+        property="og:description"
+        content="Get in touch with Bigwig Media Digital for SEO,
+website development and digital marketing services."
+      />
+      <meta
+        property="og:image"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032945/WhatsApp_Image_2026-02-02_at_4.12.04_PM_2_qj4azj.jpg"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/contact"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       <Nav />
 
       <div

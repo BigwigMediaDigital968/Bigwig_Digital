@@ -220,15 +220,43 @@ function InfluencerMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Influencer Marketing Solutions</title>
+      <title>Influencer Marketing Agency in Delhi | Brand Growth</title>
+      <meta
+        name="title"
+        content="Influencer Marketing Agency in Delhi | Brand Growth"
+      />
+
+      <meta
+        name="description"
+        content="Connect with trusted creators using influencer marketing services in Delhi to increase brand reach and credibility."
+      />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/influencer-marketing"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
       <meta
-        name="description"
-        content="Connect with influencers who align with your brand to drive real engagement and sales."
+        property="og:title"
+        content="Influencer Marketing Agency in Delhi | Brand Growth"
       />
+      <meta
+        property="og:description"
+        content="Connect with trusted creators using influencer
+marketing services in Delhi to increase brand reach and credibility."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/influencer-marketing"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <Nav />
       <section
@@ -255,10 +283,10 @@ function InfluencerMarketing() {
               As a leading influencer marketing agency in Delhi, we bring
               together brands and influencers through data, storytelling, and
               strategy - ensuring your message reaches the right people, in the
-              right way, at the right time. Whether you&apos;re building awareness,
-              driving sales, or launching a new product, our influencer
-              marketing company in Delhi ensures every collaboration feels real,
-              relevant, and results-driven.
+              right way, at the right time. Whether you&apos;re building
+              awareness, driving sales, or launching a new product, our
+              influencer marketing company in Delhi ensures every collaboration
+              feels real, relevant, and results-driven.
             </p>
             <ButtonFill
               onClick={() => setIsPopupOpen(true)}
@@ -267,7 +295,7 @@ function InfluencerMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Influencer Marketing"/>
+          <ContactForm singleService="Influencer Marketing" />
         </div>
       </section>
 
@@ -345,7 +373,7 @@ function InfluencerMarketing() {
                           <p key={i} className="mt-2">
                             {line}
                           </p>
-                        )
+                        ),
                       )}
                     </ul>
                   ) : (
@@ -387,7 +415,7 @@ function InfluencerMarketing() {
                           <p key={i} className="mt-2">
                             {line}
                           </p>
-                        )
+                        ),
                       )}
                     </ul>
                   ) : (

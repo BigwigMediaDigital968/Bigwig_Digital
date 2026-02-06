@@ -24,10 +24,21 @@ const seoServices = [
   },
   {
     title: "International SEO",
-    content:(<>
-      "Expanding globally? We help optimize &{" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	Develop your website
-</Link>{" "}for multiple countries and languages so your brand can connect with audiences across borders. From hreflang implementation to region-specific keyword strategies, we ensure your global presence is strong, consistent, and search-friendly. "</>),
+    content: (
+      <>
+        "Expanding globally? We help optimize &{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className="text-[var(--color5)]  hover:opacity-90"
+        >
+          Develop your website
+        </Link>{" "}
+        for multiple countries and languages so your brand can connect with
+        audiences across borders. From hreflang implementation to
+        region-specific keyword strategies, we ensure your global presence is
+        strong, consistent, and search-friendly. "
+      </>
+    ),
   },
   {
     title: "LLM SEO",
@@ -202,15 +213,43 @@ function Seo() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>SEO Services for Higher Ranking</title>
+      <title>SEO Services in Delhi | Search Engine Optimization Company</title>
+      <meta
+        name="title"
+        content="SEO Services in Delhi | Search Engine Optimization Company"
+      />
       <meta
         name="description"
-        content="Boost your online visibility and rank higher on search engines with our expert SEO services."
+        content="Professional SEO services in Delhi to improve Google rankings, organic traffic and quality leads using ethical SEO strategies."
       />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/search-engine-optimization"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="SEO Services in Delhi | Search Engine Optimization
+Company"
+      />
+      <meta
+        property="og:description"
+        content="Professional SEO services in Delhi to improve
+Google rankings, organic traffic and quality leads using ethical SEO strategies."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/search-engine-optimization"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <Nav />
       <section
@@ -242,7 +281,7 @@ function Seo() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Search Engine Optimization"/>
+          <ContactForm singleService="Search Engine Optimization" />
         </div>
       </section>
 
@@ -270,10 +309,17 @@ function Seo() {
                 As a dedicated SEO services in Delhi, our goal is simple: to
                 create strategies that are tailored to the unique needs of every
                 client. Our team brings together technical expertise and
-                creative thinking to help you to {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" > Develop a Website </Link>{" "} and rise to the top of search
-                engine results results. With years of experience behind us, we
-                focus on driving organic traffic, increasing visibility, and
-                turning clicks into loyal customers.
+                creative thinking to help you to{" "}
+                <Link
+                  href="/services/website-development-company-in-delhi"
+                  className="text-[var(--color5)]  hover:opacity-90"
+                >
+                  {" "}
+                  Develop a Website{" "}
+                </Link>{" "}
+                and rise to the top of search engine results results. With years
+                of experience behind us, we focus on driving organic traffic,
+                increasing visibility, and turning clicks into loyal customers.
               </p>
 
               <p className="text-white leading-relaxed text-justify">
@@ -282,11 +328,11 @@ function Seo() {
                 Digital, we use advanced analytics and share clear, actionable
                 reports and roadmaps, so you always know what’s working. Our
                 services are designed for all kinds of businesses - whether
-                you&apos;re just starting out or already established. From keyword
-                research and content optimisation to high-quality backlink
-                building, we use a holistic SEO strategy that supports long-term
-                success for your brand. Choose Bigwig Media Digital, a trusted
-                SEO services in Delhi, and watch your business reach new
+                you&apos;re just starting out or already established. From
+                keyword research and content optimisation to high-quality
+                backlink building, we use a holistic SEO strategy that supports
+                long-term success for your brand. Choose Bigwig Media Digital, a
+                trusted SEO services in Delhi, and watch your business reach new
                 heights.
               </p>
             </div>
@@ -794,9 +840,9 @@ function Seo() {
               has become essential. A skilled SEO consultant in Delhi can
               significantly enhance your website’s visibility, outrank
               competitors, attract quality traffic, and ultimately boost
-              conversions and sales. Whether you&apos;re a small business in Delhi,
-              NCR, hiring a professional who offers expert SEO services can
-              bring remarkable benefits to your organisation.
+              conversions and sales. Whether you&apos;re a small business in
+              Delhi, NCR, hiring a professional who offers expert SEO services
+              can bring remarkable benefits to your organisation.
             </p>
 
             <p>

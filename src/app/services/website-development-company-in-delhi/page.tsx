@@ -339,10 +339,16 @@ function Website({ value }: { value: number }) {
       <Nav />
 
       {/* SEO Meta Deta */}
-      <title>Best Website Development Company in Delhi NCR</title>
+      <title>Website Development Company in Delhi | Bigwig Media Digital</title>
+
+      <meta
+        name="title"
+        content="Website Development Company in Delhi | Bigwig Media Digital"
+      />
+
       <meta
         name="description"
-        content="Hire a website development company in Delhi to build custom, responsive & SEO-friendly websites that generate leads. Contact us today."
+        content="Trusted website development company in Delhi offering responsive, SEO-friendly and high-performance business websites."
       />
 
       <meta
@@ -354,6 +360,30 @@ function Website({ value }: { value: number }) {
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/website-development-company-in-delhi"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Website Development Company in Delhi | Bigwig Media
+Digital"
+      />
+      <meta
+        property="og:description"
+        content="Trusted website development company in Delhi
+offering responsive, SEO-friendly and high-performance business websites."
+      />
+      <meta
+        property="og:image"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032924/WhatsApp_Image_2026-02-02_at_4.12.04_PM_1_ditcz0.jpg"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/website-development-company-in-del
+hi"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       {/* Page Section 1 */}
       <section
@@ -371,19 +401,16 @@ function Website({ value }: { value: number }) {
             </h2>
 
             <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify">
-              We’re a leading
-              {" "}<Link
-                href="/"
-                className="text-[var(--color5)]  hover:opacity-90"
-              >
+              We’re a leading{" "}
+              <Link href="/" className="text-[var(--color5)]  hover:opacity-90">
                 Website Design Company
               </Link>{" "}
-               in Delhi NCR, creating custom web
-              experiences that truly fit your business needs. Our team of
-              skilled professionals works closely with you to enhance your
-              digital presence and bring your vision to life. We craft
-              high-quality, impactful websites that leave a lasting impression,
-              attract more visitors, and help you achieve better ROI
+              in Delhi NCR, creating custom web experiences that truly fit your
+              business needs. Our team of skilled professionals works closely
+              with you to enhance your digital presence and bring your vision to
+              life. We craft high-quality, impactful websites that leave a
+              lasting impression, attract more visitors, and help you achieve
+              better ROI
             </p>
 
             <ButtonFill
@@ -1224,16 +1251,18 @@ function Website({ value }: { value: number }) {
               </p>
 
               <p>
-                As a trusted web design company in Delhi, {" "}<Link
-                href="/"
-                className="text-[var(--color5)]  hover:opacity-90"
-              >
-                BigWig Media Digital
-              </Link>{" "} takes your vision
-                seriously. Our team blends creativity with advanced technology
-                to deliver modern, high-performing websites that enhance your
-                digital identity. With years of industry expertise, we create
-                professional designs that exceed expectations.
+                As a trusted web design company in Delhi,{" "}
+                <Link
+                  href="/"
+                  className="text-[var(--color5)]  hover:opacity-90"
+                >
+                  BigWig Media Digital
+                </Link>{" "}
+                takes your vision seriously. Our team blends creativity with
+                advanced technology to deliver modern, high-performing websites
+                that enhance your digital identity. With years of industry
+                expertise, we create professional designs that exceed
+                expectations.
               </p>
 
               <p>
@@ -1456,8 +1485,6 @@ function Website({ value }: { value: number }) {
         </div>
       </section>
 
-
-
       {/* <OurProcess />
       <WhyBigwig /> */}
 
@@ -1649,15 +1676,14 @@ function Website({ value }: { value: number }) {
         </style>
       </section>
 
-{/* CTA Button */}
-        <div className="my-10 flex justify-center">
-          <ButtonFill
-            text="Start Your Project Today"
-            onClick={() => setIsPopupOpen(true)}
-          />
-        </div>
+      {/* CTA Button */}
+      <div className="my-10 flex justify-center">
+        <ButtonFill
+          text="Start Your Project Today"
+          onClick={() => setIsPopupOpen(true)}
+        />
+      </div>
 
-      
       <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
 
       <Footer />

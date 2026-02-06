@@ -169,15 +169,43 @@ function SocialMediaOptimization() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Social Media Optimization (SMO)</title>
+      <title>Social Media Optimization Services in Delhi | SMO Company</title>
+      <meta
+        name="title"
+        content="Social Media Optimization Services in Delhi | SMO Company"
+      />
+      <meta
+        name="description"
+        content="Boost brand visibility with expert social media optimization services in Delhi including profile and content optimization."
+      />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/social-media-optimization"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
       <meta
-        name="description"
-        content="Improve your social visibility and engagement with strategic SMO services tailored to your brand."
+        property="og:title"
+        content="Social Media Optimization Services in Delhi | SMO
+Company"
       />
+      <meta
+        property="og:description"
+        content="Boost brand visibility with expert social media
+optimization services in Delhi including profile and content optimization."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/social-media-optimization"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <Nav />
       <section
@@ -211,7 +239,7 @@ function SocialMediaOptimization() {
           </div>
 
           {/* Right Form - 1/3 */}
-          <ContactForm singleService="Social Media Optimization"/>
+          <ContactForm singleService="Social Media Optimization" />
         </div>
       </section>
 

@@ -6,15 +6,42 @@ export default function TermsOfUse() {
     <div className="bg-[var(--color1)] text-white">
       <Nav />
 
-      <title>Terms & Conditions</title>
+      <title>Terms and Conditions | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Terms and Conditions | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Review the terms and conditions of using BigWig Digital’s services and website."
+        content="Read the terms and conditions governing the use of Bigwig Media Digital’s website and services."
       />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/terms-and-condition"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Terms and Conditions | Bigwig Media Digital"
+      />
+      <meta
+        property="og:description"
+        content="Read the terms and conditions governing the use
+of Bigwig Media Digital’s website and services."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/terms-and-condition"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <div className="py-12 w-11/12 md:w-2/3 mx-auto text-white">
         {/* HEADER */}

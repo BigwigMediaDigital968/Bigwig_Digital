@@ -164,15 +164,41 @@ function Services() {
   return (
     <div className="min-h-screen bg-[var(--color1)] text-white">
       <Nav />
-      <title>Full Digital Marketing Services</title>
+      <title>Digital Marketing Services in Delhi | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Digital Marketing Services in Delhi | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Explore our full suite of digital marketing services customized for businesses of all sizes."
+        content="Explore result-driven digital marketing services in Delhi including SEO, website development, social media marketing & ORM solutions."
       />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Digital Marketing Services in Delhi | Bigwig Media Digital"
+      />
+      <meta
+        property="og:description"
+        content="Explore result-driven digital marketing services in
+Delhi including SEO, website development, social media marketing & ORM solutions."
+      />
+      <meta
+        property="og:image"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032945/WhatsApp_Image_2026-02-02_at_4.12.04_PM_2_qj4azj.jpg"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       {/* NEW GRID DESIGN */}
       <div className=" py-12 w-11/12 md:w-5/6 mx-auto">

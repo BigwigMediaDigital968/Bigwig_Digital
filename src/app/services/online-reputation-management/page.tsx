@@ -32,12 +32,20 @@ const data = [
       "We track brand mentions across all platforms and respond promptly to any negativity to safeguard your reputation.",
   },
   {
-    title:"Website Development and Management",
-    content:(<>
-      "As a key component of our Online Reputation Management (ORM) services, Bigwig Media Digital offers end-to-end {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	Website Development
-</Link>{" "} solutions to strengthen your brand’s digital credibility."
-    </>)
+    title: "Website Development and Management",
+    content: (
+      <>
+        "As a key component of our Online Reputation Management (ORM) services,
+        Bigwig Media Digital offers end-to-end{" "}
+        <Link
+          href="/services/website-development-company-in-delhi"
+          className="text-[var(--color5)]  hover:opacity-90"
+        >
+          Website Development
+        </Link>{" "}
+        solutions to strengthen your brand’s digital credibility."
+      </>
+    ),
   },
   {
     title: "Social Media Management",
@@ -203,15 +211,42 @@ function OnlineReputationManagement() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Online Reputation Management</title>
+      <title>Online Reputation Management Services in Delhi | ORM</title>
+      <meta
+        name="title"
+        content="Online Reputation Management Services in Delhi | ORM"
+      />
+      <meta
+        name="description"
+        content="Protect and enhance your brand image with professional online reputation management services in Delhi."
+      />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/online-reputation-management"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
       <meta
-        name="description"
-        content="Monitor, manage, and enhance your brand's online image with strategic ORM services."
+        property="og:title"
+        content="Online Reputation Management Services in Delhi | ORM"
       />
+      <meta
+        property="og:description"
+        content="Protect and enhance your brand image with
+professional online reputation management services in Delhi."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/online-reputation-management"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <Nav />
       <section
@@ -255,7 +290,7 @@ function OnlineReputationManagement() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Online Reputation Management"/>
+          <ContactForm singleService="Online Reputation Management" />
         </div>
       </section>
 

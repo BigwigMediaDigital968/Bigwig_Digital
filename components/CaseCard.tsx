@@ -95,9 +95,9 @@ const CaseCard: React.FC = () => {
             <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 uppercase tracking-widest">
               Why Bigwig
             </p>
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
               Creative intelligence powering real growth
-            </h1>
+            </h2>
           </div>
 
           {/* 👉 View All Services Button */}

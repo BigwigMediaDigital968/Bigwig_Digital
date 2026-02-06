@@ -21,6 +21,39 @@ export default function About() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
     <div className="bg-[var(--color1)] text-gray-200">
+      <title>About Bigwig Media Digital | Digital Marketing Experts</title>
+      <meta
+        name="title"
+        content="About Bigwig Media Digital | Digital Marketing Experts"
+      />
+      <meta
+        name="description"
+        content="Learn about Bigwig Media Digital, a results-driven digital marketing agency delivering growth-focused solutions."
+      />
+      <link rel="canonical" href="https://www.bigwigmediadigital.com/about" />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="About Bigwig Media Digital | Digital Marketing Experts"
+      />
+      <meta
+        property="og:description"
+        content="Learn about Bigwig Media Digital, a results-driven
+digital marketing agency delivering growth-focused solutions."
+      />
+      <meta
+        property="og:image"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032945/WhatsApp_Image_2026-02-02_at_4.12.04_PM_2_qj4azj.jpg"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/about"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
+
       <Nav />
 
       {/* ================= HERO SECTION ================= */}

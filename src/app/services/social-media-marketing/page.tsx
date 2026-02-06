@@ -151,15 +151,42 @@ function SocialMediaMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Social Media Marketing Experts</title>
+      <title>Social Media Marketing Services in Delhi | SMM Agency</title>
+      <meta
+        name="title"
+        content="Social Media Marketing Services in Delhi | SMM Agency"
+      />
       <meta
         name="description"
-        content="Drive engagement & growth with targeted social media marketing strategies tailored for your brand."
+        content="Drive leads and engagement with ROI-focused social media marketing services in Delhi by Bigwig Media Digital."
       />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/social-media-marketing"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Social Media Marketing Services in Delhi | SMM Agency"
+      />
+      <meta
+        property="og:description"
+        content="Drive leads and engagement with ROI-focused
+social media marketing services in Delhi by Bigwig Media Digital."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/social-media-marketing"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <Nav />
       <section
@@ -192,7 +219,7 @@ function SocialMediaMarketing() {
           </div>
 
           {/* Right Form */}
-          <ContactForm singleService="Social Media Marketing"/>
+          <ContactForm singleService="Social Media Marketing" />
         </div>
       </section>
 
@@ -249,9 +276,18 @@ function SocialMediaMarketing() {
             their ideal audience across the most influential platforms in India.
           </p>
           <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            To ensure maximum conversions, Bigwig Media Digital also specializes in high-converting {" "}<Link href="/services/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	Landing Page Development.
-</Link>{" "}Our landing pages are strategically designed with compelling UI/UX, persuasive copy, and conversion-optimized layouts that perfectly complement your social media campaigns, turning clicks into customers and ad spend into measurable growth.
+            To ensure maximum conversions, Bigwig Media Digital also specializes
+            in high-converting{" "}
+            <Link
+              href="/services/website-development-company-in-delhi"
+              className="text-[var(--color5)]  hover:opacity-90"
+            >
+              Landing Page Development.
+            </Link>{" "}
+            Our landing pages are strategically designed with compelling UI/UX,
+            persuasive copy, and conversion-optimized layouts that perfectly
+            complement your social media campaigns, turning clicks into
+            customers and ad spend into measurable growth.
           </p>
         </div>
 

@@ -120,12 +120,38 @@ const FAQ = () => {
   return (
     <div className="bg-[var(--color1)] text-white min-h-screen">
       <Nav />
-      <title>FAQs - BigWig Digital</title>
+      <title>Digital Marketing FAQs | Bigwig Media Digital</title>
+      <meta
+        name="title"
+        content="Digital Marketing FAQs | Bigwig Media Digital"
+      />
       <meta
         name="description"
-        content="Frequently asked questions about our services."
+        content="Find answers to common questions about SEO, social media marketing and digital services."
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/faq" />
+
+      {/* <!-- Open Graph Meta Tags --> */}
+      <meta
+        property="og:title"
+        content="Digital Marketing FAQs | Bigwig Media Digital"
+      />
+      <meta
+        property="og:description"
+        content="Find answers to common questions about SEO,
+social media marketing and digital services."
+      />
+      <meta
+        property="og:image"
+        content="https://res.cloudinary.com/dyum0r6gf/image/upload/v1770032945/WhatsApp_Image_2026-02-02_at_4.12.04_PM_2_qj4azj.jpg"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/faq"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <div className="md:w-3/4 w-11/12 mx-auto py-12">
         <h1 className="text-center text-3xl md:text-4xl font-bold mb-10 text-[var(--color5)]">

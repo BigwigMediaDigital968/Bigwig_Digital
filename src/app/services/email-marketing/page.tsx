@@ -43,11 +43,19 @@ const emailPoints = [
   },
   {
     title: "Creative, Data-Driven Campaigns",
-    content:(<>
-      BigWig Media Digital provide’s {" "}<Link href="/website-development-company-in-delhi" className="text-[var(--color5)]  hover:opacity-90" >
- 	develop a website
-</Link>{" "}  in such an interesting way that admin panel/ dashboard have ability to shoot bulk emails which will help in e-mail marketing.
-    </>),  
+    content: (
+      <>
+        BigWig Media Digital provide’s{" "}
+        <Link
+          href="/website-development-company-in-delhi"
+          className="text-[var(--color5)]  hover:opacity-90"
+        >
+          develop a website
+        </Link>{" "}
+        in such an interesting way that admin panel/ dashboard have ability to
+        shoot bulk emails which will help in e-mail marketing.
+      </>
+    ),
   },
 ];
 
@@ -247,15 +255,42 @@ function EmailMarketing() {
   };
   return (
     <div className="bg-[var(--color1)]">
-      <title>Result-Driven Email Marketing</title>
+      <title>Email Marketing Services in Delhi | Lead Nurturing</title>
+      <meta
+        name="title"
+        content="Email Marketing Services in Delhi | Lead Nurturing"
+      />
+      <meta
+        name="description"
+        content="High-converting email marketing services in Delhi to engage customers, nurture leads and increase sales."
+      />
       <link
         rel="canonical"
         href="https://www.bigwigmediadigital.com/services/email-marketing"
       />
+
+      {/* <!-- Open Graph Meta Tags --> */}
       <meta
-        name="description"
-        content="Reach your audience with customized email campaigns that drive conversions and brand loyalty."
+        property="og:title"
+        content="Email Marketing Services in Delhi | Lead Nurturing"
       />
+      <meta
+        property="og:description"
+        content="High-converting email marketing services in Delhi
+to engage customers, nurture leads and increase sales."
+      />
+      <meta
+        property="og:image"
+        content="https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedi
+a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
+      />
+      <meta
+        property="og:url"
+        content="https://www.bigwigmediadigital.com/services/email-marketing"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Bigwig Media Digital" />
+      <meta property="og:locale" content="en_IN" />
 
       <Nav />
       <section
@@ -289,7 +324,7 @@ function EmailMarketing() {
           </div>
 
           {/* Right Form - 1/3 */}
-          <ContactForm singleService="Email Marketing"/>
+          <ContactForm singleService="Email Marketing" />
         </div>
       </section>
 
