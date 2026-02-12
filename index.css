@@ -74,3 +74,9 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+.blog-content h2 {
+  color: #ffffff;
+}
+.blog-content h3 {
+  color: #ffffff;
+}
