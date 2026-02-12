@@ -10,6 +10,7 @@ import { formatHtml } from "../../../../utils/formatHtml";
 const AddBlog = dynamic(() => import("../../../../components/AddBlogs"), {
   ssr: false,
 });
+
 interface BlogPost {
   _id: string;
   title: string;
@@ -20,6 +21,7 @@ interface BlogPost {
   datePublished: string;
   slug: string;
   coverImage: string;
+  status: "DRAFT" | "PUBLISHED" | "INACTIVE";
 }
 
 export default function AdminBlogsPage() {
@@ -40,10 +42,18 @@ export default function AdminBlogsPage() {
   const [showImageModal, setShowImageModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
+  const [showStatusModal, setShowStatusModal] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
+  const [newStatus, setNewStatus] = useState<
+    "DRAFT" | "PUBLISHED" | "INACTIVE"
+  >("DRAFT");
+
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/viewblog`);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/admin/viewblog`,
+      );
       const data = await res.json();
       setBlogs(data);
       console.log(data);
@@ -134,6 +144,30 @@ export default function AdminBlogsPage() {
     currentPage * itemsPerPage,
   );
 
+  const handleStatusUpdate = async () => {
+    if (!selectedBlog) return;
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/${selectedBlog.slug}/status`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus }),
+        },
+      );
+
+      if (!res.ok) throw new Error("Failed to update status");
+
+      alert("Status updated successfully");
+      setShowStatusModal(false);
+      fetchBlogs();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to update status");
+    }
+  };
+
   return (
     <div className="p-6 bg-[#0b121a] text-white min-h-screen">
       <div className="flex justify-between items-center mb-6">
@@ -177,6 +211,7 @@ export default function AdminBlogsPage() {
                 <th className="px-3 py-2 border-b border-gray-700">Title</th>
                 <th className="px-3 py-2 border-b border-gray-700">Content</th>
                 <th className="px-3 py-2 border-b border-gray-700">Author</th>
+                <th className="px-3 py-2 border-b border-gray-700">Status</th>
                 <th className="px-3 py-2 border-b border-gray-700">
                   Created At
                 </th>
@@ -197,6 +232,31 @@ export default function AdminBlogsPage() {
                     />
                   </td>
                   <td className="px-3 py-2">{blog.author}</td>
+                  <td className="px-3 py-2 flex flex-col gap-3">
+                    <span
+                      className={`px-2 py-1 text-xs rounded font-semibold ${
+                        blog.status === "PUBLISHED"
+                          ? "bg-green-600"
+                          : blog.status === "DRAFT"
+                            ? "bg-yellow-600"
+                            : "bg-gray-600"
+                      }`}
+                    >
+                      {blog.status}
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        setSelectedBlog(blog);
+                        setNewStatus(blog.status);
+                        setShowStatusModal(true);
+                      }}
+                      className="text-white text-xs font-semibold cursor-pointer px-2 py-1 border-2 border-amber-400"
+                    >
+                      Status
+                    </button>
+                  </td>
+
                   <td className="px-3 py-2">
                     {new Date(blog.datePublished).toLocaleDateString()}
                   </td>
@@ -360,6 +420,49 @@ export default function AdminBlogsPage() {
                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
               >
                 Update
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showStatusModal && selectedBlog && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center">
+          <div className="bg-white text-black p-6 rounded-lg w-96 shadow-xl">
+            <h2 className="text-lg font-bold mb-4">Change Blog Status</h2>
+
+            <p className="mb-3 text-sm">
+              Current Status:{" "}
+              <span className="font-semibold">{selectedBlog.status}</span>
+            </p>
+
+            <select
+              value={newStatus}
+              onChange={(e) =>
+                setNewStatus(
+                  e.target.value as "DRAFT" | "PUBLISHED" | "INACTIVE",
+                )
+              }
+              className="w-full p-2 border rounded mb-4"
+            >
+              <option value="DRAFT">DRAFT</option>
+              <option value="PUBLISHED">PUBLISHED</option>
+              <option value="INACTIVE">INACTIVE</option>
+            </select>
+
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowStatusModal(false)}
+                className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 cursor-pointer"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleStatusUpdate}
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer"
+              >
+                Confirm
               </button>
             </div>
           </div>

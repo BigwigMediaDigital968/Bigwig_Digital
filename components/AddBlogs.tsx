@@ -1,7 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
+import { createPortal } from "react-dom";
 
 /* ---------------- Types ---------------- */
 
@@ -105,6 +106,7 @@ const AddBlog = ({
   });
 
   const [submitting, setSubmitting] = useState(false);
+  const quillRef = useRef<any>(null);
 
   /* ---------------- Populate Edit Mode ---------------- */
 
@@ -127,6 +129,36 @@ const AddBlog = ({
     }
   }, [existingBlog]);
 
+  /* ---------------- Image URL Modal ---------------- */
+
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [imageAlt, setImageAlt] = useState("");
+  const [imageLink, setImageLink] = useState("");
+
+  const insertImageByUrl = () => {
+    if (!imageUrl.startsWith("http")) {
+      alert("Please enter a valid image URL");
+      return;
+    }
+
+    const quill = quillRef.current?.getEditor();
+    const range = quill.getSelection(true);
+
+    let imageHTML = `<img src="${imageUrl}" alt="${imageAlt}" loading="lazy" />`;
+
+    if (imageLink) {
+      imageHTML = `<a href="${imageLink}" target="_blank" rel="noopener noreferrer">${imageHTML}</a>`;
+    }
+
+    quill.clipboard.dangerouslyPasteHTML(range.index, imageHTML);
+
+    setShowImageModal(false);
+    setImageUrl("");
+    setImageAlt("");
+    setImageLink("");
+  };
+
   /* ---------------- Editor Toolbar ---------------- */
 
   const toolbarOptions = [
@@ -137,7 +169,17 @@ const AddBlog = ({
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
     [{ align: [] }],
     ["link"],
+    ["image"],
   ];
+
+  const modules = {
+    toolbar: {
+      container: toolbarOptions,
+      handlers: {
+        image: () => setShowImageModal(true),
+      },
+    },
+  };
 
   /* ---------------- Handlers ---------------- */
 
@@ -339,305 +381,355 @@ const AddBlog = ({
   /* ---------------- UI (UNCHANGED STYLE) ---------------- */
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div className="bg-white text-black p-6 w-full max-w-2xl rounded-xl overflow-y-auto max-h-[90vh]">
-        <h2 className="text-2xl font-bold mb-4 text-black">
-          {existingBlog ? "Edit Blog" : "Add New Blog"}
-        </h2>
+    <>
+      <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+        <div className="bg-white text-black p-6 w-full max-w-2xl rounded-xl overflow-y-auto max-h-[90vh]">
+          <h2 className="text-2xl font-bold mb-4 text-black">
+            {existingBlog ? "Edit Blog" : "Add New Blog"}
+          </h2>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-          encType="multipart/form-data"
-        >
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            className="w-full p-2 border"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="slug"
-            placeholder="Slug"
-            className="w-full p-2 border"
-            value={formData.slug}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="excerpt"
-            placeholder="Meta description"
-            className="w-full p-2 border"
-            value={formData.excerpt}
-            onChange={handleChange}
-            required
-          />
-
-          <select
-            name="category"
-            className="w-full p-2 border"
-            value={formData.category}
-            onChange={(e) =>
-              setFormData((prev) => ({
-                ...prev,
-                category: e.target.value,
-              }))
-            }
-            required
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4"
+            encType="multipart/form-data"
           >
-            <option value="">Select Category</option>
-            {categoryOptions.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              className="w-full p-2 border"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
 
-          <div>
-            <label className="block font-medium mb-2">Blog Content</label>
-            <div className="border rounded overflow-hidden">
-              <ReactQuill
-                theme="snow"
-                value={formData.content}
-                onChange={(value) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    content: value,
-                  }))
-                }
-                modules={{ toolbar: toolbarOptions }}
-                className="react-quill-editor"
-              />
+            <input
+              type="text"
+              name="slug"
+              placeholder="Slug"
+              className="w-full p-2 border"
+              value={formData.slug}
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              type="text"
+              name="excerpt"
+              placeholder="Meta description"
+              className="w-full p-2 border"
+              value={formData.excerpt}
+              onChange={handleChange}
+              required
+            />
+
+            <select
+              name="category"
+              className="w-full p-2 border"
+              value={formData.category}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  category: e.target.value,
+                }))
+              }
+              required
+            >
+              <option value="">Select Category</option>
+              {categoryOptions.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+
+            <div>
+              <label className="block font-medium mb-2">Blog Content</label>
+              <div className="border rounded overflow-hidden">
+                <ReactQuill
+                  theme="snow"
+                  ref={quillRef}
+                  value={formData.content}
+                  onChange={(value) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      content: value,
+                    }))
+                  }
+                  // modules={{ toolbar: toolbarOptions }}
+                  modules={modules}
+                  className="react-quill-editor"
+                />
+              </div>
             </div>
-          </div>
 
-          <input
-            type="text"
-            name="author"
-            placeholder="Author"
-            className="w-full p-2 border"
-            value={formData.author}
-            onChange={handleChange}
-            required
-          />
+            <input
+              type="text"
+              name="author"
+              placeholder="Author"
+              className="w-full p-2 border"
+              value={formData.author}
+              onChange={handleChange}
+              required
+            />
 
-          <input
-            type="text"
-            name="tags"
-            placeholder="Tags (comma separated)"
-            className="w-full p-2 border"
-            value={formData.tags}
-            onChange={handleChange}
-          />
+            <input
+              type="text"
+              name="tags"
+              placeholder="Tags (comma separated)"
+              className="w-full p-2 border"
+              value={formData.tags}
+              onChange={handleChange}
+            />
 
-          <input
-            type="file"
-            accept="image/*"
-            className="w-min border-2 cursor-pointer p-3"
-            onChange={handleImageChange}
-            required={!existingBlog}
-          />
+            <input
+              type="file"
+              accept="image/*"
+              className="w-min border-2 cursor-pointer p-3"
+              onChange={handleImageChange}
+              required={!existingBlog}
+            />
 
-          {/* ---------------- FAQ Section ---------------- */}
-          <div>
-            <label className="block font-medium mb-2">FAQs</label>
+            {/* ---------------- FAQ Section ---------------- */}
+            <div>
+              <label className="block font-medium mb-2">FAQs</label>
 
-            {formData.faqs.map((faq, index) => (
-              <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
-                <input
-                  type="text"
-                  placeholder={`Question ${index + 1}`}
-                  className="w-full p-2 border mb-2"
-                  value={faq.question}
-                  onChange={(e) => updateFAQ(index, "question", e.target.value)}
-                  required
-                />
-
-                <textarea
-                  placeholder="Answer"
-                  className="w-full p-2 border"
-                  rows={3}
-                  value={faq.answer}
-                  onChange={(e) => updateFAQ(index, "answer", e.target.value)}
-                  required
-                />
-
-                <button
-                  type="button"
-                  onClick={() => removeFAQ(index)}
-                  className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
-                >
-                  Remove FAQ
-                </button>
-              </div>
-            ))}
-
-            <button
-              type="button"
-              onClick={addFAQ}
-              className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
-            >
-              + Add FAQ
-            </button>
-          </div>
-
-          {/* ---------------- Breadcrumbs ---------------- */}
-          <div>
-            <label className="block font-medium mb-2">
-              Breadcrumbs (Optional)
-            </label>
-
-            {formData.breadcrumbs.map((bc, index) => (
-              <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
-                <input
-                  type="text"
-                  placeholder="Breadcrumb Name"
-                  className="w-full p-2 border mb-2"
-                  value={bc.name}
-                  onChange={(e) =>
-                    updateBreadcrumb(index, "name", e.target.value)
-                  }
-                  required
-                />
-
-                <input
-                  type="text"
-                  placeholder="URL (https://...)"
-                  className="w-full p-2 border mb-2"
-                  value={bc.url}
-                  onChange={(e) =>
-                    updateBreadcrumb(index, "url", e.target.value)
-                  }
-                  required
-                />
-
-                <button
-                  type="button"
-                  onClick={() => removeBreadcrumb(index)}
-                  className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
-                >
-                  Remove Breadcrumb
-                </button>
-              </div>
-            ))}
-
-            <button
-              type="button"
-              onClick={addBreadcrumb}
-              className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
-            >
-              + Add Breadcrumb
-            </button>
-          </div>
-
-          {/* ---------------- Custom Schemas ---------------- */}
-          <div>
-            <label className="block font-medium mb-2">
-              Custom JSON-LD Schemas (Optional)
-            </label>
-
-            {formData.customSchemas.map((schema, index) => (
-              <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
-                <input
-                  type="text"
-                  placeholder="Schema Name (e.g. Event, Product)"
-                  className="w-full p-2 border mb-2"
-                  value={schema.name}
-                  onChange={(e) =>
-                    updateCustomSchema(index, "name", e.target.value)
-                  }
-                />
-
-                <textarea
-                  placeholder="Paste valid JSON-LD here"
-                  className="w-full p-2 border font-mono text-sm"
-                  rows={6}
-                  value={schema.json}
-                  onChange={(e) =>
-                    updateCustomSchema(index, "json", e.target.value)
-                  }
-                />
-
-                <button
-                  type="button"
-                  onClick={() => removeCustomSchema(index)}
-                  className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
-                >
-                  Remove Schema
-                </button>
-              </div>
-            ))}
-
-            <button
-              type="button"
-              onClick={addCustomSchema}
-              className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
-            >
-              + Add Custom Schema
-            </button>
-          </div>
-
-          {/* Schema Toggles – same simple UI */}
-          <div>
-            <label className="block font-medium mb-2">Schema Settings</label>
-            <div className="grid grid-cols-2 gap-2">
-              {Object.entries(formData.schemaSettings).map(([key, value]) => (
-                <label key={key} className="flex items-center gap-2 text-sm">
+              {formData.faqs.map((faq, index) => (
+                <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
                   <input
-                    type="checkbox"
-                    checked={value}
+                    type="text"
+                    placeholder={`Question ${index + 1}`}
+                    className="w-full p-2 border mb-2"
+                    value={faq.question}
                     onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        schemaSettings: {
-                          ...prev.schemaSettings,
-                          [key]: e.target.checked,
-                        },
-                      }))
+                      updateFAQ(index, "question", e.target.value)
+                    }
+                    required
+                  />
+
+                  <textarea
+                    placeholder="Answer"
+                    className="w-full p-2 border"
+                    rows={3}
+                    value={faq.answer}
+                    onChange={(e) => updateFAQ(index, "answer", e.target.value)}
+                    required
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => removeFAQ(index)}
+                    className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
+                  >
+                    Remove FAQ
+                  </button>
+                </div>
+              ))}
+
+              <button
+                type="button"
+                onClick={addFAQ}
+                className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
+              >
+                + Add FAQ
+              </button>
+            </div>
+
+            {/* ---------------- Breadcrumbs ---------------- */}
+            <div>
+              <label className="block font-medium mb-2">
+                Breadcrumbs (Optional)
+              </label>
+
+              {formData.breadcrumbs.map((bc, index) => (
+                <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
+                  <input
+                    type="text"
+                    placeholder="Breadcrumb Name"
+                    className="w-full p-2 border mb-2"
+                    value={bc.name}
+                    onChange={(e) =>
+                      updateBreadcrumb(index, "name", e.target.value)
+                    }
+                    required
+                  />
+
+                  <input
+                    type="text"
+                    placeholder="URL (https://...)"
+                    className="w-full p-2 border mb-2"
+                    value={bc.url}
+                    onChange={(e) =>
+                      updateBreadcrumb(index, "url", e.target.value)
+                    }
+                    required
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => removeBreadcrumb(index)}
+                    className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
+                  >
+                    Remove Breadcrumb
+                  </button>
+                </div>
+              ))}
+
+              <button
+                type="button"
+                onClick={addBreadcrumb}
+                className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
+              >
+                + Add Breadcrumb
+              </button>
+            </div>
+
+            {/* ---------------- Custom Schemas ---------------- */}
+            <div>
+              <label className="block font-medium mb-2">
+                Custom JSON-LD Schemas (Optional)
+              </label>
+
+              {formData.customSchemas.map((schema, index) => (
+                <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
+                  <input
+                    type="text"
+                    placeholder="Schema Name (e.g. Event, Product)"
+                    className="w-full p-2 border mb-2"
+                    value={schema.name}
+                    onChange={(e) =>
+                      updateCustomSchema(index, "name", e.target.value)
                     }
                   />
-                  {key}
-                </label>
-              ))}
-            </div>
-          </div>
 
-          <div className="flex justify-end gap-4">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 bg-gray-400 rounded"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className={`px-4 py-2 text-white rounded ${
-                submitting
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
-              }`}
-              disabled={submitting}
-            >
-              {submitting
-                ? existingBlog
-                  ? "Updating..."
-                  : "Adding..."
-                : existingBlog
-                  ? "Update"
-                  : "Submit"}
-            </button>
-          </div>
-        </form>
+                  <textarea
+                    placeholder="Paste valid JSON-LD here"
+                    className="w-full p-2 border font-mono text-sm"
+                    rows={6}
+                    value={schema.json}
+                    onChange={(e) =>
+                      updateCustomSchema(index, "json", e.target.value)
+                    }
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => removeCustomSchema(index)}
+                    className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
+                  >
+                    Remove Schema
+                  </button>
+                </div>
+              ))}
+
+              <button
+                type="button"
+                onClick={addCustomSchema}
+                className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
+              >
+                + Add Custom Schema
+              </button>
+            </div>
+
+            {/* Schema Toggles – same simple UI */}
+            <div>
+              <label className="block font-medium mb-2">Schema Settings</label>
+              <div className="grid grid-cols-2 gap-2">
+                {Object.entries(formData.schemaSettings).map(([key, value]) => (
+                  <label key={key} className="flex items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={value}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          schemaSettings: {
+                            ...prev.schemaSettings,
+                            [key]: e.target.checked,
+                          },
+                        }))
+                      }
+                    />
+                    {key}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-4">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 bg-gray-400 rounded"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className={`px-4 py-2 text-white rounded ${
+                  submitting
+                    ? "bg-gray-500 cursor-not-allowed"
+                    : "bg-blue-600 hover:bg-blue-700"
+                }`}
+                disabled={submitting}
+              >
+                {submitting
+                  ? existingBlog
+                    ? "Updating..."
+                    : "Adding..."
+                  : existingBlog
+                    ? "Update"
+                    : "Submit"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+
+      {showImageModal &&
+        createPortal(
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[999]">
+            <div className="bg-white p-6 rounded-lg w-full max-w-md">
+              <h3 className="text-lg font-semibold mb-4">Insert Image (URL)</h3>
+
+              <input
+                className="w-full p-2 border mb-3"
+                placeholder="Image URL (https://...)"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+              />
+              <input
+                className="w-full p-2 border mb-3"
+                placeholder="Alt text"
+                value={imageAlt}
+                onChange={(e) => setImageAlt(e.target.value)}
+              />
+              <input
+                className="w-full p-2 border mb-4"
+                placeholder="Optional link"
+                value={imageLink}
+                onChange={(e) => setImageLink(e.target.value)}
+              />
+
+              <div className="flex justify-end gap-3">
+                <button
+                  onClick={() => setShowImageModal(false)}
+                  className="px-4 py-2 bg-gray-300 rounded"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={insertImageByUrl}
+                  className="px-4 py-2 bg-blue-600 text-white rounded"
+                >
+                  Insert
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 };
 
