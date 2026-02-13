@@ -39,10 +39,10 @@ export default function RootLayout({
         {/* <title>
           BigWig Digital | Result-Driven Digital Marketing Agency in India
         </title> */}
-        <meta
+        {/* <meta
           name="description"
           content="BigWig Digital is a full-service digital marketing agency helping businesses grow with expert SEO, social media marketing, Google Ads, and creative campaigns. Drive traffic, leads, and sales with our proven strategies"
-        />
+        /> */}
 
         <meta
           name="google-site-verification"
@@ -180,7 +180,6 @@ export default function RootLayout({
           `}
         </Script>
         <ScrollToTopButton />
-        
       </body>
     </html>
   );

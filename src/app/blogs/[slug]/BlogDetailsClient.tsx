@@ -137,6 +137,8 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
     if (slug) fetchBlog();
   }, [slug]);
 
+  console.log(blog);
+
   if (loading)
     return (
       <div className="flex justify-center items-center min-h-screen">
