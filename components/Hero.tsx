@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-import slide1 from "../Assets/hero/2.png";
-import slide2 from "../Assets/hero/3.png";
-import slide3 from "../Assets/hero/1.png";
-import slide4 from "../Assets/hero/4.png";
+import slide1 from "../Assets/hero/hero5.png";
+import slide2 from "../Assets/hero/hero3.png";
+import slide3 from "../Assets/hero/hero2.png";
+import slide4 from "../Assets/hero/hero4.png";
 import ButtonFill from "./Button";
 import PopupForm from "./PopupForm";
 import PopupFormC from "./PopupC";
