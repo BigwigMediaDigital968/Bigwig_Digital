@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   title: "Digital Marketing Agency in Delhi | Bigwig Media Digital",
   description:
     "Bigwig Media Digital is a leading digital marketing agency in Delhi offering SEO, social media marketing, website development & performance marketing solutions.",
+  keywords:
+    "digital marketing agency in Delhi, best digital marketing company Delhi, SEO company in Delhi, social media marketing agency Delhi, website development company Delhi, performance marketing agency Delhi, online marketing services Delhi",
   alternates: {
     canonical: "https://www.bigwigmediadigital.com/",
   },
@@ -43,61 +45,61 @@ const faqs = [
   {
     question: "How to choose a digital marketing agency for small businesses?",
     answer:
-      "To choose the right agency, look for proven portfolio and case studies, transparent pricing, clear marketing strategy, experience in small business marketing, and expertise in SEO, PPC, social media marketing and website design. Bigwig Media Digital provides customized marketing plans that fit small-business budgets and goals.",
+      "To choose the right digital marketing agency in Delhi, look for a proven portfolio, transparent pricing, and a clear ROI-driven marketing strategy. The agency should have experience in small business digital marketing and expertise in SEO, PPC, social media marketing, and website development. Bigwig Media Digital, a trusted digital marketing agency in Delhi, provides customized marketing plans tailored to small-business budgets and growth goals.",
   },
   {
     question:
       "How does digital marketing help businesses promote their services and products?",
     answer:
-      "Digital marketing increases brand visibility through SEO, generates traffic and leads via Google Ads and Facebook Ads, boosts engagement with social media marketing, improves conversions using landing pages and email marketing, and builds trust through content and reviews.",
+      "A professional digital marketing agency in Delhi helps businesses increase brand visibility through SEO, generate traffic and leads through Google Ads and Meta Ads, improve engagement via social media marketing, and boost conversions using landing pages and email marketing. Strategic online marketing services ensure your products and services reach the right audience at the right time.",
   },
   {
     question:
-      "What are the benefits of hiring a digital marketing company in India?",
+      " What are the benefits of hiring a digital marketing company in India?",
     answer:
-      "Hiring a digital marketing company in India provides cost-effective solutions, access to skilled digital marketers, expertise in SEO and paid ads, better ROI with affordable packages, and faster turnaround with 24/7 support.",
+      "Hiring a digital marketing company in India offers cost-effective marketing solutions, access to skilled SEO experts and PPC specialists, and better ROI through scalable packages. Agencies like Bigwig Media Digital provide professional SEO services, Google Ads management, and social media marketing at competitive pricing with dedicated support.",
   },
   {
     question:
       "What are the best and result-oriented digital marketing activities?",
     answer:
-      "Top result-driven activities include SEO, Google Ads, social media marketing, content marketing, website design and CRO, email automation, branding and online reputation management.",
+      "The most result-driven digital marketing services include Search Engine Optimization (SEO), Google Ads (PPC), social media marketing, content marketing, website design with conversion rate optimization, email marketing automation, and online reputation management. These activities improve rankings, traffic, brand authority, and overall conversions.",
   },
   {
     question: "What is the process for starting a project with your agency?",
     answer:
-      "Our process includes initial consultation, business research and competitor analysis, strategy planning, creating a customized marketing plan, campaign execution, and regular performance reporting with optimization.",
+      "As a structured digital marketing agency in Delhi, our process includes an initial consultation, competitor analysis, strategic planning, customized marketing plan development, campaign execution across SEO and performance marketing, and regular reporting with optimization. We ensure transparency and consistent performance improvement.",
   },
   {
     question: "How do you measure the success of your campaigns?",
     answer:
-      "We track website traffic, keyword rankings, leads and conversions, CTR, CPC, CPA, ROI, and social media growth using tools like Google Analytics, Search Console, SEMrush and Meta Insights.",
+      "As a data-driven performance marketing agency, we measure website traffic, keyword rankings, leads and conversions, CTR, CPC, CPA, ROI, and social media engagement. Using tools like Google Analytics, Search Console, SEMrush, and Meta Insights, we provide detailed reports and actionable insights.",
   },
   {
     question: "Why should I hire you for digital marketing?",
     answer:
-      "Bigwig Media Digital offers customized and affordable marketing solutions, experienced SEO and PPC experts, full transparency, data-driven strategies and long-term ROI-focused growth.",
+      "Bigwig Media Digital is a trusted digital marketing agency in Delhi offering customized and affordable digital marketing solutions. Our experienced team specializes in SEO, PPC, social media marketing, and content strategy. We focus on transparency, data-driven execution, and long-term ROI-driven growth.",
   },
   {
     question: "Why are digital marketing agencies important?",
     answer:
-      "Digital marketing agencies bring modern expertise, advanced tools, strategic planning, professional campaign management and consistent brand growth while saving businesses time.",
+      "A professional digital marketing agency in Delhi provides expertise in modern marketing strategies, access to advanced analytics tools, strategic campaign management, and consistent brand growth. Businesses save time and achieve better ROI with expert online marketing support.",
   },
   {
     question: "How long does it take to see results from digital marketing?",
     answer:
-      "SEO typically takes 3–6 months, paid ads can generate results immediately, and social media marketing shows growth within 30–60 days with consistent efforts.",
+      "SEO services typically take 3–6 months to show strong organic growth, especially in competitive markets like Delhi. Paid ads such as Google Ads can generate results quickly, while social media marketing usually shows measurable growth within 30–60 days with consistent efforts.",
   },
   {
     question: "How can I achieve the best SEO services in a budget?",
     answer:
-      "You can achieve budget-friendly SEO by choosing a reliable agency offering keyword optimization, on-page SEO, technical fixes and local SEO strategies that deliver maximum impact at minimal cost.",
+      "You can achieve affordable SEO services by choosing a reliable SEO company in Delhi like Bigwig Media Digital. Our budget-friendly SEO packages include keyword optimization, technical SEO, local SEO services, and authority building strategies to help you rank higher without overspending.",
   },
   {
     question:
       "How can Bigwig Media Digital help increase your website traffic?",
     answer:
-      "We increase traffic through SEO, content marketing, social media promotion, paid advertising, keyword targeting, backlink building, Google Business optimization and performance-driven campaigns.",
+      "As a performance-driven digital marketing agency in Delhi, Bigwig Media Digital increases website traffic through strategic SEO, content marketing, paid advertising campaigns, social media promotion, Google Business Profile optimization, and technical website improvements. Our data-backed approach ensures steady organic growth and qualified leads.",
   },
 ];
 
