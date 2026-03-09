@@ -228,7 +228,7 @@ function InfluencerMarketing() {
 
       <meta
         name="description"
-        content="Connect with trusted creators using influencer marketing services in Delhi to increase brand reach and credibility."
+        content="Connect with trusted creators using influencer marketing agency in Delhi to increase brand reach and credibility."
       />
       <link
         rel="canonical"
@@ -269,7 +269,7 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
           {/* Left Content */}
           <div className="text-white space-y-6">
             <h1 className="text-3xl md:text-4xl font-semibold text-[var(--color5)] leading-snug">
-              Influencer Marketing Services in Delhi
+              Influencer Marketing Agency in Delhi
             </h1>
 
             <p className=" max-w-xl text-white/90">

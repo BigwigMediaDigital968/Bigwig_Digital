@@ -110,91 +110,169 @@ export default function SliceRevealSlider() {
   };
 
   return (
+    // <div className="relative w-full h-[50vh] md:h-[70vh] lg:h-[85vh] overflow-hidden bg-black">
+    //   {/** IMAGE SLICES */}
+    //   {Array.from({ length: slices }).map((_, i) => (
+    //     <div
+    //       key={`${active}-slice-${i}`}
+    //       className="absolute inset-0 w-full h-full transition-all duration-[1500ms]"
+    //       style={{
+    //         clipPath: `polygon(
+    //           ${(100 / slices) * i}% 0%,
+    //           ${(100 / slices) * (i + 1)}% 0%,
+    //           ${(100 / slices) * (i + 1)}% 100%,
+    //           ${(100 / slices) * i}% 100%
+    //         )`,
+    //         transform: animateSlices ? "translateY(0)" : "translateY(150%)",
+    //         transitionDelay: `${i * 180}ms`,
+    //       }}
+    //     >
+    //       <Image
+    //         src={slides[active].image}
+    //         fill
+    //         className="object-cover select-none pointer-events-none"
+    //         alt=""
+    //       />
+    //     </div>
+    //   ))}
+
+    //   {/** TEXT BLOCK */}
+    //   {showTextBlock && (
+    //     <div className="absolute inset-0 flex flex-col justify-center px-10 md:px-20 lg:px-36 z-20">
+    //       {/* Title */}
+    //       {/* <h1
+    //         className={`
+    //     text-3xl md:text-4xl font-bold text-white max-w-3xl
+    //     transition-all duration-[700ms]
+    //     ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+    //   `}
+    //       >
+    //         {slides[active].title}
+    //       </h1> */}
+
+    //       <HeadingTag
+    //         className={`text-3xl md:text-4xl font-bold text-white max-w-3xl transition-all duration-[700ms] ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+    //       >
+    //         {slides[active].title}
+    //       </HeadingTag>
+
+    //       {/* Subtitle */}
+    //       <p
+    //         className={`
+    //     text-lg md:text-xl text-white/80 mt-6 max-w-2xl
+    //     transition-all duration-[700ms] delay-100
+    //     ${subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+    //   `}
+    //       >
+    //         {slides[active].subtitle}
+    //       </p>
+
+    //       {/* Button */}
+    //       <div
+    //         className={`
+    //     mt-10 w-max transition-all duration-[900ms]
+    //     ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+    //   `}
+    //       >
+    //         <ButtonFill
+    //           text={slides[active].ctaText}
+    //           className="px-8 py-3"
+    //           onClick={() => {
+    //             const slide = slides[active];
+    //             slide.action === "popup1"
+    //               ? setIsPopupOpen(true)
+    //               : setIsPopup2Open(true);
+    //           }}
+    //         />
+    //       </div>
+    //     </div>
+    //   )}
+
+    //   <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 z-10" />
+
+    //   <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+    //   <PopupFormC
+    //     isOpen={isPopup2Open}
+    //     onClose={() => setIsPopup2Open(false)}
+    //   />
+    // </div>
+
     <div className="relative w-full h-[50vh] md:h-[70vh] lg:h-[85vh] overflow-hidden bg-black">
-      {/** IMAGE SLICES */}
-      {Array.from({ length: slices }).map((_, i) => (
+      {slides.map((slide, index) => (
         <div
-          key={`${active}-slice-${i}`}
-          className="absolute inset-0 w-full h-full transition-all duration-[1500ms]"
-          style={{
-            clipPath: `polygon(
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            active === index ? "opacity-100 z-20" : "opacity-0 z-10"
+          }`}
+        >
+          {/* IMAGE SLICES */}
+          {Array.from({ length: slices }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 w-full h-full transition-all duration-[1500ms]"
+              style={{
+                clipPath: `polygon(
               ${(100 / slices) * i}% 0%,
               ${(100 / slices) * (i + 1)}% 0%,
               ${(100 / slices) * (i + 1)}% 100%,
               ${(100 / slices) * i}% 100%
             )`,
-            transform: animateSlices ? "translateY(0)" : "translateY(150%)",
-            transitionDelay: `${i * 180}ms`,
-          }}
-        >
-          <Image
-            src={slides[active].image}
-            fill
-            className="object-cover select-none pointer-events-none"
-            alt=""
-          />
+                transform:
+                  active === index && animateSlices
+                    ? "translateY(0)"
+                    : "translateY(150%)",
+                transitionDelay: `${i * 180}ms`,
+              }}
+            >
+              <Image
+                src={slide.image}
+                fill
+                className="object-cover"
+                alt={slide.title}
+              />
+            </div>
+          ))}
+
+          {/* TEXT */}
+          <div className="absolute inset-0 flex flex-col justify-center px-10 md:px-20 lg:px-36 z-20">
+            {index === 0 ? (
+              <h1
+                className={`text-3xl md:text-4xl font-bold text-white max-w-3xl transition-all duration-[700ms] ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+              >
+                {slide.title}
+              </h1>
+            ) : (
+              <h2
+                className={`text-3xl md:text-4xl font-bold text-white max-w-3xl transition-all duration-[700ms] ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+              >
+                {slide.title}
+              </h2>
+            )}
+
+            <p
+              className={`text-lg md:text-xl text-white/80 mt-6 max-w-2xl transition-all duration-[700ms] delay-100 ${subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"} `}
+            >
+              {slide.subtitle}
+            </p>
+
+            <div
+              className={`mt-10 w-max transition-all duration-[900ms] ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+            >
+              <ButtonFill
+                text={slide.ctaText}
+                className="px-8 py-3"
+                onClick={() =>
+                  slide.action === "popup1"
+                    ? setIsPopupOpen(true)
+                    : setIsPopup2Open(true)
+                }
+              />
+            </div>
+          </div>
         </div>
       ))}
 
-      {/** TEXT BLOCK */}
-      {showTextBlock && (
-        <div className="absolute inset-0 flex flex-col justify-center px-10 md:px-20 lg:px-36 z-20">
-          {/* Title */}
-          {/* <h1
-            className={`
-        text-3xl md:text-4xl font-bold text-white max-w-3xl
-        transition-all duration-[700ms]
-        ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
-      `}
-          >
-            {slides[active].title}
-          </h1> */}
-
-          <HeadingTag
-            className={`text-3xl md:text-4xl font-bold text-white max-w-3xl transition-all duration-[700ms] ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-          >
-            {slides[active].title}
-          </HeadingTag>
-
-          {/* Subtitle */}
-          <p
-            className={`
-        text-lg md:text-xl text-white/80 mt-6 max-w-2xl
-        transition-all duration-[700ms] delay-100
-        ${subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
-      `}
-          >
-            {slides[active].subtitle}
-          </p>
-
-          {/* Button */}
-          <div
-            className={`
-        mt-10 w-max transition-all duration-[900ms]
-        ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
-      `}
-          >
-            <ButtonFill
-              text={slides[active].ctaText}
-              className="px-8 py-3"
-              onClick={() => {
-                const slide = slides[active];
-                slide.action === "popup1"
-                  ? setIsPopupOpen(true)
-                  : setIsPopup2Open(true);
-              }}
-            />
-          </div>
-        </div>
-      )}
-
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 z-10" />
-
-      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
-      <PopupFormC
-        isOpen={isPopup2Open}
-        onClose={() => setIsPopup2Open(false)}
-      />
     </div>
   );
 }

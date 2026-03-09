@@ -224,14 +224,14 @@ function PerformanceMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Performance Marketing Services in Delhi | PPC Agency</title>
+      <title>Performance Marketing Company in Delhi | PPC Agency</title>
       <meta
         name="title"
-        content="Performance Marketing Services in Delhi | PPC Agency"
+        content="Performance Marketing Company in Delhi | PPC Agency"
       />
       <meta
         name="description"
-        content="ROI-driven performance marketing services in Delhi including Google Ads, Meta Ads and conversion-optimized campaigns."
+        content="ROI-driven performance marketing company in Delhi including Google Ads, Meta Ads and conversion-optimized campaigns."
       />
       <link
         rel="canonical"
