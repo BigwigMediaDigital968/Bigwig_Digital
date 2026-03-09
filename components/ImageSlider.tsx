@@ -36,7 +36,7 @@ export default function ImageSlider() {
     {
       name: "Chetan Pandey",
       review:
-        "We have been working with Big Wig Media digital for nearly a year and their SEO + PPC combination strategy is giving us steady results. Unlike agency that over promise they deliver consistent improvements and focus on long term growth.",
+        "We have been working with Bigwig Media Digital for nearly a year, and their SEO + PPC strategy is delivering consistent growth. Their performance marketing approach truly sets them apart as a reliable digital marketing agency in Delhi.",
       rating: 5,
       image: "",
 
@@ -45,7 +45,7 @@ export default function ImageSlider() {
     {
       name: "Aparajita Pandey",
       review:
-        "I liked how Big Wig media digital took time to analyse our competitors before suggesting a plan. Their local SEO services helped our restaurant rank higher on Google maps, which brought in a lot of walk in customers. Truly a result oriented team.",
+        "What impressed me most was their in-depth competitor research before creating a strategy. Their local SEO services helped our restaurant rank higher on Google. If you’re looking for an experienced SEO company in Delhi, they’re highly recommended.",
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjV9LGaNpHLRB9zgIuu3-FQAitUeRxKhF-XS986Ll8-SphirLA7CrA=w90-h90-p-rp-mo-br100",
@@ -53,9 +53,9 @@ export default function ImageSlider() {
       text: "#4AA8F0",
     },
     {
-      name: "ESHAAN AGGARWAL",
+      name: "Eshaan Aggarwal",
       review:
-        "What I loved most is that they didn’t offer me a one-size-fits-all plan. The strategy they created was tailor-made for my startup’s goals, and it worked beautifully.",
+        "They didn’t offer a generic plan. The strategy was completely customized for my startup’s growth goals. It’s rare to find the best digital marketing agency in Delhi that focuses this deeply on performance and scalability.",
       rating: 5,
       image: "",
 
@@ -64,7 +64,7 @@ export default function ImageSlider() {
     {
       name: "Amit Paal Siingh",
       review:
-        "As a business based in Australia I was sceptical engaging with an overseas business but the team at Bigwig was amazing. I got great results at a very affordable pricing structure compared to what I was getting here in Australia. Highly recommended.",
+        "As a business owner based in Australia, I was initially hesitant to work with an overseas agency. But Bigwig Media Digital exceeded expectations with professional communication, affordable pricing, and outstanding digital marketing results.",
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjVxYdkNjf2_Uda0TFgK4Mt9fA3uftsVT9eAb6YTljLckk_immAXJw=w90-h90-p-rp-mo-ba2-br100",
@@ -74,7 +74,7 @@ export default function ImageSlider() {
     {
       name: "Piyush Paswan",
       review:
-        "I was struggling with content marketing for my online business. BigWig not only created a content strategy for me but also executed it so well that our engagement grew by 60%. Love their approach!",
+        "I was struggling with content marketing for my online business. Their team built and executed a strong content strategy that increased engagement by 60%. A dependable digital marketing agency in Delhi for real growth.",
       rating: 5,
       image: "",
 
@@ -83,7 +83,7 @@ export default function ImageSlider() {
     {
       name: "Chanchal Sikha",
       review:
-        "I own a fashion label and wanted help with Instagram growth. BigWig’s team helped us create a reel strategy that went viral twice in one month. Super impressed!",
+        "I own a fashion label and needed help with Instagram growth. Their social media marketing team created a reel strategy that went viral twice in one month. Truly a results-driven social media marketing agency in Delhi.",
       rating: 5,
       image: "",
 
@@ -92,7 +92,7 @@ export default function ImageSlider() {
     {
       name: "Manjot Singh",
       review:
-        "They are creative, professional, and most importantly, results-driven. We hired BigWig for PPC and got more leads in the first month than we did in three months with our previous agency.",
+        "Creative, professional, and performance-focused. We hired them as our performance marketing agency and generated more leads in one month than we had in three months with our previous agency.",
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjWocBrIQukTEUH6FyQY-OHikb2HnSX5lb2cg68rB_OW1zUapt_IXw=w90-h90-p-rp-mo-br100",
@@ -102,7 +102,7 @@ export default function ImageSlider() {
     {
       name: "Kashvi Chhabra",
       review:
-        "Shoutout to the BigWig team for redesigning our outdated website and improving our page speed. It not only looks better now but also performs better in search engines.",
+        "They redesigned our outdated website and significantly improved page speed and SEO structure. If you're searching for a website development company in Delhi that understands both design and search engine optimization, Bigwig is a great choice.",
       rating: 5,
       image:
         "https://lh3.googleusercontent.com/a-/ALV-UjVZZS5xpnWcD6qeivGWgPcOxB9vmVoBiGuvRREcL8JdNDsNZNG1AQ=w90-h90-p-rp-mo-br100",
@@ -118,7 +118,7 @@ export default function ImageSlider() {
           Testimonials
         </p>
         <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-          What Our Clients Say About Us
+          What Our Clients Say About the Best Digital Marketing Agency in Delhi
         </h2>
 
         <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 mt-5">

@@ -6,9 +6,9 @@ import aboutImg from "../Assets/hero/2 (1).png";
 export default function AboutSection() {
   const stats = [
     { value: 70, label: "Digital Experts" },
-    { value: 223, label: "Global Clients" },
-    { value: 8, label: "Years Experience" },
-    { value: 6, label: "AI Products" },
+    { value: 50, label: "Global Clients" },
+    { value: 5, label: "Years Experience" },
+    { value: 95, label: "Client Retention Rate" },
   ];
 
   const [count, setCount] = useState(stats.map(() => 0));
@@ -43,7 +43,7 @@ export default function AboutSection() {
           });
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -59,21 +59,23 @@ export default function AboutSection() {
           {/* LEFT SIDE */}
           <div className="space-y-6">
             <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit tracking-widest">
-              ABOUT US
+              We Build Digital Experiences That Create Impact
             </p>
 
             <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-              We Build Digital Experiences That Create Impact
+              About Bigwig Media Digital – A Leading Digital Marketing Agency in
+              Delhi
             </h2>
 
             <p className="text-white text-lg leading-relaxed">
-              Bigwig Media Digital is a 360° agency delivering SEO, SMM,
-              performance marketing, websites, content, and creative solutions
-              that help brands grow faster in the digital world.
+              Bigwig Media Digital is a 360° Digital Marketing Agency in Delhi
+              delivering SEO, SMM, performance marketing, websites, content, and
+              creative solutions that help brands grow faster in the digital
+              world.
             </p>
 
             <p className="text-white text-lg leading-relaxed">
-              With 8+ years of expertise, our team blends creativity, data, and
+              With 5+ years of expertise, our team blends creativity, data, and
               smart strategies to help businesses scale with measurable results.
             </p>
           </div>
@@ -99,7 +101,8 @@ export default function AboutSection() {
                      border border-[var(--color5)]/40 relative overflow-hidden shadow-lg w-full"
             >
               <h3 className="text-4xl font-extrabold text-[var(--color5)] drop-shadow-sm">
-                {count[i]}+
+                {count[i]}
+                {i === stats.length - 1 ? "%" : "+"}
               </h3>
               <p className="mt-2 text-sm font-semibold text-[var(--color4)] tracking-wide">
                 {stat.label}

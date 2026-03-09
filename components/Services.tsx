@@ -21,70 +21,115 @@ import ButtonFill from "./Button";
 
 const services = [
   {
+    title: "Performance Marketing",
+    slug: "/services/performance-marketing",
+    desc: (
+      <>
+        As a results-driven{" "}
+        <span className="text-[var(--color5)] underline underline-offset-4">
+          performance marketing agency in Delhi
+        </span>{" "}
+        we run optimized Google Ads and Meta Ads campaigns to generate
+        high-quality leads, improve conversions, and scale revenue.
+      </>
+    ),
+    icon: MonitorSmartphone,
+  },
+  {
     title: "Search Engine Optimization (SEO)",
     slug: "services/search-engine-optimization",
-    desc: "Improve your search rankings and grow organic traffic with proven SEO methods.",
+    desc: (
+      <>
+        Our expert{" "}
+        <span className="text-[var(--color5)] underline underline-offset-4">
+          SEO company in Delhi
+        </span>{" "}
+        improves your search rankings, organic traffic, and local visibility
+        through technical SEO, keyword strategy, on-page optimization, and
+        authority building.
+      </>
+    ),
     icon: Search,
   },
   {
     title: "Social Media Marketing (SMM)",
     slug: "/services/social-media-marketing",
-    desc: "Expand your brand presence using targeted ads across top social platforms.",
+    desc: (
+      <>
+        We are a creative{" "}
+        <span className="text-[var(--color5)] underline underline-offset-4">
+          social media marketing agency in Delhi
+        </span>{" "}
+        helping brands grow across Instagram, Facebook, LinkedIn, and YouTube
+        using strategic content and targeted advertising.
+      </>
+    ),
     icon: Globe,
-  },
-  {
-    title: "Performance Marketing",
-    slug: "/services/performance-marketing",
-    desc: "Drive high-quality leads and conversions through optimized paid campaigns.",
-    icon: MonitorSmartphone,
-  },
-  {
-    title: "Content\nMarketing",
-    slug: "/services/content-marketing",
-    desc: "Build authority with engaging blogs, articles, and creative brand content.",
-    icon: PenTool,
   },
   {
     title: "Website Designing & Development",
     slug: "/services/website-design-development",
-    desc: "Get fast, modern, and conversion-focused websites tailored to your brand.",
+    desc: (
+      <>
+        As a trusted{" "}
+        <span className="text-[var(--color5)] underline underline-offset-4">
+          website development company in Delhi,
+        </span>{" "}
+        we build fast, responsive, and conversion-focused websites that support
+        your digital marketing goals.
+      </>
+    ),
     icon: Cpu,
+  },
+  {
+    title: "Content\nMarketing",
+    slug: "/services/content-marketing",
+    desc: "We create SEO-optimized blogs, landing pages, and brand storytelling content that strengthens authority and supports long-term digital growth.",
+    icon: PenTool,
   },
   {
     title: "Email\nMarketing",
     slug: "/services/email-marketing",
-    desc: "Boost customer engagement using automated, personalized email campaigns.",
+    desc: "Personalized and automated email marketing campaigns designed to nurture leads, improve retention, and increase customer lifetime value.",
     icon: Mail,
-  },
-  {
-    title: "Social Media Optimization (SMO)",
-    slug: "/services/social-media-optimization",
-    desc: "Enhance visibility with professionally optimized and active social profiles.",
-    icon: ThumbsUp,
-  },
-  {
-    title: "Graphic Designing & Video Editing",
-    slug: "/services/graphic-designing",
-    desc: "Create stunning visuals and videos that strengthen your brand identity.",
-    icon: PenTool,
-  },
-  {
-    title: "Affiliate\nMarketing",
-    slug: "/services/affiliate-marketing",
-    desc: "Increase sales through a scalable network of trusted affiliate partners.",
-    icon: Users,
   },
   {
     title: "Influencer\nMarketing",
     slug: "/services/influencer-marketing",
-    desc: "Reach new audiences by collaborating with trusted influencers in your niche.",
+    desc: "Strategic influencer collaborations that expand brand reach and build credibility within your target audience.",
     icon: Megaphone,
   },
   {
     title: "Online Reputation Management (ORM)",
     slug: "/services/online-reputation-management",
-    desc: "Protect your brand image with monitoring, reviews, and reputation strategy.",
+    desc: (
+      <>
+        Protect and enhance your brand image with professional{" "}
+        <span className="text-[var(--color5)] underline underline-offset-4">
+          online reputation management services
+        </span>{" "}
+        including review monitoring and reputation strategy.
+      </>
+    ),
     icon: ThumbsUp,
+  },
+  {
+    title: "Social Media Optimization (SMO)",
+    slug: "/services/social-media-optimization",
+    desc: "Optimize your social profiles to improve discoverability, engagement, and brand consistency across platforms.",
+    icon: ThumbsUp,
+  },
+  {
+    title: "Graphic Designing & Video Editing",
+    slug: "/services/graphic-designing",
+    desc: "Creative visuals and high-converting videos developed to strengthen your brand identity and campaign performance.",
+    icon: PenTool,
+  },
+  {
+    title: "Affiliate\nMarketing",
+    slug: "/services/affiliate-marketing",
+    desc: "Scale revenue through a structured, performance-based affiliate marketing network that drives consistent sales growth.",
+    icon: Users,
   },
 ];
 
@@ -104,10 +149,10 @@ export default function ServicesPage() {
         <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div>
             <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 tracking-widest">
-              OUR SERVICES
+              Transforming Brands with Modern Digital Solutions
             </p>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-              Transforming Brands with Modern Digital Solutions
+              Our Digital Marketing Services in Delhi
             </h2>
           </div>
 
@@ -133,12 +178,12 @@ export default function ServicesPage() {
           {row1.map((service, i) => {
             const Icon = service.icon;
             return (
-              <SwiperSlide key={i} style={{ width: "350px" }}>
+              <SwiperSlide key={i} style={{ width: "400px" }}>
                 <Link
                   href={service.slug}
                   className="group flex items-start gap-6 p-6 rounded-3xl  
                     border border-white/20 hover:border-[var(--color3)]/50
-                    hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+                    hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-[280px]"
                 >
                   <div
                     className="w-20 h-20 rounded-2xl bg-gradient-to-b 
@@ -184,12 +229,12 @@ export default function ServicesPage() {
           {row2.map((service, i) => {
             const Icon = service.icon;
             return (
-              <SwiperSlide key={i} style={{ width: "350px" }}>
+              <SwiperSlide key={i} style={{ width: "400px" }}>
                 <Link
                   href={service.slug}
                   className="group flex items-start gap-6 p-6 rounded-3xl  
                     border border-white/20 hover:border-[var(--color3)]/50
-                    hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+                    hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-[280px]"
                 >
                   <div
                     className="w-20 h-20 rounded-2xl bg-gradient-to-b 

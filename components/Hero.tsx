@@ -14,27 +14,28 @@ import PopupFormC from "./PopupC";
 const slides = [
   {
     image: slide1,
-    title: "We Don’t Market Brands. We Build Digital Authority.",
+    title:
+      "Best Digital Marketing Agency in Delhi That Builds Brands & Breaks Limits",
     subtitle:
-      "Bigwig Media Digital transforms businesses into category leaders. With platform-obsessed creators and data-led strategists, we craft marketing ecosystems that compound growth - not just campaigns that fade out.",
-    ctaText: "Build Your Digital Authority",
+      "We don’t just run campaigns - we engineer digital experiences that make your brand impossible to ignore. As a results-driven digital marketing agency in Delhi, Bigwig Media Digital blends creativity with performance science to turn attention into loyal customers.",
+    ctaText: "Get Your Growth Plan Now",
     action: "popup1",
   },
   {
     image: slide2,
-    title: "Marketing That Builds Brands & Breaks Limits",
+    title: "We Make Your Brand Impossible to Ignore",
     subtitle:
-      "We don’t just run campaigns - we engineer digital experiences that make your brand impossible to ignore. From strategy to execution, Bigwig Media Digital turns attention into loyal customers.",
-    ctaText: "Get Your Growth Plan Now",
+      "In a world of endless scrolling, we create moments that make people stop, and take action. As a top digital marketing company in Delhi, we combine bold storytelling with data-backed strategy to deliver real business outcomes.",
+    ctaText: "Get a Winning Strategy",
     action: "popup2",
   },
 
   {
     image: slide4,
-    title: "We Make Your Brand Impossible to Ignore",
+    title: "We Don’t Market Brands. We Build Digital Authority",
     subtitle:
-      "In a world of endless scroll, we create the moments that make people stop - and take action. Bigwig Media Digital blends bold creativity with performance science to turn attention into real business outcomes.",
-    ctaText: "Get a Winning Strategy",
+      "Bigwig Media Digital is recognized as one of the best digital marketing agencies in Delhi because we focus on long-term brand positioning, not short-term campaigns.",
+    ctaText: "Build Your Digital Authority",
     action: "popup1",
   },
   // {
@@ -60,6 +61,8 @@ export default function SliceRevealSlider() {
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopup2Open, setIsPopup2Open] = useState(false);
+
+  const HeadingTag = active === 0 ? "h1" : "h2";
 
   useEffect(() => {
     runAnimationSequence();
@@ -137,7 +140,7 @@ export default function SliceRevealSlider() {
       {showTextBlock && (
         <div className="absolute inset-0 flex flex-col justify-center px-10 md:px-20 lg:px-36 z-20">
           {/* Title */}
-          <h1
+          {/* <h1
             className={`
         text-3xl md:text-4xl font-bold text-white max-w-3xl
         transition-all duration-[700ms]
@@ -145,7 +148,13 @@ export default function SliceRevealSlider() {
       `}
           >
             {slides[active].title}
-          </h1>
+          </h1> */}
+
+          <HeadingTag
+            className={`text-3xl md:text-4xl font-bold text-white max-w-3xl transition-all duration-[700ms] ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          >
+            {slides[active].title}
+          </HeadingTag>
 
           {/* Subtitle */}
           <p

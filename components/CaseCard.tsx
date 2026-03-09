@@ -8,16 +8,17 @@ import "aos/dist/aos.css";
 import Link from "next/link";
 import ButtonFill from "./Button";
 import PopupForm from "./PopupForm";
+
 const CaseCard: React.FC = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1200, // 👈 slow animation (you can adjust between 1000–1500 for even slower)
-      once: false, // 👈 animate every time it scrolls into view
-      mirror: false, // 👈 don't animate again when scrolling back up (optional)
-      easing: "ease-in-out", // 👈 smoother slow animation
+      duration: 1200,
+      once: false,
+      mirror: false,
+      easing: "ease-in-out",
     });
 
-    AOS.refresh(); // Ensures animations re-initialize correctly
+    AOS.refresh();
   }, []);
 
   const cases = [
@@ -93,7 +94,7 @@ const CaseCard: React.FC = () => {
         <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div>
             <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 uppercase tracking-widest">
-              Why Bigwig
+              Why Businesses Trust Our Digital Marketing Agency in Delhi
             </p>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
               Creative intelligence powering real growth

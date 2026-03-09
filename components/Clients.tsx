@@ -46,21 +46,20 @@ export default function Client() {
         {/* Left Content */}
         <div data-aos="fade-right">
           <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit mb-3 uppercase tracking-widest">
-            Our Clientele
+            Brands That Believe in What We Build
           </p>
 
           <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg mb-5">
-            Brands That Believe in What We Build
+            Our Clientele
           </h2>
           <p className="text-gray-200 mb-6 whitespace-pre-wrap text-justify">
-            Over the years, we’ve collaborated with a wide range of brands each
-            with its own vision, challenges, and ambitions. Every partnership
-            has strengthened our belief in creating digital experiences that
-            deliver real impact. <br />
+            As a trusted digital marketing agency in Delhi, we’ve partnered with
+            brands across industries to deliver measurable growth and strong
+            digital presence. <br />
             <br />
-            The logos represent the brands that have trusted us with their
-            digital journey. Each one reflects the quality of our work, the
-            relationships we build, and the results we consistently deliver.
+            These logos represent businesses that chose the best digital
+            marketing agency in Delhi to scale their visibility, leads, and
+            revenue through strategic online marketing solutions.
           </p>
 
           <Link href="/clients">

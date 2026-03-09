@@ -12,124 +12,61 @@ type Faq = {
 const faqs: Faq[] = [
   {
     question: "How to choose a digital marketing agency for small businesses?",
-    answer: `To choose the right agency, look for:
-• Proven portfolio and case studies  
-• Transparent pricing 
-• Clear marketing strategy  
-• Experience in small business digital marketing 
-• Expertise in SEO, PPC, social media marketing & website design
-  
-An agency like Bigwig Media Digital provides customized marketing plans that fit small-business budgets and goals.
-    `,
+    answer: `To choose the right digital marketing agency in Delhi, look for a proven portfolio, transparent pricing, and a clear ROI-driven marketing strategy. The agency should have experience in small business digital marketing and expertise in SEO, PPC, social media marketing, and website development. Bigwig Media Digital, a trusted digital marketing agency in Delhi, provides customized marketing plans tailored to small-business budgets and growth goals.`,
   },
   {
     question:
       "How does digital marketing help businesses promote their services and products?",
-    answer: `Digital marketing helps businesses by increasing:
-• Brand visibility through SEO  
-• Traffic and leads through Google Ads & Facebook Ads  
-• Engagement through social media marketing  
-• Conversions using landing pages and email marketing  
-• Trust and credibility through content & reviews
-
-It ensures your products/services reach the right audience at the right time.
-    `,
+    answer:
+      "A professional digital marketing agency in Delhi helps businesses increase brand visibility through SEO, generate traffic and leads through Google Ads and Meta Ads, improve engagement via social media marketing, and boost conversions using landing pages and email marketing. Strategic online marketing services ensure your products and services reach the right audience at the right time.",
   },
   {
     question:
       " What are the benefits of hiring a digital marketing company in India?",
-    answer: `Hiring a digital marketing company in India provides:
-• Cost-effective marketing solutions  
-• Access to skilled digital marketers  
-• Expertise in SEO, Google Ads, social media management  
-• Better ROI with affordable packages  
-• 24/7 support and faster turnaround
-
-Indian agencies like Bigwig Media Digital offer top-quality services at competitive rates.  
-    `,
+    answer:
+      "Hiring a digital marketing company in India offers cost-effective marketing solutions, access to skilled SEO experts and PPC specialists, and better ROI through scalable packages. Agencies like Bigwig Media Digital provide professional SEO services, Google Ads management, and social media marketing at competitive pricing with dedicated support.",
   },
   {
     question:
       "What are the best and result-oriented digital marketing activities?",
-    answer: `Top result-driven activities include:
-• Search Engine Optimization (SEO)  
-• Google Ads (PPC Advertising)  
-• Social Media Marketing & Management  
-• Content Marketing  
-• Website Design and CRO  
-• Email Marketing Automation  
-• Branding & Online Reputation Management (ORM)
-
-These improve rankings, traffic, brand presence, and conversions.
-    `,
+    answer:
+      "The most result-driven digital marketing services include Search Engine Optimization (SEO), Google Ads (PPC), social media marketing, content marketing, website design with conversion rate optimization, email marketing automation, and online reputation management. These activities improve rankings, traffic, brand authority, and overall conversions.",
   },
   {
     question: "What is the process for starting a project with your agency?",
-    answer: `Our process includes:
-• Initial consultation  
-• Business research & competitor analysis  
-• Strategy planning based on your goals  
-• Creating a customized marketing plan  
-• Campaign execution  
-• Weekly/monthly reporting & optimization
-
-We ensure complete transparency and consistent performance improvements.
-
-    `,
+    answer:
+      "As a structured digital marketing agency in Delhi, our process includes an initial consultation, competitor analysis, strategic planning, customized marketing plan development, campaign execution across SEO and performance marketing, and regular reporting with optimization. We ensure transparency and consistent performance improvement.",
   },
   {
     question: "How do you measure the success of your campaigns?",
-    answer: `We track:
-• Website traffic  
-• Keyword rankings  
-• Leads & conversions  
-• CTR, CPC & CPA  
-• ROI tracking  
-• Social media growth and engagement
-
-Using tools like Google Analytics, Search Console, SEMrush, and Meta Insights, we
-provide detailed performance reports.
-    `,
+    answer:
+      "As a data-driven performance marketing agency, we measure website traffic, keyword rankings, leads and conversions, CTR, CPC, CPA, ROI, and social media engagement. Using tools like Google Analytics, Search Console, SEMrush, and Meta Insights, we provide detailed reports and actionable insights.",
   },
   {
     question: "Why should I hire you for digital marketing?",
-    answer: `You should choose Bigwig Media Digital because we offer:
-• Customized and affordable digital marketing solutions  
-• Experienced team in SEO, PPC, SMM, and content marketing  
-• 100% transparency and weekly performance reports  
-• Data-driven strategies and proven results 
-• Excellent communication and dedicated support
-
-We focus on long-term growth and ROI, not just clicks.
-
-    `,
+    answer:
+      "Bigwig Media Digital is a trusted digital marketing agency in Delhi offering customized and affordable digital marketing solutions. Our experienced team specializes in SEO, PPC, social media marketing, and content strategy. We focus on transparency, data-driven execution, and long-term ROI-driven growth.",
   },
   {
     question: "Why are digital marketing agencies important?",
-    answer: `Digital marketing agencies bring:
-• Expertise in modern marketing trends  
-• Access to advanced tools and analytics  
-• Strategic planning for higher ROI  
-• Professional management of campaigns 
-• Consistent growth and brand building
-
-Businesses save time and get better results with agency support.
-    `,
+    answer:
+      "A professional digital marketing agency in Delhi provides expertise in modern marketing strategies, access to advanced analytics tools, strategic campaign management, and consistent brand growth. Businesses save time and achieve better ROI with expert online marketing support.",
   },
   {
     question: "How long does it take to see results from digital marketing?",
-    answer: `SEO can take 3–6 months, while paid ads like Google Ads deliver results instantly. Social media marketing typically shows growth within 30–60 days with consistent efforts.  
-    `,
+    answer:
+      "SEO services typically take 3–6 months to show strong organic growth, especially in competitive markets like Delhi. Paid ads such as Google Ads can generate results quickly, while social media marketing usually shows measurable growth within 30–60 days with consistent efforts.",
   },
   {
     question: "How can I achieve the best SEO services in a budget?",
-    answer: `You can achieve the best SEO services on a budget by choosing a reliable and affordable agency like Bigwig Media Digital. We offer cost-effective SEO packages that include keyword optimization, on-page SEO, technical fixes, and local SEO - helping you rank higher on Google without overspending. Our budget-friendly plans focus on high-impact SEO strategies, ensuring maximum results at minimal cost.
-    `,
+    answer:
+      "You can achieve affordable SEO services by choosing a reliable SEO company in Delhi like Bigwig Media Digital. Our budget-friendly SEO packages include keyword optimization, technical SEO, local SEO services, and authority building strategies to help you rank higher without overspending.",
   },
   {
     question:
       "How can Bigwig Media Digital help increase your website traffic?",
-    answer: `Bigwig Media Digital increases your website traffic through a strategic mix of SEO, content marketing, social media promotion, paid ads, and technical optimization. We focus on high-impact activities like keyword targeting, on-page SEO, quality backlinks, Google Business Profile optimization, and performance-driven campaigns. Our data-backed approach ensures steady growth in organic traffic, higher rankings, and more qualified visitors to your website.`,
+    answer:
+      "As a performance-driven digital marketing agency in Delhi, Bigwig Media Digital increases website traffic through strategic SEO, content marketing, paid advertising campaigns, social media promotion, Google Business Profile optimization, and technical website improvements. Our data-backed approach ensures steady organic growth and qualified leads.",
   },
 ];
 
@@ -160,11 +97,11 @@ const ToggleFAQ = () => {
     <section className="py-12 bg-[var(--color1)] text-white">
       <div className="mb-6 w-11/12 md:w-5/6 mx-auto">
         <p className="text-[var(--color5)] text-lg font-semibold border-b w-fit  mb-3 tracking-widest">
-          FAQs
+          Your Questions About Digital Marketing in Delhi, Answered
         </p>
 
         <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-          Helping You Make Smarter Decisions
+          FAQs
         </h2>
       </div>
 
@@ -186,10 +123,10 @@ const ToggleFAQ = () => {
                 </div>
 
                 <button
-                  className="w-full text-left flex items-center justify-between"
+                  className="w-full text-left flex items-center justify-between cursor-pointer"
                   onClick={() => toggleFaq(index)}
                 >
-                  <span className="text-base font-medium">{faq.question}</span>
+                  <h3 className="text-base font-medium">{faq.question}</h3>
                   <ChevronDown
                     className={`transition-transform duration-300 ${
                       openIndex === index ? "rotate-180" : ""
