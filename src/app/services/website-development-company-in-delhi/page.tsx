@@ -1,9 +1,6 @@
 "use client";
-import { TypeAnimation } from "react-type-animation";
 import Footer from "../../../../components/Footer";
 import Nav from "../../../../components/Nav";
-import OurProcess from "../../../../components/OurProcess";
-import WhyBigwig from "../../../../components/WhyBigwig";
 import hero from "../../../../Assets/Services hero/website.jpg";
 import web from "../../../../Assets/services/1.jpg";
 import Slider from "react-slick";
@@ -21,23 +18,30 @@ import Partners from "../../../../components/Partners";
 const sections = [
   {
     title: "Responsive Web Design",
-    content:
-      "As a leading web design company in South Delhi, we specialize in creating fully responsive websites that look great and work smoothly on every device. Your audience enjoys a seamless browsing experience across mobile, tablet, and desktop.",
+    content: (
+      <>
+        As a professional <b>Website Development Company in Delhi</b>, we ensure
+        seamless performance across all devices. We specialize in creating fully
+        responsive websites that look great and work smoothly on every device.
+        Your audience enjoys a seamless browsing experience across mobile,
+        tablet, and desktop.
+      </>
+    ),
   },
   {
     title: "Static Website Design",
     content:
-      "We design clean, modern, and user-friendly static websites that highlight your brand’s strengths. Our designs ensure clarity, fast loading, and smooth navigation ideal for businesses wanting a professional online presence.",
+      "We design clean, modern, and user-friendly static websites that highlight your brand’s strengths. Our designs ensure clarity, fast loading, and smooth navigation - ideal for businesses wanting a professional online presence. As a reliable Website Development Company in Delhi, we ensure fast and efficient website performance.",
   },
   {
     title: "Dynamic Website Design",
     content:
-      "Our expert designers create interactive, dynamic websites with custom features, smart integrations, and brand-focused elements. We make your site more engaging, functional, and responsive to user behavior.",
+      "Our expert designers create interactive, dynamic websites with custom features, smart integrations, and brand-focused elements. We make your site more engaging, functional, and responsive to user behavior. Our expertise as a Website Development Company in Delhi helps build scalable and interactive platforms.",
   },
   {
     title: "Startup Website Design",
     content:
-      "We build creative, modern, and scalable websites tailored to the unique needs of startups. Our designs help communicate your brand story clearly while showcasing your services and products effectively.",
+      "We build creative, modern, and scalable websites tailored to the unique needs of startups. Our designs help communicate your brand story clearly while showcasing your services and products effectively. We support emerging businesses as a leading Website Development Company in Delhi with scalable solutions.",
   },
   {
     title: "Website Re-Design",
@@ -47,7 +51,7 @@ const sections = [
   {
     title: "Corporate Website Design",
     content:
-      "We design powerful, enterprise-level corporate websites with intuitive layouts and strong branding. Our designs support complex operations, large data structures, and high traffic—ideal for growing companies.",
+      "We design powerful, enterprise-level corporate websites with intuitive layouts and strong branding. Our designs support complex operations, large data structures, and high traffic - ideal for growing companies. Our experience as a Website Development Company in Delhi helps build enterprise-ready platforms.",
   },
   {
     title: "Landing Page Design",
@@ -63,11 +67,12 @@ const sections = [
           href="/services/search-engine-optimization"
           className="text-[var(--color5)] underline underline-offset-4 hover:opacity-90"
         >
-          SEO-friendly websites
+          SEO-friendly websites optimized
         </Link>{" "}
-        optimized for search visibility. From clean coding to fast loading and
-        structured content, our websites help you rank higher and gain more
-        organic traffic.
+        for search visibility. From clean coding to fast loading and structured
+        content, our websites help you rank higher and gain more organic
+        traffic. Being a results-driven Website Development Company in Delhi, we
+        focus on search visibility and performance.
       </>
     ),
   },
@@ -125,7 +130,7 @@ const benefitSections = [
   {
     title: "Scalability",
     content:
-      "We build websites with a future-ready approach, allowing your online presence to grow and evolve as your business expands.",
+      "We build websites with a future-ready approach, allowing your online presence to grow and evolve as your business expands. Our approach as a Website Development Company in Delhi ensures your website grows with your business.",
   },
   {
     title: "Consistency & Branding",
@@ -150,7 +155,7 @@ const benefitSections = [
   {
     title: "Ongoing Support & Maintenance",
     content:
-      "We offer round-the-clock support and maintenance to ensure your website remains secure, fully updated, and free of technical issues.",
+      "We offer round-the-clock support and maintenance to ensure your website remains secure, fully updated, and free of technical issues. We provide continuous support as a dependable Website Development Company in Delhi to keep your website running smoothly.",
   },
 ];
 
@@ -339,21 +344,23 @@ function Website({ value }: { value: number }) {
       <Nav />
 
       {/* SEO Meta Deta */}
-      <title>Website Development Company in Delhi | Bigwig Media Digital</title>
+      <title>
+        Website Development Company in Delhi | Expert Web Design Services
+      </title>
 
       <meta
         name="title"
-        content="Website Development Company in Delhi | Bigwig Media Digital"
+        content="Website Development Company in Delhi | Expert Web Design Services"
       />
 
       <meta
         name="description"
-        content="Trusted website development company in Delhi offering responsive, SEO-friendly and high-performance business websites."
+        content="Looking for a Website Development Company in Delhi? We create SEO-friendly, high-performance websites. Call +91 96858 92813 for a free consultation!"
       />
 
       <meta
         name="keywords"
-        content="website development company in Delhi, website development company in delhi NCR, website development company in south delhi, website development company in north delhi, website development company in east delhi, website development company in west delhi, website design company in delhi, website design company in south delhi, website design company in north delhi, website design company in east delhi, website design company in west delhi, website design company in delhi ncr, website designing company near me, website design company near me, website development company near me, website designing services near me, website designing agency near me, web design company near me, website designing services in delhi ncr, website designing services in delhi, website designing services in south delhi, website designing services in north delhi, website designing services in east delhi, website designing services in west delhi, website designing agency in delhi, website designing agency in delhi ncr, website designing agency in north delhi, website designing agency in south delhi, website designing agency in east delhi, website designing agency in west delhi, Web design company in delhi, Web design company in delhi ncr, Web design company in south delhi, Web design company in north delhi, Web design company in west delhi, Web design company in east delhi"
+        content="Website Development Company in Delhi, Web Design Company in Delhi, Website Designing Company in Delhi, Website Development Company in Delhi NCR, Web Development Services Delhi, Website Designer Near Me, Website Development Company in South Delhi, North Delhi, East Delhi, West Delhi"
       />
 
       <link
@@ -364,13 +371,11 @@ function Website({ value }: { value: number }) {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Website Development Company in Delhi | Bigwig Media
-Digital"
+        content="Website Development Company in Delhi | Expert Web Design Services"
       />
       <meta
         property="og:description"
-        content="Trusted website development company in Delhi
-offering responsive, SEO-friendly and high-performance business websites."
+        content="Trusted website development company in Delhi offering responsive, SEO-friendly and high-performance business websites."
       />
       <meta
         property="og:image"
@@ -378,8 +383,7 @@ offering responsive, SEO-friendly and high-performance business websites."
       />
       <meta
         property="og:url"
-        content="https://www.bigwigmediadigital.com/services/website-development-company-in-del
-hi"
+        content="https://www.bigwigmediadigital.com/services/website-development-company-in-delhi"
       />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Bigwig Media Digital" />
@@ -395,22 +399,29 @@ hi"
         <div className="relative z-10 w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6 md:pr-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white leading-snug">
-              Take your digital experience to the next level with our fresh,
-              innovative Web Design solutions.
-            </h2>
+            <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight tracking-tight">
+              Best Website Development Company in Delhi
+              <span className="block mt-4 text-base md:text-xl lg:text-2xl font-normal text-gray-300 leading-relaxed max-w-2xl">
+                Take your digital experience to the next level with our fresh,
+                innovative solutions
+              </span>
+            </h1>
 
             <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify">
               We’re a leading{" "}
               <Link href="/" className="text-[var(--color5)]  hover:opacity-90">
-                Website Design Company
+                Website Development Company in Delhi NCR,
               </Link>{" "}
-              in Delhi NCR, creating custom web experiences that truly fit your
-              business needs. Our team of skilled professionals works closely
-              with you to enhance your digital presence and bring your vision to
-              life. We craft high-quality, impactful websites that leave a
-              lasting impression, attract more visitors, and help you achieve
-              better ROI
+              creating custom web experiences that truly fit your business
+              needs. Our team of skilled professionals works closely with you to
+              enhance your digital presence and bring your vision to life. We
+              craft high-quality, impactful websites that leave a lasting
+              impression, attract more visitors, and help you achieve better
+              ROI. As a trusted Website Development Company in Delhi, we focus
+              on performance, scalability, and growth-driven digital solutions.{" "}
+              <br /> <br />
+              Partner with a trusted Website Development Company in Delhi to
+              transform your digital presence.
             </p>
 
             <ButtonFill
@@ -451,6 +462,11 @@ hi"
                 deliver optimized digital experiences that help your brand grow,
                 connect, and convert.
               </p>
+              <p className="text-justify">
+                Choosing a reliable <b>Website Development Company in Delhi</b>{" "}
+                ensures your business stays ahead in today’s competitive digital
+                landscape.
+              </p>
             </div>
 
             {/* Right Image Block */}
@@ -479,11 +495,15 @@ hi"
           </h3>
 
           <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            We’re a trusted website design company in Delhi, helping businesses
-            create powerful, enterprise-level websites that attract high traffic
-            and meaningful engagement. Whether you need a brand-new website or
-            want to revamp your existing one, our team is here to bring your
-            digital vision to life.
+            We’re a trusted Website Development Company in Delhi and web design
+            company in Delhi, helping businesses create powerful,
+            enterprise-level websites that attract high traffic and meaningful
+            engagement. Whether you need a brand-new website or want to revamp
+            your existing one, our team is here to bring your digital vision to
+            life. Our expertise as a Website Development Company in Delhi
+            ensures every website is built for performance and scalability. As a
+            growth-focused Website Development Company in Delhi, we deliver
+            solutions that drive real business results.
           </p>
         </div>
 
@@ -516,9 +536,9 @@ hi"
                     />
 
                     {/* Title */}
-                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    <h4 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                       {item.title}
-                    </h3>
+                    </h4>
 
                     {/* Content */}
                     <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
@@ -622,12 +642,16 @@ hi"
             Why Do You Need Custom Web Designs for Your Business?
           </h3>
 
-          <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+          <p className="text-gray-200 text-base md:text-lg leading-relaxed mb-4">
             Custom-designed websites help you connect with your audience and
             create a strong first impression. A well-crafted, feature-rich
             website boosts engagement and improves ROI. As one of the best
             website designing companies in Delhi NCR, we know what it takes to
             build a truly professional and impactful online presence.
+          </p>
+          <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+            Choosing a professional Website Development Company in Delhi helps
+            you create a strong and lasting digital impact.
           </p>
         </div>
 
@@ -660,9 +684,9 @@ hi"
                     />
 
                     {/* Title */}
-                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    <h4 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                       {item.title}
-                    </h3>
+                    </h4>
 
                     {/* Content */}
                     <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
@@ -776,13 +800,15 @@ hi"
           </h3>
 
           <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            As one of the leading website designing companies in Delhi NCR, we
-            create visually appealing, feature-rich websites with smooth and
-            user-friendly navigation. Our expertise spans static, dynamic,
-            e-commerce, enterprise, WordPress, and startup websites. Known for
-            being affordable and reliable, we deliver solutions that fit
-            businesses of all sizes. Here are the key benefits of choosing our
-            web design services:
+            As a leading Website Development Company in Delhi NCR and website
+            designing company in Delhi, we create visually appealing,
+            feature-rich websites with smooth and user-friendly navigation. Our
+            expertise spans static, dynamic, e-commerce, enterprise, WordPress,
+            and startup websites. Known for being affordable and reliable, we
+            deliver solutions that fit businesses of all sizes. Working with a
+            trusted Website Development Company in Delhi helps you achieve a
+            powerful and scalable online presence. Here are the key benefits of
+            choosing our web design services:
           </p>
         </div>
 
@@ -815,9 +841,9 @@ hi"
                     />
 
                     {/* Title */}
-                    <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                    <h4 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                       {item.title}
-                    </h3>
+                    </h4>
 
                     {/* Content */}
                     <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
@@ -919,9 +945,9 @@ hi"
       </section>
 
       {/* Best Website Designing Agency */}
-      {/* <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden"> */}
-      {/* =================== HEADINGS =================== */}
-      {/* <div className="mb-12">
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* =================== HEADINGS =================== */}
+        <div className="mb-12">
           <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
             Website Designer Near Me
           </h2>
@@ -929,20 +955,20 @@ hi"
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-4">
             What Does the Best Website Designing Agency in Delhi Do?
           </h3>
-        </div> */}
+        </div>
 
-      {/* =================== MAIN GLASS BOX =================== */}
-      {/* <div
+        {/* =================== MAIN GLASS BOX =================== */}
+        <div
           className="
       relative rounded-2xl p-8 md:p-12 
       backdrop-blur-xl bg-white/5 
       border border-white/10 
       shadow-[0_0_25px_rgba(0,255,255,0.15)] 
       overflow-hidden
-    " */}
-      {/* > */}
-      {/* Background Scan Bars */}
-      {/* <div className="absolute inset-0 opacity-40 pointer-events-none">
+    "
+        >
+          {/* Background Scan Bars */}
+          <div className="absolute inset-0 opacity-40 pointer-events-none">
             {[...Array(7)].map((_, i) => (
               <div
                 key={i}
@@ -957,15 +983,15 @@ hi"
                 }}
               ></div>
             ))}
-          </div> */}
+          </div>
 
-      {/* LEFT GLOW STRIP */}
-      {/* <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_20px_var(--color5)]"></div> */}
+          {/* LEFT GLOW STRIP */}
+          {/* <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_20px_var(--color5)]"></div> */}
 
-      {/* =================== CONTENT =================== */}
-      {/* <div className="relative z-10 grid md:grid-cols-2 gap-10"> */}
-      {/* LEFT TEXT BLOCK */}
-      {/* <div className="space-y-6 text-gray-200 leading-relaxed">
+          {/* =================== CONTENT =================== */}
+          <div className="relative z-10 grid md:grid-cols-2 gap-10">
+            {/* LEFT TEXT BLOCK */}
+            <div className="space-y-6 text-gray-200 leading-relaxed">
               <p>
                 A website should be designed with careful thought and purpose so
                 it can function at its highest potential. Only a skilled and
@@ -994,10 +1020,10 @@ hi"
                 Our solutions are cost-effective, innovative, and accessible for
                 businesses of all sizes across Delhi NCR.
               </p>
-            </div> */}
+            </div>
 
-      {/* RIGHT FEATURE LIST */}
-      {/* <div
+            {/* RIGHT FEATURE LIST */}
+            <div
               className="
           p-6 rounded-2xl 
           bg-black/40 backdrop-blur-lg
@@ -1032,13 +1058,13 @@ hi"
                 ))}
               </ul>
             </div>
-          </div> */}
+          </div>
 
-      {/* GLOW BORDER HOVER EFFECT */}
-      {/* <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div> */}
+          {/* GLOW BORDER HOVER EFFECT */}
+          <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
 
-      {/* SCAN ANIMATION */}
-      {/* <style>{`
+          {/* SCAN ANIMATION */}
+          <style>{`
       @keyframes sectionScan {
         0% { transform: translateX(-100%); opacity: 0; }
         50% { opacity: 1; }
@@ -1048,151 +1074,15 @@ hi"
         animation: sectionScan 6s linear infinite;
       } */}
       {/* `}</style>
-        </div> */}
+        </div>
 
-      {/* CTA BUTTON */}
-      {/* <div className="flex justify-center mt-12">
+        {/* CTA BUTTON */}
+        <div className="flex justify-center mt-12">
           <ButtonFill
-            text="Get Started Today"
+            text="Get Instant Website Consultation"
             onClick={() => setIsPopupOpen(true)}
           />
-        </div> */}
-      {/* </section> */}
-
-      {/* Technology Section */}
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* Heading */}
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
-            Technologies We Work On
-          </h2>
         </div>
-
-        {/* Technologies Grid */}
-        <div
-          className="
-      grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
-      gap-8 relative z-10
-    "
-        >
-          {[
-            {
-              name: "HTML",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-            },
-            {
-              name: "CSS",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-            },
-            {
-              name: "JavaScript",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-            },
-            {
-              name: "React",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-            },
-            {
-              name: "Next.js",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-            },
-            {
-              name: "Tailwind CSS",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-            },
-            {
-              name: "TypeScript",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-            },
-            {
-              name: "Node.js",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-            },
-            {
-              name: "GSAP",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/gsap_1_lkfznz.png",
-            },
-            {
-              name: "AOS",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/github_octocat_z05vbl.png",
-            },
-            {
-              name: "Framer Motion",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007711/framer-motion_ohdae2.svg",
-            },
-            {
-              name: "Vite",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007852/logo_eyrkoc.svg",
-            },
-            {
-              name: "MongoDB",
-              img: "https://www.svgrepo.com/show/331488/mongodb.svg",
-            },
-            {
-              name: "WordPress",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
-            },
-            {
-              name: "Shopify",
-              img: "https://cdn.worldvectorlogo.com/logos/shopify.svg",
-            },
-          ].map((tech, index) => (
-            <div
-              key={index}
-              className="
-          group relative p-6 rounded-2xl 
-          backdrop-blur-xl bg-white/5 
-          border border-white/10 
-          shadow-[0_0_25px_rgba(0,255,255,0.1)]
-          hover:border-[var(--color5)] 
-          hover:shadow-[0_0_30px_var(--color5)]
-          transition-all duration-300 
-          flex flex-col items-center
-        "
-            >
-              {/* Glow Line Scan */}
-              <div className="absolute inset-0 pointer-events-none opacity-40">
-                {[...Array(3)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="
-                absolute left-0 w-full h-[2px]
-                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-               
-              "
-                  ></div>
-                ))}
-              </div>
-
-              {/* Logo */}
-              <img
-                src={tech.img}
-                alt={tech.name}
-                className="w-12 h-12 mb-3 relative z-10 object-contain"
-              />
-
-              {/* Name */}
-              <p className="text-gray-200 text-sm font-medium relative z-10 tracking-wide">
-                {tech.name}
-              </p>
-
-              {/* Border Glow */}
-              <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Scan Animation */}
-        <style>{`
-    @keyframes techScan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    .animate-techScan {
-      animation: techScan 5s linear infinite;
-    }
-  `}</style>
       </section>
 
       <Client />
@@ -1483,6 +1373,142 @@ hi"
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Technology Section */}
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
+            Technologies We Work On
+          </h2>
+        </div>
+
+        {/* Technologies Grid */}
+        <div
+          className="
+      grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
+      gap-8 relative z-10
+    "
+        >
+          {[
+            {
+              name: "HTML",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+            },
+            {
+              name: "CSS",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+            },
+            {
+              name: "JavaScript",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            },
+            {
+              name: "React",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+            },
+            {
+              name: "Next.js",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+            },
+            {
+              name: "Tailwind CSS",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+            },
+            {
+              name: "TypeScript",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+            },
+            {
+              name: "Node.js",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            },
+            {
+              name: "GSAP",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/gsap_1_lkfznz.png",
+            },
+            {
+              name: "AOS",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/github_octocat_z05vbl.png",
+            },
+            {
+              name: "Framer Motion",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007711/framer-motion_ohdae2.svg",
+            },
+            {
+              name: "Vite",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007852/logo_eyrkoc.svg",
+            },
+            {
+              name: "MongoDB",
+              img: "https://www.svgrepo.com/show/331488/mongodb.svg",
+            },
+            {
+              name: "WordPress",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+            },
+            {
+              name: "Shopify",
+              img: "https://cdn.worldvectorlogo.com/logos/shopify.svg",
+            },
+          ].map((tech, index) => (
+            <div
+              key={index}
+              className="
+          group relative p-6 rounded-2xl 
+          backdrop-blur-xl bg-white/5 
+          border border-white/10 
+          shadow-[0_0_25px_rgba(0,255,255,0.1)]
+          hover:border-[var(--color5)] 
+          hover:shadow-[0_0_30px_var(--color5)]
+          transition-all duration-300 
+          flex flex-col items-center
+        "
+            >
+              {/* Glow Line Scan */}
+              <div className="absolute inset-0 pointer-events-none opacity-40">
+                {[...Array(3)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="
+                absolute left-0 w-full h-[2px]
+                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+               
+              "
+                  ></div>
+                ))}
+              </div>
+
+              {/* Logo */}
+              <img
+                src={tech.img}
+                alt={tech.name}
+                className="w-12 h-12 mb-3 relative z-10 object-contain"
+              />
+
+              {/* Name */}
+              <p className="text-gray-200 text-sm font-medium relative z-10 tracking-wide">
+                {tech.name}
+              </p>
+
+              {/* Border Glow */}
+              <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Scan Animation */}
+        <style>{`
+    @keyframes techScan {
+      0% { transform: translateX(-100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+    .animate-techScan {
+      animation: techScan 5s linear infinite;
+    }
+  `}</style>
       </section>
 
       {/* <OurProcess />

@@ -30,7 +30,7 @@ const clients = [
   },
   {
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826620/logo_mondus_new_4_-TMoOETTP_drjizb.gif",
-    link: "https://mondus.vercel.app",
+    link: "https://www.mondusproperties.ae/",
   },
   {
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1765346115/logo_2_qiiitb.webp",
@@ -65,6 +65,18 @@ const clients = [
   {
     img: "https://res.cloudinary.com/dyum0r6gf/image/upload/v1769074730/logo-removebg-preview_ti521v.webp",
     link: "https://www.drhimanshuverma.com/",
+  },
+  {
+    img: "/global-tech-logo.png",
+    link: "https://www.globaltechnologiesindia.com/",
+  },
+  {
+    img: "/homes-land-goa-logo.png",
+    link: "https://www.homesandlandgoa.com",
+  },
+  {
+    img: "/avfcare-logo.png",
+    link: "https://avfcareworkshop.com/",
   },
 ];
 
@@ -190,7 +202,11 @@ export default function Clients() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
           {clients.map((src, index) => (
             <div className="cell float" key={index} data-aos="zoom-in">
-              <Link href="#">
+              <Link
+                href={src.link || "#"}
+                rel="nofollow noopener noreferrer"
+                target="_blank"
+              >
                 <div className="ripple-container flex items-center justify-center grayscale hover:grayscale-0">
                   <Image
                     src={src.img}

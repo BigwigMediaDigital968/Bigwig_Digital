@@ -81,12 +81,12 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
     setSelectedServices((prev) =>
       prev.includes(service)
         ? prev.filter((s) => s !== service)
-        : [...prev, service]
+        : [...prev, service],
     );
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -145,7 +145,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/send-otp`,
-        formData
+        formData,
       );
       setStatusMessage("OTP sent successfully!");
       setStep("otp");
@@ -169,7 +169,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/verify-otp`,
-        { email: formData.email, otp }
+        { email: formData.email, otp },
       );
 
       setStatusMessage("Lead Saved Successfully!");
@@ -202,7 +202,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
         <div className="w-full flex justify-center mb-4">
           <button
             onClick={handleClose}
-            className="text-black bg-[var(--color4)] px-4 py-1 rounded-full text-lg font-bold shadow-sm hover:opacity-80 transition"
+            className="text-black bg-[var(--color4)] px-4 py-1 rounded-full text-lg font-bold shadow-sm hover:opacity-80 transition cursor-pointer"
           >
             ✕
           </button>
