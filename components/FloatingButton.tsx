@@ -65,7 +65,7 @@ import Image from "next/image";
 export default function FloatingCTA() {
   const [shareOpen, setShareOpen] = useState(false);
 
-  const phone = "+918368573451";
+  const phone = "+919685892813";
 
   const facebookUrl = "https://www.facebook.com/profile.php?id=61575340735142";
   const instagramUrl =
