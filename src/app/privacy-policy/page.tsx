@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
           <meta name="title" content="Privacy Policy | Bigwig Media Digital" />
           <meta
             name="description"
-            content="Understand how Bigwig Media Digital collects, uses and protects your personal information."
+            content="Review Bigwig Media Digital's Privacy Policy. We are committed to protecting your personal data in compliance with data protection laws."
           />
           <link
             rel="canonical"

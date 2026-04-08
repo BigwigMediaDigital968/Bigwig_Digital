@@ -142,26 +142,25 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen text-white">
-      <title>Contact Bigwig Media Digital | Digital Marketing Agency</title>
+      <title>Contact BigWig Media Digital | Get Free Consultation</title>
       <meta
         name="title"
-        content="Contact Bigwig Media Digital | Digital Marketing Agency"
+        content="Contact BigWig Media Digital | Get Free Consultation"
       />
       <meta
         name="description"
-        content="Get in touch with Bigwig Media Digital for SEO, website development and digital marketing services."
+        content="Contact Bigwig Media Digital, Digital Marketing Agency in Delhi. Call +91 96858 92813 or visit us at Gulabi Bagh, Delhi. Get in Touch Now!"
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/contact" />
 
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Contact Bigwig Media Digital | Digital Marketing Agency"
+        content="Contact BigWig Media Digital | Get Free Consultation"
       />
       <meta
         property="og:description"
-        content="Get in touch with Bigwig Media Digital for SEO,
-website development and digital marketing services."
+        content="Contact Bigwig Media Digital, Digital Marketing Agency in Delhi. Call +91 96858 92813 or visit us at Gulabi Bagh, Delhi. Get in Touch Now!"
       />
       <meta
         property="og:image"

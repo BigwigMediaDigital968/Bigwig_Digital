@@ -146,7 +146,7 @@ function SeoServicesDubai() {
       />
       <meta
         name="description"
-        content="Trusted digital marketing agency in Dubai UAE offering SEO, social media marketing, paid ads and branding solutions."
+        content="Bigwig Media Digital, a Digital Marketing Agency in Dubai UAE. SEO, SMM, PPC & Web Development to grow your business in UAE. Contact Us!"
       />
       <link
         rel="canonical"
@@ -161,8 +161,7 @@ Digital"
       />
       <meta
         property="og:description"
-        content="Trusted digital marketing agency in Dubai UAE
-offering SEO, social media marketing, paid ads and branding solutions."
+        content="Bigwig Media Digital, a Digital Marketing Agency in Dubai UAE. SEO, SMM, PPC & Web Development to grow your business in UAE. Contact Us!"
       />
       <meta
         property="og:image"

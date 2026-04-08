@@ -169,14 +169,14 @@ function SocialMediaOptimization() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Social Media Optimization Services in Delhi | SMO Company</title>
+      <title>Social Media Optimization Services in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Social Media Optimization Services in Delhi | SMO Company"
+        content="Social Media Optimization Services in Delhi | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Boost brand visibility with expert social media optimization services in Delhi including profile and content optimization."
+        content="Boost your brand with SMO Services in Delhi. Profile optimization & engagement growth on Instagram, Facebook & LinkedIn. Get Started Today!"
       />
       <link
         rel="canonical"
@@ -186,13 +186,11 @@ function SocialMediaOptimization() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Social Media Optimization Services in Delhi | SMO
-Company"
+        content="Social Media Optimization Services in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Boost brand visibility with expert social media
-optimization services in Delhi including profile and content optimization."
+        content="Boost your brand with SMO Services in Delhi. Profile optimization & engagement growth on Instagram, Facebook & LinkedIn. Get Started Today!"
       />
       <meta
         property="og:image"
@@ -818,11 +816,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

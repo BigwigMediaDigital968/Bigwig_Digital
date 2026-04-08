@@ -157,14 +157,14 @@ function GraphicDesigning() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Graphic Designing Services in Delhi | Creative Agency</title>
+      <title>Graphic Designing Services in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Graphic Designing Services in Delhi | Creative Agency"
+        content="Graphic Designing Services in Delhi | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Creative graphic designing services in Delhi for branding, social media creatives, brochures and ad designs."
+        content="Premium Graphic Designing Services in Delhi; logos, social creatives, brand kits & video editing for high-impact campaigns. Get a Free Sample!"
       />
 
       <link
@@ -175,12 +175,11 @@ function GraphicDesigning() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Graphic Designing Services in Delhi | Creative Agency"
+        content="Graphic Designing Services in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Creative graphic designing services in Delhi for
-branding, social media creatives, brochures and ad designs."
+        content="Premium Graphic Designing Services in Delhi; logos, social creatives, brand kits & video editing for high-impact campaigns. Get a Free Sample!"
       />
       <meta
         property="og:image"
@@ -943,11 +942,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

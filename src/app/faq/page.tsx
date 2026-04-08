@@ -120,26 +120,25 @@ const FAQ = () => {
   return (
     <div className="bg-[var(--color1)] text-white min-h-screen">
       <Nav />
-      <title>Digital Marketing FAQs | Bigwig Media Digital</title>
+      <title>FAQs | Digital Marketing Agency in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Digital Marketing FAQs | Bigwig Media Digital"
+        content="FAQs | Digital Marketing Agency in Delhi | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Find answers to common questions about SEO, social media marketing and digital services."
+        content="Find answers to common questions about SEO, PPC, SMM & Web Development services by Bigwig Media Digital, Delhi's trusted digital agency."
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/faq" />
 
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Digital Marketing FAQs | Bigwig Media Digital"
+        content="FAQs | Digital Marketing Agency in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Find answers to common questions about SEO,
-social media marketing and digital services."
+        content="Find answers to common questions about SEO, PPC, SMM & Web Development services by Bigwig Media Digital, Delhi's trusted digital agency."
       />
       <meta
         property="og:image"
@@ -175,17 +174,15 @@ social media marketing and digital services."
                 </p>
 
                 <ChevronDown
-                  className={`w-5 h-5 text-white transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                  className={`w-5 h-5 text-white transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                    }`}
                 />
               </div>
 
               {/* Answer */}
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-40 mt-3" : "max-h-0"
-                }`}
+                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-40 mt-3" : "max-h-0"
+                  }`}
               >
                 <p
                   className="text-gray-200 text-base leading-relaxed"

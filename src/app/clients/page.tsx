@@ -10,20 +10,19 @@ export default function FluidRippleClients() {
     <div className="bg-[var(--color1)] text-white">
       <Nav />
 
-      <title>Our Clients | Bigwig Media Digital</title>
-      <meta name="title" content="Our Clients | Bigwig Media Digital" />
+      <title>Our Clients | BigWig Media Digital Portfolio</title>
+      <meta name="title" content="Our Clients | BigWig Media Digital Portfolio" />
       <meta
         name="description"
-        content="Explore our portfolio of trusted clients and successful digital marketing partnerships across industries."
+        content="Bigwig Media Digital has partnered with 500+ brands across India & Dubai. See how our Digital Marketing Agency in Delhi drives real growth!"
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/clients" />
 
       {/* <!-- Open Graph Meta Tags --> */}
-      <meta property="og:title" content="Our Clients | Bigwig Media Digital" />
+      <meta property="og:title" content="Our Clients | BigWig Media Digital Portfolio" />
       <meta
         property="og:description"
-        content="Explore our portfolio of trusted clients and
-successful digital marketing partnerships across industries."
+        content="Bigwig Media Digital has partnered with 500+ brands across India & Dubai. See how our Digital Marketing Agency in Delhi drives real growth!"
       />
       <meta
         property="og:image"

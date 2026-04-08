@@ -164,14 +164,14 @@ function Services() {
   return (
     <div className="min-h-screen bg-[var(--color1)] text-white">
       <Nav />
-      <title>Digital Marketing Services in Delhi | Bigwig Media Digital</title>
+      <title>Digital Marketing Services in Delhi | SEO, PPC, SMM & More</title>
       <meta
         name="title"
-        content="Digital Marketing Services in Delhi | Bigwig Media Digital"
+        content="Digital Marketing Services in Delhi | SEO, PPC, SMM & More"
       />
       <meta
         name="description"
-        content="Explore result-driven digital marketing services in Delhi including SEO, website development, social media marketing & ORM solutions."
+        content="Explore Digital Marketing Services in Delhi, SEO, PPC, SMM, Web Dev, ORM & more. Trusted by 500+ brands. Contact Bigwig Media Digital Today!"
       />
       <link
         rel="canonical"
@@ -181,12 +181,11 @@ function Services() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Digital Marketing Services in Delhi | Bigwig Media Digital"
+        content="Digital Marketing Services in Delhi | SEO, PPC, SMM & More"
       />
       <meta
         property="og:description"
-        content="Explore result-driven digital marketing services in
-Delhi including SEO, website development, social media marketing & ORM solutions."
+        content="Explore Digital Marketing Services in Delhi, SEO, PPC, SMM, Web Dev, ORM & more. Trusted by 500+ brands. Contact Bigwig Media Digital Today!"
       />
       <meta
         property="og:image"

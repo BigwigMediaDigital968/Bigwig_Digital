@@ -211,14 +211,14 @@ function OnlineReputationManagement() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Online Reputation Management Services in Delhi | ORM</title>
+      <title>Online Reputation Management Services in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Online Reputation Management Services in Delhi | ORM"
+        content="Online Reputation Management Services in Delhi | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Protect and enhance your brand image with professional online reputation management services in Delhi."
+        content="Protect your brand with ORM Services in Delhi. Review monitoring, negative content removal & brand repair by Bigwig Media Digital. Talk to Us!"
       />
       <link
         rel="canonical"
@@ -228,12 +228,11 @@ function OnlineReputationManagement() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Online Reputation Management Services in Delhi | ORM"
+        content="Online Reputation Management Services in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Protect and enhance your brand image with
-professional online reputation management services in Delhi."
+        content="Protect your brand with ORM Services in Delhi. Review monitoring, negative content removal & brand repair by Bigwig Media Digital. Talk to Us!"
       />
       <meta
         property="og:image"
@@ -945,11 +944,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

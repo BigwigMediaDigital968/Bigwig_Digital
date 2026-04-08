@@ -17,18 +17,18 @@ import OfferPopup from "../../components/OfferPopup";
 import FloatingButton from "../../components/FloatingButton";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Agency in Delhi | Bigwig Media Digital",
+  title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",
   description:
-    "Bigwig Media Digital is a leading digital marketing agency in Delhi offering SEO, social media marketing, website development & performance marketing solutions.",
+    "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 8+ Years | 500+ Clients. Get a Free Strategy Session!",
   keywords:
     "digital marketing agency in Delhi, best digital marketing company Delhi, SEO company in Delhi, social media marketing agency Delhi, website development company Delhi, performance marketing agency Delhi, online marketing services Delhi",
   alternates: {
     canonical: "https://www.bigwigmediadigital.com/",
   },
   openGraph: {
-    title: "Digital Marketing Agency in Delhi | Bigwig Media Digital",
+    title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",
     description:
-      "Bigwig Media Digital is a leading digital marketing agency in Delhi offering SEO, social media marketing, website development & performance marketing solutions.",
+      "Top-rated Digital Marketing Agency in Delhi. SEO, PPC, SMM & Web Dev. Google Partner | 8+ Years | 500+ Clients. Get a Free Strategy Session!",
     url: "https://www.bigwigmediadigital.com/",
     siteName: "Bigwig Media Digital",
     locale: "en_IN",

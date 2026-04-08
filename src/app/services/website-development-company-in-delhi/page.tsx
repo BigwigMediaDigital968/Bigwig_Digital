@@ -345,17 +345,17 @@ function Website({ value }: { value: number }) {
 
       {/* SEO Meta Deta */}
       <title>
-        Website Development Company in Delhi | Expert Web Design Services
+        Website Development Company in Delhi | Bigwig Media Digital
       </title>
 
       <meta
         name="title"
-        content="Website Development Company in Delhi | Expert Web Design Services"
+        content="Website Development Company in Delhi | Bigwig Media Digital"
       />
 
       <meta
         name="description"
-        content="Looking for a Website Development Company in Delhi? We create SEO-friendly, high-performance websites. Call +91 96858 92813 for a free consultation!"
+        content="Need a Website Development Company in Delhi? We build fast, responsive & SEO-friendly websites. Custom | E-Commerce | CMS. Get a Free Quote!"
       />
 
       <meta
@@ -371,7 +371,7 @@ function Website({ value }: { value: number }) {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Website Development Company in Delhi | Expert Web Design Services"
+        content="Website Development Company in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
@@ -1363,9 +1363,8 @@ function Website({ value }: { value: number }) {
                     key={i}
                     type="button"
                     onClick={() => goTo(i)}
-                    className={`h-2 w-2 rounded-full ${
-                      i === page ? "bg-gray-900" : "bg-gray-300"
-                    }`}
+                    className={`h-2 w-2 rounded-full ${i === page ? "bg-gray-900" : "bg-gray-300"
+                      }`}
                     aria-label={`Go to reviews page ${i + 1}`}
                   />
                 ))}
@@ -1675,11 +1674,10 @@ function Website({ value }: { value: number }) {
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

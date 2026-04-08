@@ -6,14 +6,14 @@ export default function TermsOfUse() {
     <div className="bg-[var(--color1)] text-white">
       <Nav />
 
-      <title>Terms and Conditions | Bigwig Media Digital</title>
+      <title>Terms & Conditions | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Terms and Conditions | Bigwig Media Digital"
+        content="Terms & Conditions | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Read the terms and conditions governing the use of Bigwig Media Digital’s website and services."
+        content="Read the Terms & Conditions for using Bigwig Media Digital's website and digital marketing services. Review before engaging with us."
       />
       <link
         rel="canonical"
@@ -23,12 +23,11 @@ export default function TermsOfUse() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Terms and Conditions | Bigwig Media Digital"
+        content="Terms & Conditions | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Read the terms and conditions governing the use
-of Bigwig Media Digital’s website and services."
+        content="Read the Terms & Conditions for using Bigwig Media Digital's website and digital marketing services. Review before engaging with us."
       />
       <meta
         property="og:image"

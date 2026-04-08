@@ -98,26 +98,25 @@ export default function Blogs() {
   return (
     <div className="min-h-screen bg-[var(--color2)] text-black">
       <Nav />
-      <title>Digital Marketing Blogs & Insights | Bigwig Media Digital</title>
+      <title>Digital Marketing Blogs | SEO, SMO & Marketing Tips</title>
       <meta
         name="title"
-        content="Digital Marketing Blogs & Insights | Bigwig Media Digital"
+        content="Digital Marketing Blogs | SEO, SMO & Marketing Tips"
       />
       <meta
         name="description"
-        content="Read expert-written digital marketing blogs, SEO tips, social media strategies and growth insights."
+        content="Read expert Digital Marketing blogs from Bigwig Media Digital, Delhi. Latest insights on SEO, PPC, SMM & Content Marketing. Explore Now!"
       />
       <link rel="canonical" href="https://www.bigwigmediadigital.com/blogs" />
 
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Digital Marketing Blogs & Insights | Bigwig Media Digital"
+        content="Digital Marketing Blogs | SEO, SMO & Marketing Tips"
       />
       <meta
         property="og:description"
-        content="Read expert-written digital marketing blogs, SEO
-tips, social media strategies and growth insights."
+        content="Read expert Digital Marketing blogs from Bigwig Media Digital, Delhi. Latest insights on SEO, PPC, SMM & Content Marketing. Explore Now!"
       />
       <meta
         property="og:image"
@@ -227,11 +226,10 @@ tips, social media strategies and growth insights."
                     currentPage > 1 && setCurrentPage(currentPage - 1)
                   }
                   disabled={currentPage === 1}
-                  className={`px-4 py-2 rounded-lg border ${
-                    currentPage === 1
+                  className={`px-4 py-2 rounded-lg border ${currentPage === 1
                       ? "bg-gray-200 cursor-not-allowed"
                       : "bg-white hover:bg-gray-100"
-                  }`}
+                    }`}
                 >
                   Prev
                 </button>
@@ -257,11 +255,10 @@ tips, social media strategies and growth insights."
                       <button
                         key={page}
                         onClick={() => setCurrentPage(page)}
-                        className={`px-4 py-2 rounded-lg border ${
-                          currentPage === page
+                        className={`px-4 py-2 rounded-lg border ${currentPage === page
                             ? "bg-blue-600 text-white"
                             : "bg-white hover:bg-gray-100"
-                        }`}
+                          }`}
                       >
                         {page}
                       </button>
@@ -273,11 +270,10 @@ tips, social media strategies and growth insights."
                     currentPage < totalPages && setCurrentPage(currentPage + 1)
                   }
                   disabled={currentPage === totalPages}
-                  className={`px-4 py-2 rounded-lg border ${
-                    currentPage === totalPages
+                  className={`px-4 py-2 rounded-lg border ${currentPage === totalPages
                       ? "bg-gray-200 cursor-not-allowed"
                       : "bg-white hover:bg-gray-100"
-                  }`}
+                    }`}
                 >
                   Next
                 </button>

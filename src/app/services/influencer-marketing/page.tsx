@@ -220,15 +220,15 @@ function InfluencerMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Influencer Marketing Agency in Delhi | Brand Growth</title>
+      <title>Influencer Marketing Agency in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Influencer Marketing Agency in Delhi | Brand Growth"
+        content="Influencer Marketing Agency in Delhi | Bigwig Media Digital"
       />
 
       <meta
         name="description"
-        content="Connect with trusted creators using influencer marketing agency in Delhi to increase brand reach and credibility."
+        content="Top Influencer Marketing Agency in Delhi. Nano, micro & macro influencer campaigns on Instagram & YouTube. Get a Free Campaign Plan Today!"
       />
       <link
         rel="canonical"
@@ -238,12 +238,11 @@ function InfluencerMarketing() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Influencer Marketing Agency in Delhi | Brand Growth"
+        content="Influencer Marketing Agency in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Connect with trusted creators using influencer
-marketing services in Delhi to increase brand reach and credibility."
+        content="Top Influencer Marketing Agency in Delhi. Nano, micro & macro influencer campaigns on Instagram & YouTube. Get a Free Campaign Plan Today!"
       />
       <meta
         property="og:image"
@@ -998,11 +997,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
                     ? "max-h-96 mt-4 opacity-100"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

@@ -213,14 +213,14 @@ function Seo() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>SEO Services in Delhi | Search Engine Optimization Company</title>
+      <title>SEO Services in Delhi | Best SEO Company | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="SEO Services in Delhi | Search Engine Optimization Company"
+        content="SEO Services in Delhi | Best SEO Company | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Professional SEO services in Delhi to improve Google rankings, organic traffic and quality leads using ethical SEO strategies."
+        content="Expert SEO Services in Delhi, Technical SEO, Local SEO, On-Page & Link Building. Rank on Page 1 with Bigwig Media Digital. Free SEO Audit!"
       />
       <link
         rel="canonical"
@@ -230,13 +230,11 @@ function Seo() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="SEO Services in Delhi | Search Engine Optimization
-Company"
+        content="SEO Services in Delhi | Best SEO Company | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Professional SEO services in Delhi to improve
-Google rankings, organic traffic and quality leads using ethical SEO strategies."
+        content="Expert SEO Services in Delhi, Technical SEO, Local SEO, On-Page & Link Building. Rank on Page 1 with Bigwig Media Digital. Free SEO Audit!"
       />
       <meta
         property="og:image"
@@ -935,11 +933,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

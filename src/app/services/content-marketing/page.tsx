@@ -192,14 +192,14 @@ function ContentMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Content Marketing Services in Delhi | SEO Content</title>
+      <title>Content Marketing Services in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Content Marketing Services in Delhi | SEO Content"
+        content="Content Marketing Services in Delhi | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Strategic content marketing services in Delhi including blogs, website content and SEO copywriting."
+        content="Strategic Content Marketing Services in Delhi. SEO blogs, landing pages & brand storytelling that ranks and converts. Request a Free Audit!"
       />
       <link
         rel="canonical"
@@ -209,12 +209,11 @@ function ContentMarketing() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Content Marketing Services in Delhi | SEO Content"
+        content="Content Marketing Services in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Strategic content marketing services in Delhi
-including blogs, website content and SEO copywriting."
+        content="Strategic Content Marketing Services in Delhi. SEO blogs, landing pages & brand storytelling that ranks and converts. Request a Free Audit!"
       />
       <meta
         property="og:image"
@@ -960,11 +959,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

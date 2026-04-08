@@ -89,15 +89,15 @@ function AffiliateMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Affiliate Marketing Services in Delhi | Growth Marketing</title>
+      <title>Affiliate Marketing Services in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Affiliate Marketing Services in Delhi | Growth Marketing"
+        content="Affiliate Marketing Services in Delhi | Bigwig Media Digital"
       />
 
       <meta
         name="description"
-        content="Scale your business with performance-based affiliate marketing services in Delhi by Bigwig Media Digital."
+        content="Performance-based Affiliate Marketing Services in Delhi. Build affiliate networks that drive consistent sales & revenue. Start Growing Today!"
       />
       <link
         rel="canonical"
@@ -107,12 +107,11 @@ function AffiliateMarketing() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Affiliate Marketing Services in Delhi | Growth Marketing"
+        content="Affiliate Marketing Services in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Scale your business with performance-based
-affiliate marketing services in Delhi by Bigwig Media Digital."
+        content="Performance-based Affiliate Marketing Services in Delhi. Build affiliate networks that drive consistent sales & revenue. Start Growing Today!"
       />
       <meta
         property="og:image"
@@ -1235,11 +1234,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>

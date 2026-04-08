@@ -151,14 +151,14 @@ function SocialMediaMarketing() {
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Social Media Marketing Services in Delhi | SMM Agency</title>
+      <title>Social Media Marketing Services in Delhi | Bigwig Media Digital</title>
       <meta
         name="title"
-        content="Social Media Marketing Services in Delhi | SMM Agency"
+        content="Social Media Marketing Services in Delhi | Bigwig Media Digital"
       />
       <meta
         name="description"
-        content="Drive leads and engagement with ROI-focused social media marketing services in Delhi by Bigwig Media Digital."
+        content="Result-driven Social Media Marketing Services in Delhi. Instagram, Facebook, YouTube & LinkedIn campaigns. Creative content + targeted ads. Book Now!"
       />
       <link
         rel="canonical"
@@ -168,12 +168,11 @@ function SocialMediaMarketing() {
       {/* <!-- Open Graph Meta Tags --> */}
       <meta
         property="og:title"
-        content="Social Media Marketing Services in Delhi | SMM Agency"
+        content="Social Media Marketing Services in Delhi | Bigwig Media Digital"
       />
       <meta
         property="og:description"
-        content="Drive leads and engagement with ROI-focused
-social media marketing services in Delhi by Bigwig Media Digital."
+        content="Result-driven Social Media Marketing Services in Delhi. Instagram, Facebook, YouTube & LinkedIn campaigns. Creative content + targeted ads. Book Now!"
       />
       <meta
         property="og:image"
@@ -857,11 +856,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
                     ? "max-h-96 mt-4 opacity-100"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>
