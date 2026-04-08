@@ -20,28 +20,27 @@ const sections = [
     title: "Responsive Web Design",
     content: (
       <>
-        As a professional <b>Website Development Company in Delhi</b>, we ensure
-        seamless performance across all devices. We specialize in creating fully
-        responsive websites that look great and work smoothly on every device.
-        Your audience enjoys a seamless browsing experience across mobile,
-        tablet, and desktop.
+        As a leading web design company in South Delhi, we specialize in
+        creating fully responsive websites that look great and work smoothly on
+        every device. Your audience enjoys a seamless browsing experience across
+        mobile, tablet, and desktop.
       </>
     ),
   },
   {
     title: "Static Website Design",
     content:
-      "We design clean, modern, and user-friendly static websites that highlight your brand’s strengths. Our designs ensure clarity, fast loading, and smooth navigation - ideal for businesses wanting a professional online presence. As a reliable Website Development Company in Delhi, we ensure fast and efficient website performance.",
+      "We design clean, modern, and user-friendly static websites that highlight your brand’s strengths. Our designs ensure clarity, fast loading, and smooth navigation - ideal for businesses wanting a professional online presence.",
   },
   {
     title: "Dynamic Website Design",
     content:
-      "Our expert designers create interactive, dynamic websites with custom features, smart integrations, and brand-focused elements. We make your site more engaging, functional, and responsive to user behavior. Our expertise as a Website Development Company in Delhi helps build scalable and interactive platforms.",
+      "Our expert designers create interactive, dynamic websites with custom features, smart integrations, and brand-focused elements. We make your site more engaging, functional, and responsive to user behavior.",
   },
   {
     title: "Startup Website Design",
     content:
-      "We build creative, modern, and scalable websites tailored to the unique needs of startups. Our designs help communicate your brand story clearly while showcasing your services and products effectively. We support emerging businesses as a leading Website Development Company in Delhi with scalable solutions.",
+      "We build creative, modern, and scalable websites tailored to the unique needs of startups. Our designs help communicate your brand story clearly while showcasing your services and products effectively.",
   },
   {
     title: "Website Re-Design",
@@ -51,7 +50,7 @@ const sections = [
   {
     title: "Corporate Website Design",
     content:
-      "We design powerful, enterprise-level corporate websites with intuitive layouts and strong branding. Our designs support complex operations, large data structures, and high traffic - ideal for growing companies. Our experience as a Website Development Company in Delhi helps build enterprise-ready platforms.",
+      "We design powerful, enterprise-level corporate websites with intuitive layouts and strong branding. Our designs support complex operations, large data structures, and high traffic - ideal for growing companies.",
   },
   {
     title: "Landing Page Design",
@@ -60,21 +59,8 @@ const sections = [
   },
   {
     title: "SEO-Friendly Website Design",
-    content: (
-      <>
-        We build{" "}
-        <Link
-          href="/services/search-engine-optimization"
-          className="text-[var(--color5)] underline underline-offset-4 hover:opacity-90"
-        >
-          SEO-friendly websites optimized
-        </Link>{" "}
-        for search visibility. From clean coding to fast loading and structured
-        content, our websites help you rank higher and gain more organic
-        traffic. Being a results-driven Website Development Company in Delhi, we
-        focus on search visibility and performance.
-      </>
-    ),
+    content:
+      "We build SEO-friendly websites optimized for search visibility. From clean coding to fast loading and structured content, our websites help you rank higher and gain more organic traffic.",
   },
   {
     title: "PSD to HTML Design",
@@ -87,7 +73,7 @@ const customSections = [
   {
     title: "100% Mobile Responsive Website",
     content:
-      "With mobile devices accounting for nearly 65.49% of global website traffic (HubSpot), having a fully mobile-responsive website is essential. We ensure your website delivers a seamless experience across all screen sizes, helping you reach a wider audience and keep users engaged on the go.",
+      "With mobile devices accounting for nearly 65.49% of global website traffic, having a fully mobile-responsive website is essential. We ensure your website delivers a seamless experience across all screen sizes, helping you reach a wider audience and keep users engaged on the go.",
   },
   {
     title: "A Customized Website",
@@ -107,12 +93,12 @@ const customSections = [
   {
     title: "Your Website Reflects Your Brand",
     content:
-      "A website is more than a digital presence, it represents your brand identity, values, and offerings. If you're searching for the best “website designer near me,” we create custom-designed websites that bring your vision to life.",
+      "A website is more than a digital presence - it represents your brand identity, values, and offerings. If you're searching for the best “website designer near me,” we create custom-designed websites that bring your vision to life.",
   },
   {
     title: "We Shape Digital Experiences",
     content:
-      "We go beyond traditional web design we shape connected, meaningful experiences that empower brands with extraordinary websites that truly stand out.",
+      "We go beyond traditional web design - we shape connected, meaningful experiences that empower brands with extraordinary websites that truly stand out.",
   },
 ];
 
@@ -130,12 +116,12 @@ const benefitSections = [
   {
     title: "Scalability",
     content:
-      "We build websites with a future-ready approach, allowing your online presence to grow and evolve as your business expands. Our approach as a Website Development Company in Delhi ensures your website grows with your business.",
+      "We build websites with a future-ready approach, allowing your online presence to grow and evolve as your business expands.",
   },
   {
     title: "Consistency & Branding",
     content:
-      "We maintain consistent brand identity across your website by using your color scheme, typography, logos, taglines, and other brand elements.",
+      "We maintain a consistent brand identity across your website by using your color scheme, typography, logos, taglines, and other brand elements.",
   },
   {
     title: "Cross-Browser Compatibility",
@@ -155,7 +141,7 @@ const benefitSections = [
   {
     title: "Ongoing Support & Maintenance",
     content:
-      "We offer round-the-clock support and maintenance to ensure your website remains secure, fully updated, and free of technical issues. We provide continuous support as a dependable Website Development Company in Delhi to keep your website running smoothly.",
+      "We offer round-the-clock support and maintenance to ensure your website remains secure, fully updated, and free of technical issues.",
   },
 ];
 
@@ -344,9 +330,7 @@ function Website({ value }: { value: number }) {
       <Nav />
 
       {/* SEO Meta Deta */}
-      <title>
-        Website Development Company in Delhi | Bigwig Media Digital
-      </title>
+      <title>Website Development Company in Delhi | Bigwig Media Digital</title>
 
       <meta
         name="title"
@@ -408,20 +392,23 @@ function Website({ value }: { value: number }) {
             </h1>
 
             <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify">
-              We’re a leading{" "}
+              We are a trusted Website Development Company in Delhi, helping
+              businesses build a strong online presence with modern and
+              effective website solutions. As a leading website design company
+              in Delhi NCR, we create websites that are tailored to your
+              business goals and audience needs.
+            </p>
+            <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify -mt-4">
+              Our team at{" "}
               <Link href="/" className="text-[var(--color5)]  hover:opacity-90">
-                Website Development Company in Delhi NCR,
-              </Link>{" "}
-              creating custom web experiences that truly fit your business
-              needs. Our team of skilled professionals works closely with you to
-              enhance your digital presence and bring your vision to life. We
-              craft high-quality, impactful websites that leave a lasting
-              impression, attract more visitors, and help you achieve better
-              ROI. As a trusted Website Development Company in Delhi, we focus
-              on performance, scalability, and growth-driven digital solutions.{" "}
-              <br /> <br />
-              Partner with a trusted Website Development Company in Delhi to
-              transform your digital presence.
+                {" "}
+                Bigwig Media Digital{" "}
+              </Link>
+              focuses on creating user-friendly, fast, and SEO-ready websites
+              that not only look good but also perform well. Whether you are
+              searching for a reliable partner nearby or planning to grow your
+              business online, we help you attract the right audience and
+              generate better results.
             </p>
 
             <ButtonFill
@@ -446,26 +433,23 @@ function Website({ value }: { value: number }) {
                 design solutions
               </h2> */}
               {/* Heading */}
-              <h1 className=" text-2xl md:text-3xl font-semibold  mb-2 ">
+              <h2 className=" text-2xl md:text-3xl font-semibold  mb-2 ">
                 Best Website Development Company in Delhi NCR
-              </h1>
+              </h2>
               <p className="text-justify">
-                As a top web design company in Delhi, we know exactly what it
-                takes to create websites that attract attention and bring in
-                more visitors. Our experienced designers craft custom websites
-                tailored to your industry and aligned with your business goals.
+                As an experienced{" "}
+                <strong>Website Development Company in Delhi NCR</strong>, we
+                understand how to build websites that are both visually
+                appealing and performance-driven. Our approach is simple -
+                understand your business, plan strategically, and deliver a
+                website that converts visitors into customers.
               </p>
 
               <p className="text-justify">
-                So if you&#39;re searching for the best{" "}
-                <strong>“website designer near me”</strong>, we’re here to
-                deliver optimized digital experiences that help your brand grow,
-                connect, and convert.
-              </p>
-              <p className="text-justify">
-                Choosing a reliable <b>Website Development Company in Delhi</b>{" "}
-                ensures your business stays ahead in today’s competitive digital
-                landscape.
+                Many businesses today search for a dependable{" "}
+                <strong>website development company near me</strong>, and we
+                ensure that our solutions meet both local and global business
+                needs with the right balance of design and functionality.
               </p>
             </div>
 
@@ -495,15 +479,10 @@ function Website({ value }: { value: number }) {
           </h3>
 
           <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            We’re a trusted Website Development Company in Delhi and web design
-            company in Delhi, helping businesses create powerful,
-            enterprise-level websites that attract high traffic and meaningful
-            engagement. Whether you need a brand-new website or want to revamp
-            your existing one, our team is here to bring your digital vision to
-            life. Our expertise as a Website Development Company in Delhi
-            ensures every website is built for performance and scalability. As a
-            growth-focused Website Development Company in Delhi, we deliver
-            solutions that drive real business results.
+            We provide complete website design and development services for
+            businesses of all sizes. From creating new websites to improving
+            existing ones, our team ensures your online presence is strong,
+            professional, and result-oriented.
           </p>
         </div>
 
@@ -646,12 +625,8 @@ function Website({ value }: { value: number }) {
             Custom-designed websites help you connect with your audience and
             create a strong first impression. A well-crafted, feature-rich
             website boosts engagement and improves ROI. As one of the best
-            website designing companies in Delhi NCR, we know what it takes to
+            website development companies in Delhi NCR, we know what it takes to
             build a truly professional and impactful online presence.
-          </p>
-          <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            Choosing a professional Website Development Company in Delhi helps
-            you create a strong and lasting digital impact.
           </p>
         </div>
 
@@ -796,19 +771,17 @@ function Website({ value }: { value: number }) {
           </h2>
 
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-4">
-            Benefits of Hiring A Web Design Company
+            Benefits of Hiring A Website Development Company in Delhi
           </h3>
 
           <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            As a leading Website Development Company in Delhi NCR and website
-            designing company in Delhi, we create visually appealing,
-            feature-rich websites with smooth and user-friendly navigation. Our
-            expertise spans static, dynamic, e-commerce, enterprise, WordPress,
-            and startup websites. Known for being affordable and reliable, we
-            deliver solutions that fit businesses of all sizes. Working with a
-            trusted Website Development Company in Delhi helps you achieve a
-            powerful and scalable online presence. Here are the key benefits of
-            choosing our web design services:
+            As one of the leading website designing companies in Delhi NCR, we
+            create visually appealing, feature-rich websites with smooth and
+            user-friendly navigation. Our expertise spans static, dynamic,
+            e-commerce, enterprise, WordPress, and startup websites. Known for
+            being affordable and reliable, we deliver solutions that fit
+            businesses of all sizes. Here are the key benefits of choosing our
+            web design services:
           </p>
         </div>
 
@@ -901,9 +874,9 @@ function Website({ value }: { value: number }) {
                   />
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
+                  <h4 className="text-xl font-semibold text-[var(--color5)] tracking-wide relative z-10">
                     {item.title}
-                  </h3>
+                  </h4>
 
                   {/* Description */}
                   <p className="text-gray-200 text-sm md:text-base leading-relaxed text-justify relative z-10">
@@ -938,15 +911,16 @@ function Website({ value }: { value: number }) {
         {/* CTA BUTTON */}
         <div className="flex justify-center">
           <ButtonFill
-            text="Get Expert Website Advice"
+            text="Get Instant Website Consultation"
             onClick={() => setIsPopupOpen(true)}
           />
         </div>
       </section>
 
       {/* Best Website Designing Agency */}
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* =================== HEADINGS =================== */}
+      {/**
+       * 
+       * <section className=" py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         <div className="mb-12">
           <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
             Website Designer Near Me
@@ -957,7 +931,6 @@ function Website({ value }: { value: number }) {
           </h3>
         </div>
 
-        {/* =================== MAIN GLASS BOX =================== */}
         <div
           className="
       relative rounded-2xl p-8 md:p-12 
@@ -967,7 +940,6 @@ function Website({ value }: { value: number }) {
       overflow-hidden
     "
         >
-          {/* Background Scan Bars */}
           <div className="absolute inset-0 opacity-40 pointer-events-none">
             {[...Array(7)].map((_, i) => (
               <div
@@ -985,12 +957,8 @@ function Website({ value }: { value: number }) {
             ))}
           </div>
 
-          {/* LEFT GLOW STRIP */}
-          {/* <div className="absolute left-0 top-0 h-full w-[6px] bg-[var(--color5)] shadow-[0_0_20px_var(--color5)]"></div> */}
 
-          {/* =================== CONTENT =================== */}
           <div className="relative z-10 grid md:grid-cols-2 gap-10">
-            {/* LEFT TEXT BLOCK */}
             <div className="space-y-6 text-gray-200 leading-relaxed">
               <p>
                 A website should be designed with careful thought and purpose so
@@ -1022,7 +990,6 @@ function Website({ value }: { value: number }) {
               </p>
             </div>
 
-            {/* RIGHT FEATURE LIST */}
             <div
               className="
           p-6 rounded-2xl 
@@ -1060,10 +1027,8 @@ function Website({ value }: { value: number }) {
             </div>
           </div>
 
-          {/* GLOW BORDER HOVER EFFECT */}
           <div className="absolute inset-0 rounded-2xl border border-transparent hover:border-[var(--color5)] transition-all duration-300"></div>
 
-          {/* SCAN ANIMATION */}
           <style>{`
       @keyframes sectionScan {
         0% { transform: translateX(-100%); opacity: 0; }
@@ -1076,7 +1041,6 @@ function Website({ value }: { value: number }) {
       {/* `}</style>
         </div>
 
-        {/* CTA BUTTON */}
         <div className="flex justify-center mt-12">
           <ButtonFill
             text="Get Instant Website Consultation"
@@ -1084,6 +1048,7 @@ function Website({ value }: { value: number }) {
           />
         </div>
       </section>
+       */}
 
       <Client />
 
@@ -1131,7 +1096,7 @@ function Website({ value }: { value: number }) {
           {/* =================== GRID LAYOUT =================== */}
           <div className="relative z-10 grid md:grid-cols-2 gap-12">
             {/* LEFT SIDE — FULL CONTENT BLOCK */}
-            <div className="space-y-6 text-gray-200 leading-relaxed">
+            <div className="space-y-4 text-gray-200 leading-relaxed">
               <p>
                 A website is often the first touchpoint between your brand and
                 your online audience. It’s where first impressions are formed
@@ -1141,12 +1106,12 @@ function Website({ value }: { value: number }) {
               </p>
 
               <p>
-                As a trusted web design company in Delhi,{" "}
+                As a trusted website development company in Delhi,{" "}
                 <Link
                   href="/"
                   className="text-[var(--color5)]  hover:opacity-90"
                 >
-                  BigWig Media Digital
+                  Bigwig Media Digital
                 </Link>{" "}
                 takes your vision seriously. Our team blends creativity with
                 advanced technology to deliver modern, high-performing websites
@@ -1164,11 +1129,11 @@ function Website({ value }: { value: number }) {
               </p>
 
               <p>
-                As a leading website designing agency in South Delhi, we support
-                businesses across industries - eCommerce, manufacturing,
-                services, education, and more. If you want to refresh your
-                existing website, our redesign experts can transform it into a
-                modern, high-impact digital platform.
+                As a leading website Development company in Delhi, we support
+                businesses across industries-eCommerce, manufacturing, services,
+                education, and more. If you want to refresh your existing
+                website, our redesign experts can transform it into a modern,
+                high-impact digital platform.
               </p>
             </div>
 
@@ -1363,8 +1328,9 @@ function Website({ value }: { value: number }) {
                     key={i}
                     type="button"
                     onClick={() => goTo(i)}
-                    className={`h-2 w-2 rounded-full ${i === page ? "bg-gray-900" : "bg-gray-300"
-                      }`}
+                    className={`h-2 w-2 rounded-full ${
+                      i === page ? "bg-gray-900" : "bg-gray-300"
+                    }`}
                     aria-label={`Go to reviews page ${i + 1}`}
                   />
                 ))}
@@ -1674,10 +1640,11 @@ function Website({ value }: { value: number }) {
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
-                  ? "max-h-96 mt-4 opacity-100"
-                  : "max-h-0 opacity-0"
-                  }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
+                  openIndex === index
+                    ? "max-h-96 mt-4 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>
