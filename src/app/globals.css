@@ -348,3 +348,29 @@ body {
     filter: drop-shadow(0 0 20px #0f0);
   }
 }
+
+.slick-slider {
+  margin-bottom: 50px !important;
+}
+.slick-list {
+  margin-bottom: 30px !important;
+}
+.slick-slider ul button {
+  background-color: #4e6cba !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 12px !important;
+  height: 12px !important;
+  cursor: pointer;
+}
+.slick-slider ul button:before {
+  display: none !important;
+}
+.slick-dots {
+  bottom: -30px !important;
+}
+.slick-dots .slick-active button {
+  background-color: #ffffff !important;
+}

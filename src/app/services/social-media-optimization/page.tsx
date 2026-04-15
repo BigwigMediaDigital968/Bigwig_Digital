@@ -162,14 +162,16 @@ function SocialMediaOptimization() {
     slidesToShow: 1,
     arrows: false,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2500,
     pauseOnHover: false,
   };
 
   return (
     <div className="bg-[var(--color1)]">
-      <title>Social Media Optimization Services in Delhi | Bigwig Media Digital</title>
+      <title>
+        Social Media Optimization Services in Delhi | Bigwig Media Digital
+      </title>
       <meta
         name="title"
         content="Social Media Optimization Services in Delhi | Bigwig Media Digital"
@@ -409,7 +411,7 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
               {processItems.map((item, index) => (
                 <div key={index} className="px-2">
                   <div
-                    className="
+                    className=" min-h-48
               relative flex flex-col p-6 rounded-2xl
               backdrop-blur-xl bg-white/5 border border-white/10
               shadow-[0_0_25px_rgba(0,255,255,0.1)]
@@ -816,10 +818,11 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
-                  ? "max-h-96 mt-4 opacity-100"
-                  : "max-h-0 opacity-0"
-                  }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
+                  openIndex === index
+                    ? "max-h-96 mt-4 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>
