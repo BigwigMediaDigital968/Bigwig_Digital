@@ -15,10 +15,10 @@ const clients = [
     img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493003/Granth_logo_6_kyrd5s.png",
     link: "https://granthdreamhomes.co.in/",
   },
-  {
-    img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493217/logo-01-C0F3dP5k_y93g4q.svg",
-    link: "https://www.closefriendstraders.info/",
-  },
+  // {
+  //   img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493217/logo-01-C0F3dP5k_y93g4q.svg",
+  //   link: "https://www.closefriendstraders.info/",
+  // },
 
   {
     img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759495461/Pearls_light_logo_m623gc.png",
