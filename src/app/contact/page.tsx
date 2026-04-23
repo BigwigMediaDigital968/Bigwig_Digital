@@ -72,6 +72,48 @@ export default function ContactPage() {
     });
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // console.log(formData);
+    e.preventDefault();
+    setStatusMessage("");
+
+    if (!validateInputs()) return;
+
+    setLoading(true);
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/create-lead`,
+        {
+          name: formData.fullName,
+          email: formData.email,
+          phone: `${formData.countryCode}${formData.phone}`,
+          services: formData.services,
+          message: formData.message,
+        },
+      );
+
+      //setStep("otp");
+      setShowSuccessPopup(true);
+      setTimeout(() => setShowSuccessPopup(false), 2500);
+
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        message: "",
+        countryCode: "+91",
+        services: [],
+      });
+    } catch (err) {
+      const error = err as AxiosError<{ message?: string }>;
+      setStatusMessage(
+        error.response?.data?.message || "Something went wrong.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSendOtp = async (e: React.FormEvent<HTMLFormElement>) => {
     // console.log(formData);
     e.preventDefault();
@@ -225,55 +267,54 @@ export default function ContactPage() {
 
           {/* RIGHT SIDE – FORM */}
           <div className="w-full">
-            {step === "form" ? (
-              <form onSubmit={handleSendOtp} className="space-y-4">
-                <div className="flex flex-col md:flex-row gap-5 w-full">
-                  {/* Name */}
-                  <div className="flex-1">
-                    <label>Name</label>
-                    <input
-                      type="text"
-                      required
-                      className="w-full bg-transparent border-b border-gray-400 p-2 outline-none focus:border-[var(--color5)]"
-                      placeholder="Enter your Name"
-                      value={formData.fullName}
-                      onChange={(e) =>
-                        setFormData({ ...formData, fullName: e.target.value })
-                      }
-                    />
-                    {errors.fullName && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.fullName}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Email */}
-                  <div className="flex-1">
-                    <label>Email</label>
-                    <input
-                      type="email"
-                      required
-                      className="w-full bg-transparent border-b border-gray-400 p-2 outline-none focus:border-[var(--color5)]"
-                      placeholder="Enter a valid email address"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex flex-col md:flex-row gap-5 w-full">
+                {/* Name */}
+                <div className="flex-1">
+                  <label>Name</label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full bg-transparent border-b border-gray-400 p-2 outline-none focus:border-[var(--color5)]"
+                    placeholder="Enter your Name"
+                    value={formData.fullName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, fullName: e.target.value })
+                    }
+                  />
+                  {errors.fullName && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.fullName}
+                    </p>
+                  )}
                 </div>
 
-                {/* Phone */}
-                <div>
-                  <label>Phone</label>
-                  <div className="flex gap-3 items-center mt-2">
-                    {/* <select
+                {/* Email */}
+                <div className="flex-1">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    required
+                    className="w-full bg-transparent border-b border-gray-400 p-2 outline-none focus:border-[var(--color5)]"
+                    placeholder="Enter a valid email address"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label>Phone</label>
+                <div className="flex gap-3 items-center mt-2">
+                  {/* <select
                       className="p-3 rounded-md bg-[#050504] text-white outline-none focus:ring-2 focus:ring-[var(--color5)]"
                       value={formData.countryCode}
                       onChange={(e) =>
@@ -293,81 +334,65 @@ export default function ContactPage() {
                       <option value="+49">🇩🇪 +49</option>
                     </select> */}
 
-                    <input
-                      type="text"
-                      required
-                      className="bg-transparent border-b border-gray-400 p-2 flex-1 outline-none focus:border-[var(--color5)]"
-                      placeholder="Enter phone number"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
-                    />
-                    {errors.phone && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.phone}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* SERVICES CHECKBOX */}
-                <div>
-                  <label>Services</label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-2">
-                    {SERVICES_LIST.map((service) => (
-                      <label
-                        key={service}
-                        className="flex items-center gap-2 cursor-pointer"
-                      >
-                        <input
-                          type="checkbox"
-                          className="accent-[var(--color5)] cursor-pointer"
-                          checked={formData.services.includes(service)}
-                          onChange={() => toggleService(service)}
-                        />
-                        <span>{service}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label>Message</label>
-                  <textarea
-                    rows={2}
-                    className="w-full bg-transparent border-b border-gray-400 p-2 outline-none focus:border-[var(--color5)]"
-                    placeholder="Enter your message"
-                    value={formData.message}
+                  <input
+                    type="text"
+                    required
+                    className="bg-transparent border-b border-gray-400 p-2 flex-1 outline-none focus:border-[var(--color5)]"
+                    placeholder="Enter phone number"
+                    value={formData.phone}
                     onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
+                      setFormData({ ...formData, phone: e.target.value })
                     }
-                  ></textarea>
+                  />
+                  {errors.phone && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
+              </div>
 
-                {/* SEND OTP */}
-                <ButtonFill
-                  type="submit"
-                  text={loading ? "Sending OTP..." : "SUBMIT"}
-                />
-              </form>
-            ) : (
-              <form onSubmit={handleVerifyOtp} className="space-y-10">
-                <input
-                  type="text"
-                  placeholder="Enter OTP"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  className="w-full bg-transparent border-b border-gray-400 p-2 outline-none"
-                />
+              {/* SERVICES CHECKBOX */}
+              <div>
+                <label>Services</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-2">
+                  {SERVICES_LIST.map((service) => (
+                    <label
+                      key={service}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        className="accent-[var(--color5)] cursor-pointer"
+                        checked={formData.services.includes(service)}
+                        onChange={() => toggleService(service)}
+                      />
+                      <span>{service}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
 
-                <ButtonFill
-                  type="submit"
-                  text={loading ? "Verifying..." : "VERIFY OTP"}
-                />
-              </form>
-            )}
+              {/* Message */}
+              <div>
+                <label>Message</label>
+                <textarea
+                  rows={2}
+                  className="w-full bg-transparent border-b border-gray-400 p-2 outline-none focus:border-[var(--color5)]"
+                  placeholder="Enter your message"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                ></textarea>
+              </div>
+
+              {/* SEND OTP */}
+              <ButtonFill
+                type="submit"
+                text={loading ? "Sending..." : "SUBMIT"}
+              />
+            </form>
 
             {statusMessage && (
               <p className="text-[var(--color5)] mt-3">{statusMessage}</p>

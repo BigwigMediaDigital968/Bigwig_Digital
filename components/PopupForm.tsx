@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import ButtonFill from "./Button"; // using your existing design
 
 interface PopupFormProps {
@@ -160,6 +160,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
     }
   };
 
+
   // VERIFY OTP
   const handleVerifyOtp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -184,6 +185,46 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
       setLoading(false);
     }
   };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // console.log(formData);
+    e.preventDefault();
+    setStatusMessage("");
+
+    if (!validateForm()) return;
+
+    setLoading(true);
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/create-lead`,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: `${formData.phone}`,
+          services: formData.services,
+          message: formData.message,
+        },
+      );
+
+      //setStep("otp");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        services: [],
+      });
+      setStatusMessage("Lead Saved Successfully!");
+      setTimeout(handleClose, 2000);
+    } catch (err) {
+      const error = err as AxiosError<{ message?: string }>;
+      setStatusMessage(
+        error.response?.data?.message || "Something went wrong.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -193,9 +234,8 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
       onClick={handleClose}
     >
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-[var(--color1)] overflow-y-scroll p-3 md:p-4 rounded-b-2xl shadow-xl ${
-          closing ? "popup-close" : "popup-open"
-        }`}
+        className={`fixed top-0 left-0 w-full h-full bg-[var(--color1)] overflow-y-scroll p-3 md:p-4 rounded-b-2xl shadow-xl ${closing ? "popup-close" : "popup-open"
+          }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* CLOSE BUTTON */}
@@ -216,48 +256,46 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
           Tell us what you need — we’ll connect you instantly.
         </p>
 
-        {/* ---------------- FORM STEP ---------------- */}
-        {step === "form" ? (
-          <form
-            onSubmit={handleSendOtp}
-            className="space-y-5 w-full md:w-2/3 mx-auto text-white"
-          >
-            {/* NAME + EMAIL */}
-            <div className="flex gap-5">
-              <div className="w-full">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full p-3 border rounded-lg"
-                  required
-                />
-                {errors.name && (
-                  <p className="text-red-400 text-sm">{errors.name}</p>
-                )}
-              </div>
-
-              <div className="w-full">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email ID"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-3 border rounded-lg"
-                  required
-                />
-                {errors.email && (
-                  <p className="text-red-400 text-sm">{errors.email}</p>
-                )}
-              </div>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5 w-full md:w-2/3 mx-auto text-white"
+        >
+          {/* NAME + EMAIL */}
+          <div className="flex gap-5">
+            <div className="w-full">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg"
+                required
+              />
+              {errors.name && (
+                <p className="text-red-400 text-sm">{errors.name}</p>
+              )}
             </div>
 
-            {/* PHONE */}
-            <div className="flex gap-3">
-              {/* <select
+            <div className="w-full">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email ID"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg"
+                required
+              />
+              {errors.email && (
+                <p className="text-red-400 text-sm">{errors.email}</p>
+              )}
+            </div>
+          </div>
+
+          {/* PHONE */}
+          <div className="flex gap-3">
+            {/* <select
                 className="p-3 border rounded-lg bg-[var(--color1)] text-white w-32"
                 value={formData.phone.split(" ")[0] || "+91"}
                 onChange={(e) =>
@@ -279,98 +317,89 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
                 <option value="+49">🇩🇪 +49</option>
               </select> */}
 
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full p-3 border rounded-lg bg-[var(--color1)] text-white"
-                value={formData.phone.split(" ")[1] || ""}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    phone: `${formData.phone.split(" ")[0] || "+91"} ${
-                      e.target.value
-                    }`,
-                  })
-                }
-                required
-              />
-            </div>
-            {errors.phone && (
-              <p className="text-red-400 text-sm">{errors.phone}</p>
-            )}
-
-            {/* SERVICES */}
-            <div>
-              <p className="font-semibold mb-2">Select Services You Need:</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-                {SERVICES_LIST.map((service) => (
-                  <label
-                    key={service}
-                    className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={selectedServices.includes(service)}
-                      onChange={() => toggleService(service)}
-                    />
-                    <span>{service}</span>
-                  </label>
-                ))}
-              </div>
-              {errors.services && (
-                <p className="text-red-400 text-sm">{errors.services}</p>
-              )}
-            </div>
-
-            {/* MESSAGE */}
-            <textarea
-              name="message"
-              placeholder="Explain your requirements"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full p-3 border rounded-lg"
-              rows={3}
-              required
-            ></textarea>
-            {errors.message && (
-              <p className="text-red-400 text-sm">{errors.message}</p>
-            )}
-
-            {/* 🔥 BUTTONFILL — NOW WORKING PROPERLY */}
-            <ButtonFill
-              type="submit"
-              text={loading ? "Sending OTP..." : "Submit & Send OTP"}
-              className="w-full"
-            />
-          </form>
-        ) : (
-          /* ---------------- OTP STEP ---------------- */
-          <form
-            onSubmit={handleVerifyOtp}
-            className="space-y-4 w-full md:w-1/2 mx-auto text-white"
-          >
             <input
-              type="text"
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              className="w-full p-3 border rounded-lg"
+              type="tel"
+              placeholder="Phone Number"
+              className="w-full p-3 border rounded-lg bg-[var(--color1)] text-white"
+              value={formData.phone.split(" ")[1] || ""}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  phone: `${formData.phone.split(" ")[0] || "+91"} ${e.target.value
+                    }`,
+                })
+              }
               required
             />
+          </div>
+          {errors.phone && (
+            <p className="text-red-400 text-sm">{errors.phone}</p>
+          )}
 
-            <ButtonFill
-              type="submit"
-              text={loading ? "Verifying..." : "Verify OTP"}
-              className="w-full"
-            />
-          </form>
-        )}
+          {/* SERVICES */}
+          <div>
+            <p className="font-semibold mb-2">Select Services You Need:</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+              {SERVICES_LIST.map((service) => (
+                <label
+                  key={service}
+                  className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedServices.includes(service)}
+                    onChange={() => toggleService(service)}
+                  />
+                  <span>{service}</span>
+                </label>
+              ))}
+            </div>
+            {errors.services && (
+              <p className="text-red-400 text-sm">{errors.services}</p>
+            )}
+          </div>
+
+          {/* MESSAGE */}
+          <textarea
+            name="message"
+            placeholder="Explain your requirements"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full p-3 border rounded-lg"
+            rows={3}
+            required
+          ></textarea>
+          {errors.message && (
+            <p className="text-red-400 text-sm">{errors.message}</p>
+          )}
+
+          {/* 🔥 BUTTONFILL — NOW WORKING PROPERLY */}
+          <ButtonFill
+            type="submit"
+            text={loading ? "Sending..." : "Submit"}
+            className="w-full"
+          />
+        </form>
 
         {statusMessage && (
+          <div className="absolute top-20 flex justify-center items-center w-full z-50">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl px-8 py-4 shadow-xl">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                <p className="text-white text-sm font-medium tracking-wide">
+                  {statusMessage}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+
+        {/*statusMessage && (
           <p className="text-center text-[var(--color5)] text-sm mt-4">
             {statusMessage}
           </p>
-        )}
+        )*/}
       </div>
     </div>
   );

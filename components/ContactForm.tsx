@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import ButtonFill from "./Button";
 
 const SERVICES_LIST = [
@@ -28,6 +28,8 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
     message: "",
     services: singleService ? [singleService] : [],
   });
+
+  //console.log("formData", formData.services)
 
   const [otp, setOtp] = useState("");
   const [step, setStep] = useState<"form" | "otp" | "done">("form");
@@ -167,6 +169,46 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    //console.log(formData);
+    e.preventDefault();
+    setError("");
+
+    if (!validateForm()) return;
+
+    setLoading(true);
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/create-lead`,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: `${formData.phone}`,
+          services: formData.services,
+          message: formData.message,
+        },
+      );
+
+      //setStep("otp");
+      setStep("done");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        services: [],
+      });
+    } catch (err) {
+      const error = err as AxiosError<{ message?: string }>;
+      setError(
+        error.response?.data?.message || "Something went wrong.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-full max-w-md mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg p-6 space-y-4">
       <h3 className="text-xl font-bold text-white">
@@ -175,7 +217,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
 
       {/* ---------------- FORM STEP ---------------- */}
       {step === "form" && (
-        <form onSubmit={handleFormSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* NAME */}
           <div>
             <input
@@ -271,14 +313,14 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
 
           <ButtonFill
             type="submit"
-            text={loading ? "Sending OTP..." : "Submit & Send OTP"}
+            text={loading ? "Sending..." : "Submit"}
             className="w-full !py-3 !text-white"
           />
         </form>
       )}
 
       {/* ---------------- OTP STEP ---------------- */}
-      {step === "otp" && (
+      {false && step === "otp" && (
         <form onSubmit={handleOtpSubmit} className="space-y-4">
           <input
             type="text"

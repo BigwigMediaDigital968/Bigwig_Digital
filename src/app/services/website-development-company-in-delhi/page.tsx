@@ -418,7 +418,7 @@ function Website({ value }: { value: number }) {
           </div>
 
           {/* Right Form */}
-          <ContactForm />
+          <ContactForm singleService="Website Development" />
         </div>
       </section>
 
@@ -1328,9 +1328,8 @@ function Website({ value }: { value: number }) {
                     key={i}
                     type="button"
                     onClick={() => goTo(i)}
-                    className={`h-2 w-2 rounded-full ${
-                      i === page ? "bg-gray-900" : "bg-gray-300"
-                    }`}
+                    className={`h-2 w-2 rounded-full ${i === page ? "bg-gray-900" : "bg-gray-300"
+                      }`}
                     aria-label={`Go to reviews page ${i + 1}`}
                   />
                 ))}
@@ -1640,11 +1639,10 @@ function Website({ value }: { value: number }) {
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
                     ? "max-h-96 mt-4 opacity-100"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>
