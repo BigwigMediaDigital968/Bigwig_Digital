@@ -325,6 +325,112 @@ function Website({ value }: { value: number }) {
   // smooth translate by page (each page = 100% width)
   const translateX = `-${page * 100}%`;
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Best Website Development Company in Delhi | Bigwig Media Digital",
+    url: "https://www.bigwigmediadigital.com/services/website-development-company-in-delhi",
+    description:
+      "Looking for the best website development company in Delhi? Bigwig Media Digital builds responsive, SEO-friendly websites for businesses across Delhi NCR.",
+    inLanguage: "en-IN",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Bigwig Media Digital",
+      url: "https://www.bigwigmediadigital.com",
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.bigwigmediadigital.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Services",
+          item: "https://www.bigwigmediadigital.com/services",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Website Development Company in Delhi",
+          item: "https://www.bigwigmediadigital.com/services/website-development-company-in-delhi",
+        },
+      ],
+    },
+  };
+
+  const sd2 = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Why should you hire a Web Design Company in Delhi?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Partnering with a professional web design company helps increase website traffic, enhance user engagement, and support business growth. A high-quality website is more visually appealing, easier to navigate, and significantly improves user experience.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do I hire a web design company?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "To hire a reliable web design company: set a clear project budget, create a detailed job description, review portfolios and case studies, prepare interview questions to assess skills, and finalize the contract with a defined scope.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How much time does website design take?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "A typical website takes about 4 to 8 weeks depending on design complexity, content readiness, and revision cycles. More advanced custom websites may require additional time.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How much does a custom website design cost?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The total cost depends on page count, design complexity, functionalities, and integrations. After the first consultation, we share a clear, transparent pricing estimate.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Will I be able to update the website myself once it's live?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Our websites use user-friendly CMS platforms like WordPress, allowing you to update content easily. We also provide training to help you manage everything confidently.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you provide ongoing assistance after the website is launched?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we offer complete post-launch care including updates, backups, security checks, troubleshooting, and continuous performance optimization.",
+        },
+      },
+    ],
+  };
+  const sd3 = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Bigwig Media Digital",
+    url: "https://www.bigwigmediadigital.com/services/website-development-company-in-delhi",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "71",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+
   return (
     <div className="bg-[var(--color1)]">
       <Nav />
@@ -372,6 +478,19 @@ function Website({ value }: { value: number }) {
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Bigwig Media Digital" />
       <meta property="og:locale" content="en_IN" />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sd2) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sd3) }}
+      />
 
       {/* Page Section 1 */}
       <section
@@ -1328,8 +1447,9 @@ function Website({ value }: { value: number }) {
                     key={i}
                     type="button"
                     onClick={() => goTo(i)}
-                    className={`h-2 w-2 rounded-full ${i === page ? "bg-gray-900" : "bg-gray-300"
-                      }`}
+                    className={`h-2 w-2 rounded-full ${
+                      i === page ? "bg-gray-900" : "bg-gray-300"
+                    }`}
                     aria-label={`Go to reviews page ${i + 1}`}
                   />
                 ))}
@@ -1639,10 +1759,11 @@ function Website({ value }: { value: number }) {
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
+                  openIndex === index
                     ? "max-h-96 mt-4 opacity-100"
                     : "max-h-0 opacity-0"
-                  }`}
+                }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>
