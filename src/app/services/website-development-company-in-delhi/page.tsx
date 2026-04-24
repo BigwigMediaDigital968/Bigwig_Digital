@@ -20,128 +20,129 @@ const sections = [
     title: "Responsive Web Design",
     content: (
       <>
-        As a leading web design company in South Delhi, we specialize in
-        creating fully responsive websites that look great and work smoothly on
-        every device. Your audience enjoys a seamless browsing experience across
-        mobile, tablet, and desktop.
+        As a leading web design company serving South Delhi, West Delhi, and
+        Delhi NCR, we build fully responsive websites that look sharp and load
+        fast on every device, mobile, tablet, or desktop. With 65%+ of Delhi's
+        internet users browsing on mobile, a responsive website is
+        non-negotiable.
       </>
     ),
   },
   {
     title: "Static Website Design",
     content:
-      "We design clean, modern, and user-friendly static websites that highlight your brand’s strengths. Our designs ensure clarity, fast loading, and smooth navigation - ideal for businesses wanting a professional online presence.",
+      "We design clean, fast-loading static websites ideal for businesses that need a professional online presence without complex back-end systems. Perfect for local service providers, consultants, and professionals across Delhi.",
   },
   {
     title: "Dynamic Website Design",
     content:
-      "Our expert designers create interactive, dynamic websites with custom features, smart integrations, and brand-focused elements. We make your site more engaging, functional, and responsive to user behavior.",
+      "Our dynamic websites are built for businesses that need real-time content, user interaction, and custom functionality, ideal for Delhi-based portals, directories, booking platforms, and membership sites.",
   },
   {
     title: "Startup Website Design",
     content:
-      "We build creative, modern, and scalable websites tailored to the unique needs of startups. Our designs help communicate your brand story clearly while showcasing your services and products effectively.",
+      "We've partnered with numerous Delhi NCR startups from the ground up, helping them launch fast, look professional, and compete with established players from day one. Your startup story deserves a website that tells it powerfully.",
   },
   {
-    title: "Website Re-Design",
+    title: "Website Redesign",
     content:
-      "We transform outdated websites into visually appealing, high-performing platforms. Our redesign services help refresh your brand identity while improving user experience, speed, and overall performance.",
+      " Is your current website losing you customers? We transform outdated Delhi business websites into modern, high-performing platforms. Our redesign projects typically result in improved load times, lower bounce rates, and higher lead conversions.",
   },
   {
     title: "Corporate Website Design",
     content:
-      "We design powerful, enterprise-level corporate websites with intuitive layouts and strong branding. Our designs support complex operations, large data structures, and high traffic - ideal for growing companies.",
+      "We design enterprise-level corporate websites for large Delhi-based organisations, built to handle high traffic, complex operations, multi-department content, and global audiences while maintaining a strong brand identity.",
   },
   {
     title: "Landing Page Design",
     content:
-      "Our high-converting landing pages are crafted with compelling messaging, strong branding elements, and clear calls to action. Designed specifically to boost conversions and capture qualified leads.",
+      "High-converting landing pages crafted with compelling copy, strong visual hierarchy, and clear CTAs, designed specifically to support your Google Ads, Meta Ads, and performance marketing campaigns targeting Delhi NCR audiences.",
   },
   {
     title: "SEO-Friendly Website Design",
     content:
-      "We build SEO-friendly websites optimized for search visibility. From clean coding to fast loading and structured content, our websites help you rank higher and gain more organic traffic.",
+      "Every website we build is optimised for search engines from the ground up, clean code structure, fast Core Web Vitals, proper heading hierarchy, schema markup, and mobile-first indexing. We build websites that rank in Delhi's competitive search landscape.",
   },
   {
     title: "PSD to HTML Design",
     content:
-      "We convert your Photoshop designs into fast, responsive, and pixel-perfect HTML pages. Our coding ensures structure, speed, and accuracy while retaining the original design aesthetics.",
+      "We accurately convert Photoshop and Figma designs into pixel-perfect, responsive HTML, preserving every design detail while ensuring fast load times and cross-browser compatibility.",
   },
 ];
 
 const customSections = [
   {
-    title: "100% Mobile Responsive Website",
+    title: "100% Mobile Responsive",
     content:
-      "With mobile devices accounting for nearly 65.49% of global website traffic, having a fully mobile-responsive website is essential. We ensure your website delivers a seamless experience across all screen sizes, helping you reach a wider audience and keep users engaged on the go.",
+      "With mobile traffic accounting for nearly 65.49% of all web visits in India, your Delhi audience is browsing on their phones. We ensure every website delivers a flawless experience across all screen sizes.",
   },
   {
-    title: "A Customized Website",
+    title: "A Customised Website",
     content:
-      "According to a survey by Magnetize Studio, 94% of first impressions are influenced by website design. A customized website helps your brand stand out, communicate clearly, and create an immediate positive impact on your audience.",
+      "94% of first impressions are design-driven. A custom website ensures your Delhi business stands out immediately, communicating your brand values clearly and creating a powerful first impression that template sites simply can't achieve.",
   },
   {
     title: "A User-Friendly Website",
     content:
-      "A study by Harris Interactive reveals that 89% of users switch to a competitor after encountering poor usability. A user-friendly design builds trust, keeps visitors engaged, and prevents them from leaving your site.",
+      "89% of users abandon a website after a poor experience and switch to a competitor. We design with your Delhi audience in mind, intuitive navigation, fast load times, and clear journeys that keep users engaged.",
   },
   {
     title: "A Well-Designed Website",
     content:
-      "A WebFX study shows that 75% of users judge a company's credibility based on its website design. A well-designed website helps establish authority, build trust, and make a powerful first impression.",
+      "75% of users judge a company's credibility by its website design. If your website looks outdated, Delhi customers will trust your competitors instead. We build websites that instantly communicate professionalism and authority.",
   },
   {
     title: "Your Website Reflects Your Brand",
     content:
-      "A website is more than a digital presence - it represents your brand identity, values, and offerings. If you're searching for the best “website designer near me,” we create custom-designed websites that bring your vision to life.",
+      "Your website is your most powerful marketing asset, active 24/7, serving customers across Delhi, India, and the world. We build websites that are true extensions of your brand identity, not just digital brochures.",
   },
   {
     title: "We Shape Digital Experiences",
     content:
-      "We go beyond traditional web design - we shape connected, meaningful experiences that empower brands with extraordinary websites that truly stand out.",
+      "We go beyond design, we craft connected digital experiences that engage users, communicate value, and drive measurable business results for Delhi brands.",
   },
 ];
 
 const benefitSections = [
   {
-    title: "Customized Web Design",
+    title: "Customised Web Design",
     content:
-      "Every business has unique goals, so we create custom website designs tailored to your needs. Our intuitive interfaces and feature-rich layouts help you connect seamlessly with customers while representing your brand identity.",
+      "Every website we build is designed exclusively for your business, no templates, no shortcuts. We invest time understanding your Delhi audience, competitors, and goals before writing a single line of code.",
   },
   {
     title: "Technical Expertise",
     content:
-      "Our experienced professionals provide complete technical support, ensuring smooth performance, quick issue resolution, and up-to-date industry best practices.",
+      "Our team of developers is proficient in React, Next.js, WordPress, Shopify, Node.js, and more, giving you access to enterprise-grade technical capability at agency pricing suited for Delhi businesses.",
   },
   {
     title: "Scalability",
     content:
-      "We build websites with a future-ready approach, allowing your online presence to grow and evolve as your business expands.",
+      "We build websites ready to grow with your business, whether you're a startup in Noida today or a multi-city enterprise tomorrow. Our architecture supports seamless expansion without expensive rebuilds.",
   },
   {
     title: "Consistency & Branding",
     content:
-      "We maintain a consistent brand identity across your website by using your color scheme, typography, logos, taglines, and other brand elements.",
+      "From colour palette to typography to tone of voice, we maintain strict brand consistency across every page, ensuring your Delhi audience always experiences a cohesive, trustworthy brand.",
   },
   {
     title: "Cross-Browser Compatibility",
     content:
-      "We ensure your website works smoothly across all major browsers, offering users a consistent and reliable browsing experience.",
+      "Your website works flawlessly on Chrome, Safari, Firefox, and Edge, across all devices your Delhi customers use, without visual inconsistencies or broken functionality.",
   },
   {
-    title: "UI & UX",
+    title: "UI & UX Design",
     content:
-      "We design visually appealing interfaces paired with user-friendly navigation to ensure an engaging and intuitive browsing experience.",
+      "We design with the user's journey at the centre, clear CTAs, logical page flow, and intuitive interfaces that guide Delhi visitors from landing to conversion seamlessly.",
   },
   {
     title: "Faster Load Times",
     content:
-      "Our websites are optimized for high performance, delivering fast load times, reduced bounce rates, and improved visitor satisfaction.",
+      "We optimise every website for Core Web Vitals, faster load times mean lower bounce rates and better Google rankings for competitive Delhi keywords.",
   },
   {
     title: "Ongoing Support & Maintenance",
     content:
-      "We offer round-the-clock support and maintenance to ensure your website remains secure, fully updated, and free of technical issues.",
+      "We don't disappear after launch. Our dedicated support team provides round-the-clock maintenance, security updates, performance monitoring, and troubleshooting, so your Delhi business website never goes down.",
   },
 ];
 
@@ -502,32 +503,22 @@ function Website({ value }: { value: number }) {
         <div className="relative z-10 w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6 md:pr-8">
-            <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight tracking-tight">
-              Best Website Development Company in Delhi
-              <span className="block mt-4 text-base md:text-xl lg:text-2xl font-normal text-gray-300 leading-relaxed max-w-2xl">
-                Take your digital experience to the next level with our fresh,
-                innovative solutions
-              </span>
+            <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight">
+              Best Website Development Company in Delhi - Take your digital
+              experience to the next level with our fresh, innovative solutions
             </h1>
 
             <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify">
-              We are a trusted Website Development Company in Delhi, helping
-              businesses build a strong online presence with modern and
-              effective website solutions. As a leading website design company
-              in Delhi NCR, we create websites that are tailored to your
-              business goals and audience needs.
-            </p>
-            <p className="text-base md:text-lg max-w-2xl text-white/90 text-justify -mt-4">
-              Our team at{" "}
-              <Link href="/" className="text-[var(--color5)]  hover:opacity-90">
-                {" "}
-                Bigwig Media Digital{" "}
-              </Link>
-              focuses on creating user-friendly, fast, and SEO-ready websites
-              that not only look good but also perform well. Whether you are
-              searching for a reliable partner nearby or planning to grow your
-              business online, we help you attract the right audience and
-              generate better results.
+              We are Bigwig Media Digital, a results-driven Website Development
+              Company in Delhi with 5+ years of hands-on experience building
+              websites for businesses across Delhi NCR, from Connaught Place
+              startups to Gurugram enterprises and Noida e-commerce brands. We
+              don't just design websites. We engineer digital growth engines
+              that attract the right audience, convert visitors into customers,
+              and reflect the true identity of your brand. Whether you're a
+              first-time business owner in Dwarka looking to go online, or an
+              established company in South Delhi ready for a full redesign, our
+              team delivers websites tailored precisely to your goals.
             </p>
 
             <ButtonFill
@@ -556,19 +547,25 @@ function Website({ value }: { value: number }) {
                 Best Website Development Company in Delhi NCR
               </h2>
               <p className="text-justify">
-                As an experienced{" "}
-                <strong>Website Development Company in Delhi NCR</strong>, we
-                understand how to build websites that are both visually
-                appealing and performance-driven. Our approach is simple -
-                understand your business, plan strategically, and deliver a
-                website that converts visitors into customers.
+                As a trusted{" "}
+                <strong>Website Development Company in Delhi NCR</strong>, we've
+                helped 100+ local businesses, from real estate firms in Greater
+                Noida to healthcare clinics in Rohini, establish a powerful,
+                credible online presence. Our process is straightforward: we
+                understand your business goals, research your Delhi-area
+                competition, plan a focused digital strategy, and deliver a
+                website that converts.
               </p>
 
               <p className="text-justify">
-                Many businesses today search for a dependable{" "}
-                <strong>website development company near me</strong>, and we
-                ensure that our solutions meet both local and global business
-                needs with the right balance of design and functionality.
+                Delhi's market is competitive. Whether you're targeting clients
+                in Saket, Vasant Kunj, Lajpat Nagar, or beyond, your website
+                needs to stand out in both design and search performance. That's
+                where our expertise makes the difference. Businesses searching
+                for a reliable{" "}
+                <strong>website development company near me</strong> in Delhi
+                trust us because we combine global design standards with a deep
+                understanding of the local business landscape.
               </p>
             </div>
 
@@ -594,14 +591,14 @@ function Website({ value }: { value: number }) {
           </h2>
 
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-4">
-            Top Services By The Best Web Designing Company In Delhi
+            Top Services by the Best Website Development Company in Delhi
           </h3>
 
           <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            We provide complete website design and development services for
-            businesses of all sizes. From creating new websites to improving
-            existing ones, our team ensures your online presence is strong,
-            professional, and result-oriented.
+            We offer end-to-end website design and development services for
+            businesses of all sizes, from solo entrepreneurs in Karol Bagh to
+            corporate groups headquartered in Aerocity. Every website we build
+            is custom-coded, performance-optimised, and SEO-ready from day one.
           </p>
         </div>
 
@@ -737,15 +734,17 @@ function Website({ value }: { value: number }) {
           </h2>
 
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-4">
-            Why Do You Need Custom Web Designs for Your Business?
+            Why Do Delhi Businesses Need a Custom Website?
           </h3>
 
           <p className="text-gray-200 text-base md:text-lg leading-relaxed mb-4">
-            Custom-designed websites help you connect with your audience and
-            create a strong first impression. A well-crafted, feature-rich
-            website boosts engagement and improves ROI. As one of the best
-            website development companies in Delhi NCR, we know what it takes to
-            build a truly professional and impactful online presence.
+            A generic, template-based website won't cut it in Delhi's
+            fast-moving market. Custom-designed websites give your business a
+            distinct identity, build trust with local customers, and are built
+            to perform, not just look good. As one of the most experienced
+            website development companies in Delhi NCR, we know that every
+            business has a unique story, audience, and goal. Here's why custom
+            design matters:
           </p>
         </div>
 
@@ -881,26 +880,158 @@ function Website({ value }: { value: number }) {
         </div>
       </section>
 
+      {/* Technology Section */}
+      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
+        {/* Heading */}
+        <div className="mb-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
+            Technologies We Work On
+          </h2>
+        </div>
+
+        {/* Technologies Grid */}
+        <div
+          className="
+      grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
+      gap-8 relative z-10
+    "
+        >
+          {[
+            {
+              name: "HTML",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+            },
+            {
+              name: "CSS",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+            },
+            {
+              name: "JavaScript",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            },
+            {
+              name: "React",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+            },
+            {
+              name: "Next.js",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+            },
+            {
+              name: "Tailwind CSS",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+            },
+            {
+              name: "TypeScript",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+            },
+            {
+              name: "Node.js",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            },
+            {
+              name: "GSAP",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/gsap_1_lkfznz.png",
+            },
+            {
+              name: "AOS",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/github_octocat_z05vbl.png",
+            },
+            {
+              name: "Framer Motion",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007711/framer-motion_ohdae2.svg",
+            },
+            {
+              name: "Vite",
+              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007852/logo_eyrkoc.svg",
+            },
+            {
+              name: "MongoDB",
+              img: "https://www.svgrepo.com/show/331488/mongodb.svg",
+            },
+            {
+              name: "WordPress",
+              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+            },
+            {
+              name: "Shopify",
+              img: "https://cdn.worldvectorlogo.com/logos/shopify.svg",
+            },
+          ].map((tech, index) => (
+            <div
+              key={index}
+              className="
+          group relative p-6 rounded-2xl 
+          backdrop-blur-xl bg-white/5 
+          border border-white/10 
+          shadow-[0_0_25px_rgba(0,255,255,0.1)]
+          hover:border-[var(--color5)] 
+          hover:shadow-[0_0_30px_var(--color5)]
+          transition-all duration-300 
+          flex flex-col items-center
+        "
+            >
+              {/* Glow Line Scan */}
+              <div className="absolute inset-0 pointer-events-none opacity-40">
+                {[...Array(3)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="
+                absolute left-0 w-full h-[2px]
+                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
+               
+              "
+                  ></div>
+                ))}
+              </div>
+
+              {/* Logo */}
+              <img
+                src={tech.img}
+                alt={tech.name}
+                className="w-12 h-12 mb-3 relative z-10 object-contain"
+              />
+
+              {/* Name */}
+              <p className="text-gray-200 text-sm font-medium relative z-10 tracking-wide">
+                {tech.name}
+              </p>
+
+              {/* Border Glow */}
+              <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Scan Animation */}
+        <style>{`
+    @keyframes techScan {
+      0% { transform: translateX(-100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+    .animate-techScan {
+      animation: techScan 5s linear infinite;
+    }
+  `}</style>
+      </section>
+
       {/* Hiring A Web Design Company Section */}
       <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
         {/* ================= HEADINGS ================= */}
         <div className="mb-12">
           <h2 className="text-xl font-semibold text-[var(--color5)] mb-4">
-            Website Design Company Near Me
+            Website Development Company Near Me
           </h2>
 
           <h3 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-4">
-            Benefits of Hiring A Website Development Company in Delhi
+            Benefits of Hiring Bigwig Media Digital for Your Business Website
           </h3>
 
           <p className="text-gray-200 text-base md:text-lg leading-relaxed">
-            As one of the leading website designing companies in Delhi NCR, we
-            create visually appealing, feature-rich websites with smooth and
-            user-friendly navigation. Our expertise spans static, dynamic,
-            e-commerce, enterprise, WordPress, and startup websites. Known for
-            being affordable and reliable, we deliver solutions that fit
-            businesses of all sizes. Here are the key benefits of choosing our
-            web design services:
+            Delhi businesses choose us because we understand the local market,
+            deliver on time, and build websites that generate real results.
+            Here's what sets us apart:
           </p>
         </div>
 
@@ -1457,142 +1588,6 @@ function Website({ value }: { value: number }) {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Technology Section */}
-      <section className="py-12 w-11/12 md:w-5/6 mx-auto relative overflow-hidden">
-        {/* Heading */}
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
-            Technologies We Work On
-          </h2>
-        </div>
-
-        {/* Technologies Grid */}
-        <div
-          className="
-      grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
-      gap-8 relative z-10
-    "
-        >
-          {[
-            {
-              name: "HTML",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-            },
-            {
-              name: "CSS",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-            },
-            {
-              name: "JavaScript",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-            },
-            {
-              name: "React",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-            },
-            {
-              name: "Next.js",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-            },
-            {
-              name: "Tailwind CSS",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-            },
-            {
-              name: "TypeScript",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-            },
-            {
-              name: "Node.js",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-            },
-            {
-              name: "GSAP",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/gsap_1_lkfznz.png",
-            },
-            {
-              name: "AOS",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007605/github_octocat_z05vbl.png",
-            },
-            {
-              name: "Framer Motion",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007711/framer-motion_ohdae2.svg",
-            },
-            {
-              name: "Vite",
-              img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1765007852/logo_eyrkoc.svg",
-            },
-            {
-              name: "MongoDB",
-              img: "https://www.svgrepo.com/show/331488/mongodb.svg",
-            },
-            {
-              name: "WordPress",
-              img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
-            },
-            {
-              name: "Shopify",
-              img: "https://cdn.worldvectorlogo.com/logos/shopify.svg",
-            },
-          ].map((tech, index) => (
-            <div
-              key={index}
-              className="
-          group relative p-6 rounded-2xl 
-          backdrop-blur-xl bg-white/5 
-          border border-white/10 
-          shadow-[0_0_25px_rgba(0,255,255,0.1)]
-          hover:border-[var(--color5)] 
-          hover:shadow-[0_0_30px_var(--color5)]
-          transition-all duration-300 
-          flex flex-col items-center
-        "
-            >
-              {/* Glow Line Scan */}
-              <div className="absolute inset-0 pointer-events-none opacity-40">
-                {[...Array(3)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="
-                absolute left-0 w-full h-[2px]
-                bg-gradient-to-r from-transparent via-[var(--color5)] to-transparent
-               
-              "
-                  ></div>
-                ))}
-              </div>
-
-              {/* Logo */}
-              <img
-                src={tech.img}
-                alt={tech.name}
-                className="w-12 h-12 mb-3 relative z-10 object-contain"
-              />
-
-              {/* Name */}
-              <p className="text-gray-200 text-sm font-medium relative z-10 tracking-wide">
-                {tech.name}
-              </p>
-
-              {/* Border Glow */}
-              <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[var(--color5)] transition-all"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Scan Animation */}
-        <style>{`
-    @keyframes techScan {
-      0% { transform: translateX(-100%); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    .animate-techScan {
-      animation: techScan 5s linear infinite;
-    }
-  `}</style>
       </section>
 
       {/* <OurProcess />
