@@ -68,7 +68,7 @@ const services = [
   },
   {
     title: "Website Designing & Development",
-    slug: "/services/website-design-development",
+    slug: "/services/website-development-company-in-delhi",
     desc: (
       <>
         As a trusted{" "}

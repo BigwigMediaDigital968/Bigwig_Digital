@@ -49,7 +49,7 @@ type Service = {
 const services: Service[] = [
   {
     title: "Website Development",
-    slug: "/services/website-design-development",
+    slug: "/services/website-development-company-in-delhi",
     icon: Monitor,
   },
   {

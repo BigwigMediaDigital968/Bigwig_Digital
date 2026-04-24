@@ -6,39 +6,39 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   images: {
-  remotePatterns: [
-    {
-      protocol: "http",
-      hostname: "localhost",
-      port: "8000",
-      pathname: "/uploads/**",
-    },
-    { protocol: "https", hostname: "winprofx.com" },
-    { protocol: "https", hostname: "riverfront.vercel.app" },
-    { protocol: "https", hostname: "www.homesandlandgoa.com" },
-    { protocol: "https", hostname: "www.svgrepo.com" },
-    { protocol: "https", hostname: "res.cloudinary.com" },
-    { protocol: "https", hostname: "pngimg.com" },
-    { protocol: "https", hostname: "static.vecteezy.com" },
-    { protocol: "https", hostname: "freelogopng.com" },
-    { protocol: "https", hostname: "brandlogos.net" },
-    { protocol: "https", hostname: "images.seeklogo.com" },
-    { protocol: "https", hostname: "www.cablewirefair.com" },
-    { protocol: "https", hostname: "static.cdnlogo.com" },
-    { protocol: "https", hostname: "i.pinimg.com" },
-    { protocol: "https", hostname: "logoeps.com" },
-    { protocol: "https", hostname: "www.freelogovectors.net" },
-    { protocol: "https", hostname: "static.wikia.nocookie.net" },
-    { protocol: "https", hostname: "www.opju.ac.in" },
-    { protocol: "https", hostname: "bottindia.com" },
-    { protocol: "https", hostname: "www.integratedlognet.com" },
-    { protocol: "https", hostname: "www.stellarbinge.com" },
-    { protocol: "https", hostname: "www.khalsapropertydealers.com" },
-    { protocol: "https", hostname: "media.istockphoto.com" },
-    { protocol: "https", hostname: "cdn.jsdelivr.net" },
-    { protocol: "https", hostname: "cdn.worldvectorlogo.com" },
-  ],
-},
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8000",
+        pathname: "/uploads/**",
+      },
+      { protocol: "https", hostname: "winprofx.com" },
+      { protocol: "https", hostname: "riverfront.vercel.app" },
+      { protocol: "https", hostname: "www.homesandlandgoa.com" },
+      { protocol: "https", hostname: "www.svgrepo.com" },
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "pngimg.com" },
+      { protocol: "https", hostname: "static.vecteezy.com" },
+      { protocol: "https", hostname: "freelogopng.com" },
+      { protocol: "https", hostname: "brandlogos.net" },
+      { protocol: "https", hostname: "images.seeklogo.com" },
+      { protocol: "https", hostname: "www.cablewirefair.com" },
+      { protocol: "https", hostname: "static.cdnlogo.com" },
+      { protocol: "https", hostname: "i.pinimg.com" },
+      { protocol: "https", hostname: "logoeps.com" },
+      { protocol: "https", hostname: "www.freelogovectors.net" },
+      { protocol: "https", hostname: "static.wikia.nocookie.net" },
+      { protocol: "https", hostname: "www.opju.ac.in" },
+      { protocol: "https", hostname: "bottindia.com" },
+      { protocol: "https", hostname: "www.integratedlognet.com" },
+      { protocol: "https", hostname: "www.stellarbinge.com" },
+      { protocol: "https", hostname: "www.khalsapropertydealers.com" },
+      { protocol: "https", hostname: "media.istockphoto.com" },
+      { protocol: "https", hostname: "cdn.jsdelivr.net" },
+      { protocol: "https", hostname: "cdn.worldvectorlogo.com" },
+    ],
+  },
 
   async redirects() {
     return [
@@ -74,7 +74,7 @@ const nextConfig: NextConfig = {
       {
         source:
           "/blogs/website-designing-development-company-in-delhi-bigwig-media-digital",
-        destination: "/services/website-design-development",
+        destination: "/services/website-development-company-in-delhi",
         permanent: true,
       },
       {
@@ -117,7 +117,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/blogs/landing-page-optimization-agency-in-delhi",
-        destination: "/services/website-design-development",
+        destination: "/services/website-development-company-in-delhi",
         permanent: true,
       },
       {
@@ -126,11 +126,11 @@ const nextConfig: NextConfig = {
         destination: "/services/graphic-designing",
         permanent: true,
       },
-      {
-        source: "/services/website-design-development",
-        destination: "/services/website-development-company-in-delhi",
-        permanent: true, // 301
-      },
+      // {
+      //   source: "/services/website-design-development",
+      //   destination: "/services/website-development-company-in-delhi",
+      //   permanent: true, // 301
+      // },
     ];
   },
 };

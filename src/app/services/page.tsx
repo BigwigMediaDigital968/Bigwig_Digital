@@ -27,7 +27,7 @@ const services = [
     heading: "Your digital store front, built to impress!",
     content:
       "We craft stunning, responsive websites that turn visitors into customers.",
-    path: "/services/website-design-development",
+    path: "/services/website-development-company-in-delhi",
     image: website,
   },
   {

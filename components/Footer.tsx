@@ -173,7 +173,7 @@ function Footer() {
                   },
                   {
                     name: "Website Designing & Development",
-                    path: "/services/website-design-development",
+                    path: "/services/website-development-company-in-delhi",
                   },
                   {
                     name: "Email Marketing",
