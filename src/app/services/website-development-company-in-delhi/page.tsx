@@ -148,52 +148,46 @@ const benefitSections = [
 
 const faqs = [
   {
-    q: "Why should you hire a Web Design Company in Delhi?",
-    a: "Partnering with a professional web design company helps increase website traffic, enhance user engagement, and support business growth. A high-quality website is more visually appealing, easier to navigate, and significantly improves user experience. If you're searching for the best website designers near me, our team delivers custom-designed solutions tailored to your brand.",
+    q: "Why should you hire a web design company in Delhi?",
+    a: "Hiring a professional web design company in Delhi gives your business a competitive edge in one of India's most crowded digital markets. A well-designed website increases traffic, builds credibility with local customers, improves user engagement, and generates more leads. If you're searching for the best website designers near me, our team delivers custom-designed solutions tailored specifically to your brand and your Delhi audience.",
   },
   {
     q: "How do I hire a web design company?",
-    a: `To hire a reliable web design company, follow these steps:
-        • Set a clear project budget.
-        • Create a detailed job description.
-        • Review portfolios and case studies.
-        • Prepare interview questions to assess skills.
-        • Finalize the contract and define the scope properly.`,
+    a: "To hire the right web design company, follow these steps: set a clear project budget, define your goals and requirements, review the agency's portfolio and case studies, ask about their process and timelines, and finalise the contract with a clearly defined scope of work. We recommend scheduling a free consultation with us, we'll walk you through exactly what your website needs and what it will cost.",
   },
   {
     q: "How much time does website design take?",
-    a: "A typical website takes about 4 to 8 weeks depending on design complexity, content readiness, and revision cycles. More advanced custom websites may require additional time.",
+    a: "A standard business website typically takes 4 to 8 weeks from briefing to launch, depending on design complexity, number of pages, content readiness, and revision rounds. E-commerce websites or custom web applications may take longer. We always provide a clear timeline before starting so you know exactly what to expect.",
   },
   {
     q: "How much does a custom website design cost?",
-    a: "The total cost depends on page count, design complexity, functionalities, and integrations. After the first consultation, we share a clear, transparent pricing estimate.",
+    a: "Website design costs vary based on the number of pages, design complexity, required features, and integrations. After an initial consultation, we provide a transparent, detailed pricing proposal with no hidden charges. We offer packages suitable for Delhi startups, growing SMEs, and large corporates alike.",
   },
   {
     q: "How can I get started with your website design services?",
-    a: "Simply reach out via our website, phone, or email. We’ll schedule a discussion to understand your goals and begin crafting the perfect strategy for your website.",
+    a: "Simply reach out via our website contact form, email us at support@bigwigmediadigital.com, or call us at +91 96858 92813. We'll schedule a free strategy session to understand your business goals and craft a website plan tailored to your needs.",
   },
   {
     q: "What important features do you consider when designing a web page?",
-    a: "We strategically incorporate branding elements, colors, typography, infographics, navigation structure, white spacing, and layout design to enhance credibility and improve conversions.",
+    a: "We strategically incorporate your branding elements, colours, typography, logos, and taglines, alongside well-planned navigation structure, visual hierarchy, whitespace, infographics, and clear calls to action. Every design decision is made to enhance credibility, improve user experience, and drive conversions for your Delhi audience.",
   },
   {
-    q: "What is the best website design company?",
-    a: "The best website design company provides custom solutions at fair prices and blends creativity with technical expertise. Their work should reflect the brand identity clearly and professionally.",
+    q: "What is the best website design company in Delhi?",
+    a: "The best website design company delivers custom solutions at fair, transparent prices, blending creative design with technical expertise and a genuine understanding of your local market. At Bigwig Media Digital, our 8+ years of experience, 100+ Delhi-area clients, and 5.0 Google rating reflect our commitment to delivering websites that truly work for businesses like yours.",
   },
   {
-    q: "Do you provide ongoing assistance and protection after the website is launched?",
-    a: "Yes, we offer complete post-launch care including updates, backups, security checks, troubleshooting, and continuous performance optimization.",
+    q: "Do you provide ongoing support after the website is launched?",
+    a: "Yes. We offer comprehensive post-launch support including regular updates, automated backups, security monitoring, bug fixes, and continuous performance optimisation, so your website stays fast, secure, and up to date at all times.",
   },
   {
-    q: "Will I be able to update the website myself once it’s live?",
-    a: "Absolutely. Our websites use user-friendly CMS platforms like WordPress, allowing you to update content easily. We also provide training to help you manage everything confidently.",
+    q: "Will I be able to update the website myself once it's live?",
+    a: "Absolutely. We build most websites on user-friendly CMS platforms like WordPress, allowing you to update text, images, blogs, and pages easily without any technical knowledge. We also provide hands-on training after launch so your team feels fully confident managing the site independently.",
   },
   {
-    q: "Why is your agency the top choice for website design in Delhi?",
-    a: "We focus on innovation, strategy, and customer satisfaction. Our designers follow the latest trends and build websites optimized for usability, speed, and conversions—aligned with your business goals.",
+    q: "Why is Bigwig Media Digital the top choice for website design in Delhi?",
+    a: "We combine creative design, technical depth, local market knowledge, and genuine client focus, a combination that's rare in Delhi's agency landscape. Our designers stay current with the latest trends. Our developers build for speed and SEO. And our project managers ensure timely, on-budget delivery every time. Our 71 five-star Google reviews from Delhi-area clients speak for themselves.",
   },
 ];
-
 type Review = {
   id: number;
   name: string;
@@ -1307,8 +1301,9 @@ function Website({ value }: { value: number }) {
         {/* =================== HEADINGS =================== */}
         <div className="mb-12 text-center md:text-left">
           <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color5)] tracking-wide">
-            Why Choose Bigwig Media Digital Web Designing Experts For Your
-            Business?
+            Why Choose Bigwig Media Digital as Your Website Development
+Partner in Delhi?
+
           </h2>
         </div>
 
@@ -1348,43 +1343,28 @@ function Website({ value }: { value: number }) {
             {/* LEFT SIDE — FULL CONTENT BLOCK */}
             <div className="space-y-4 text-gray-200 leading-relaxed">
               <p>
-                A website is often the first touchpoint between your brand and
-                your online audience. It’s where first impressions are formed
-                and where digital credibility begins. A well-crafted website
-                strengthens your marketing presence and builds trust, influence,
-                and recognition in today’s competitive online space.
+                Your website is the first handshake between your brand and your Delhi audience. It's where
+credibility is established, trust is built, and conversions begin. At Bigwig Media Digital, we
+blend 8+ years of design expertise with a deep understanding of Delhi's competitive digital
+landscape to deliver websites that don't just impress, they perform.
+
               </p>
 
               <p>
-                As a trusted website development company in Delhi,{" "}
-                <Link
-                  href="/"
-                  className="text-[var(--color5)]  hover:opacity-90"
-                >
-                  Bigwig Media Digital
-                </Link>{" "}
-                takes your vision seriously. Our team blends creativity with
-                advanced technology to deliver modern, high-performing websites
-                that enhance your digital identity. With years of industry
-                expertise, we create professional designs that exceed
-                expectations.
+                We've worked with real estate developers in Greater Noida, healthcare providers in Rohini,
+e-commerce brands in Lajpat Nagar, educational institutions in Dwarka, and financial
+services firms in Connaught Place. This breadth of local experience means we understand
+the unique challenges Delhi businesses face, and we know how to solve them.
               </p>
 
               <p>
-                Our passion for design and attention to detail have made us a
-                preferred web design agency in Delhi. We build visually rich,
-                smooth-functioning websites that remove concerns about slow
-                loading, cluttered layouts, or poor navigation. Every element is
-                crafted to engage users and reflect your brand’s personality.
+                Our passion for design and our obsession with performance have made us one of the most
+trusted web design agencies in Delhi. We remove the pain points, slow websites, cluttered
+layouts, poor mobile experience, weak SEO, and replace them with websites that your
+customers love and Google rewards.
+
               </p>
 
-              <p>
-                As a leading website Development company in Delhi, we support
-                businesses across industries-eCommerce, manufacturing, services,
-                education, and more. If you want to refresh your existing
-                website, our redesign experts can transform it into a modern,
-                high-impact digital platform.
-              </p>
             </div>
 
             {/* RIGHT SIDE — FEATURE LIST PANEL */}
@@ -1421,13 +1401,13 @@ function Website({ value }: { value: number }) {
 
               <ul className="space-y-4 relative z-10">
                 {[
-                  "A creative and personalized design strategy",
-                  "Modern, adaptive, and innovative layouts",
-                  "Meaningful and value-driven content",
-                  "An easy-to-use CMS for smooth management",
-                  "Scalable features that grow with your business",
-                  "Complete testing for flawless performance",
-                ].map((item, idx) => (
+  "A creative and personalised design strategy built around your Delhi audience",
+  "Modern, adaptive layouts optimised for mobile-first browsing",
+  "SEO-ready architecture from the very first page",
+  "Easy-to-use CMS so your team can manage content independently",
+  "Scalable features that grow as your business grows across Delhi NCR",
+  "Thorough QA testing across devices, browsers, and screen sizes before every launch"
+].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <span
                       className="
