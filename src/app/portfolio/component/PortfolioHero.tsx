@@ -39,14 +39,14 @@ const PortifolioHero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 text-white">
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 text-white">
               5,000+ Digital Products Built for the <br />
-              <span className="italic font-light">
+              <span className="italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#ccdaff] to-[#a7ebf2]">
                 World's Leading Enterprises.
               </span>
             </h1>
 
-            <p className="text-sm md:text-lg text-gray-300 max-w-3xl mx-auto mb-10 font-light tracking-wide">
+            <p className="text-sm md:text-lg font-medium text-gray-300 max-w-3xl mx-auto mb-10">
               Explore how BigWig Media Digital Engineers Digital Solutions that
               move Markets across 35+ Industries.
             </p>

@@ -402,7 +402,7 @@ export default function PortfolioGrid() {
               Success Stories
             </span>
           </div>
-          <h2 className="text-3xl md:text-6xl mb-8">
+          <h2 className="text-3xl md:text-5xl mb-8 font-bold">
             Our{" "}
             <span className="text-transparent bg-clip-text pe-2 bg-gradient-to-r from-white to-slate-500">
               Portfolio
