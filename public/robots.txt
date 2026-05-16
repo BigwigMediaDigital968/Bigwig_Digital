@@ -1,5 +1,6 @@
 User-agent: * 
 Disallow: /admin
 Disallow: /assets
+Disallow: /portfolio
 
 Sitemap: https://www.bigwigmediadigital.com/sitemap.xml
