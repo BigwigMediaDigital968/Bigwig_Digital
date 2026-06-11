@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 
 interface ContactForm {
   name: string;
@@ -33,7 +31,7 @@ const ContactUs: React.FC = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -74,7 +72,7 @@ const ContactUs: React.FC = () => {
           phone: formData.phone,
           message: formData.description,
         },
-        "fy4d7_jFodorXPOJT" // Your Public Key
+        "fy4d7_jFodorXPOJT", // Your Public Key
       );
 
       setFormSubmitted(true);
@@ -136,18 +134,44 @@ const ContactUs: React.FC = () => {
               htmlFor="phone"
               className="block text-sm font-medium text-white"
             >
-              Phone Number
+              Phone Number hello
             </label>
-            <PhoneInput
-              id="phone"
-              international
-              defaultCountry="AE"
-              value={formData.phone}
-              onChange={(value) => {
-                setFormData({ ...formData, phone: value || "" });
-                setErrors((prevErrors) => ({ ...prevErrors, phone: "" }));
-              }}
-              className="bg-white react-phone-input mt-1 p-2 block w-full rounded-md border border-gray-800 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            <select
+              className="p-3 border rounded-lg bg-[var(--color1)] text-white w-32"
+              value={formData.phone.split(" ")[0] || "+91"}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  phone: `${e.target.value} ${
+                    formData.phone.split(" ")[1] || ""
+                  }`,
+                })
+              }
+            >
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+64">🇳🇿 +64</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+49">🇩🇪 +49</option>
+            </select>
+
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              className="w-full p-3 border rounded-lg bg-[var(--color1)] text-white"
+              value={formData.phone.split(" ")[1] || ""}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  phone: `${formData.phone.split(" ")[0] || "+91"} ${
+                    e.target.value
+                  }`,
+                })
+              }
+              required
             />
             {errors.phone && (
               <p className="text-red-500 text-sm">{errors.phone}</p>
