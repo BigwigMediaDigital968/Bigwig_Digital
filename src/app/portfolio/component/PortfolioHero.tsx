@@ -40,7 +40,7 @@ const PortifolioHero = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 text-white">
-              5,000+ Digital Products Built for the <br />
+              50+ Digital Products Built for the <br />
               <span className="italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-[#ccdaff] to-[#a7ebf2]">
                 World's Leading Enterprises.
               </span>
@@ -48,7 +48,7 @@ const PortifolioHero = () => {
 
             <p className="text-sm md:text-lg font-medium text-gray-300 max-w-3xl mx-auto mb-10">
               Explore how BigWig Media Digital Engineers Digital Solutions that
-              move Markets across 35+ Industries.
+              move Markets across 20+ Industries.
             </p>
 
             <Link
@@ -71,7 +71,7 @@ const PortifolioHero = () => {
               />
 
               <span className="relative z-10 flex items-center gap-2">
-                Book a Portfolio Walkthrough
+                Book a Portfolio Demo
                 <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
             </Link>
@@ -86,10 +86,10 @@ const PortifolioHero = () => {
               transition={{ delay: 0.3 }}
               className="md:col-span-2 bg-white rounded-[32px] p-8 flex flex-col justify-center text-left"
             >
-              <h3 className="text-4xl font-bold text-[#4e6cba] mb-1">2000+</h3>
+              <h3 className="text-4xl font-bold text-[#4e6cba] mb-1">50+</h3>
               <p className="text-[#011c40] text-xs font-bold leading-tight">
                 Digital Solutions <br />
-                Launched
+                Developed
               </p>
             </motion.div>
 
@@ -136,7 +136,7 @@ const PortifolioHero = () => {
                   <Users className="w-2 h-2 text-white" />
                 </div>
                 <span className="text-black text-[10px] font-bold uppercase tracking-wider">
-                  Digital Pioneers
+                  Digital Growth
                 </span>
               </div>
             </motion.div>
@@ -149,7 +149,7 @@ const PortifolioHero = () => {
               className="md:col-span-2 bg-[#023859]/80 backdrop-blur-md border border-white/10 rounded-[32px] p-6 flex flex-col justify-between"
             >
               <div className="text-left">
-                <h3 className="text-3xl font-bold text-white">35 +</h3>
+                <h3 className="text-3xl font-bold text-white">20+</h3>
                 <p className="text-gray-400 text-[10px] mt-1">
                   Industries Served
                 </p>
@@ -171,7 +171,7 @@ const PortifolioHero = () => {
             >
               <div className="text-left z-10">
                 <h4 className="text-[#011c40] font-bold text-xl mb-1">
-                  60% Faster
+                  80% Faster
                 </h4>
                 <p className="text-gray-500 text-[9px] font-medium uppercase leading-tight">
                   Time-to-Market Powered by AI

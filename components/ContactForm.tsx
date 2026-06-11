@@ -47,7 +47,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
 
   // HANDLE CHANGE
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -128,7 +128,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
     try {
       await axios.post(
         "https://bigwigdigitalbackend.onrender.com/api/lead/send-otp",
-        formData
+        formData,
       );
 
       setStep("otp");
@@ -136,7 +136,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 400) {
           setError(
-            "This email is already registered. Please use a different one."
+            "This email is already registered. Please use a different one.",
           );
         } else {
           setError("Failed to send OTP. Please try again.");
@@ -158,7 +158,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
     try {
       await axios.post(
         "https://bigwigdigitalbackend.onrender.com/api/lead/verify-otp",
-        { email: formData.email, otp }
+        { email: formData.email, otp },
       );
 
       setStep("done");
@@ -201,9 +201,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
       });
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;
-      setError(
-        error.response?.data?.message || "Something went wrong.",
-      );
+      setError(error.response?.data?.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -223,7 +221,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
             <input
               type="text"
               name="name"
-              placeholder="Full Name"
+              placeholder="Full Namdddde"
               value={formData.name}
               onChange={handleChange}
               required

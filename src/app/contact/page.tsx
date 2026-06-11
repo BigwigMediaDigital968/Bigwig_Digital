@@ -303,9 +303,7 @@ export default function ContactPage() {
                     }
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.email}
-                    </p>
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                   )}
                 </div>
               </div>
@@ -314,25 +312,52 @@ export default function ContactPage() {
               <div>
                 <label>Phone</label>
                 <div className="flex gap-3 items-center mt-2">
-                  {/* <select
-                      className="p-3 rounded-md bg-[#050504] text-white outline-none focus:ring-2 focus:ring-[var(--color5)]"
-                      value={formData.countryCode}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          countryCode: e.target.value,
-                        })
-                      }
-                    >
-                      <option value="+91">🇮🇳 +91</option>
-                      <option value="+1">🇺🇸 +1</option>
-                      <option value="+44">🇬🇧 +44</option>
-                      <option value="+61">🇦🇺 +61</option>
-                      <option value="+64">🇳🇿 +64</option>
-                      <option value="+971">🇦🇪 +971</option>
-                      <option value="+81">🇯🇵 +81</option>
-                      <option value="+49">🇩🇪 +49</option>
-                    </select> */}
+                  <select
+                    className="p-3 rounded-md bg-[#050504] text-white outline-none focus:ring-2 focus:ring-[var(--color5)]"
+                    value={formData.countryCode}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        countryCode: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="+91">🇮🇳 India (+91)</option>
+
+                    {/* Gulf Countries */}
+                    <option value="+971">🇦🇪 UAE (+971)</option>
+                    <option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+                    <option value="+974">🇶🇦 Qatar (+974)</option>
+                    <option value="+968">🇴🇲 Oman (+968)</option>
+                    <option value="+973">🇧🇭 Bahrain (+973)</option>
+                    <option value="+965">🇰🇼 Kuwait (+965)</option>
+
+                    {/* Asia */}
+                    <option value="+81">🇯🇵 Japan (+81)</option>
+                    <option value="+86">🇨🇳 China (+86)</option>
+                    <option value="+92">🇵🇰 Pakistan (+92)</option>
+                    <option value="+977">🇳🇵 Nepal (+977)</option>
+                    <option value="+880">🇧🇩 Bangladesh (+880)</option>
+                    <option value="+94">🇱🇰 Sri Lanka (+94)</option>
+
+                    {/* Europe */}
+                    <option value="+44">🇬🇧 United Kingdom (+44)</option>
+                    <option value="+49">🇩🇪 Germany (+49)</option>
+                    <option value="+33">🇫🇷 France (+33)</option>
+                    <option value="+39">🇮🇹 Italy (+39)</option>
+                    <option value="+34">🇪🇸 Spain (+34)</option>
+
+                    {/* Oceania */}
+                    <option value="+61">🇦🇺 Australia (+61)</option>
+                    <option value="+64">🇳🇿 New Zealand (+64)</option>
+
+                    {/* North America */}
+                    <option value="+1">🇺🇸 United States (+1)</option>
+                    <option value="+1">🇨🇦 Canada (+1)</option>
+
+                    {/* Yemen */}
+                    <option value="+967">🇾🇪 Yemen (+967)</option>
+                  </select>
 
                   <input
                     type="text"
@@ -345,9 +370,7 @@ export default function ContactPage() {
                     }
                   />
                   {errors.phone && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.phone}
-                    </p>
+                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                   )}
                 </div>
               </div>

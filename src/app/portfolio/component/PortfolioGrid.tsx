@@ -11,163 +11,189 @@ type Tab = (typeof TABS)[number];
 const FILTERS: Record<Tab, string[]> = {
   Industries: [
     "Show All",
-    "eCommerce & Retail",
+    "eCommerce",
     "Healthcare",
     "FinTech",
+    "Astrology",
+    "Real Estate",
     "FoodTech",
-    "Mobility",
   ],
   Services: [
     "Show All",
     "UI/UX Design",
     "Web Development",
-    "AI & ML",
-    "Mobile Apps",
+    "SEO",
+    "Social Media",
+    "Digital Marketing",
   ],
-  Country: ["Show All", "UAE", "USA", "UK", "Europe", "India"],
+  Country: ["Show All", "India", "UAE", "USA", "UK", "Europe"],
 };
 
 const portfolioItems = [
   {
     id: 1,
-    brand: "KFC",
-    industry: "FoodTech",
-    service: "Mobile Apps",
-    country: "USA",
-    title: "Digital Transformation for Global Markets",
+    brand: "Mondus Properties",
+    industry: "Real Estate",
+    service: "Web Development",
+    country: "UAE",
+    title: "Elevating Dubai's Luxury Real Estate Presence",
     description:
-      "Helping the Americana Group's KFC to digitally transform their business by launching seven innovative mobile apps across global markets.",
+      "Bigwig Media Digital partnered with Mondus Properties to create a premium digital experience that showcases luxury properties, drives qualified investor leads, and strengthens their position as a trusted real estate advisor in Dubai's competitive property market.",
     image: "/mondus-webpage.png",
     stats: [
-      { label: "Higher Conversion Rate", value: "22%" },
-      { label: "Average Rating on Stores", value: "4.5" },
-      { label: "Orders per Day via App", value: "30K+" },
+      { label: "Qualified Property Leads Generated", value: "3X" },
+      { label: "Increase in Website Engagement", value: "185%" },
+      { label: "Luxury Listings Showcased", value: "8,000+" },
     ],
-    accentColor: "#e4002b",
-    tag: "FoodTech",
-    url: "https://www.kfc.com/",
-    author: "Sarah Johnson, CMO of KFC",
-    testimonial: "Working with this",
-    tagline: "Revolutionizing Fast Food with Digital Innovation",
+    accentColor: "#D4AF37",
+    tag: "Luxury Real Estate",
+    url: "https://www.mondusproperties.ae/",
+    author: "Mondus Properties Management",
+    testimonial:
+      "Bigwig Media Digital transformed our online presence into a high-converting luxury real estate platform that reflects our brand and attracts serious investors worldwide.",
+    tagline: "Connecting Global Investors with Dubai's Finest Properties",
   },
   {
     id: 2,
-    brand: "IKEA",
-    industry: "eCommerce & Retail",
-    service: "IoT Solutions",
-    country: "Europe",
-    title: "IoT-Powered In-Store Experience",
+    brand: "Dr. Himanshu Verma",
+    industry: "Healthcare",
+    service: "Web Development",
+    country: "India",
+    title: "Building a Premium Digital Presence for Advanced Orthopedic Care",
     description:
-      "Deploying IoT-powered kiosks integrated with a custom ERP solution, we enhanced IKEA's customer onboarding, product exploration, and data-driven marketing.",
-    image:
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
+      "Bigwig Media Digital partnered with Dr. Himanshu Verma to create a modern healthcare platform that showcases orthopedic expertise, streamlines appointment bookings, and enhances patient trust through an engaging digital experience.",
+    image: "/himanshu-verma.png",
     stats: [
-      { label: "IKEA Stores Deployed", value: "7+" },
-      { label: "Marketing Asset Rank", value: "#1" },
-      { label: "Customer Onboarding Lift", value: "38%" },
+      { label: "Patient Inquiry Growth", value: "240%" },
+      { label: "Appointment Booking Increase", value: "3X" },
+      { label: "Organic Search Visibility", value: "+180%" },
     ],
-    accentColor: "#0058a3",
-    tag: "Retail",
-    url: "https://www.ikea.com/",
-    author: "John Doe, CMO of IKEA",
+    accentColor: "#0F766E",
+    tag: "Healthcare",
+    url: "https://www.drhimanshuverma.com/",
+    author: "Dr. Himanshu Verma",
     testimonial:
-      "The IoT solutions implemented by this team have transformed our in-store experience. The integration with our ERP system has streamlined our operations and significantly improved customer satisfaction.",
-    tagline: "Enhancing Retail with IoT Innovation",
+      "Bigwig Media Digital helped us establish a professional online presence that reflects our commitment to patient care while making it easier for patients to connect with us and book consultations.",
+    tagline: "Transforming Patient Care Through Digital Excellence",
   },
   {
     id: 3,
-    brand: "HealthPoint",
-    industry: "Healthcare",
-    service: "AI & ML",
-    country: "UK",
-    title: "AI-Driven Patient Monitoring Dashboard",
+    brand: "Global Technologies India",
+    industry: "Industrial Automation & Engineering",
+    service: "Corporate Website & Lead Generation",
+    country: "India",
+    title:
+      "Digitizing Industrial Excellence for Global Manufacturing Solutions",
     description:
-      "Developing a HIPAA-compliant dashboard that uses predictive analytics to monitor patient vitals and alert medical staff in real time.",
-    image: "/himanshu-verma.png",
+      "Bigwig Media Digital partnered with Global Technologies India to develop a modern industrial website that showcases engineering expertise, automation solutions, and manufacturing capabilities while generating high-quality B2B inquiries from domestic and international markets.",
+    image: "/global-tech.png",
     stats: [
-      { label: "Response Time Reduction", value: "35%" },
-      { label: "Patient Satisfaction", value: "98%" },
-      { label: "Data Points Processed", value: "10M+" },
+      { label: "Increase in Qualified B2B Leads", value: "320%" },
+      { label: "Growth in Website Engagement", value: "210%" },
+      { label: "Industrial Solutions Showcased", value: "50+" },
     ],
-    accentColor: "#4e6cba",
-    tag: "Healthcare",
-    url: "https://www.healthpoint.com/",
-    author: "Dr. Emily Smith, CEO of HealthPoint",
+    accentColor: "#1E40AF",
+    tag: "Industrial Technology",
+    url: "https://www.globaltechnologiesindia.com/",
+    author: "Management Team, Global Technologies India",
     testimonial:
-      "The AI-driven monitoring dashboard has been a game-changer for our patient care. It has significantly improved our ability to detect and respond to critical health issues in real time.",
-    tagline: "Transforming Healthcare with AI Innovation",
+      "Bigwig Media Digital successfully transformed our digital presence into a powerful business development platform that effectively communicates our technical expertise and generates valuable industry inquiries.",
+    tagline: "Engineering Digital Growth for Industrial Innovation",
   },
   {
     id: 4,
-    brand: "SwiftPay",
-    industry: "FinTech",
-    service: "Web Development",
+    brand: "Destiny By Numberrs",
+    industry: "Astrology",
+    service: "Brand Website & Lead Generation",
     country: "India",
-    title: "The Next-Gen Neobank Ecosystem",
+    title:
+      "Transforming a Personal Numerology Brand into a Digital Growth Engine",
     description:
-      "Building a secure, scalable fintech ecosystem supporting multi-currency accounts, instant crypto swaps, and physical card management.",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
+      "Bigwig Media Digital partnered with Destiny By Numberrs to create a premium digital platform that showcases numerology expertise, streamlines consultation bookings, and attracts clients seeking personalized life, career, relationship, and business guidance.",
+    image: "/destiny-by-number.png",
     stats: [
-      { label: "Transaction Speed", value: "< 2s" },
-      { label: "Security Incidents", value: "0" },
-      { label: "New Accounts/Month", value: "50K" },
+      { label: "Consultation Booking Growth", value: "4X" },
+      { label: "Organic Traffic Increase", value: "220%" },
+      { label: "Lead Conversion Improvement", value: "175%" },
     ],
-    accentColor: "#54acbf",
-    tag: "FinTech",
-    url: "https://www.swiftpay.com/",
-    author: "Michael Brown, CTO of SwiftPay",
+    accentColor: "#7C3AED",
+    tag: "Personal Branding",
+    url: "https://www.destinybynumberrs.com/",
+    author: "Team Destiny By Numberrs",
     testimonial:
-      "The fintech ecosystem built by this team has revolutionized our approach to digital banking. The seamless integration of multi-currency support and crypto functionality has positioned us at the forefront of the industry.",
-    tagline: "Pioneering FinTech with Innovative Solutions",
+      "Bigwig Media Digital helped us establish a strong digital presence that reflects our brand philosophy while making it easier for clients worldwide to discover our services and book consultations.",
+    tagline: "Guiding Life Decisions Through the Power of Numbers",
   },
   {
     id: 5,
-    brand: "EduPro",
-    industry: "EdTech",
-    service: "UI/UX Design",
+    brand: "Ethical Infrastructures",
+    industry: "Real Estate",
+    service: "Web Development",
     country: "India",
-    title: "Gamified Global Learning Platform",
+    title:
+      "Driving Premium Real Estate Leads Through a Modern Digital Experience",
     description:
-      "A gamified education suite connecting students and teachers globally through live VR classrooms and AI-personalised study paths.",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+      "Bigwig Media Digital partnered with Ethical Infrastructures to build a high-converting real estate platform that showcases premium residential and commercial properties across Delhi NCR while streamlining lead acquisition, property discovery, and client engagement.",
+    image: "/ethical-infrastructures-showcase.png",
     stats: [
-      { label: "Engagement Rate", value: "85%" },
-      { label: "Course Completion", value: "72%" },
-      { label: "Active Countries", value: "120" },
+      { label: "Qualified Property Inquiries", value: "300%+" },
+      { label: "Property Categories Showcased", value: "50+" },
+      { label: "Growth in User Engagement", value: "210%" },
     ],
-    accentColor: "#a7ebf2",
-    tag: "EdTech",
-    url: "https://www.edupro.com/",
-    author: "Dr. Lisa Chen, Founder of EduPro",
+    accentColor: "#0F766E",
+    tag: "Real Estate",
+    url: "https://www.ethicalinfrastructures.com/",
+    author: "Sorabh Chopra, Founder",
     testimonial:
-      "The gamified learning platform has transformed how we engage students and deliver content. The AI-personalised study paths have significantly improved learning outcomes and student satisfaction.",
-    tagline: "Revolutionizing Education with Gamification",
+      "Bigwig Media Digital helped us transform our online presence into a powerful real estate lead-generation platform. The new experience reflects our commitment to transparency while helping buyers, sellers, and investors connect with the right opportunities.",
+    tagline:
+      "Building Trust, Driving Growth, and Connecting People with Premium Properties",
   },
   {
     id: 6,
-    brand: "RideGo",
-    industry: "Mobility",
-    service: "Mobile Apps",
-    country: "UAE",
-    title: "Smart Urban Mobility Platform",
+    brand: "Pearls India",
+    industry: "eCommerce",
+    service: "SEO",
+    country: "India",
+    title: "Scaling Organic Revenue for a Growing eCommerce Brand",
     description:
-      "An all-in-one transportation app integrating public transit, ride-sharing, and micro-mobility with real-time GPS tracking and traffic AI.",
-    image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
+      "Bigwig Media Digital partnered with Pearls India to execute a comprehensive SEO strategy focused on technical optimization, category-page rankings, content marketing, and high-intent keyword targeting. The campaign significantly improved organic visibility, increased qualified traffic, and drove sustainable revenue growth through search engines.",
+    image: "/pearls-india-showcase.png",
     stats: [
-      { label: "Avg. Commute Savings", value: "12m" },
-      { label: "Carbon Offset", value: "500T" },
-      { label: "Daily Active Riders", value: "200K" },
+      { label: "Organic Traffic Growth", value: "320%" },
+      { label: "Keywords Ranked on Page 1", value: "500+" },
+      { label: "Increase in Organic Revenue", value: "245%" },
     ],
-    accentColor: "#023859",
-    tag: "Mobility",
-    url: "https://www.ridego.com/",
-    author: "David Lee, COO of RideGo",
+    accentColor: "#0F4C81",
+    tag: "SEO",
+    url: "https://pearlsindia.co.in/",
+    author: "Marketing Team, Pearls India",
     testimonial:
-      "The smart mobility platform has revolutionized how we approach urban transportation. The real-time integration and AI-driven optimization have significantly improved our operational efficiency and customer satisfaction.",
-    tagline: "Transforming Urban Mobility with Smart Technology",
+      "Bigwig Media Digital helped us achieve remarkable search visibility and consistent organic growth. Their SEO strategy significantly increased our online reach, qualified traffic, and eCommerce sales.",
+    tagline: "Driving Sustainable eCommerce Growth Through Search Excellence",
+  },
+  {
+    id: 7,
+    brand: "Rehnoor Jewels",
+    industry: "eCommerce",
+    service: "Web Development",
+    country: "India",
+    title: "Crafting a High-Converting Jewelry eCommerce Experience",
+    description:
+      "Bigwig Media Digital partnered with Rehnoor Jewels to design and develop a premium eCommerce platform that showcases gold-plated jewelry collections, streamlines online shopping, and drives sales through a mobile-first user experience optimized for conversions and customer trust.",
+    image: "/rehnoor-jewels-showcase.png",
+    stats: [
+      { label: "Happy Customers Served", value: "50K+" },
+      { label: "Unique Jewelry Designs", value: "500+" },
+      { label: "Customer Satisfaction", value: "98%" },
+    ],
+    accentColor: "#D4AF37",
+    tag: "eCommerce",
+    url: "https://www.rehnoorjewels.com/",
+    author: "Team Rehnoor Jewels",
+    testimonial:
+      "Bigwig Media Digital helped us transform our online store into a premium shopping experience that perfectly reflects our brand while making it easier for customers across India to discover and purchase our collections.",
+    tagline: "Bringing Timeless Jewelry Elegance to the Digital World",
   },
 ];
 
@@ -304,7 +330,7 @@ function PortfolioCard({
           </p>
 
           {/* Core Metrics Array */}
-          <div className="flex flex-wrap items-center gap-8 md:gap-14 mb-10 py-6 border-y border-white/5">
+          <div className="flex flex-nowrap items-center gap-8 md:gap-14 mb-10 py-6 border-y border-white/5">
             {item.stats.map((stat, i) => (
               <div key={i} className="flex flex-col gap-1">
                 <span className="text-3xl md:text-4xl font-bold text-white">
@@ -334,7 +360,7 @@ function PortfolioCard({
             href={`/portfolio/${item.id}`}
             className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-500 hover:text-white transition-all duration-300 group"
           >
-            View Case Study
+            Request A Case Study Demo
             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
