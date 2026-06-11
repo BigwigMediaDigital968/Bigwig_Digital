@@ -195,6 +195,52 @@ const portfolioItems = [
       "Bigwig Media Digital helped us transform our online store into a premium shopping experience that perfectly reflects our brand while making it easier for customers across India to discover and purchase our collections.",
     tagline: "Bringing Timeless Jewelry Elegance to the Digital World",
   },
+  {
+    id: 8,
+    brand: "Crownpoint Estates",
+    industry: "Luxury Real Estate",
+    service: "Local SEO & Performance Marketing",
+    country: "India",
+    title: "Building a Predictable Lead Engine for Gurgaon Real Estate",
+    description:
+      "Through advanced local SEO, location-specific landing pages, technical optimization, and conversion-focused content, Bigwig Media Digital transformed Crownpoint Estates into a highly visible real estate brand that consistently attracts buyers, sellers, investors, and NRI clients searching for premium properties in Gurgaon.",
+    image: "/crownpoint-estates-leads.png",
+    stats: [
+      { label: "Local Search Visibility Growth", value: "420%" },
+      { label: "Monthly Qualified Leads", value: "500+" },
+      { label: "Organic Conversion Rate Increase", value: "225%" },
+    ],
+    accentColor: "#1E3A8A",
+    tag: "Lead Generation",
+    url: "https://www.crownpointestates.com/",
+    author: "Crownpoint Estates Team",
+    testimonial:
+      "The SEO and lead generation strategy transformed our digital presence into a reliable source of high-quality property inquiries and investment opportunities.",
+    tagline: "Where Search Visibility Meets Real Estate Growth",
+  },
+  {
+    id: 12,
+    brand: "Rehnoor Jewels",
+    industry: "eCommerce",
+    service: "SEO",
+    country: "India",
+    title: "Dominating Search Rankings in the Online Jewelry Market",
+    description:
+      "Through strategic SEO, content optimization, and technical improvements, Bigwig Media Digital helped Rehnoor Jewels strengthen its online presence, outrank competitors, and attract high-intent shoppers actively searching for premium jewelry collections.",
+    image: "/rehnoor-jewels-showcase.png",
+    stats: [
+      { label: "Keyword Visibility Growth", value: "380%" },
+      { label: "Organic Conversion Increase", value: "215%" },
+      { label: "Monthly Organic Visitors", value: "100K+" },
+    ],
+    accentColor: "#B8860B",
+    tag: "SEO",
+    url: "https://www.rehnoorjewels.com/",
+    author: "Digital Growth Team",
+    testimonial:
+      "The SEO campaign delivered exceptional results, helping us reach more customers organically while reducing dependence on paid advertising.",
+    tagline: "Building Long-Term eCommerce Growth Through Search Excellence",
+  },
 ];
 
 // --- Sub-components ---
@@ -357,7 +403,7 @@ function PortfolioCard({
         {/* CTA Case Study Link Trigger */}
         <div className="pt-4">
           <Link
-            href={`/portfolio/${item.id}`}
+            href="/contact"
             className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-sm uppercase tracking-tighter hover:bg-blue-500 hover:text-white transition-all duration-300 group"
           >
             Request A Case Study Demo
