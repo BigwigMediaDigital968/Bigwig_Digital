@@ -227,7 +227,7 @@ const portfolioItems = [
     title: "Dominating Search Rankings in the Online Jewelry Market",
     description:
       "Through strategic SEO, content optimization, and technical improvements, Bigwig Media Digital helped Rehnoor Jewels strengthen its online presence, outrank competitors, and attract high-intent shoppers actively searching for premium jewelry collections.",
-    image: "/rehnoor-jewels-showcase.png",
+    image: "/portfolio/rehnoor-jewels-showcase.png",
     stats: [
       { label: "Keyword Visibility Growth", value: "380%" },
       { label: "Organic Conversion Increase", value: "215%" },
