@@ -157,7 +157,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
 
     try {
       await axios.post(
-        "https://bigwigdigitalbackend.onrender.com/api/lead/verify-otp",
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/verify-otp`,
         { email: formData.email, otp },
       );
 
@@ -221,7 +221,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
             <input
               type="text"
               name="name"
-              placeholder="Full Namdddde"
+              placeholder="Full Name"
               value={formData.name}
               onChange={handleChange}
               required
