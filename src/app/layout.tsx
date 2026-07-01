@@ -42,7 +42,7 @@ export default function RootLayout({
           content="CQRj6Bls-OQCYgV4ne5XEQJ8-6KlU7L2JfhusyIuiwM"
         />
 
-        {/* JSON-LD Organization */}
+        {/* JSON-LD Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -60,45 +60,113 @@ export default function RootLayout({
                 "https://www.linkedin.com/company/bigwig-media-digital/",
                 "https://in.pinterest.com/bigwigmediadigital/",
               ],
+              // Explicitly nested references to child branch locations
+              subOrganization: [
+                {
+                  "@type": "LocalBusiness",
+                  name: "BigWig Digital - Bhopal Branch",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress:
+                      "Plot Number 2, near Hanuman Mandir, Idgah Hills",
+                    addressLocality: "Bhopal",
+                    addressRegion: "Madhya Pradesh",
+                    postalCode: "462001",
+                    addressCountry: "IN",
+                  },
+                },
+                {
+                  "@type": "LocalBusiness",
+                  name: "BigWig Digital - Goa Branch",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "SF-15, Prabhu Chambers, Mapusa",
+                    addressLocality: "Goa",
+                    postalCode: "403507",
+                    addressCountry: "IN",
+                  },
+                },
+              ],
             }),
           }}
         />
 
-        {/* JSON-LD LocalBusiness */}
+        {/* JSON-LD Multi-Location LocalBusiness Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "BigWig Digital",
-              image:
-                "https://www.bigwigdigital.in/assets/bigwig%20digital%20logo%20(11)-T8_kDtlw.png",
-              url: "https://bigwigdigital.in",
-              telephone: "+91 8368573451",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Plot # 2, Sanjay Nagar, Gulabi Bagh",
-                addressLocality: "Delhi",
-                postalCode: "110007",
-                addressCountry: "IN",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                name: "BigWig Digital - Delhi HQ",
+                image:
+                  "https://www.bigwigdigital.in/assets/bigwig%20digital%20logo%20(11)-T8_kDtlw.png",
+                url: "https://bigwigdigital.in",
+                telephone: "+91 8368573451",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Plot # 2, Sanjay Nagar, Gulabi Bagh",
+                  addressLocality: "Delhi",
+                  postalCode: "110007",
+                  addressCountry: "IN",
+                },
+                openingHoursSpecification: {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ],
+                  opens: "11:00",
+                  closes: "19:30",
+                },
               },
-              openingHoursSpecification: {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                ],
-                opens: "11:00",
-                closes: "19:30",
+              {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                name: "BigWig Digital - Bhopal Branch",
+                image:
+                  "https://www.bigwigdigital.in/assets/bigwig%20digital%20logo%20(11)-T8_kDtlw.png",
+                url: "https://bigwigdigital.in",
+                telephone: "+91 9685892813",
+                hasMap:
+                  "google.com/maps/place/Bigwig+Digital/data=!4m2!3m1!1s0x0:0x39395dc0edfc0c60?sa=X&ved=1t:2428&hl=en-GB&ictx=111",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress:
+                    "Plot Number 2, near Hanuman Mandir, Idgah Hills",
+                  addressLocality: "Bhopal",
+                  addressRegion: "Madhya Pradesh",
+                  postalCode: "462001",
+                  addressCountry: "IN",
+                },
               },
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                name: "BigWig Digital - Goa Branch",
+                image:
+                  "https://www.bigwigdigital.in/assets/bigwig%20digital%20logo%20(11)-T8_kDtlw.png",
+                url: "https://bigwigdigital.in",
+                telephone: "+91 9685892813",
+                hasMap:
+                  "https://www.google.com/maps/place/Bigwig+Digital/data=!4m2!3m1!1s0x0:0xa54bc66585ac168e?sa=X&ved=1t:2428&hl=en-GB&ictx=111",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "SF-15, Prabhu Chambers, Mapusa",
+                  addressLocality: "Goa",
+                  postalCode: "403507",
+                  addressCountry: "IN",
+                },
+              },
+            ]),
           }}
         />
+
         <link
           rel="stylesheet"
           type="text/css"
@@ -144,12 +212,12 @@ export default function RootLayout({
         {/* Microsoft Clarity */}
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v8ibwvlg22");
-  `}
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "v8ibwvlg22");
+          `}
         </Script>
 
         {/* Google Tag Manager */}
