@@ -14,6 +14,8 @@ import Footer from "../../components/Footer";
 import ServicesPage from "../../components/Services";
 import RainbowSteps from "../../components/RainbowSteps";
 import OfferPopup from "../../components/OfferPopup";
+import FloatingButton from "../../components/FloatingButton";
+import NewHero from "../../components/HeroNew";
 
 export const metadata: Metadata = {
   title: "Best Digital Marketing Agency in Delhi | Bigwig Media Digital",
@@ -130,6 +132,7 @@ export default function Home() {
 
       <Nav />
       <Hero />
+      {/* <NewHero /> */}
       <Partners />
       <Stats />
       <Client />
