@@ -21,7 +21,10 @@ import Image from "next/image";
 import ButtonFill from "../../../../components/Button";
 import PopupForm from "../../../../components/PopupForm";
 import GetInTouch from "../../../../components/GetInTouch";
-import { SetStateAction, useState } from "react";
+import React, { SetStateAction, useRef, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+import WhatsAppCtaButton from "../../../../components/Buttons/WhatsAppCtaButton";
+import { WorkShowcase } from "./WorkShowcase";
 const socialPlatforms = [
   { name: "Facebook", icon: <FaFacebookF color="#1877F2" /> },
   { name: "Instagram", icon: <FaInstagram color="#E4405F" /> },
@@ -210,7 +213,7 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
       <Nav />
       <section
         className="relative bg-cover bg-center bg-no-repeat py-10 px-4"
-        style={{ backgroundImage: `url(${hero.src})` }}
+        style={{ backgroundImage: "url('/smm-hero.png')" }}
       >
         <div className="bg-black/60 absolute inset-0 z-0" />
 
@@ -232,10 +235,13 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
               audience at the right time.
             </p>
 
-            <ButtonFill
-              onClick={() => setIsPopupOpen(true)}
-              text="Contact Us"
-            />
+            <div className="flex gap-4">
+              <ButtonFill
+                onClick={() => setIsPopupOpen(true)}
+                text="Contact Us"
+              />
+              <WhatsAppCtaButton message="Hi! I'm interested in your social media marketing services." />
+            </div>
           </div>
 
           {/* Right Form - 1/3 */}
@@ -282,6 +288,11 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
           </div>
         </div>
       </div>
+
+<div className="max-w-7xl mx-auto">
+                      <WorkShowcase />
+
+</div>
 
       <section className="py-12  relative overflow-hidden">
         {/* Heading */}
@@ -530,11 +541,13 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
         </div>
 
         {/* CTA BUTTON */}
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           <ButtonFill
             text="Start Your SMO Growth Journey"
             onClick={() => setIsPopupOpen(true)}
           />
+          <WhatsAppCtaButton text="Start a WhatsApp Chat" message="Hi! I'm interested in your social media marketing services." />
+
         </div>
       </section>
 
@@ -678,11 +691,13 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-6 gap-4">
           <ButtonFill
             text="Boost Your Brand With SMO"
             onClick={() => setIsPopupOpen(true)}
           />
+          <WhatsAppCtaButton text="Let's Chat On WhatsApp" message="Hi! I'm interested in your social media marketing services." />
+
         </div>
       </section>
 
@@ -818,11 +833,10 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 
               {/* Answer */}
               <div
-                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${
-                  openIndex === index
-                    ? "max-h-96 mt-4 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-300 text-gray-200 overflow-hidden relative z-10 ${openIndex === index
+                  ? "max-h-96 mt-4 opacity-100"
+                  : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="leading-relaxed">{item.a}</p>
               </div>
@@ -831,11 +845,13 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
         </div>
 
         {/* CTA Button */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex justify-center gap-4">
           <ButtonFill
             text="Start Your Project Today"
             onClick={() => setIsPopupOpen(true)}
           />
+          <WhatsAppCtaButton text="Let's Discuss Your Project" message="Hi! I'm interested in your social media marketing services." />
+
         </div>
 
         {/* Animation */}
@@ -970,3 +986,4 @@ a%2FBigwig_logo__final.f181d8a8.png&w=1920&q=75"
 }
 
 export default SocialMediaOptimization;
+

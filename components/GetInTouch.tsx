@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ButtonFill from "./Button";
 import PopupForm from "./PopupForm";
+import WhatsAppCtaButton from "./Buttons/WhatsAppCtaButton";
 
 function GetInTouch() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -17,12 +18,14 @@ function GetInTouch() {
           brand. Connect with us to get a customized plan tailored for your
           business.
         </p>
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           <ButtonFill
             text="Get In Touch"
             onClick={() => setIsPopupOpen(true)}
             className="px-8 py-3 text-lg font-semibold"
           />
+                    <WhatsAppCtaButton />
+          
         </div>
       </div>
       <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
