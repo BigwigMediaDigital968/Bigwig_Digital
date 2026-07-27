@@ -61,9 +61,11 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function FloatingCTA() {
   const [shareOpen, setShareOpen] = useState(false);
+  const pathname = usePathname();
 
   const phone = "+919685892813";
 
@@ -71,6 +73,10 @@ export default function FloatingCTA() {
   const instagramUrl =
     "https://www.instagram.com/bigwig.media.digital?igsh=ODhpeTJzcDRpa25q";
   const linkedinUrl = "https://www.linkedin.com/company/bigwig-media-digital/";
+
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <>

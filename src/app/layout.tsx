@@ -2,6 +2,7 @@
 import ScrollToTopButton from "../../components/ScrollToTopButton";
 import "./globals.css";
 import Script from "next/script";
+import FloatingButton from "../../components/FloatingButton";
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -163,6 +164,7 @@ export default function RootLayout({
             })(window, document, 'script', 'dataLayer', 'GTM-TMMX5VTN');
           `}
         </Script>
+        <FloatingButton />
         <ScrollToTopButton />
       </body>
     </html>
