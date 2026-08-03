@@ -7,11 +7,11 @@ import Link from "next/link";
 import ButtonFill from "./Button"; // your button component
 
 const images = [
-  "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1762152048/logo_npwakv.webp",
+  "https://www.rehnoorjewels.com/rehnoor-jewels-svg-logo.svg",
   "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493003/Granth_logo_6_kyrd5s.png",
 
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759495461/Pearls_light_logo_m623gc.png",
-  "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493217/logo-01-C0F3dP5k_y93g4q.svg",
+  "/logo-marketrixa.webp",
+  "/fortuneasia.png",
 
   "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1763112478/DBN_logo_x7wjzx.webp",
   "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1765873036/image_pau5br.webp",

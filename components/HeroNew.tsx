@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 // Assuming you have your existing Button component
 import ButtonFill from "./Button";
-// Assuming you have your existing PopupForm component
-import PopupForm from "./PopupForm";
+import { useNavigate } from "react-router-dom";
 
 // content for NewHero.tsx section
 const heroContent = {
   // BG video path - add your video to the public folder
-  videoSrc: "/videos/hero-background.mp4",
+  videoSrc: "/Bigwig-Website-Video.mp4",
   // Fallback image path in public folder - important for mobile/slow networks
-  fallbackImage: "/images/hero-fallback.jpg",
+  fallbackImage: "/home-hero.png",
   title:
     "Best Digital Marketing Agency in Delhi That Builds Brands & Breaks Limits",
   subtitle:
@@ -21,10 +20,8 @@ const heroContent = {
 };
 
 const NewHero: React.FC = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black text-white">
+    <section className="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-black text-white">
       {/* 1. BACKGROUND VIDEO (Responsive & Failsafe) */}
       <video
         autoPlay
@@ -46,7 +43,7 @@ const NewHero: React.FC = () => {
       />
 
       {/* 3. CENTERED CONTENT BLOCK */}
-      <div className="relative z-20 container mx-auto px-6 py-24 md:py-32 lg:py-40 flex flex-col items-center justify-center text-center">
+      <div className="relative z-20 container mx-auto px-6 py-24 md:py-32 lg:py-40 md:pl-20 flex flex-col items-start justify-center">
         {/* Responsive Heading (Using h1 for primary SEO) */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight max-w-4xl text-white">
           {heroContent.title}
@@ -63,13 +60,20 @@ const NewHero: React.FC = () => {
             text={heroContent.ctaText}
             // Responsive padding, bigger on desktop
             className="px-8 py-3 md:px-10 md:py-4 text-base md:text-lg font-semibold"
-            onClick={() => setIsPopupOpen(true)}
+            onClick={() => {
+              const message = encodeURIComponent(
+                "Hi BigWig Media Digital! I'm interested in your services and would like to discuss more."
+              );
+              window.open(
+                `https://wa.me/+919685892813?text=${message}`,
+                "_blank",
+                "noopener,noreferrer"
+              );
+            }}
           />
         </div>
       </div>
 
-      {/* 4. POPUP FORM COMPONENT (Matches expected interface PopupFormProps) */}
-      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </section>
   );
 };

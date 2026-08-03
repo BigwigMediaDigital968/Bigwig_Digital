@@ -8,9 +8,25 @@ import Link from "next/link";
 
 const clients = [
   {
-    img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1762152048/logo_npwakv.webp",
-    link: "https://khalsapropertydealers.com/",
+    img: "https://www.rehnoorjewels.com/rehnoor-jewels-svg-logo.svg",
+    link: "https://www.rehnoorjewels.com/",
   },
+  {
+    img: "/RPH-logo.png",
+    link: "https://rphrealty.com/",
+  },
+  {
+    img: "/fortuneasia.png",
+    link: "https://www.fortuneasia.ae/",
+  },
+  {
+    img: "/logo-marketrixa.webp",
+    link: "https://www.marketrixa.com/",
+  },
+  // {
+  //   img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1762152048/logo_npwakv.webp",
+  //   link: "https://khalsapropertydealers.com/",
+  // },
   {
     img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759493003/Granth_logo_6_kyrd5s.png",
     link: "https://granthdreamhomes.co.in/",
@@ -20,10 +36,10 @@ const clients = [
   //   link: "https://www.closefriendstraders.info/",
   // },
 
-  {
-    img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759495461/Pearls_light_logo_m623gc.png",
-    link: "https://pearlsindia.co.in",
-  },
+  // {
+  //   img: "https://res.cloudinary.com/dcq2oziz4/image/upload/v1759495461/Pearls_light_logo_m623gc.png",
+  //   link: "https://pearlsindia.co.in",
+  // },
   {
     img: "https://res.cloudinary.com/dqrlkbsdq/image/upload/v1764826680/bdfx_zvjbi6.gif",
     link: "https://www.billiondollarfx.com",

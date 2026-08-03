@@ -6,7 +6,7 @@ import { FaBehance, FaDribbble } from "react-icons/fa";
 interface ShortVideo {
   id: string;
   youtubeUrl: string;
-  category: "real-estate" | "e-com" | "hospitality" | "surfactant";
+  category: "real-estate" | "e-com" | "hospitality" | "surfactant" | "general";
   tag: string;
   engagementRate: string;
 }
@@ -62,11 +62,11 @@ const VideoCard = ({ video, uniqueKey }: { video: ShortVideo; uniqueKey: string 
       className="flex-shrink-0 w-[250px] h-[450px] sm:w-[280px] sm:h-[480px] relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#121318] shadow-2xl group transition-all duration-300 hover:border-white/20 snap-start cursor-pointer select-none"
     >
       {/* Top Actions */}
-      <div className="absolute top-4 inset-x-4 flex justify-between items-center z-20 pointer-events-none">
+      {/* <div className="absolute top-4 inset-x-4 flex justify-between items-center z-20 pointer-events-none">
         <span className="px-3 py-1 rounded-full text-[9px] font-bold tracking-wider text-[#A7EBF2] bg-[#A7EBF2]/10 backdrop-blur-md uppercase border border-[#FF6624]/20">
           {video.tag}
         </span>
-      </div>
+      </div> */}
 
       {/* Video Player Frame */}
       <div className="absolute inset-0 w-full h-full bg-black pointer-events-none">
@@ -122,19 +122,77 @@ const VideoCard = ({ video, uniqueKey }: { video: ShortVideo; uniqueKey: string 
 // 2. MAIN CORE LAYOUT SYSTEM CONTAINER
 export function WorkShowcase() {
   const videoData: ShortVideo[] = [
-    { id: "v1", youtubeUrl: "https://youtube.com/shorts/yaztIoqQBIQ?si=AojQylktGx3imV76", category: "real-estate", tag: "SHORT FORM", engagementRate: "8.1% ER" },
-    { id: "v2", youtubeUrl: "https://youtube.com/shorts/QFgVucsmwZc?si=3tN0m5ePdpZVm6oF", category: "real-estate", tag: "SHORT FORM", engagementRate: "9.4% ER" },
-    { id: "v3", youtubeUrl: "https://youtube.com/shorts/5DH_DZPu_hQ?si=cF90wEWKcpVEGFkq", category: "real-estate", tag: "SHORT FORM", engagementRate: "7.8% ER" },
-    { id: "v4", youtubeUrl: "https://youtube.com/shorts/uFfroKOBgqQ?si=M5F0mN88ajwrJ_4E", category: "e-com", tag: "SHORT FORM", engagementRate: "8.9% ER" },
-    { id: "v5", youtubeUrl: "https://youtube.com/shorts/8HCAZo8UPR0?si=JuobyNjV9fbqChX1", category: "e-com", tag: "SHORT FORM", engagementRate: "11.2% ER" },
-    { id: "v6", youtubeUrl: "https://youtube.com/shorts/EvZxnt5KueE?si=GYNk4F7jFC0px41q", category: "surfactant", tag: "SHORT FORM", engagementRate: "8.5% ER" },
-    { id: "v7", youtubeUrl: "https://youtube.com/shorts/h8CuH_cPxe4?si=anEQOX_cN_OUBLL0", category: "hospitality", tag: "SHORT FORM", engagementRate: "8.1% ER" },
-    { id: "v8", youtubeUrl: "https://youtube.com/shorts/pDzhy3bbI3c?si=ix4pDJ4VVh21DTrY", category: "e-com", tag: "SHORT FORM", engagementRate: "9.4% ER" },
-    { id: "v9", youtubeUrl: "https://youtube.com/shorts/WXExQmMbelU?si=5uGGDbMItm9mSv2n", category: "hospitality", tag: "SHORT FORM", engagementRate: "7.8% ER" },
-    { id: "v10", youtubeUrl: "https://youtube.com/shorts/mCGBMp09qcY?si=x1hY7wUHNsZyhYhs", category: "surfactant", tag: "SHORT FORM", engagementRate: "8.9% ER" },
-    { id: "v11", youtubeUrl: "https://youtube.com/shorts/erS626ZxhiM?si=mOtxmGIC_Sgfiubd", category: "hospitality", tag: "SHORT FORM", engagementRate: "11.2% ER" },
-    { id: "v12", youtubeUrl: "https://youtube.com/shorts/mCGBMp09qcY?si=x1hY7wUHNsZyhYhs", category: "surfactant", tag: "SHORT FORM", engagementRate: "8.5% ER" },
-  ];
+  {
+    id: "v1",
+    youtubeUrl: "https://youtube.com/shorts/nz-sGjIfJSk",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "8.1% ER",
+  },
+  {
+    id: "v2",
+    youtubeUrl: "https://youtube.com/shorts/9RbnGh2c1lY",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "9.4% ER",
+  },
+  {
+    id: "v3",
+    youtubeUrl: "https://youtube.com/shorts/vZpS3YOo4sU",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "7.8% ER",
+  },
+  {
+    id: "v4",
+    youtubeUrl: "https://youtube.com/shorts/ProixyGfpWg",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "8.9% ER",
+  },
+  {
+    id: "v5",
+    youtubeUrl: "https://youtube.com/shorts/oDfl6su2N6w",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "11.2% ER",
+  },
+  {
+    id: "v6",
+    youtubeUrl: "https://youtube.com/shorts/QOliP83rb_M",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "8.5% ER",
+  },
+  {
+    id: "v7",
+    youtubeUrl: "https://youtube.com/shorts/TZBevC0YBPY",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "8.1% ER",
+  },
+  {
+    id: "v8",
+    youtubeUrl: "https://youtube.com/shorts/fDmgCuiWxJY",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "9.4% ER",
+  },
+  {
+    id: "v9",
+    youtubeUrl: "https://youtube.com/shorts/YdWbM5aPGD4",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "7.8% ER",
+  },
+  {
+    id: "v10",
+    youtubeUrl: "https://youtube.com/shorts/Lb0HkhJHSgc",
+    category: "general",
+    tag: "SHORT FORM",
+    engagementRate: "8.9% ER",
+  },
+];
 
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
@@ -151,9 +209,9 @@ export function WorkShowcase() {
     ? filteredVideos.slice(0, Math.ceil(filteredVideos.length / 2))
     : filteredVideos;
 
-  const carouselRow2 = useSecondRow
-    ? filteredVideos.slice(Math.ceil(filteredVideos.length / 2))
-    : [];
+  // const carouselRow2 = useSecondRow
+  //   ? filteredVideos.slice(Math.ceil(filteredVideos.length / 2))
+  //   : [];
   const scroll = (ref: React.RefObject<HTMLDivElement | null>, direction: "left" | "right") => {
     if (ref.current) {
       const scrollAmount = 310; // Match up perfectly: item layout width boundary configurations
@@ -177,7 +235,7 @@ export function WorkShowcase() {
             </span>
 
             <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight mb-5">
-              Real Campaigns. <br />
+              Real Campaigns. 
 
               <span className="text-[#A7EBF2]"> Real Growth.</span>
             </h2>
@@ -187,7 +245,7 @@ export function WorkShowcase() {
               engagement, leads, and revenue through data-driven social media
             </p>
           </div>
-          <div className="flex items-end">
+          {/* <div className="flex items-end">
             <div className="inline-flex p-1.5 rounded-full bg-[#131419] border border-white/[0.05] shadow-2xl overflow-x-auto scrollbar-none">
               {[
                 { id: "all", label: "ALL CAMPAIGNS" },
@@ -208,7 +266,7 @@ export function WorkShowcase() {
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Global Dual Row Container Layout Slider System */}
@@ -236,7 +294,7 @@ export function WorkShowcase() {
           )}
 
           {/* Row 2 Slider */}
-          {carouselRow2.length > 0 && (
+          {/* {carouselRow2.length > 0 && (
             <div className="w-full relative group px-6">
               <button onClick={() => scroll(row2Ref, "left")} className="absolute left-10 top-1/2 -translate-y-1/2 z-30 w-11 h-11 hidden md:flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-all shadow-xl backdrop-blur-sm hover:scale-105">
                 ←
@@ -254,7 +312,7 @@ export function WorkShowcase() {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
 
         </div>
         <div className="mt-16 w-full max-w-[1100px] px-6 text-center">

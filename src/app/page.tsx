@@ -131,8 +131,8 @@ export default function Home() {
       />
 
       <Nav />
-      <Hero />
-      {/* <NewHero /> */}
+      {/* <Hero /> */}
+      <NewHero />
       <Partners />
       <Stats />
       <Client />
