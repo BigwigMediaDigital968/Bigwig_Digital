@@ -227,7 +227,7 @@ export default function ContactPage() {
           className="w-full min-h-screen bg-cover bg-center relative py-12 "
           style={{
             backgroundImage:
-              "url('https://res.cloudinary.com/dcq2oziz4/image/upload/v1764323168/kaitlyn-baker-vZJdYl5JVXY-unsplash_skfolb.jpg')",
+              "url('/home-hero.png')",
           }}
         >
           <div className="absolute inset-0 bg-black/70"></div>
@@ -433,7 +433,7 @@ export default function ContactPage() {
           </div>
 
           {/* MAP */}
-          <div className="relative w-11/12 md:w-10/12 mx-auto mt-16 pb-16 ">
+          {/* <div className="relative w-11/12 md:w-10/12 mx-auto mt-16 pb-16 ">
             {" "}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.322121979646!2d77.19070767529064!3d28.673932275642237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03586419b693%3A0x627bb399c7e86209!2sBigwig%20Media%20Digital%20-%20Digital%20Marketing%20Company!5e1!3m2!1sen!2in!4v1763114888587!5m2!1sen!2in"
@@ -441,7 +441,7 @@ export default function ContactPage() {
               loading="lazy"
               allowFullScreen
             ></iframe>{" "}
-          </div>
+          </div> */}
         </div>
 
         {/* SUCCESS POPUP */}
