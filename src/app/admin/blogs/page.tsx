@@ -1,64 +1,58 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Edit, Trash2, Code, ImageIcon } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { CodeXml, ExternalLink, ImageIcon, LoaderCircle, Pencil, Plus, Search, Trash2 } from "lucide-react";
 import Fuse from "fuse.js";
-import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
 import { formatHtml } from "../../../../utils/formatHtml";
+import type { BlogPost as EditableBlog, Status } from "../../../../components/AddBlogs";
+import { Modal } from "../../../../components/blog-editor/ui";
+import "../../../../components/blog-editor/editor.css";
 
-// Replace static import with dynamic:
-const AddBlog = dynamic(() => import("../../../../components/AddBlogs"), {
-  ssr: false,
-});
-
-interface BlogPost {
+interface BlogPost extends EditableBlog {
   _id: string;
-  title: string;
-  excerpt: string;
-  content: string;
   author: string;
-  category: string; // ✅ add this
+  category: string;
   datePublished: string;
-  slug: string;
+  lastUpdated?: string;
   coverImage: string;
-  status: "DRAFT" | "PUBLISHED" | "INACTIVE";
+  status: Status;
 }
 
+const API = process.env.NEXT_PUBLIC_API_BASE;
+const PER_PAGE = 10;
+
+const STATUS_STYLES: Record<Status, string> = {
+  PUBLISHED: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  DRAFT: "bg-amber-500/15 text-amber-300 border-amber-500/30",
+  INACTIVE: "bg-white/10 text-white/60 border-white/15",
+};
+
 export default function AdminBlogsPage() {
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null);
+  const router = useRouter();
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const editBlog = (blog: BlogPost) => router.push(`/admin/blogs/edit/${blog.slug}`);
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<Status | "ALL">("ALL");
+  const [categoryFilter, setCategoryFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
 
-  // Modals
-  const [editingSlug, setEditingSlug] = useState<string | null>(null);
-  const [htmlContent, setHtmlContent] = useState("");
-  const [showHtmlEditor, setShowHtmlEditor] = useState(false);
-
-  const [showImageModal, setShowImageModal] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-
-  const [showStatusModal, setShowStatusModal] = useState(false);
-  const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
-  const [newStatus, setNewStatus] = useState<
-    "DRAFT" | "PUBLISHED" | "INACTIVE"
-  >("DRAFT");
+  const [htmlEdit, setHtmlEdit] = useState<{ slug: string; html: string } | null>(null);
+  const [coverEdit, setCoverEdit] = useState<{ slug: string; file: File | null } | null>(null);
+  const [busy, setBusy] = useState(false);
 
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/admin/viewblog`,
-      );
-      const data = await res.json();
-      setBlogs(data);
-      console.log(data);
+      const res = await fetch(`${API}/admin/viewblog`);
+      setBlogs(await res.json());
     } catch (error) {
       console.error("Error fetching blogs:", error);
+      toast.error("Could not load blogs");
     } finally {
       setLoading(false);
     }
@@ -68,406 +62,382 @@ export default function AdminBlogsPage() {
     fetchBlogs();
   }, []);
 
-  const handleDelete = async (slug: string) => {
-    if (!confirm("Are you sure you want to delete this blog post?")) return;
+  /* ---------------- Filtering ---------------- */
 
+  const counts = useMemo(() => {
+    const c = { ALL: blogs.length, PUBLISHED: 0, DRAFT: 0, INACTIVE: 0 };
+    blogs.forEach((b) => c[b.status]++);
+    return c;
+  }, [blogs]);
+
+  const categories = useMemo(() => Array.from(new Set(blogs.map((b) => b.category).filter(Boolean))).sort(), [blogs]);
+
+  const filteredBlogs = useMemo(() => {
+    let list = blogs;
+    if (searchQuery.trim()) {
+      const fuse = new Fuse(blogs, { keys: ["title", "author", "slug", "category"], threshold: 0.3, ignoreLocation: true });
+      list = fuse.search(searchQuery).map((r) => r.item);
+    }
+    if (statusFilter !== "ALL") list = list.filter((b) => b.status === statusFilter);
+    if (categoryFilter) list = list.filter((b) => b.category === categoryFilter);
+    return list;
+  }, [blogs, searchQuery, statusFilter, categoryFilter]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredBlogs.length / PER_PAGE));
+  const page = Math.min(currentPage, totalPages);
+  const paginated = filteredBlogs.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  /* ---------------- Actions ---------------- */
+
+  const handleDelete = async (blog: BlogPost) => {
+    if (!confirm(`Delete "${blog.title}"? This cannot be undone.`)) return;
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/${slug}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(`${API}/${blog.slug}`, { method: "DELETE" });
       const json = await res.json();
-      if (res.ok) {
-        alert(json.msg || "Deleted successfully");
-        fetchBlogs();
-      } else {
-        alert(json.msg || "Failed to delete");
-      }
-    } catch (error) {
-      alert("Error deleting blog post");
+      if (!res.ok) throw new Error(json.msg);
+      toast.success(json.msg || "Deleted");
+      fetchBlogs();
+    } catch (err) {
+      toast.error((err as Error).message || "Error deleting blog post");
     }
   };
 
-  const handleUpdateImage = async () => {
-    if (!selectedImage || !editingSlug) return;
+  const changeStatus = async (blog: BlogPost, status: Status) => {
+    if (status === blog.status) return;
+    setBlogs((list) => list.map((b) => (b._id === blog._id ? { ...b, status } : b)));
+    try {
+      const res = await fetch(`${API}/${blog.slug}/status`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+      if (!res.ok) throw new Error();
+      toast.success(`Marked as ${status.toLowerCase()}`);
+      fetchBlogs();
+    } catch {
+      toast.error("Failed to update status");
+      setBlogs((list) => list.map((b) => (b._id === blog._id ? { ...b, status: blog.status } : b)));
+    }
+  };
 
+  const saveHtml = async () => {
+    if (!htmlEdit) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`${API}/${htmlEdit.slug}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: htmlEdit.html }),
+      });
+      if (!res.ok) throw new Error();
+      toast.success("HTML saved");
+      setHtmlEdit(null);
+      fetchBlogs();
+    } catch {
+      toast.error("Failed to update blog");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const saveCover = async () => {
+    if (!coverEdit?.file) return;
+    setBusy(true);
     const formData = new FormData();
-    formData.append("coverImage", selectedImage);
-
+    formData.append("coverImage", coverEdit.file);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/${editingSlug}/image`,
-        {
-          method: "PATCH",
-          body: formData,
-        },
-      );
-
-      if (!res.ok) throw new Error("Failed to update image");
-
-      alert("Image updated successfully!");
-      setShowImageModal(false);
-      setSelectedImage(null);
+      const res = await fetch(`${API}/${coverEdit.slug}/image`, { method: "PATCH", body: formData });
+      if (!res.ok) throw new Error();
+      toast.success("Cover image updated");
+      setCoverEdit(null);
       fetchBlogs();
-    } catch (err) {
-      console.error(err);
-      alert("Failed to update image");
+    } catch {
+      toast.error("Failed to update image");
+    } finally {
+      setBusy(false);
     }
   };
 
-  const handleEdit = (slug: string) => {
-    const blogToEdit = blogs.find((b) => b.slug === slug);
-    if (blogToEdit) {
-      setEditingBlog(blogToEdit);
-      setShowAddModal(true);
-    }
-  };
-
-  const handleModalClose = () => {
-    setShowAddModal(false);
-    setEditingBlog(null);
-  };
-
-  const fuse = new Fuse(blogs, {
-    keys: ["title", "author"],
-    threshold: 0.3,
-    ignoreLocation: true,
-  });
-
-  const filteredBlogs =
-    searchQuery.trim() === ""
-      ? blogs
-      : fuse.search(searchQuery).map((result) => result.item);
-
-  const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
-  const paginatedBlogs = filteredBlogs.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
-
-  const handleStatusUpdate = async () => {
-    if (!selectedBlog) return;
-
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/${selectedBlog.slug}/status`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status: newStatus }),
-        },
-      );
-
-      if (!res.ok) throw new Error("Failed to update status");
-
-      alert("Status updated successfully");
-      setShowStatusModal(false);
-      fetchBlogs();
-    } catch (err) {
-      console.error(err);
-      alert("Failed to update status");
-    }
-  };
+  /* ---------------- UI ---------------- */
 
   return (
-    <div className="p-6 bg-[#0b121a] text-white min-h-screen">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Manage Blogs</h1>
-        <button
-          className="bg-transparent hover:text-[var(--primary-color)] cursor-pointer border-2 shadow-lg px-3 py-1 rounded-sm"
-          onClick={() => {
-            setEditingBlog(null);
-            setShowAddModal(true);
-          }}
-        >
-          Add Blog
-        </button>
+    <div className="min-h-screen bg-[#0b121a] p-4 text-white sm:p-6">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold">Blog posts</h1>
+          <p className="text-sm text-white/50">
+            {counts.PUBLISHED} published · {counts.DRAFT} drafts · {counts.INACTIVE} inactive
+          </p>
+        </div>
+        <Link href="/admin/blogs/new" className="bw-btn-primary">
+          <Plus size={16} /> New post
+        </Link>
       </div>
 
-      <div className="mb-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <input
-          type="text"
-          placeholder="Search by title or author..."
-          value={searchQuery}
+      <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center">
+        <div className="relative flex-1">
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
+          <input
+            type="text"
+            placeholder="Search title, author, slug or category…"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="bw-input pl-9"
+          />
+        </div>
+        <div className="flex flex-wrap gap-1 rounded-lg bg-white/5 p-1">
+          {(["ALL", "PUBLISHED", "DRAFT", "INACTIVE"] as const).map((s) => (
+            <button
+              key={s}
+              onClick={() => {
+                setStatusFilter(s);
+                setCurrentPage(1);
+              }}
+              className={`rounded-md px-3 py-1.5 text-xs font-medium capitalize ${
+                statusFilter === s ? "bg-[#26658c] text-white" : "text-white/65 hover:bg-white/10"
+              }`}
+            >
+              {s.toLowerCase()} <span className="opacity-60">{counts[s]}</span>
+            </button>
+          ))}
+        </div>
+        <select
+          value={categoryFilter}
           onChange={(e) => {
-            setSearchQuery(e.target.value);
+            setCategoryFilter(e.target.value);
             setCurrentPage(1);
           }}
-          className="w-full md:w-3/4 px-4 py-2 rounded  border border-gray-600 text-sm"
-        />
-        <p className="text-gray-400 text-sm">
-          Page {currentPage} of {totalPages || 1}
-        </p>
+          className="bw-input lg:w-60"
+        >
+          <option value="">All categories</option>
+          {categories.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className="flex items-center gap-2 py-16 text-white/60">
+          <LoaderCircle size={18} className="animate-spin" /> Loading posts…
+        </p>
       ) : filteredBlogs.length === 0 ? (
-        <p>No blogs found.</p>
+        <p className="py-16 text-center text-white/50">No blogs found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full border border-gray-700 text-sm">
-            <thead className="bg-gray-800 text-left">
-              <tr>
-                <th className="px-3 py-2 border-b border-gray-700">Title</th>
-                <th className="px-3 py-2 border-b border-gray-700">Content</th>
-                <th className="px-3 py-2 border-b border-gray-700">Author</th>
-                <th className="px-3 py-2 border-b border-gray-700">Status</th>
-                <th className="px-3 py-2 border-b border-gray-700">
-                  Created At
-                </th>
-                <th className="px-3 py-2 border-b border-gray-700">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedBlogs?.map((blog) => (
-                <tr
-                  key={blog._id}
-                  className="even:bg-[#111] hover:bg-[#222] transition"
-                >
-                  <td className="px-3 py-2">{blog.title}</td>
-                  <td className="px-3 py-2 max-w-[200px] truncate">
-                    <div
-                      className="line-clamp-3 text-gray-300"
-                      dangerouslySetInnerHTML={{ __html: blog.content }}
-                    />
-                  </td>
-                  <td className="px-3 py-2">{blog.author}</td>
-                  <td className="px-3 py-2 flex flex-col gap-3">
-                    <span
-                      className={`px-2 py-1 text-xs rounded font-semibold ${
-                        blog.status === "PUBLISHED"
-                          ? "bg-green-600"
-                          : blog.status === "DRAFT"
-                            ? "bg-yellow-600"
-                            : "bg-gray-600"
-                      }`}
-                    >
-                      {blog.status}
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        setSelectedBlog(blog);
-                        setNewStatus(blog.status);
-                        setShowStatusModal(true);
-                      }}
-                      className="text-white text-xs font-semibold cursor-pointer px-2 py-1 border-2 border-amber-400"
-                    >
-                      Status
-                    </button>
-                  </td>
-
-                  <td className="px-3 py-2">
-                    {new Date(blog.datePublished).toLocaleDateString()}
-                  </td>
-                  <td className="px-3 py-2 flex gap-2">
-                    <button
-                      onClick={() => handleEdit(blog.slug)}
-                      className="text-blue-500 hover:text-blue-700"
-                    >
-                      <Edit size={16} />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(blog.slug)}
-                      className="text-red-500 hover:text-red-700"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                    <button
-                      onClick={async () => {
-                        setEditingSlug(blog.slug);
-                        const formatted = formatHtml(blog.content);
-                        setHtmlContent(await formatted);
-                        setShowHtmlEditor(true);
-                      }}
-                      className="text-yellow-500 hover:text-yellow-700"
-                    >
-                      <Code size={16} />
-                    </button>
-                    <button
-                      onClick={() => {
-                        setEditingSlug(blog.slug);
-                        setShowImageModal(true);
-                      }}
-                      className="text-purple-500 hover:text-purple-700"
-                    >
-                      <ImageIcon size={16} />
-                    </button>
-                  </td>
+        <>
+          <div className="overflow-x-auto rounded-xl border border-white/10">
+            <table className="w-full min-w-[860px] text-sm">
+              <thead className="bg-white/[0.04] text-left text-xs uppercase tracking-wide text-white/50">
+                <tr>
+                  <th className="px-4 py-3 font-medium">Post</th>
+                  <th className="px-4 py-3 font-medium">Author</th>
+                  <th className="px-4 py-3 font-medium">Status</th>
+                  <th className="px-4 py-3 font-medium">Published</th>
+                  <th className="px-4 py-3 text-right font-medium">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-white/[0.06]">
+                {paginated.map((blog) => (
+                  <tr key={blog._id} className="transition hover:bg-white/[0.03]">
+                    <td className="px-4 py-3">
+                      <div className="flex items-center gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={blog.coverImage} alt="" className="h-12 w-20 shrink-0 rounded-md bg-white/5 object-cover" />
+                        <div className="min-w-0">
+                          <Link href={`/admin/blogs/edit/${blog.slug}`} className="line-clamp-1 text-left font-medium hover:text-[#a7ebf2]">
+                            {blog.title}
+                          </Link>
+                          <p className="line-clamp-1 text-xs text-white/45">
+                            {blog.category} · /{blog.slug}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-white/75">{blog.author}</td>
+                    <td className="px-4 py-3">
+                      <select
+                        value={blog.status}
+                        onChange={(e) => changeStatus(blog, e.target.value as Status)}
+                        className={`cursor-pointer rounded-full border px-2.5 py-1 text-xs font-semibold outline-none ${STATUS_STYLES[blog.status]}`}
+                        aria-label="Change status"
+                      >
+                        <option value="DRAFT">DRAFT</option>
+                        <option value="PUBLISHED">PUBLISHED</option>
+                        <option value="INACTIVE">INACTIVE</option>
+                      </select>
+                    </td>
+                    <td className="px-4 py-3 text-white/65">
+                      {new Date(blog.datePublished).toLocaleDateString()}
+                      {blog.lastUpdated && (
+                        <p className="text-[11px] text-white/40">Updated {new Date(blog.lastUpdated).toLocaleDateString()}</p>
+                      )}
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex justify-end gap-1">
+                        <RowAction label="Edit" onClick={() => editBlog(blog)}>
+                          <Pencil size={15} />
+                        </RowAction>
+                        {blog.status === "PUBLISHED" && (
+                          <a
+                            href={`/blogs/${blog.slug}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-md p-2 text-white/60 hover:bg-white/10 hover:text-white"
+                            title="View live"
+                          >
+                            <ExternalLink size={15} />
+                          </a>
+                        )}
+                        <RowAction
+                          label="Edit raw HTML"
+                          onClick={async () => {
+                            let html = blog.content;
+                            try {
+                              html = await formatHtml(blog.content);
+                            } catch {}
+                            setHtmlEdit({ slug: blog.slug, html });
+                          }}
+                        >
+                          <CodeXml size={15} />
+                        </RowAction>
+                        <RowAction label="Change cover image" onClick={() => setCoverEdit({ slug: blog.slug, file: null })}>
+                          <ImageIcon size={15} />
+                        </RowAction>
+                        <RowAction label="Delete" danger onClick={() => handleDelete(blog)}>
+                          <Trash2 size={15} />
+                        </RowAction>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-          {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-6">
-              <button
-                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                className="px-3 py-1 rounded bg-gray-700 hover:bg-gray-600"
-                disabled={currentPage === 1}
-              >
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-1.5">
+              <PageButton disabled={page === 1} onClick={() => setCurrentPage(page - 1)}>
                 Prev
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (num) => (
-                  <button
-                    key={num}
-                    onClick={() => setCurrentPage(num)}
-                    className={`px-3 py-1 rounded ${
-                      num === currentPage
-                        ? "bg-blue-600 text-white"
-                        : "bg-gray-700 hover:bg-gray-600"
-                    }`}
-                  >
-                    {num}
-                  </button>
-                ),
-              )}
-              <button
-                onClick={() =>
-                  setCurrentPage((p) => Math.min(p + 1, totalPages))
-                }
-                className="px-3 py-1 rounded bg-gray-700 hover:bg-gray-600"
-                disabled={currentPage === totalPages}
-              >
+              </PageButton>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+                <PageButton key={num} active={num === page} onClick={() => setCurrentPage(num)}>
+                  {num}
+                </PageButton>
+              ))}
+              <PageButton disabled={page === totalPages} onClick={() => setCurrentPage(page + 1)}>
                 Next
-              </button>
+              </PageButton>
             </div>
           )}
-        </div>
+        </>
       )}
 
-      {showAddModal && (
-        <AddBlog
-          onClose={handleModalClose}
-          onSuccess={fetchBlogs}
-          existingBlog={editingBlog}
-        />
-      )}
-
-      {/* HTML Editor Modal */}
-      {showHtmlEditor && (
-        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center">
-          <div className="bg-white text-black rounded-lg p-6 w-full max-w-3xl shadow-xl">
-            <h2 className="text-lg font-bold mb-4">Edit Blog HTML</h2>
-            <textarea
-              value={htmlContent}
-              onChange={(e) => setHtmlContent(e.target.value)}
-              className="w-full h-64 p-3 border border-gray-300 rounded font-mono text-sm"
-            />
-            <div className="flex justify-end gap-2 mt-4">
-              <button
-                onClick={() => setShowHtmlEditor(false)}
-                className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
-              >
+      {htmlEdit && (
+        <Modal
+          title="Edit raw HTML"
+          width={960}
+          onClose={() => setHtmlEdit(null)}
+          footer={
+            <>
+              <button className="bw-btn-ghost" onClick={() => setHtmlEdit(null)}>
                 Cancel
               </button>
-              <button
-                onClick={async () => {
-                  if (!editingSlug) return;
-                  try {
-                    const res = await fetch(
-                      `${process.env.NEXT_PUBLIC_API_BASE}/${editingSlug}`,
-                      {
-                        method: "PUT",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ content: htmlContent }),
-                      },
-                    );
-                    if (!res.ok) throw new Error("Failed to update blog");
-                    alert("Blog updated successfully");
-                    setShowHtmlEditor(false);
-                    fetchBlogs();
-                  } catch (err) {
-                    console.error(err);
-                    alert("Failed to update blog");
-                  }
-                }}
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-              >
-                Save
+              <button className="bw-btn-primary" disabled={busy} onClick={saveHtml}>
+                {busy && <LoaderCircle size={15} className="animate-spin" />} Save HTML
               </button>
-            </div>
-          </div>
-        </div>
+            </>
+          }
+        >
+          <p className="mb-3 text-xs text-white/55">
+            Saved exactly as written, without going through the visual editor. Use this for hand-written layouts.
+          </p>
+          <textarea
+            value={htmlEdit.html}
+            onChange={(e) => setHtmlEdit({ ...htmlEdit, html: e.target.value })}
+            spellCheck={false}
+            className="bw-input h-[55vh] resize-y font-mono text-[13px] leading-relaxed"
+          />
+        </Modal>
       )}
 
-      {/* Image Upload Modal */}
-      {showImageModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-          <div className="bg-white text-black p-6 rounded-lg w-96 shadow-lg">
-            <h2 className="text-lg font-bold mb-4">Update Cover Image</h2>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) =>
-                e.target.files?.length
-                  ? setSelectedImage(e.target.files[0])
-                  : null
-              }
-              className="mb-4"
-            />
-            <div className="flex justify-end gap-2">
-              <button
-                onClick={() => setShowImageModal(false)}
-                className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
-              >
+      {coverEdit && (
+        <Modal
+          title="Update cover image"
+          width={460}
+          onClose={() => setCoverEdit(null)}
+          footer={
+            <>
+              <button className="bw-btn-ghost" onClick={() => setCoverEdit(null)}>
                 Cancel
               </button>
-              <button
-                onClick={handleUpdateImage}
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-              >
-                Update
+              <button className="bw-btn-primary" disabled={!coverEdit.file || busy} onClick={saveCover}>
+                {busy && <LoaderCircle size={15} className="animate-spin" />} Update
               </button>
-            </div>
-          </div>
-        </div>
+            </>
+          }
+        >
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setCoverEdit({ ...coverEdit, file: e.target.files?.[0] || null })}
+            className="block w-full text-sm text-white/80 file:mr-3 file:rounded-md file:border-0 file:bg-[#26658c] file:px-3 file:py-1.5 file:text-white"
+          />
+          <p className="mt-2 text-xs text-white/45">1200 × 630 recommended.</p>
+        </Modal>
       )}
 
-      {showStatusModal && selectedBlog && (
-        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center">
-          <div className="bg-white text-black p-6 rounded-lg w-96 shadow-xl">
-            <h2 className="text-lg font-bold mb-4">Change Blog Status</h2>
-
-            <p className="mb-3 text-sm">
-              Current Status:{" "}
-              <span className="font-semibold">{selectedBlog.status}</span>
-            </p>
-
-            <select
-              value={newStatus}
-              onChange={(e) =>
-                setNewStatus(
-                  e.target.value as "DRAFT" | "PUBLISHED" | "INACTIVE",
-                )
-              }
-              className="w-full p-2 border rounded mb-4"
-            >
-              <option value="DRAFT">DRAFT</option>
-              <option value="PUBLISHED">PUBLISHED</option>
-              <option value="INACTIVE">INACTIVE</option>
-            </select>
-
-            <div className="flex justify-end gap-2">
-              <button
-                onClick={() => setShowStatusModal(false)}
-                className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 cursor-pointer"
-              >
-                Cancel
-              </button>
-
-              <button
-                onClick={handleStatusUpdate}
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer"
-              >
-                Confirm
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ToastContainer position="bottom-right" autoClose={3000} theme="dark" />
     </div>
+  );
+}
+
+function RowAction({
+  label,
+  onClick,
+  danger,
+  children,
+}: {
+  label: string;
+  onClick: () => void;
+  danger?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      title={label}
+      aria-label={label}
+      className={`rounded-md p-2 ${danger ? "text-red-300/80 hover:bg-red-500/10 hover:text-red-300" : "text-white/60 hover:bg-white/10 hover:text-white"}`}
+    >
+      {children}
+    </button>
+  );
+}
+
+function PageButton({
+  active,
+  disabled,
+  onClick,
+  children,
+}: {
+  active?: boolean;
+  disabled?: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      className={`min-w-9 rounded-md px-3 py-1.5 text-sm ${
+        active ? "bg-[#26658c] text-white" : "bg-white/5 text-white/70 hover:bg-white/10 disabled:opacity-40"
+      }`}
+    >
+      {children}
+    </button>
   );
 }

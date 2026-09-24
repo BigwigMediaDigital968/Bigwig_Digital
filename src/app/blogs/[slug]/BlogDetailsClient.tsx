@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import Script from "next/script";
 
@@ -9,6 +9,7 @@ import Navbar from "../../../../components/Nav";
 import Footer from "../../../../components/Footer";
 import GetInTouch from "../../../../components/GetInTouch";
 import PopupForm from "../../../../components/PopupForm";
+import { normalizeBlogHtml } from "../../../../utils/blogHtml";
 
 /* ================= TYPES ================= */
 
@@ -137,7 +138,11 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
     if (slug) fetchBlog();
   }, [slug]);
 
-  console.log(blog);
+  // Theme-safe HTML: fixes unreadable pasted colours, scopes <style> tags, migrates old Quill markup.
+  const contentHtml = useMemo(
+    () => (blog ? normalizeBlogHtml(blog.content) : ""),
+    [blog],
+  );
 
   if (loading)
     return (
@@ -220,7 +225,18 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
     });
   }
 
-  blog.customSchemas?.forEach((s) => schemas.push(s));
+  // Stored as { name, json: "<JSON-LD string>" } by the admin editor (older posts may hold raw objects).
+  blog.customSchemas?.forEach((s) => {
+    if (typeof s?.json === "string") {
+      try {
+        schemas.push(JSON.parse(s.json));
+      } catch {
+        /* invalid JSON-LD is skipped rather than breaking the page */
+      }
+    } else if (s && typeof s === "object") {
+      schemas.push(s);
+    }
+  });
 
   /* ================= RENDER ================= */
 
@@ -230,6 +246,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
       {schemas.map((schema, i) => (
         <Script
           key={i}
+          id={`blog-schema-${i}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
@@ -241,7 +258,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
         {/* Blog Content */}
         <div className="w-full lg:w-2/3">
           <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
-          <p className="text-gray-600 mb-2">
+          <p className="text-gray-300 mb-2">
             By {blog.author} –{" "}
             {new Date(blog.datePublished).toLocaleDateString()}
           </p>
@@ -254,7 +271,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
 
           <div
             className="blog-content"
-            dangerouslySetInnerHTML={{ __html: blog.content }}
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
 
           {/* ================= FAQ ACCORDION ================= */}
@@ -284,7 +301,7 @@ export default function BlogDetailsClient({ slug }: { slug: string }) {
                       <div
                         className={`
                 overflow-hidden transition-all duration-300 ease-in-out
-                ${isOpen ? "max-h-40 opacity-100 mt-3" : "max-h-0 opacity-0"}
+                ${isOpen ? "max-h-[1000px] opacity-100 mt-3" : "max-h-0 opacity-0"}
               `}
                       >
                         <p className="text-gray-600">{faq.answer}</p>

@@ -1,0 +1,546 @@
+/* Editor chrome. Content typography lives in globals.css (.blog-content) so the
+   writing surface and the public blog page look identical. */
+
+.bw-editor {
+  --bw-surface: var(--color1, #011c40);
+  --bw-chrome: #0d1726;
+  --bw-chrome-2: #132236;
+  --bw-border: rgba(255, 255, 255, 0.1);
+  --bw-accent: var(--color4, #54acbf);
+
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--bw-border);
+  border-radius: 12px;
+  background: var(--bw-surface);
+  color: #fff;
+  position: relative;
+}
+
+.bw-editor-loading {
+  min-height: 420px;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bw-editor.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  border-radius: 0;
+  border: 0;
+}
+.bw-editor.is-fullscreen .bw-editor-body {
+  flex: 1;
+  overflow-y: auto;
+}
+.bw-editor.is-fullscreen .ProseMirror {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ---------------- Toolbar ---------------- */
+
+.bw-toolbar-wrap {
+  position: sticky;
+  /* set by the page when it has its own sticky header */
+  top: var(--bw-sticky-offset, 0px);
+  z-index: 20;
+  border-bottom: 1px solid var(--bw-border);
+  background: var(--bw-chrome);
+  border-radius: 12px 12px 0 0;
+}
+.bw-editor.is-fullscreen .bw-toolbar-wrap {
+  top: 0;
+  border-radius: 0;
+}
+
+.bw-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+}
+.bw-toolbar.is-disabled > :not(.ml-auto) {
+  opacity: 0.35;
+  pointer-events: none;
+}
+.bw-toolbar-context {
+  border-top: 1px solid var(--bw-border);
+  background: var(--bw-chrome-2);
+}
+
+.bw-tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  transition: background 0.12s, color 0.12s;
+  cursor: pointer;
+}
+.bw-tool:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+}
+.bw-tool.is-active {
+  background: rgba(84, 172, 191, 0.22);
+  color: #a7ebf2;
+}
+.bw-tool:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.bw-tool:focus-visible {
+  outline: 2px solid var(--bw-accent);
+  outline-offset: 1px;
+}
+
+.bw-tool-divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 4px;
+  background: var(--bw-border);
+}
+
+.bw-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  z-index: 40;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 4px;
+  border: 1px solid var(--bw-border);
+  border-radius: 10px;
+  background: #101c2c;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+@layer components {
+  .bw-menu-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+  }
+  .bw-menu-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .bw-menu-item.is-active {
+    background: rgba(84, 172, 191, 0.2);
+    color: #a7ebf2;
+  }
+}
+
+/* ---------------- Writing surface ---------------- */
+
+.bw-editor-body {
+  position: relative;
+}
+
+.bw-editor .ProseMirror {
+  min-height: 520px;
+  padding: 28px 32px 48px;
+  outline: none;
+  caret-color: #a7ebf2;
+}
+@media (max-width: 640px) {
+  .bw-editor .ProseMirror {
+    padding: 20px 16px 40px;
+  }
+}
+
+.bw-editor .ProseMirror ::selection {
+  background: rgba(84, 172, 191, 0.35);
+}
+
+.bw-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.bw-editor .ProseMirror-selectednode {
+  outline: 2px solid var(--bw-accent);
+  outline-offset: 2px;
+}
+
+.bw-editor .ProseMirror-gapcursor::after {
+  border-top-color: #a7ebf2;
+}
+
+/* links are not clickable while editing, make that obvious */
+.bw-editor .ProseMirror a {
+  cursor: text;
+}
+
+/* Tables */
+.bw-editor .ProseMirror .tableWrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.bw-editor .ProseMirror table {
+  margin: 0;
+}
+.bw-editor .ProseMirror .selectedCell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(84, 172, 191, 0.25);
+  pointer-events: none;
+  z-index: 2;
+}
+.bw-editor .ProseMirror td,
+.bw-editor .ProseMirror th {
+  position: relative;
+}
+.bw-editor .ProseMirror .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: -2px;
+  width: 4px;
+  background: var(--bw-accent);
+  pointer-events: none;
+  z-index: 3;
+}
+.bw-editor .ProseMirror.resize-cursor {
+  cursor: col-resize;
+}
+
+/* YouTube */
+.bw-editor .ProseMirror div[data-youtube-video] {
+  cursor: move;
+}
+.bw-editor .ProseMirror div[data-youtube-video] iframe {
+  pointer-events: none;
+}
+.bw-editor .ProseMirror div[data-youtube-video].ProseMirror-selectednode {
+  outline: 2px solid var(--bw-accent);
+}
+
+/* ---------------- Image node view ---------------- */
+
+.bw-image-view {
+  position: relative;
+  margin: 1.25rem 0;
+  max-width: 100%;
+  line-height: 0;
+}
+.bw-image-view:not([data-align]) {
+  display: block;
+}
+.bw-image-inner {
+  position: relative;
+  display: block;
+}
+.bw-editor .bw-image-view img {
+  margin: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.bw-image-view:not([style*="width"]) img {
+  width: auto;
+  max-width: 100%;
+}
+.bw-image-view:not([style*="width"])[data-align="center"] img {
+  margin: 0 auto;
+}
+.bw-image-view.is-selected img {
+  outline: 3px solid var(--bw-accent);
+  outline-offset: 2px;
+}
+.bw-image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 6px;
+  background: rgba(1, 28, 64, 0.72);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.bw-image-badges {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 6px;
+  line-height: 1;
+}
+.bw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(13, 23, 38, 0.85);
+  color: #fff;
+  font-size: 11px;
+}
+.bw-badge.warn {
+  background: rgba(180, 83, 9, 0.9);
+}
+.bw-resize-handle {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background: var(--bw-accent);
+  cursor: nwse-resize;
+  touch-action: none;
+}
+.bw-image-view[data-align="right"] .bw-resize-handle {
+  right: auto;
+  left: -7px;
+  cursor: nesw-resize;
+}
+.bw-image-caption {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: center;
+  font-style: italic;
+}
+.bw-image-broken {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 24px;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  line-height: 1.3;
+  max-width: 100%;
+}
+
+/* ---------------- Custom HTML block ---------------- */
+
+.bw-html-block {
+  margin: 1.25rem 0;
+  border: 1px dashed rgba(167, 235, 242, 0.35);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bw-html-block.is-selected {
+  border-style: solid;
+  border-color: var(--bw-accent);
+}
+.bw-html-block-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 8px 5px 12px;
+  background: rgba(84, 172, 191, 0.12);
+  color: #a7ebf2;
+  font-size: 12px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.bw-html-block-bar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.bw-html-block-bar button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.bw-html-block-preview {
+  padding: 12px 16px;
+  pointer-events: none;
+  max-height: 520px;
+  overflow: hidden;
+}
+.bw-html-block-code {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: transparent;
+  border: 0;
+}
+
+/* ---------------- Bubble menus ---------------- */
+
+.bw-bubble {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--bw-border, rgba(255, 255, 255, 0.1));
+  border-radius: 10px;
+  background: #101c2c;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+.bw-bubble-sep {
+  width: 1px;
+  height: 18px;
+  margin: 0 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------------- Source view & status bar ---------------- */
+
+.bw-source {
+  padding: 12px;
+}
+.bw-source-hint {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.bw-source textarea {
+  width: 100%;
+  min-height: 520px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: #07101c;
+  color: #d6f5f8;
+  font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  resize: vertical;
+  outline: none;
+}
+.bw-editor.is-fullscreen .bw-source textarea {
+  min-height: calc(100vh - 170px);
+}
+
+.bw-statusbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--bw-border);
+  background: var(--bw-chrome);
+  border-radius: 0 0 12px 12px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+}
+.bw-editor.is-fullscreen .bw-statusbar {
+  border-radius: 0;
+}
+
+/* ---------------- Shared form controls / modal ---------------- */
+/* In the components layer so Tailwind utilities (w-auto, hidden, h-8…) can override them. */
+@layer components {
+  .bw-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .bw-input:focus {
+    border-color: var(--color4, #54acbf);
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .bw-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+  select.bw-input option {
+    background: #101c2c;
+    color: #fff;
+  }
+
+  .bw-btn-primary,
+  .bw-btn-ghost,
+  .bw-btn-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.12s, opacity 0.12s;
+  }
+  .bw-btn-primary {
+    padding: 8px 16px;
+    background: #26658c;
+    color: #fff;
+  }
+  .bw-btn-primary:hover:not(:disabled) {
+    background: #2f78a6;
+  }
+  .bw-btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .bw-btn-ghost {
+    padding: 8px 14px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .bw-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .bw-btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+  .bw-btn-sm:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .bw-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(2px);
+  }
+  .bw-modal {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: #0d1726;
+    color: #fff;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+}

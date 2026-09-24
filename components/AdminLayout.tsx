@@ -30,6 +30,9 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     {icon:<FileText />, label:"Offer",to:"/admin/offermanagement"}
   ];
 
+  // Sub-pages (e.g. /admin/blogs/new) keep their section highlighted.
+  const isActive = (to: string) => pathname === to || (to !== "/admin" && pathname.startsWith(`${to}/`));
+
   // Redirect if not logged in
   useEffect(() => {
     const isLoggedIn = sessionStorage.getItem("login") === "true";
@@ -70,7 +73,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
                 href={to}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded ${
-                  pathname === to
+                  isActive(to)
                     ? "bg-[var(--primary-color)] text-black font-semibold"
                     : "hover:bg-[var(--primary-color)] hover:text-black"
                 }`}
@@ -93,7 +96,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
               key={to}
               href={to}
               className={`flex items-center gap-2 px-3 py-2 rounded whitespace-nowrap ${
-                pathname === to
+                isActive(to)
                   ? "bg-[var(--primary-color)] text-black font-semibold"
                   : "hover:bg-[var(--primary-color)] hover:text-black"
               }`}

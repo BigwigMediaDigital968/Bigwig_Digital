@@ -1,8 +1,21 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import ReactQuill from "react-quill-new";
-import "react-quill-new/dist/quill.snow.css";
-import { createPortal } from "react-dom";
+
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+// Toasts render in the admin page's <ToastContainer>.
+import { toast } from "react-toastify";
+import {
+  ArrowLeft,
+  ChevronDown,
+  ImagePlus,
+  LoaderCircle,
+  Lock,
+  Plus,
+  Save,
+  Trash2,
+  TriangleAlert,
+} from "lucide-react";
+import BlogEditor, { type Notify } from "./blog-editor/BlogEditor";
+import "./blog-editor/editor.css";
 
 /* ---------------- Types ---------------- */
 
@@ -32,20 +45,38 @@ interface SchemaSettings {
   image: boolean;
 }
 
-interface BlogPost {
+export type Status = "DRAFT" | "PUBLISHED" | "INACTIVE";
+
+export interface BlogPost {
   _id?: string;
   title: string;
   slug: string;
   excerpt: string;
   content: string;
   author: string;
-  tags?: string;
+  tags?: string | string[];
   coverImage?: string;
   category: string;
+  status?: Status;
   faqs?: FAQ[];
   breadcrumbs?: Breadcrumb[];
   schemaSettings?: SchemaSettings;
-  customSchemas?: CustomSchema[];
+  customSchemas?: (CustomSchema | Record<string, unknown>)[];
+}
+
+interface FormState {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  tags: string;
+  category: string;
+  status: Status;
+  faqs: FAQ[];
+  breadcrumbs: Breadcrumb[];
+  schemaSettings: SchemaSettings;
+  customSchemas: CustomSchema[];
 }
 
 /* ---------------- Constants ---------------- */
@@ -79,658 +110,611 @@ const defaultSchemaSettings: SchemaSettings = {
   image: true,
 };
 
+const SCHEMA_LABELS: Record<keyof SchemaSettings, string> = {
+  article: "Article",
+  breadcrumb: "Breadcrumb",
+  faq: "FAQ",
+  organization: "Organization",
+  speakable: "Speakable",
+  video: "Video",
+  image: "Image",
+};
+
+const SITE = "https://www.bigwigmediadigital.com";
+const API = process.env.NEXT_PUBLIC_API_BASE;
+
+/* ---------------- Helpers ---------------- */
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/[\s-]+/g, "-");
+
+/** Custom schemas were stored either as {name, json} or as raw JSON-LD objects. */
+function toCustomSchema(s: CustomSchema | Record<string, unknown>): CustomSchema {
+  if (typeof (s as CustomSchema).json === "string") return s as CustomSchema;
+  return {
+    name: String((s as Record<string, unknown>)["@type"] || "Schema"),
+    json: JSON.stringify(s, null, 2),
+  };
+}
+
+function toForm(blog: BlogPost | null): FormState {
+  return {
+    title: blog?.title || "",
+    slug: blog?.slug || "",
+    excerpt: blog?.excerpt || "",
+    content: blog?.content || "",
+    author: blog?.author || "",
+    tags: Array.isArray(blog?.tags) ? blog.tags.join(", ") : blog?.tags || "",
+    category: blog?.category || "",
+    status: blog?.status || "DRAFT",
+    faqs: blog?.faqs?.map((f) => ({ ...f })) || [],
+    breadcrumbs: blog?.breadcrumbs?.map((b) => ({ ...b })) || [],
+    schemaSettings: { ...defaultSchemaSettings, ...(blog?.schemaSettings || {}) },
+    customSchemas: (blog?.customSchemas || []).map(toCustomSchema),
+  };
+}
+
+const hasRealContent = (html: string) =>
+  !!html && (/<(img|iframe|table|div data-html-block)/i.test(html) || html.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim().length > 0);
+
 /* ---------------- Component ---------------- */
 
+/**
+ * Blog composer page body. Rendered inside the admin layout by
+ * /admin/blogs/new and /admin/blogs/edit/[slug].
+ */
 const AddBlog = ({
   onClose,
-  onSuccess,
+  onSaved,
   existingBlog = null,
 }: {
+  /** Leave the composer (back to the list). */
   onClose: () => void;
-  onSuccess: () => void;
+  /** Called after a successful save with the saved post's slug. */
+  onSaved?: (slug: string, created: boolean) => void;
   existingBlog?: BlogPost | null;
 }) => {
-  const [formData, setFormData] = useState({
-    title: "",
-    slug: "",
-    excerpt: "",
-    content: "",
-    author: "",
-    tags: "",
-    coverImage: null as File | null,
-    category: "",
-    faqs: [] as FAQ[],
-    breadcrumbs: [] as Breadcrumb[],
-    schemaSettings: defaultSchemaSettings,
-    customSchemas: [] as CustomSchema[],
-  });
-
+  const isEdit = !!existingBlog;
+  // Last saved state; "unsaved changes" compares against it.
+  const [initial, setInitial] = useState<FormState>(() => toForm(existingBlog));
+  const [form, setForm] = useState<FormState>(initial);
+  const [coverFile, setCoverFile] = useState<File | null>(null);
+  const [coverPreview, setCoverPreview] = useState<string | null>(existingBlog?.coverImage || null);
+  const [slugTouched, setSlugTouched] = useState(isEdit);
   const [submitting, setSubmitting] = useState(false);
-  const quillRef = useRef<any>(null);
+  const [pendingUploads, setPendingUploads] = useState(0);
+  const [showSidebar, setShowSidebar] = useState(true);
 
-  /* ---------------- Populate Edit Mode ---------------- */
+  const notify: Notify = useCallback((type, message) => {
+    if (type === "success") toast.success(message);
+    else if (type === "error") toast.error(message);
+    else toast.info(message);
+  }, []);
+
+  const update = <K extends keyof FormState>(key: K, value: FormState[K]) => setForm((f) => ({ ...f, [key]: value }));
+
+  const dirty = useMemo(() => coverFile !== null || JSON.stringify(form) !== JSON.stringify(initial), [form, initial, coverFile]);
+
+  // Local drafts were removed; clear any left over in this browser.
+  useEffect(() => {
+    try {
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith("bw-blog-draft:"))
+        .forEach((k) => localStorage.removeItem(k));
+    } catch {}
+  }, []);
+
+  /* ---------------- Leave guards ---------------- */
 
   useEffect(() => {
-    if (existingBlog) {
-      setFormData({
-        title: existingBlog.title,
-        slug: existingBlog.slug,
-        excerpt: existingBlog.excerpt,
-        content: existingBlog.content,
-        author: existingBlog.author,
-        tags: existingBlog.tags || "",
-        coverImage: null,
-        category: existingBlog.category,
-        faqs: existingBlog.faqs || [],
-        breadcrumbs: existingBlog.breadcrumbs || [],
-        schemaSettings: existingBlog.schemaSettings || defaultSchemaSettings,
-        customSchemas: existingBlog.customSchemas || [],
-      });
+    if (!dirty) return;
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [dirty]);
+
+  const requestClose = () => {
+    if (dirty && !confirm("You have unsaved changes that will be lost. Leave the editor?")) return;
+    onClose();
+  };
+
+  // The editor toolbar sticks just below the sticky page header.
+  const rootRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const header = headerRef.current;
+    const root = rootRef.current;
+    if (!header || !root) return;
+    // `top` is negative (it cancels the admin <main> padding), so the header's
+    // visible bottom edge is its height plus that offset.
+    const ro = new ResizeObserver(() => {
+      const top = parseFloat(getComputedStyle(header).top) || 0;
+      root.style.setProperty("--bw-sticky-offset", `${header.offsetHeight + top}px`);
+    });
+    ro.observe(header);
+    return () => ro.disconnect();
+  }, []);
+
+  /* ---------------- Cover image ---------------- */
+
+  useEffect(() => {
+    if (!coverFile) return;
+    const url = URL.createObjectURL(coverFile);
+    setCoverPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [coverFile]);
+
+  const pickCover = (file?: File | null) => {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) return toast.error("Cover must be an image");
+    if (file.size > 10 * 1024 * 1024) return toast.error("Cover image must be under 10MB");
+    setCoverFile(file);
+  };
+
+  /* ---------------- List helpers ---------------- */
+
+  const updateItem = <K extends "faqs" | "breadcrumbs" | "customSchemas">(key: K, index: number, patch: Partial<FormState[K][number]>) =>
+    setForm((f) => ({
+      ...f,
+      [key]: (f[key] as FormState[K][number][]).map((item, i) => (i === index ? { ...item, ...patch } : item)),
+    }));
+
+  const removeItem = (key: "faqs" | "breadcrumbs" | "customSchemas", index: number) =>
+    setForm((f) => ({ ...f, [key]: (f[key] as unknown[]).filter((_, i) => i !== index) }));
+
+  /* ---------------- Validation & submit ---------------- */
+
+  const schemaErrors = form.customSchemas.map((s) => {
+    if (!s.json.trim()) return null;
+    try {
+      JSON.parse(s.json);
+      return null;
+    } catch (e) {
+      return (e as Error).message;
     }
-  }, [existingBlog]);
+  });
 
-  /* ---------------- Image URL Modal ---------------- */
+  const validate = (): string | null => {
+    if (!form.title.trim()) return "Title is required";
+    if (!form.slug.trim()) return "Slug is required";
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(form.slug)) return "Slug can only contain lowercase letters, numbers and hyphens";
+    if (!hasRealContent(form.content)) return "Blog content is empty";
+    if (pendingUploads > 0) return "Please wait for images to finish uploading";
+    if (/src="blob:/.test(form.content)) return "Some images haven't finished uploading";
+    if (!form.excerpt.trim()) return "Meta description is required";
+    if (!form.category) return "Select a category";
+    if (!form.author.trim()) return "Author is required";
+    if (!isEdit && !coverFile) return "Cover image is required";
+    if (schemaErrors.some(Boolean)) return "One of the custom schemas is not valid JSON";
+    if (form.faqs.some((f) => !f.question.trim() !== !f.answer.trim())) return "Every FAQ needs both a question and an answer";
+    return null;
+  };
 
-  const [showImageModal, setShowImageModal] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
-  const [imageAlt, setImageAlt] = useState("");
-  const [imageLink, setImageLink] = useState("");
-
-  const insertImageByUrl = () => {
-    if (!imageUrl.startsWith("http")) {
-      alert("Please enter a valid image URL");
+  const handleSubmit = async () => {
+    const error = validate();
+    if (error) {
+      toast.error(error);
       return;
     }
-
-    const quill = quillRef.current?.getEditor();
-    const range = quill.getSelection(true);
-
-    let imageHTML = `<img src="${imageUrl}" alt="${imageAlt}" loading="lazy" />`;
-
-    if (imageLink) {
-      imageHTML = `<a href="${imageLink}" target="_blank" rel="noopener noreferrer">${imageHTML}</a>`;
-    }
-
-    quill.clipboard.dangerouslyPasteHTML(range.index, imageHTML);
-
-    setShowImageModal(false);
-    setImageUrl("");
-    setImageAlt("");
-    setImageLink("");
-  };
-
-  /* ---------------- Editor Toolbar ---------------- */
-
-  const toolbarOptions = [
-    ["bold", "italic", "underline", "strike"],
-    [{ color: [] }, { background: [] }],
-    ["blockquote"],
-    [{ list: "ordered" }, { list: "bullet" }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    [{ align: [] }],
-    ["link"],
-    ["image"],
-  ];
-
-  const modules = {
-    toolbar: {
-      container: toolbarOptions,
-      handlers: {
-        image: () => setShowImageModal(true),
-      },
-    },
-  };
-
-  /* ---------------- Handlers ---------------- */
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-
-    if (name === "title" && !existingBlog) {
-      const autoSlug = value
-        .toLowerCase()
-        .replace(/[^a-z0-9\s]/g, "")
-        .trim()
-        .replace(/\s+/g, "-");
-
-      setFormData((prev) => ({
-        ...prev,
-        title: value,
-        slug: autoSlug,
-      }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFormData((prev) => ({
-        ...prev,
-        coverImage: e.target.files![0],
-      }));
-    }
-  };
-
-  /* ---------------- FAQ Handlers ---------------- */
-
-  const addFAQ = () => {
-    setFormData((prev) => ({
-      ...prev,
-      faqs: [...prev.faqs, { question: "", answer: "" }],
-    }));
-  };
-
-  const updateFAQ = (
-    index: number,
-    field: "question" | "answer",
-    value: string,
-  ) => {
-    const updatedFAQs = [...formData.faqs];
-    updatedFAQs[index][field] = value;
-
-    setFormData((prev) => ({
-      ...prev,
-      faqs: updatedFAQs,
-    }));
-  };
-
-  const removeFAQ = (index: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      faqs: prev.faqs.filter((_, i) => i !== index),
-    }));
-  };
-
-  // Breadcrumb Handler
-
-  const addBreadcrumb = () => {
-    setFormData((prev) => ({
-      ...prev,
-      breadcrumbs: [
-        ...prev.breadcrumbs,
-        {
-          name: "",
-          url: "",
-          position: prev.breadcrumbs.length + 1,
-        },
-      ],
-    }));
-  };
-
-  const updateBreadcrumb = (
-    index: number,
-    field: "name" | "url",
-    value: string,
-  ) => {
-    const updated = [...formData.breadcrumbs];
-    updated[index][field] = value;
-
-    setFormData((prev) => ({
-      ...prev,
-      breadcrumbs: updated,
-    }));
-  };
-
-  const removeBreadcrumb = (index: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      breadcrumbs: prev.breadcrumbs.filter((_, i) => i !== index),
-    }));
-  };
-
-  // Custom Schema Handler
-  const addCustomSchema = () => {
-    setFormData((prev) => ({
-      ...prev,
-      customSchemas: [...prev.customSchemas, { name: "", json: "" }],
-    }));
-  };
-
-  const updateCustomSchema = (
-    index: number,
-    field: "name" | "json",
-    value: string,
-  ) => {
-    const updated = [...formData.customSchemas];
-    updated[index][field] = value;
-
-    setFormData((prev) => ({
-      ...prev,
-      customSchemas: updated,
-    }));
-  };
-
-  const removeCustomSchema = (index: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      customSchemas: prev.customSchemas.filter((_, i) => i !== index),
-    }));
-  };
-
-  /* ---------------- Submit ---------------- */
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
     setSubmitting(true);
 
     try {
       const blogData = new FormData();
-
-      blogData.append("title", formData.title);
-      blogData.append("slug", formData.slug);
-      blogData.append("excerpt", formData.excerpt);
-      blogData.append("content", formData.content);
-      blogData.append("author", formData.author);
-      blogData.append("tags", formData.tags);
-      blogData.append("category", formData.category);
-
-      blogData.append(
-        "faqs",
-        JSON.stringify(formData.faqs.filter((f) => f.question && f.answer)),
-      );
-
+      blogData.append("title", form.title.trim());
+      blogData.append("slug", form.slug);
+      blogData.append("excerpt", form.excerpt.trim());
+      blogData.append("content", form.content);
+      blogData.append("author", form.author.trim());
+      blogData.append("tags", form.tags);
+      blogData.append("category", form.category);
+      blogData.append("faqs", JSON.stringify(form.faqs.filter((f) => f.question.trim() && f.answer.trim())));
       blogData.append(
         "breadcrumbs",
-        JSON.stringify(formData.breadcrumbs.filter((b) => b.name && b.url)),
+        JSON.stringify(form.breadcrumbs.filter((b) => b.name && b.url).map((b, i) => ({ ...b, position: i + 1 }))),
       );
+      blogData.append("customSchemas", JSON.stringify(form.customSchemas.filter((s) => s.name && s.json.trim())));
+      blogData.append("schemaSettings", JSON.stringify(form.schemaSettings));
+      // Re-sending PUBLISHED would reset the publish date, only send on change.
+      if (!isEdit || form.status !== initial.status) blogData.append("status", form.status);
+      if (coverFile) blogData.append("coverImage", coverFile);
 
-      blogData.append(
-        "customSchemas",
-        JSON.stringify(formData.customSchemas.filter((s) => s.name && s.json)),
-      );
+      const res = await fetch(isEdit ? `${API}/${existingBlog!.slug}` : `${API}/add`, {
+        method: isEdit ? "PUT" : "POST",
+        body: blogData,
+      });
 
-      // blogData.append("faqs", JSON.stringify(formData.faqs));
-      // blogData.append("breadcrumbs", JSON.stringify(formData.breadcrumbs));
-      blogData.append(
-        "schemaSettings",
-        JSON.stringify(formData.schemaSettings),
-      );
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || data.msg || "Something went wrong");
 
-      if (formData.coverImage) {
-        blogData.append("coverImage", formData.coverImage);
+      toast.success(isEdit ? "Blog updated" : "Blog created");
+
+      // The saved state becomes the new baseline.
+      setInitial(form);
+      if (coverFile) {
+        setCoverFile(null);
+        if (data.blogPost?.coverImage) setCoverPreview(data.blogPost.coverImage);
       }
-
-      const res = await fetch(
-        existingBlog
-          ? `${process.env.NEXT_PUBLIC_API_BASE}/${existingBlog.slug}`
-          : `${process.env.NEXT_PUBLIC_API_BASE}/add`,
-        {
-          method: existingBlog ? "PUT" : "POST",
-          body: blogData,
-        },
-      );
-
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Something went wrong");
-      }
-
-      onSuccess();
-      onClose();
-    } catch (error) {
-      console.error(error);
-      alert("Network or server error");
+      onSaved?.(form.slug, !isEdit);
+    } catch (err) {
+      console.error(err);
+      toast.error((err as Error).message || "Network or server error");
     } finally {
       setSubmitting(false);
     }
   };
 
-  /* ---------------- UI (UNCHANGED STYLE) ---------------- */
+  const submitRef = useRef(handleSubmit);
+  submitRef.current = handleSubmit;
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        submitRef.current();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  /* ---------------- UI ---------------- */
+
+  const titleLen = form.title.length;
+  const descLen = form.excerpt.length;
 
   return (
-    <>
-      <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-        <div className="bg-white text-black p-6 w-full max-w-2xl rounded-xl overflow-y-auto max-h-[90vh]">
-          <h2 className="text-2xl font-bold mb-4 text-black">
-            {existingBlog ? "Edit Blog" : "Add New Blog"}
-          </h2>
+    // Negative margin cancels the admin <main> padding so the page runs edge to edge.
+    <div ref={rootRef} className="-m-4 flex min-h-[calc(100%+2rem)] flex-col bg-[#0b121a] text-white sm:-m-6 sm:min-h-[calc(100%+3rem)]">
+      {/* ---------- Header ---------- */}
+      <header
+        ref={headerRef}
+        className="sticky -top-4 z-30 flex flex-wrap items-center gap-3 border-b sm:-top-6 border-white/10 bg-[#0d1726]/95 px-4 py-2.5 backdrop-blur"
+      >
+        <button type="button" onClick={requestClose} className="rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white" aria-label="Back to all posts" title="Back to all posts">
+          <ArrowLeft size={18} />
+        </button>
+        <div className="min-w-0 flex-1">
+          <p className="text-[11px] uppercase tracking-wider text-white/45">{isEdit ? "Editing post" : "New post"}</p>
+          <p className="truncate text-sm font-medium">{form.title || "Untitled"}</p>
+        </div>
 
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-4"
-            encType="multipart/form-data"
-          >
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              className="w-full p-2 border"
-              value={formData.title}
-              onChange={handleChange}
-              required
+        <span className="hidden text-xs text-white/50 sm:block">
+          {pendingUploads > 0 ? (
+            <span className="flex items-center gap-1.5 text-[#54acbf]">
+              <LoaderCircle size={13} className="animate-spin" /> Uploading images…
+            </span>
+          ) : dirty ? (
+            "Unsaved changes"
+          ) : (
+            "All changes saved"
+          )}
+        </span>
+
+        <select
+          value={form.status}
+          onChange={(e) => update("status", e.target.value as Status)}
+          className="bw-input w-auto py-1.5 text-sm"
+          aria-label="Status"
+        >
+          <option value="DRAFT">Draft</option>
+          <option value="PUBLISHED">Published</option>
+          <option value="INACTIVE">Inactive</option>
+        </select>
+
+        <button type="button" className="bw-btn-sm hidden xl:inline-flex" onClick={() => setShowSidebar((s) => !s)}>
+          {showSidebar ? "Hide settings" : "Show settings"}
+        </button>
+
+        <button type="button" onClick={handleSubmit} disabled={submitting || pendingUploads > 0} className="bw-btn-primary" title="Save (Ctrl+S)">
+          {submitting ? <LoaderCircle size={16} className="animate-spin" /> : <Save size={16} />}
+          {submitting ? "Saving…" : isEdit ? "Update" : form.status === "PUBLISHED" ? "Publish" : "Save"}
+        </button>
+      </header>
+
+      {/* ---------- Body ---------- */}
+      <div className="flex flex-1 flex-col xl:flex-row">
+        <div className="min-w-0 flex-1">
+          <div className="mx-auto max-w-[960px] px-4 py-6 sm:px-8">
+            <textarea
+              value={form.title}
+              onChange={(e) => {
+                const title = e.target.value.replace(/\n/g, " ");
+                setForm((f) => ({ ...f, title, slug: slugTouched ? f.slug : slugify(title) }));
+              }}
+              placeholder="Post title"
+              rows={1}
+              className="w-full resize-none bg-transparent text-3xl font-bold leading-tight outline-none placeholder:text-white/25 sm:text-4xl [field-sizing:content]"
             />
 
-            <input
-              type="text"
-              name="slug"
-              placeholder="Slug"
-              className="w-full p-2 border"
-              value={formData.slug}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              type="text"
-              name="excerpt"
-              placeholder="Meta description"
-              className="w-full p-2 border"
-              value={formData.excerpt}
-              onChange={handleChange}
-              required
-            />
-
-            <select
-              name="category"
-              className="w-full p-2 border"
-              value={formData.category}
-              onChange={(e) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  category: e.target.value,
-                }))
-              }
-              required
-            >
-              <option value="">Select Category</option>
-              {categoryOptions.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-
-            <div>
-              <label className="block font-medium mb-2">Blog Content</label>
-              <div className="border rounded overflow-hidden">
-                <ReactQuill
-                  theme="snow"
-                  ref={quillRef}
-                  value={formData.content}
-                  onChange={(value) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      content: value,
-                    }))
-                  }
-                  // modules={{ toolbar: toolbarOptions }}
-                  modules={modules}
-                  className="react-quill-editor"
+            <div className="mb-5 mt-2 flex flex-wrap items-center gap-1 text-sm text-white/50">
+              <span>{SITE.replace("https://", "")}/blogs/</span>
+              {isEdit ? (
+                <span className="flex items-center gap-1 text-white/80" title="The slug can't change after publishing (it would break links and SEO)">
+                  {form.slug} <Lock size={12} />
+                </span>
+              ) : (
+                <input
+                  value={form.slug}
+                  onChange={(e) => {
+                    setSlugTouched(true);
+                    update("slug", slugify(e.target.value));
+                  }}
+                  className="min-w-[200px] flex-1 rounded border border-transparent bg-transparent px-1 text-white/85 outline-none hover:border-white/15 focus:border-[#54acbf]"
+                  placeholder="post-url-slug"
+                  aria-label="Slug"
                 />
+              )}
+            </div>
+
+            <BlogEditor
+              value={form.content}
+              onChange={(content) => update("content", content)}
+              onPendingChange={setPendingUploads}
+              notify={notify}
+            />
+          </div>
+        </div>
+
+        {/* ---------- Sidebar ---------- */}
+        {showSidebar && (
+          <aside className="w-full shrink-0 border-t border-white/10 bg-[#0d1726] xl:sticky xl:top-[var(--bw-sticky-offset,57px)] xl:max-h-[calc(100vh-var(--bw-sticky-offset,57px)-1.5rem)] xl:w-[360px] xl:self-start xl:overflow-y-auto xl:border-l xl:border-t-0">
+            <Section title="Publishing" defaultOpen>
+              <Label text="Category">
+                <select className="bw-input" value={form.category} onChange={(e) => update("category", e.target.value)}>
+                  <option value="">Select category</option>
+                  {categoryOptions.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              </Label>
+              <Label text="Author">
+                <input className="bw-input" value={form.author} onChange={(e) => update("author", e.target.value)} placeholder="Author name" />
+              </Label>
+              <Label text="Tags" hint="Comma separated">
+                <input className="bw-input" value={form.tags} onChange={(e) => update("tags", e.target.value)} placeholder="seo, local seo, google ranking" />
+              </Label>
+              {form.tags.trim() && (
+                <div className="-mt-1 flex flex-wrap gap-1.5">
+                  {form.tags
+                    .split(",")
+                    .map((t) => t.trim())
+                    .filter(Boolean)
+                    .map((t, i) => (
+                      <span key={`${t}-${i}`} className="rounded-full bg-[#26658c]/40 px-2 py-0.5 text-xs text-[#a7ebf2]">
+                        {t}
+                      </span>
+                    ))}
+                </div>
+              )}
+            </Section>
+
+            <Section title="Cover image" defaultOpen badge={!isEdit && !coverFile ? "Required" : undefined}>
+              <label
+                className="group relative block cursor-pointer overflow-hidden rounded-lg border border-dashed border-white/20 hover:border-[#54acbf]"
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  pickCover(e.dataTransfer.files?.[0]);
+                }}
+              >
+                {coverPreview ? (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={coverPreview} alt="Cover preview" className="aspect-[1200/630] w-full object-cover" />
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/50 text-sm opacity-0 transition group-hover:opacity-100">
+                      Replace cover
+                    </span>
+                  </>
+                ) : (
+                  <span className="flex aspect-[1200/630] flex-col items-center justify-center gap-2 text-sm text-white/60">
+                    <ImagePlus size={26} />
+                    Click or drop an image
+                    <span className="text-xs text-white/40">1200 × 630 recommended</span>
+                  </span>
+                )}
+                <input type="file" accept="image/*" hidden onChange={(e) => pickCover(e.target.files?.[0])} />
+              </label>
+              {coverFile && <p className="mt-2 truncate text-xs text-white/50">New: {coverFile.name}</p>}
+            </Section>
+
+            <Section title="SEO" defaultOpen>
+              <Label
+                text="Meta description"
+                hint={
+                  <span className={descLen > 160 ? "text-amber-300" : descLen >= 120 ? "text-emerald-300" : ""}>
+                    {descLen}/160 · 120–160 characters works best
+                  </span>
+                }
+              >
+                <textarea
+                  className="bw-input min-h-[88px] resize-y"
+                  value={form.excerpt}
+                  onChange={(e) => update("excerpt", e.target.value)}
+                  placeholder="Summary shown in Google results and social shares"
+                />
+              </Label>
+
+              <div className="rounded-lg bg-white p-3 text-left">
+                <p className="text-[11px] text-[#4d5156]">
+                  bigwigmediadigital.com › blogs › {form.slug || "…"}
+                </p>
+                <p className="mt-0.5 line-clamp-1 text-[17px] leading-snug text-[#1a0dab]">{form.title || "Post title"}</p>
+                <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-[#4d5156]">
+                  {form.excerpt || "Your meta description will appear here."}
+                </p>
               </div>
-            </div>
+              {titleLen > 60 && (
+                <p className="mt-2 flex items-center gap-1 text-xs text-amber-300">
+                  <TriangleAlert size={12} /> Title is {titleLen} characters, Google usually shows ~60.
+                </p>
+              )}
+            </Section>
 
-            <input
-              type="text"
-              name="author"
-              placeholder="Author"
-              className="w-full p-2 border"
-              value={formData.author}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              type="text"
-              name="tags"
-              placeholder="Tags (comma separated)"
-              className="w-full p-2 border"
-              value={formData.tags}
-              onChange={handleChange}
-            />
-
-            <input
-              type="file"
-              accept="image/*"
-              className="w-min border-2 cursor-pointer p-3"
-              onChange={handleImageChange}
-              required={!existingBlog}
-            />
-
-            {/* ---------------- FAQ Section ---------------- */}
-            <div>
-              <label className="block font-medium mb-2">FAQs</label>
-
-              {formData.faqs.map((faq, index) => (
-                <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
+            <Section title="FAQs" count={form.faqs.length}>
+              {form.faqs.map((faq, index) => (
+                <div key={index} className="mb-3 rounded-lg border border-white/10 bg-white/[0.03] p-3">
+                  <div className="mb-2 flex items-center justify-between text-xs text-white/50">
+                    <span>Question {index + 1}</span>
+                    <IconButton label="Remove FAQ" onClick={() => removeItem("faqs", index)} />
+                  </div>
                   <input
-                    type="text"
-                    placeholder={`Question ${index + 1}`}
-                    className="w-full p-2 border mb-2"
+                    className="bw-input mb-2"
+                    placeholder="Question"
                     value={faq.question}
-                    onChange={(e) =>
-                      updateFAQ(index, "question", e.target.value)
-                    }
-                    required
+                    onChange={(e) => updateItem("faqs", index, { question: e.target.value })}
                   />
-
                   <textarea
-                    placeholder="Answer"
-                    className="w-full p-2 border"
+                    className="bw-input resize-y"
                     rows={3}
+                    placeholder="Answer"
                     value={faq.answer}
-                    onChange={(e) => updateFAQ(index, "answer", e.target.value)}
-                    required
+                    onChange={(e) => updateItem("faqs", index, { answer: e.target.value })}
                   />
-
-                  <button
-                    type="button"
-                    onClick={() => removeFAQ(index)}
-                    className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
-                  >
-                    Remove FAQ
-                  </button>
                 </div>
               ))}
+              <AddButton onClick={() => update("faqs", [...form.faqs, { question: "", answer: "" }])}>Add FAQ</AddButton>
+            </Section>
 
-              <button
-                type="button"
-                onClick={addFAQ}
-                className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
-              >
-                + Add FAQ
-              </button>
-            </div>
-
-            {/* ---------------- Breadcrumbs ---------------- */}
-            <div>
-              <label className="block font-medium mb-2">
-                Breadcrumbs (Optional)
-              </label>
-
-              {formData.breadcrumbs.map((bc, index) => (
-                <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
+            <Section title="Breadcrumbs" count={form.breadcrumbs.length}>
+              {form.breadcrumbs.map((bc, index) => (
+                <div key={index} className="mb-3 rounded-lg border border-white/10 bg-white/[0.03] p-3">
+                  <div className="mb-2 flex items-center justify-between text-xs text-white/50">
+                    <span>Level {index + 1}</span>
+                    <IconButton label="Remove breadcrumb" onClick={() => removeItem("breadcrumbs", index)} />
+                  </div>
                   <input
-                    type="text"
-                    placeholder="Breadcrumb Name"
-                    className="w-full p-2 border mb-2"
+                    className="bw-input mb-2"
+                    placeholder="Name"
                     value={bc.name}
-                    onChange={(e) =>
-                      updateBreadcrumb(index, "name", e.target.value)
-                    }
-                    required
+                    onChange={(e) => updateItem("breadcrumbs", index, { name: e.target.value })}
                   />
-
                   <input
-                    type="text"
+                    className="bw-input"
                     placeholder="URL (https://...)"
-                    className="w-full p-2 border mb-2"
                     value={bc.url}
-                    onChange={(e) =>
-                      updateBreadcrumb(index, "url", e.target.value)
-                    }
-                    required
+                    onChange={(e) => updateItem("breadcrumbs", index, { url: e.target.value })}
                   />
-
-                  <button
-                    type="button"
-                    onClick={() => removeBreadcrumb(index)}
-                    className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
-                  >
-                    Remove Breadcrumb
-                  </button>
                 </div>
               ))}
-
-              <button
-                type="button"
-                onClick={addBreadcrumb}
-                className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
+              <AddButton
+                onClick={() => update("breadcrumbs", [...form.breadcrumbs, { name: "", url: "", position: form.breadcrumbs.length + 1 }])}
               >
-                + Add Breadcrumb
-              </button>
-            </div>
+                Add breadcrumb
+              </AddButton>
+            </Section>
 
-            {/* ---------------- Custom Schemas ---------------- */}
-            <div>
-              <label className="block font-medium mb-2">
-                Custom JSON-LD Schemas (Optional)
-              </label>
-
-              {formData.customSchemas.map((schema, index) => (
-                <div key={index} className="border p-3 rounded mb-3 bg-gray-50">
-                  <input
-                    type="text"
-                    placeholder="Schema Name (e.g. Event, Product)"
-                    className="w-full p-2 border mb-2"
-                    value={schema.name}
-                    onChange={(e) =>
-                      updateCustomSchema(index, "name", e.target.value)
-                    }
-                  />
-
-                  <textarea
-                    placeholder="Paste valid JSON-LD here"
-                    className="w-full p-2 border font-mono text-sm"
-                    rows={6}
-                    value={schema.json}
-                    onChange={(e) =>
-                      updateCustomSchema(index, "json", e.target.value)
-                    }
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() => removeCustomSchema(index)}
-                    className="mt-2 text-sm text-red-600 cursor-pointer border-black border-2 px-3 py-1"
-                  >
-                    Remove Schema
-                  </button>
-                </div>
-              ))}
-
-              <button
-                type="button"
-                onClick={addCustomSchema}
-                className="px-3 py-1 bg-green-600 text-white rounded text-sm cursor-pointer"
-              >
-                + Add Custom Schema
-              </button>
-            </div>
-
-            {/* Schema Toggles – same simple UI */}
-            <div>
-              <label className="block font-medium mb-2">Schema Settings</label>
-              <div className="grid grid-cols-2 gap-2">
-                {Object.entries(formData.schemaSettings).map(([key, value]) => (
-                  <label key={key} className="flex items-center gap-2 text-sm">
+            <Section title="Structured data (schema)">
+              <div className="mb-4 grid grid-cols-2 gap-2">
+                {(Object.keys(SCHEMA_LABELS) as (keyof SchemaSettings)[]).map((key) => (
+                  <label key={key} className="flex items-center gap-2 text-sm text-white/85">
                     <input
                       type="checkbox"
-                      checked={value}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          schemaSettings: {
-                            ...prev.schemaSettings,
-                            [key]: e.target.checked,
-                          },
-                        }))
-                      }
+                      checked={form.schemaSettings[key]}
+                      onChange={(e) => update("schemaSettings", { ...form.schemaSettings, [key]: e.target.checked })}
                     />
-                    {key}
+                    {SCHEMA_LABELS[key]}
                   </label>
                 ))}
               </div>
-            </div>
 
-            <div className="flex justify-end gap-4">
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-4 py-2 bg-gray-400 rounded"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className={`px-4 py-2 text-white rounded ${
-                  submitting
-                    ? "bg-gray-500 cursor-not-allowed"
-                    : "bg-blue-600 hover:bg-blue-700"
-                }`}
-                disabled={submitting}
-              >
-                {submitting
-                  ? existingBlog
-                    ? "Updating..."
-                    : "Adding..."
-                  : existingBlog
-                    ? "Update"
-                    : "Submit"}
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      {showImageModal &&
-        createPortal(
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[999]">
-            <div className="bg-white p-6 rounded-lg w-full max-w-md">
-              <h3 className="text-lg font-semibold mb-4">Insert Image (URL)</h3>
-
-              <input
-                className="w-full p-2 border mb-3"
-                placeholder="Image URL (https://...)"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-              <input
-                className="w-full p-2 border mb-3"
-                placeholder="Alt text"
-                value={imageAlt}
-                onChange={(e) => setImageAlt(e.target.value)}
-              />
-              <input
-                className="w-full p-2 border mb-4"
-                placeholder="Optional link"
-                value={imageLink}
-                onChange={(e) => setImageLink(e.target.value)}
-              />
-
-              <div className="flex justify-end gap-3">
-                <button
-                  onClick={() => setShowImageModal(false)}
-                  className="px-4 py-2 bg-gray-300 rounded"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={insertImageByUrl}
-                  className="px-4 py-2 bg-blue-600 text-white rounded"
-                >
-                  Insert
-                </button>
-              </div>
-            </div>
-          </div>,
-          document.body,
+              <p className="mb-2 text-xs uppercase tracking-wide text-white/50">Custom JSON-LD</p>
+              {form.customSchemas.map((schema, index) => (
+                <div key={index} className="mb-3 rounded-lg border border-white/10 bg-white/[0.03] p-3">
+                  <div className="mb-2 flex items-center gap-2">
+                    <input
+                      className="bw-input"
+                      placeholder="Name (e.g. Event, Product)"
+                      value={schema.name}
+                      onChange={(e) => updateItem("customSchemas", index, { name: e.target.value })}
+                    />
+                    <IconButton label="Remove schema" onClick={() => removeItem("customSchemas", index)} />
+                  </div>
+                  <textarea
+                    className={`bw-input resize-y font-mono text-xs ${schemaErrors[index] ? "!border-red-400" : ""}`}
+                    rows={7}
+                    placeholder='{ "@context": "https://schema.org", "@type": "…" }'
+                    value={schema.json}
+                    spellCheck={false}
+                    onChange={(e) => updateItem("customSchemas", index, { json: e.target.value })}
+                  />
+                  {schemaErrors[index] && <p className="mt-1 text-xs text-red-300">Invalid JSON: {schemaErrors[index]}</p>}
+                </div>
+              ))}
+              <AddButton onClick={() => update("customSchemas", [...form.customSchemas, { name: "", json: "" }])}>Add custom schema</AddButton>
+            </Section>
+          </aside>
         )}
-    </>
+      </div>
+    </div>
   );
 };
+
+/* ---------------- Small UI pieces ---------------- */
+
+function Section({
+  title,
+  children,
+  defaultOpen = false,
+  count,
+  badge,
+}: {
+  title: string;
+  children: ReactNode;
+  defaultOpen?: boolean;
+  count?: number;
+  badge?: string;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <section className="border-b border-white/10">
+      <button type="button" onClick={() => setOpen((o) => !o)} className="flex w-full items-center gap-2 px-5 py-3.5 text-left hover:bg-white/[0.03]">
+        <span className="flex-1 text-sm font-semibold">{title}</span>
+        {badge && <span className="rounded-full bg-amber-400/15 px-2 py-0.5 text-[10px] text-amber-200">{badge}</span>}
+        {!!count && <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] text-white/70">{count}</span>}
+        <ChevronDown size={16} className={`text-white/50 transition ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && <div className="px-5 pb-5">{children}</div>}
+    </section>
+  );
+}
+
+function Label({ text, hint, children }: { text: string; hint?: ReactNode; children: ReactNode }) {
+  return (
+    <label className="mb-3.5 block">
+      <span className="mb-1.5 block text-xs font-medium text-white/60">{text}</span>
+      {children}
+      {hint && <span className="mt-1 block text-[11px] text-white/45">{hint}</span>}
+    </label>
+  );
+}
+
+function AddButton({ onClick, children }: { onClick: () => void; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex w-full items-center justify-center gap-1.5 rounded-lg border border-dashed border-white/20 py-2 text-sm text-white/75 hover:border-[#54acbf] hover:text-white"
+    >
+      <Plus size={14} /> {children}
+    </button>
+  );
+}
+
+function IconButton({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <button type="button" onClick={onClick} className="shrink-0 rounded p-1.5 text-red-300/80 hover:bg-red-500/10 hover:text-red-300" aria-label={label} title={label}>
+      <Trash2 size={14} />
+    </button>
+  );
+}
 
 export default AddBlog;
