@@ -163,6 +163,17 @@ export const Branch: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* MAP */}
+      <div className="relative w-11/12 md:w-10/12 mx-auto mt-16 pb-16 ">
+        {" "}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.322121979646!2d77.19070767529064!3d28.673932275642237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03586419b693%3A0x627bb399c7e86209!2sBigwig%20Media%20Digital%20-%20Digital%20Marketing%20Company!5e1!3m2!1sen!2in!4v1763114888587!5m2!1sen!2in"
+          className="w-full h-[350px] rounded-lg shadow-xl"
+          loading="lazy"
+          allowFullScreen
+        ></iframe>{" "}
+      </div>
     </section>
   );
 };
