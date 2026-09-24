@@ -410,7 +410,7 @@ function RowAction({
       onClick={onClick}
       title={label}
       aria-label={label}
-      className={`rounded-md p-2 ${danger ? "text-red-300/80 hover:bg-red-500/10 hover:text-red-300" : "text-white/60 hover:bg-white/10 hover:text-white"}`}
+      className={`rounded-md cursor-pointer p-2 ${danger ? "text-red-300/80 hover:bg-red-500/10 hover:text-red-300" : "text-white/60 hover:bg-white/10 hover:text-white"}`}
     >
       {children}
     </button>
