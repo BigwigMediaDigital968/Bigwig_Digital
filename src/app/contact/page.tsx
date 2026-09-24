@@ -6,6 +6,7 @@ import { Phone, MapPin, Clock } from "lucide-react";
 import Nav from "../../../components/Nav";
 import Footer from "../../../components/Footer";
 import ButtonFill from "../../../components/Button";
+import useSubmitLead from "../../../hooks/useSubmitLead";
 import { Branch } from "./component/Branches";
 
 export default function ContactPage() {
@@ -36,6 +37,7 @@ export default function ContactPage() {
   const [step, setStep] = useState<"form" | "otp">("form");
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const { submitLead, loading: submitting } = useSubmitLead();
   const [errors, setErrors] = useState<{
     fullName?: string;
     email?: string;
@@ -80,39 +82,30 @@ export default function ContactPage() {
 
     if (!validateInputs()) return;
 
-    setLoading(true);
-    try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/create-lead`,
-        {
-          name: formData.fullName,
-          email: formData.email,
-          phone: `${formData.countryCode}${formData.phone}`,
-          services: formData.services,
-          message: formData.message,
-        },
-      );
+    const result = await submitLead({
+      name: formData.fullName,
+      email: formData.email,
+      phone: `${formData.countryCode}${formData.phone}`,
+      services: formData.services,
+      message: formData.message,
+    });
 
-      //setStep("otp");
-      setShowSuccessPopup(true);
-      setTimeout(() => setShowSuccessPopup(false), 2500);
-
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        message: "",
-        countryCode: "+91",
-        services: [],
-      });
-    } catch (err) {
-      const error = err as AxiosError<{ message?: string }>;
-      setStatusMessage(
-        error.response?.data?.message || "Something went wrong.",
-      );
-    } finally {
-      setLoading(false);
+    if (!result.ok) {
+      setStatusMessage(result.message);
+      return;
     }
+
+    setShowSuccessPopup(true);
+    setTimeout(() => setShowSuccessPopup(false), 2500);
+
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      message: "",
+      countryCode: "+91",
+      services: [],
+    });
   };
 
   const handleSendOtp = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -422,7 +415,7 @@ export default function ContactPage() {
                 {/* SEND OTP */}
                 <ButtonFill
                   type="submit"
-                  text={loading ? "Sending..." : "SUBMIT"}
+                  text={loading || submitting ? "Sending..." : "SUBMIT"}
                 />
               </form>
 

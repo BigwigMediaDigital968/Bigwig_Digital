@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import ButtonFill from "./Button"; // using your existing design
+import useSubmitLead from "../hooks/useSubmitLead";
 
 interface PopupFormProps {
   isOpen: boolean;
@@ -28,6 +29,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState<"form" | "otp">("form");
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+  const { submitLead, loading: submitting } = useSubmitLead();
 
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [otp, setOtp] = useState("");
@@ -185,44 +187,30 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
     }
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // console.log(formData);
     e.preventDefault();
     setStatusMessage("");
 
     if (!validateForm()) return;
 
-    setLoading(true);
-    try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/create-lead`,
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: `${formData.phone}`,
-          services: formData.services,
-          message: formData.message,
-        },
-      );
+    const result = await submitLead({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      services: formData.services,
+      message: formData.message,
+    });
 
-      //setStep("otp");
+    setStatusMessage(result.message);
+    if (!result.ok) return;
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-        services: [],
-      });
-      setStatusMessage("Lead Saved Successfully!");
-      setTimeout(handleClose, 2000);
-    } catch (err) {
-      const error = err as AxiosError<{ message?: string }>;
-      setStatusMessage(
-        error.response?.data?.message || "Something went wrong.",
-      );
-    } finally {
-      setLoading(false);
-    }
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      services: [],
+    });
+    setTimeout(handleClose, 2000);
   };
 
   if (!isOpen) return null;
@@ -404,7 +392,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
           {/* 🔥 BUTTONFILL — NOW WORKING PROPERLY */}
           <ButtonFill
             type="submit"
-            text={loading ? "Sending..." : "Submit"}
+            text={loading || submitting ? "Sending..." : "Submit"}
             className="w-full"
           />
         </form>

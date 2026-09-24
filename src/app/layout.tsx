@@ -182,6 +182,14 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+
+        {/* Google reCAPTCHA */}
+
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-2WEBR7ZVN9"

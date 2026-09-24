@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import ButtonFill from "./Button";
+import useSubmitLead from "../hooks/useSubmitLead";
 
 const SERVICES_LIST = [
   "Search Engine Optimization",
@@ -34,6 +35,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
   const [otp, setOtp] = useState("");
   const [step, setStep] = useState<"form" | "otp" | "done">("form");
   const [loading, setLoading] = useState(false);
+  const { submitLead, loading: submitting } = useSubmitLead();
 
   const [errors, setErrors] = useState({
     name: "",
@@ -170,41 +172,32 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    //console.log(formData);
     e.preventDefault();
     setError("");
 
     if (!validateForm()) return;
 
-    setLoading(true);
-    try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/create-lead`,
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: `${formData.phone}`,
-          services: formData.services,
-          message: formData.message,
-        },
-      );
+    const result = await submitLead({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      services: formData.services,
+      message: formData.message,
+    });
 
-      //setStep("otp");
-      setStep("done");
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-        services: [],
-      });
-    } catch (err) {
-      const error = err as AxiosError<{ message?: string }>;
-      setError(error.response?.data?.message || "Something went wrong.");
-    } finally {
-      setLoading(false);
+    if (!result.ok) {
+      setError(result.message);
+      return;
     }
+
+    setStep("done");
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      services: [],
+    });
   };
 
   return (
@@ -311,7 +304,7 @@ const ContactForm = ({ singleService }: ContactFormProps) => {
 
           <ButtonFill
             type="submit"
-            text={loading ? "Sending..." : "Submit"}
+            text={loading || submitting ? "Sending..." : "Submit"}
             className="w-full !py-3 !text-white"
           />
         </form>
