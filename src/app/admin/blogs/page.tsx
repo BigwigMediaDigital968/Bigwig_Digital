@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { formatHtml } from "../../../../utils/formatHtml";
 import type { BlogPost as EditableBlog, Status } from "../../../../components/AddBlogs";
 import { Modal } from "../../../../components/blog-editor/ui";
+import { PageHeader } from "../../../../components/admin/AdminUI";
 import "../../../../components/blog-editor/editor.css";
 
 interface BlogPost extends EditableBlog {
@@ -161,18 +162,16 @@ export default function AdminBlogsPage() {
   /* ---------------- UI ---------------- */
 
   return (
-    <div className="min-h-screen bg-[#0b121a] p-4 text-white sm:p-6">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold">Blog posts</h1>
-          <p className="text-sm text-white/50">
-            {counts.PUBLISHED} published · {counts.DRAFT} drafts · {counts.INACTIVE} inactive
-          </p>
-        </div>
-        <Link href="/admin/blogs/new" className="bw-btn-primary">
-          <Plus size={16} /> New post
-        </Link>
-      </div>
+    <div className="text-white">
+      <PageHeader
+        title="Blog posts"
+        description={`${counts.PUBLISHED} published · ${counts.DRAFT} drafts · ${counts.INACTIVE} inactive`}
+        actions={
+          <Link href="/admin/blogs/new" className="bw-btn-primary">
+            <Plus size={16} /> New post
+          </Link>
+        }
+      />
 
       <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center">
         <div className="relative flex-1">
@@ -229,7 +228,7 @@ export default function AdminBlogsPage() {
         <p className="py-16 text-center text-white/50">No blogs found.</p>
       ) : (
         <>
-          <div className="overflow-x-auto rounded-xl border border-white/10">
+          <div className="overflow-x-auto rounded-xl border border-white/10 bg-[#0d1726]">
             <table className="w-full min-w-[860px] text-sm">
               <thead className="bg-white/[0.04] text-left text-xs uppercase tracking-wide text-white/50">
                 <tr>

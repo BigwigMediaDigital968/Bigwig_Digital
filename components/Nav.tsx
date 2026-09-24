@@ -227,14 +227,9 @@ const Nav: React.FC = () => {
         <div className="grid grid-cols-2 lg:grid-cols-5 items-center  ">
           {/* Logo */}
           <div className="flex items-center col-span-1">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="Bigwig Digital"
-                className="w-16 md:w-24"
-                draggable={false}
-                priority
-              />
+            <Link href="/"  className="flex items-center gap-2 justify-center border-b border-white/10 px-4 py-4">
+              <Image src="/Bigwig_logo_icon.png" alt="BigWig Media Digital" width={791} height={909} className="h-12 sm:h-16 w-auto" priority />
+              <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={791} height={909} className="h-10 sm:h-12 w-auto" priority />
             </Link>
           </div>
 
@@ -252,9 +247,8 @@ const Nav: React.FC = () => {
                 >
                   Services
                   <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${
-                      servicesOpen ? "rotate-180" : "rotate-0"
-                    }`}
+                    className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : "rotate-0"
+                      }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -273,11 +267,10 @@ const Nav: React.FC = () => {
                 <div
                   role="menu"
                   aria-hidden={!servicesOpen}
-                  className={`absolute  top-full w-[900px] bg-[#023859] text-white  shadow-xl transition-all duration-300 ${
-                    servicesOpen
+                  className={`absolute  top-full w-[900px] bg-[#023859] text-white  shadow-xl transition-all duration-300 ${servicesOpen
                       ? "opacity-100 translate-y-0 pointer-events-auto"
                       : "opacity-0 translate-y-4 pointer-events-none"
-                  }`}
+                    }`}
                 >
                   <div className="grid grid-cols-3 gap-6 p-4">
                     {cols.map((col, i) => (
@@ -394,9 +387,8 @@ const Nav: React.FC = () => {
 
       {/* Sidebar ( mobile) */}
       <div
-        className={`lg:hidden fixed inset-0 z-50 flex transition-transform duration-500 ${
-          sidebarOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`lg:hidden fixed inset-0 z-50 flex transition-transform duration-500 ${sidebarOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Overlay */}
         <div
@@ -406,8 +398,9 @@ const Nav: React.FC = () => {
 
         <aside className="relative ml-auto w-80 bg-[#023859] text-white h-full p-6 shadow-xl flex flex-col transition-transform duration-500">
           <div className="flex items-center justify-between mb-6">
-            <Link href="/">
-              <Image src={logo} alt="logo" className="w-28" />
+            <Link href="/"  className="flex items-center gap-2 justify-center px-4 py-4">
+              <Image src="/Bigwig_logo_icon.png" alt="BigWig Media Digital" width={791} height={909} className="h-12 sm:h-16 w-auto" priority />
+              <Image src="/Bigwig_brandname.png" alt="BigWig Media Digital" width={791} height={909} className="h-10 sm:h-12 w-auto" priority />
             </Link>
             <button onClick={() => setSidebarOpen(false)} className="p-2">
               <svg
@@ -497,9 +490,8 @@ const Nav: React.FC = () => {
       </div>
       {/* Sidebar ( desktop) */}
       <div
-        className={`hidden fixed inset-0 z-50 lg:flex transition-transform duration-500 ${
-          sidebarOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`hidden fixed inset-0 z-50 lg:flex transition-transform duration-500 ${sidebarOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Overlay */}
         <div

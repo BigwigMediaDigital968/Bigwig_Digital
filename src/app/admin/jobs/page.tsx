@@ -1,7 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import "../../../app/globals.css";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import { MapPin, Pencil, Plus, Trash2 } from "lucide-react";
+import { Badge, EmptyState, FormField, IconAction, PageHeader } from "../../../../components/admin/AdminUI";
+import { Modal } from "../../../../components/blog-editor/ui";
 
 const initialForm = {
   title: "",
@@ -98,103 +100,104 @@ const AddJobs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-raleway p-6">
-      <div className="flex justify-between items-center sticky top-0 z-20 bg-black p-4 border-b border-gray-700">
-        <h1 className="text-2xl sm:text-3xl font-bold">Manage Job Vacancies</h1>
-        <button
-          onClick={() => openPopup()}
-          className="text-white bg-[var(--primary-color)] px-4 py-2 rounded hover:bg-opacity-90"
-        >
-          New Job Post
-        </button>
-      </div>
+    <div>
+      <PageHeader
+        title="Job Vacancies"
+        description={`${jobs.length} open position${jobs.length === 1 ? "" : "s"} on the careers page`}
+        actions={
+          <button onClick={() => openPopup()} className="bw-btn-primary">
+            <Plus size={16} /> New job post
+          </button>
+        }
+      />
 
       {/* Job List */}
       {jobs.length === 0 ? (
-        <div className="text-center text-gray-400 mt-10 text-lg">
-          No job vacancies found.
-        </div>
+        <EmptyState
+          title="No job vacancies"
+          description="Create a job post to show it on the careers page."
+          action={
+            <button onClick={() => openPopup()} className="bw-btn-primary">
+              <Plus size={16} /> New job post
+            </button>
+          }
+        />
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
           {jobs.map((job: Job) => (
-            <div
-              key={job._id}
-              className="bg-gray-800 p-6 rounded-lg shadow-md relative group"
-            >
-              <div className="absolute top-4 right-4 flex gap-2 transition">
-                <button
-                  onClick={() => openPopup(job, job._id, true)}
-                  className="text-blue-400 hover:text-blue-500"
-                >
-                  <FaEdit />
-                </button>
-                <button
-                  onClick={() => handleDelete(job._id)}
-                  className="text-red-400 hover:text-red-500"
-                >
-                  <FaTrash />
-                </button>
+            <article key={job._id} className="flex flex-col rounded-xl border border-white/10 bg-[#0d1726] p-5 transition hover:border-white/20">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h3 className="text-lg font-semibold leading-snug text-white">{job.title}</h3>
+                  <p className="mt-1 flex items-center gap-1.5 text-sm text-white/55">
+                    <MapPin size={14} /> {job.location}
+                  </p>
+                </div>
+                <div className="flex shrink-0 gap-1">
+                  <IconAction label="Edit job" onClick={() => openPopup(job, job._id, true)}>
+                    <Pencil size={16} />
+                  </IconAction>
+                  <IconAction label="Delete job" danger onClick={() => handleDelete(job._id)}>
+                    <Trash2 size={16} />
+                  </IconAction>
+                </div>
               </div>
 
-              <h3 className="text-xl font-semibold">{job.title}</h3>
-              <p className="text-sm text-gray-400 mb-1">{job.location}</p>
-              <p className="text-sm text-gray-300 mb-2">
-                {job.jobType} • {job.workMode}
-              </p>
-
-              <div className="text-sm text-gray-300 mb-2">
-                <strong>Responsibilities:</strong>
-                <ul className="list-disc list-inside pl-2 mt-1">
-                  {job.responsibilities.map((r: string, i: number) => (
-                    <li key={i}>{r}</li>
-                  ))}
-                </ul>
+              <div className="mb-4 flex flex-wrap gap-2">
+                <Badge tone="blue">{job.jobType}</Badge>
+                <Badge tone="gray">{job.workMode}</Badge>
               </div>
 
-              <div className="text-sm text-gray-300">
-                <strong>Requirements:</strong>
-                <ul className="list-disc list-inside pl-2 mt-1">
-                  {job.requirements.map((r: string, i: number) => (
-                    <li key={i}>{r}</li>
-                  ))}
-                </ul>
+              <div className="space-y-4 text-sm text-white/75">
+                <div>
+                  <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-white/45">Responsibilities</p>
+                  <ul className="list-disc space-y-1 pl-5 marker:text-[#54acbf]">
+                    {job.responsibilities.map((r: string, i: number) => (
+                      <li key={i}>{r}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-white/45">Requirements</p>
+                  <ul className="list-disc space-y-1 pl-5 marker:text-[#54acbf]">
+                    {job.requirements.map((r: string, i: number) => (
+                      <li key={i}>{r}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       )}
 
-      {/* Popup Modal */}
+      {/* Create / edit dialog */}
       {isPopupOpen && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
-          <div className="bg-white text-black rounded-lg p-6 w-full max-w-3xl shadow-lg relative">
-            <h2 className="text-xl font-bold mb-4">
-              {isEditing ? "Edit Job" : "Create Job"}
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <input
-                type="text"
-                name="title"
-                value={form.title}
-                onChange={handleInputChange}
-                placeholder="Job Title"
-                className="p-2 border rounded"
-              />
-              <input
-                type="text"
-                name="location"
-                value={form.location}
-                onChange={handleInputChange}
-                placeholder="Location"
-                className="p-2 border rounded"
-              />
-              <select
-                name="jobType"
-                value={form.jobType}
-                onChange={handleInputChange}
-                className="p-2 border rounded"
-              >
+        <Modal
+          title={isEditing ? "Edit job" : "Create job"}
+          width={760}
+          onClose={closePopup}
+          footer={
+            <>
+              <button onClick={closePopup} className="bw-btn-ghost">
+                Cancel
+              </button>
+              <button onClick={handleSubmit} className="bw-btn-primary">
+                {isEditing ? "Update" : "Create"}
+              </button>
+            </>
+          }
+        >
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <FormField label="Job title">
+              <input type="text" name="title" value={form.title} onChange={handleInputChange} placeholder="e.g. SEO Executive" className="bw-input" />
+            </FormField>
+            <FormField label="Location">
+              <input type="text" name="location" value={form.location} onChange={handleInputChange} placeholder="e.g. Delhi" className="bw-input" />
+            </FormField>
+            <FormField label="Job type">
+              <select name="jobType" value={form.jobType} onChange={handleInputChange} className="bw-input">
                 <option value="">Select Job Type</option>
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
@@ -202,59 +205,38 @@ const AddJobs = () => {
                 <option value="Internship">Internship</option>
                 <option value="Freelance">Freelance</option>
               </select>
-              <select
-                name="workMode"
-                value={form.workMode}
-                onChange={handleInputChange}
-                className="p-2 border rounded"
-              >
+            </FormField>
+            <FormField label="Work mode">
+              <select name="workMode" value={form.workMode} onChange={handleInputChange} className="bw-input">
                 <option value="">Select Work Mode</option>
                 <option value="Office">Office</option>
                 <option value="Hybrid">Hybrid</option>
                 <option value="Remote">Remote</option>
               </select>
+            </FormField>
+            <FormField label="Responsibilities (one per line)" className="sm:col-span-2">
               <textarea
                 name="responsibilities"
                 value={form.responsibilities.join("\n")}
                 onChange={handleInputChange}
-                placeholder="Responsibilities (one per line)"
-                className="p-2 border rounded col-span-2"
-                rows={3}
+                className="bw-input resize-y"
+                rows={4}
               />
+            </FormField>
+            <FormField label="Requirements (one per line)" className="sm:col-span-2">
               <textarea
                 name="requirements"
                 value={form.requirements.join("\n")}
                 onChange={handleInputChange}
-                placeholder="Requirements (one per line)"
-                className="p-2 border rounded col-span-2"
-                rows={3}
-              />
-              <textarea
-                name="jd"
-                value={form.jd}
-                onChange={handleInputChange}
-                placeholder="Job Description"
-                className="p-2 border rounded col-span-2"
+                className="bw-input resize-y"
                 rows={4}
               />
-            </div>
-
-            <div className="mt-4 flex justify-end gap-3">
-              <button
-                onClick={closePopup}
-                className="px-4 py-2 rounded bg-gray-600 text-white hover:bg-gray-700"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSubmit}
-                className="px-4 py-2 rounded bg-[var(--primary-color)] text-white"
-              >
-                {isEditing ? "Update" : "Create"}
-              </button>
-            </div>
+            </FormField>
+            <FormField label="Job description" className="sm:col-span-2">
+              <textarea name="jd" value={form.jd} onChange={handleInputChange} className="bw-input resize-y" rows={5} />
+            </FormField>
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );

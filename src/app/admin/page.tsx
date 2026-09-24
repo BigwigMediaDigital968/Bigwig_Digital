@@ -1,6 +1,6 @@
 "use client";
-import { JSX, useEffect, useState } from "react";
-import { FaPhoneAlt, FaBook } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { Briefcase, NotebookPen, Users } from "lucide-react";
 import {
   LineChart,
   Line,
@@ -12,11 +12,25 @@ import {
   BarChart,
   Bar,
 } from "recharts";
+import { EmptyState, PageHeader, Panel, StatCard } from "../../../components/admin/AdminUI";
 
-const GRADIENTS = [
-  "from-indigo-500 via-purple-500 to-pink-500",
-  "from-sky-500 via-blue-500 to-indigo-600",
-];
+/* Chart styling for the dark admin surface (#0d1726). Series colours are the
+   validated dark categorical steps: blue, orange, aqua (fixed order). */
+const SERIES = ["#3987e5", "#d95926", "#199e70"];
+const AXIS = { stroke: "rgba(255,255,255,0.15)", tick: { fill: "rgba(255,255,255,0.55)", fontSize: 12 }, tickLine: false };
+const GRID = { stroke: "rgba(255,255,255,0.07)", vertical: false };
+const TOOLTIP = {
+  contentStyle: {
+    background: "#101c2c",
+    border: "1px solid rgba(255,255,255,0.12)",
+    borderRadius: 8,
+    color: "#fff",
+    fontSize: 13,
+  },
+  labelStyle: { color: "rgba(255,255,255,0.7)", marginBottom: 4 },
+  itemStyle: { color: "#fff" },
+  cursor: { fill: "rgba(255,255,255,0.04)", stroke: "rgba(255,255,255,0.2)" },
+};
 
 interface LeadStat {
   date: string;
@@ -140,55 +154,47 @@ const Dashboard = () => {
   console.log(counts);
 
   const cards = [
-    { title: "Leads", icon: <FaPhoneAlt />, count: counts.leads },
-    { title: "Blogs Data", icon: <FaBook />, count: counts.blogs },
-    {
-      title: "Job Application Data",
-      icon: <FaBook />,
-      count: counts.jobApplications,
-    },
+    { label: "Total leads", icon: <Users size={18} />, value: counts.leads },
+    { label: "Published blogs", icon: <NotebookPen size={18} />, value: counts.blogs },
+    // Counts /api/jobs, i.e. job vacancy posts.
+    { label: "Job vacancies", icon: <Briefcase size={18} />, value: counts.jobApplications },
   ];
 
   return (
-    <section className="px-4 py-8 space-y-10">
-      <h2 className="text-2xl font-bold text-center">Admin Dashboard</h2>
+    <section>
+      <PageHeader title="Dashboard" description="Overview of leads, content and website traffic." />
 
-      {/* Stat Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
-        {cards.map((card, idx) => (
-          <StatCard
-            key={card.title}
-            {...card}
-            gradient={GRADIENTS[idx % GRADIENTS.length]}
-          />
+      <div className="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {cards.map((card) => (
+          <StatCard key={card.label} {...card} />
         ))}
       </div>
 
-      {/* Leads Graph */}
-      <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-5xl mx-auto">
-        <h3 className="text-xl font-semibold mb-4 text-center text-gray-800">
-          Leads in Last 10 Days
-        </h3>
+      <Panel title="Leads in the last 10 days" className="mb-6">
         {leadGraphData.length > 0 ? (
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={leadGraphData}>
-              <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-              <XAxis dataKey="date" />
-              <YAxis allowDecimals={false} />
-              <Tooltip />
+            <LineChart data={leadGraphData} margin={{ top: 8, right: 12, left: -12, bottom: 0 }}>
+              <CartesianGrid {...GRID} />
+              <XAxis dataKey="date" {...AXIS} />
+              <YAxis allowDecimals={false} {...AXIS} />
+              <Tooltip {...TOOLTIP} />
               <Line
                 type="monotone"
                 dataKey="count"
-                stroke="#6366f1"
-                strokeWidth={3}
+                name="Leads"
+                stroke={SERIES[0]}
+                strokeWidth={2}
+                dot={{ r: 4, fill: SERIES[0], stroke: "#0d1726", strokeWidth: 2 }}
+                activeDot={{ r: 6, stroke: "#0d1726", strokeWidth: 2 }}
               />
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <p className="text-center text-gray-500">No data to display.</p>
+          <EmptyState title="No lead data yet" description="Leads from the last 10 days will appear here." />
         )}
-      </div>
+      </Panel>
 
+      <div className="space-y-10">
       {/* Traffic Source Breakdown - Bar Chart */}
       <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-5xl mx-auto space-y-6">
         <h3 className="text-xl font-semibold text-center text-gray-800">
@@ -278,28 +284,9 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
+      </div>
     </section>
   );
 };
-
-const StatCard = ({
-  title,
-  icon,
-  count,
-  gradient,
-}: {
-  title: string;
-  icon: JSX.Element;
-  count: number;
-  gradient: string;
-}) => (
-  <div
-    className={`w-full max-w-sm rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-white bg-gradient-to-br ${gradient}`}
-  >
-    <div className="text-4xl mb-3">{icon}</div>
-    <h3 className="text-lg font-semibold mb-1 text-center">{title}</h3>
-    <p className="text-3xl font-bold">{count}</p>
-  </div>
-);
 
 export default Dashboard;

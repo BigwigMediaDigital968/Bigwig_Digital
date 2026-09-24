@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import { Eye, Mail, Phone, Trash2 } from "lucide-react";
+import { Badge, EmptyState, IconAction, PageHeader, Pagination, Panel, table } from "../../../../components/admin/AdminUI";
+import { Modal } from "../../../../components/blog-editor/ui";
 
 interface ContactRequest {
   _id: string;
@@ -151,301 +154,253 @@ const AdminLead = () => {
 
   // console.log(contacts);
 
+  const allOnPageSelected =
+    currentContacts.length > 0 &&
+    currentContacts.every((lead) => selectedLeads.includes(lead._id));
+
   return (
-    <div className="h-screen bg-black text-white font-raleway flex flex-col p-0">
-      <div className="sticky top-0 z-20 bg-black p-4 sm:p-6 border-b border-gray-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl sm:text-3xl font-bold">Leads</h1>
-        <div className="flex items-center gap-2">
-          <label htmlFor="filter-date" className="text-sm text-gray-400">
-            Filter by Date:
-          </label>
-          <input
-            id="filter-date"
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="bg-gray-800 text-white border border-gray-600 rounded px-2 py-1 text-sm"
-          />
-        </div>
-      </div>
-
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6">
-        {filteredContacts.length === 0 ? (
-          <p className="text-gray-400">No Leads found.</p>
-        ) : (
-          <div className="overflow-x-auto">
-            {selectedLeads.length > 0 && (
-              <div className="mb-4 flex items-center justify-between rounded-xl border border-red-500/20 bg-red-500/10 p-4">
-                <span>{selectedLeads.length} lead(s) selected</span>
-
-                <button
-                  onClick={handleBulkDelete}
-                  className="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 cursor-pointer"
-                >
-                  Delete Selected
-                </button>
-              </div>
+    <div>
+      <PageHeader
+        title="Leads"
+        description={`${filteredContacts.length} ${selectedDate ? "on selected date" : "total"} · newest first`}
+        actions={
+          <div className="flex items-center gap-2">
+            <label htmlFor="filter-date" className="text-sm text-white/50">
+              Date
+            </label>
+            <input
+              id="filter-date"
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="bw-input w-auto [color-scheme:dark]"
+            />
+            {selectedDate && (
+              <button type="button" className="bw-btn-sm" onClick={() => setSelectedDate("")}>
+                Clear
+              </button>
             )}
-            <table className="w-full table-auto border-collapse border border-gray-700 text-sm sm:text-base">
-              <thead className="bg-[#1e1e1e] text-left">
-                <tr>
-                  <th className="px-4 py-3 border-b border-gray-700">
-                    <input
-                      type="checkbox"
-                      checked={
-                        currentContacts.length > 0 &&
-                        currentContacts.every((lead) =>
-                          selectedLeads.includes(lead._id),
-                        )
-                      }
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setSelectedLeads(
-                            currentContacts.map((lead) => lead._id),
-                          );
-                        } else {
-                          setSelectedLeads([]);
-                        }
-                      }}
-                    />
-                  </th>
-                  <th className="px-4 py-3 border-b border-gray-700">Name</th>
-                  <th className="px-4 py-3 border-b border-gray-700">Email</th>
-                  <th className="px-4 py-3 border-b border-gray-700">Phone</th>
+          </div>
+        }
+      />
 
-                  <th className="px-4 py-3 border-b border-gray-700">
-                    Requested At
-                  </th>
-                  <th className="px-4 py-3 border-b border-gray-700 text-center">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
+      {filteredContacts.length === 0 ? (
+        <EmptyState title="No leads found" description={selectedDate ? "No leads on this date." : "New enquiries from the website will show up here."} />
+      ) : (
+        <>
+          {selectedLeads.length > 0 && (
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-red-500/25 bg-red-500/10 px-4 py-3 text-sm">
+              <span className="text-red-100">{selectedLeads.length} lead(s) selected</span>
+              <button onClick={handleBulkDelete} className="bw-btn-primary bg-red-600 hover:bg-red-700">
+                <Trash2 size={15} /> Delete selected
+              </button>
+            </div>
+          )}
 
-              <tbody>
-                {currentContacts.map((contact) => (
-                  <tr
-                    key={contact._id}
-                    className="even:bg-[#111] hover:bg-[#222] transition duration-200"
-                  >
-                    <td className="px-4 py-3">
+          <Panel bodyClassName="">
+            <div className={table.wrap}>
+              <table className={`${table.table} min-w-[760px]`}>
+                <thead className={table.thead}>
+                  <tr>
+                    <th className={`${table.th} w-10`}>
                       <input
                         type="checkbox"
-                        checked={selectedLeads.includes(contact._id)}
+                        aria-label="Select all on this page"
+                        className="accent-[#54acbf]"
+                        checked={allOnPageSelected}
                         onChange={(e) => {
                           if (e.target.checked) {
-                            setSelectedLeads((prev) => [...prev, contact._id]);
+                            setSelectedLeads(currentContacts.map((lead) => lead._id));
                           } else {
-                            setSelectedLeads((prev) =>
-                              prev.filter((id) => id !== contact._id),
-                            );
+                            setSelectedLeads([]);
                           }
                         }}
                       />
-                    </td>
-
-                    <td className="px-4 py-3 font-medium">{contact.name}</td>
-
-                    <td className="px-4 py-3">
-                      <a
-                        href={`mailto:${contact.email}`}
-                        className="text-cyan-400 hover:underline"
-                      >
-                        {contact.email}
-                      </a>
-                    </td>
-
-                    <td className="px-4 py-3">
-                      <a
-                        href={`tel:${contact.phone}`}
-                        className="hover:text-cyan-400"
-                      >
-                        {contact.phone}
-                      </a>
-                    </td>
-
-                    <td className="px-4 py-3">
-                      {new Date(contact.createdAt).toLocaleString("en-GB", {
-                        day: "2-digit",
-                        month: "2-digit",
-                        year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        hour12: false,
-                      })}
-                    </td>
-
-                    <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
-                        <button
-                          onClick={() => setSelectedContact(contact)}
-                          className="rounded-lg bg-cyan-600 px-3 py-1 text-sm text-white hover:bg-cyan-700 cursor-pointer"
-                        >
-                          View
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            setLeadToDelete(contact._id);
-                            setDeleteModal(true);
-                          }}
-                          className="rounded-lg bg-red-600 px-3 py-1 text-sm text-white hover:bg-red-700 cursor-pointer"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
+                    </th>
+                    <th className={table.th}>Name</th>
+                    <th className={table.th}>Email</th>
+                    <th className={table.th}>Phone</th>
+                    <th className={table.th}>Received</th>
+                    <th className={`${table.th} text-right`}>Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+                </thead>
 
-        {selectedContact && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-            <div className="w-full max-w-lg rounded-xl bg-[#111] p-6 text-white">
-              <h3 className="mb-4 text-xl font-semibold">Contact Details</h3>
+                <tbody className={table.tbody}>
+                  {currentContacts.map((contact) => {
+                    const checked = selectedLeads.includes(contact._id);
+                    return (
+                      <tr key={contact._id} className={`${table.tr} ${checked ? "bg-[#26658c]/15" : ""}`}>
+                        <td className={table.td}>
+                          <input
+                            type="checkbox"
+                            aria-label={`Select ${contact.name}`}
+                            className="accent-[#54acbf]"
+                            checked={checked}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setSelectedLeads((prev) => [...prev, contact._id]);
+                              } else {
+                                setSelectedLeads((prev) => prev.filter((id) => id !== contact._id));
+                              }
+                            }}
+                          />
+                        </td>
 
-              <div className="space-y-3">
-                <p>
-                  <strong>Name:</strong> {selectedContact.name}
-                </p>
-                <p>
-                  <strong>Email:</strong> {selectedContact.email}
-                </p>
-                <p>
-                  <strong>Phone:</strong> {selectedContact.phone}
-                </p>
+                        <td className={table.td}>
+                          <div className="flex items-center gap-3">
+                            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#26658c]/40 text-xs font-semibold uppercase text-[#a7ebf2]">
+                              {contact.name?.trim()?.[0] || "?"}
+                            </span>
+                            <span className="font-medium text-white">{contact.name}</span>
+                          </div>
+                        </td>
 
-                <div>
-                  <strong>Services:</strong>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {selectedContact.services?.map(
-                      (service: string, idx: number) => (
-                        <span
-                          key={idx}
-                          className="rounded-full bg-cyan-500/10 px-2 py-1 text-xs text-cyan-400"
-                        >
-                          {service}
-                        </span>
-                      ),
-                    )}
-                  </div>
-                </div>
+                        <td className={table.td}>
+                          <a href={`mailto:${contact.email}`} className="text-[#a7ebf2] hover:underline">
+                            {contact.email}
+                          </a>
+                        </td>
 
-                <div>
-                  <strong>Message:</strong>
-                  <p className="mt-2 rounded-lg bg-[#1a1a1a] p-3 text-gray-300">
-                    {selectedContact.message}
-                  </p>
-                </div>
-              </div>
+                        <td className={`${table.td} whitespace-nowrap`}>
+                          <a href={`tel:${contact.phone}`} className="hover:text-[#a7ebf2]">
+                            {contact.phone}
+                          </a>
+                        </td>
 
-              <button
-                onClick={() => setSelectedContact(null)}
-                className="mt-6 rounded-lg bg-red-600 px-4 py-2 text-white cursor-pointer"
-              >
-                Close
-              </button>
+                        <td className={`${table.td} whitespace-nowrap text-white/60`}>
+                          {new Date(contact.createdAt).toLocaleString("en-GB", {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: false,
+                          })}
+                        </td>
+
+                        <td className={table.td}>
+                          <div className="flex items-center justify-end gap-1">
+                            <IconAction label="View details" onClick={() => setSelectedContact(contact)}>
+                              <Eye size={16} />
+                            </IconAction>
+                            <IconAction
+                              label="Delete lead"
+                              danger
+                              onClick={() => {
+                                setLeadToDelete(contact._id);
+                                setDeleteModal(true);
+                              }}
+                            >
+                              <Trash2 size={16} />
+                            </IconAction>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
+          </Panel>
+
+          <div className="mt-5">
+            <Pagination page={currentPage} totalPages={totalPages} onChange={setCurrentPage} />
           </div>
-        )}
+        </>
+      )}
 
-        {deleteModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm">
-            <div className="w-full max-w-md rounded-2xl bg-[#111] p-6 border border-white/10">
-              <h3 className="text-xl font-semibold text-white">Delete Lead</h3>
-
-              <p className="mt-3 text-gray-400">
-                Are you sure you want to delete this lead? This action cannot be
-                undone.
+      {selectedContact && (
+        <Modal
+          title="Lead details"
+          width={520}
+          onClose={() => setSelectedContact(null)}
+          footer={
+            <button className="bw-btn-ghost" onClick={() => setSelectedContact(null)}>
+              Close
+            </button>
+          }
+        >
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#26658c]/40 text-base font-semibold uppercase text-[#a7ebf2]">
+              {selectedContact.name?.trim()?.[0] || "?"}
+            </span>
+            <div>
+              <p className="font-semibold text-white">{selectedContact.name}</p>
+              <p className="text-xs text-white/50">
+                {new Date(selectedContact.createdAt).toLocaleString("en-GB")}
               </p>
-
-              <div className="mt-6 flex justify-end gap-3">
-                <button
-                  onClick={() => {
-                    setDeleteModal(false);
-                    setLeadToDelete(null);
-                  }}
-                  className="rounded-lg border border-gray-700 px-4 py-2 text-gray-300 cursor-pointer"
-                >
-                  Cancel
-                </button>
-
-                <button
-                  onClick={handleDeleteLead}
-                  disabled={loadingDelete}
-                  className="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 disabled:opacity-50 cursor-pointer"
-                >
-                  {loadingDelete ? "Deleting..." : "Delete Lead"}
-                </button>
-              </div>
             </div>
           </div>
-        )}
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-end mt-6">
-            <div className="flex items-center gap-2">
-              <button
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((prev) => prev - 1)}
-                className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
-              >
-                Prev
-              </button>
+          <dl className="space-y-3 text-sm">
+            <div className="flex items-center gap-3">
+              <Mail size={16} className="text-white/40" />
+              <a href={`mailto:${selectedContact.email}`} className="text-[#a7ebf2] hover:underline">
+                {selectedContact.email}
+              </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <Phone size={16} className="text-white/40" />
+              <a href={`tel:${selectedContact.phone}`} className="text-white/85 hover:text-[#a7ebf2]">
+                {selectedContact.phone}
+              </a>
+            </div>
+          </dl>
 
-              {currentPage > 2 && (
-                <>
-                  <span className="px-2">1</span>
-                  {currentPage > 3 && <span className="px-1">...</span>}
-                </>
+          <div className="mt-5">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-white/50">Services</p>
+            <div className="flex flex-wrap gap-2">
+              {selectedContact.services?.length ? (
+                selectedContact.services.map((service: string, idx: number) => (
+                  <Badge key={idx} tone="blue">
+                    {service}
+                  </Badge>
+                ))
+              ) : (
+                <span className="text-sm text-white/40">None selected</span>
               )}
-
-              {currentPage > 1 && (
-                <button
-                  className="px-2 py-1 text-gray-300"
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                  {currentPage - 1}
-                </button>
-              )}
-
-              <span className="px-3 py-1 bg-[var(--primary-color)] text-white rounded">
-                {currentPage}
-              </span>
-
-              {currentPage < totalPages && (
-                <button
-                  className="px-2 py-1 text-gray-300"
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                  {currentPage + 1}
-                </button>
-              )}
-
-              {currentPage < totalPages - 1 && (
-                <>
-                  {currentPage < totalPages - 2 && (
-                    <span className="px-1">...</span>
-                  )}
-                  <span className="px-2">{totalPages}</span>
-                </>
-              )}
-
-              <button
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage((prev) => prev + 1)}
-                className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
-              >
-                Next
-              </button>
             </div>
           </div>
-        )}
-      </div>
+
+          <div className="mt-5">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-white/50">Message</p>
+            <p className="whitespace-pre-wrap rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm text-white/80">
+              {selectedContact.message || <span className="text-white/40">No message</span>}
+            </p>
+          </div>
+        </Modal>
+      )}
+
+      {deleteModal && (
+        <Modal
+          title="Delete lead"
+          width={440}
+          onClose={() => {
+            setDeleteModal(false);
+            setLeadToDelete(null);
+          }}
+          footer={
+            <>
+              <button
+                onClick={() => {
+                  setDeleteModal(false);
+                  setLeadToDelete(null);
+                }}
+                className="bw-btn-ghost"
+              >
+                Cancel
+              </button>
+              <button onClick={handleDeleteLead} disabled={loadingDelete} className="bw-btn-primary bg-red-600 hover:bg-red-700">
+                {loadingDelete ? "Deleting..." : "Delete lead"}
+              </button>
+            </>
+          }
+        >
+          <p className="text-sm text-white/70">Are you sure you want to delete this lead? This action cannot be undone.</p>
+        </Modal>
+      )}
+
+      <ToastContainer position="bottom-right" autoClose={3000} theme="dark" />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Badge, EmptyState, PageHeader, Pagination, Panel, table } from "../../../../components/admin/AdminUI";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -59,134 +60,94 @@ const JobApplication = () => {
   );
 
   return (
-    <div className="h-screen bg-black text-white font-raleway flex flex-col p-0">
-      <div className="sticky top-0 z-20 bg-black p-4 sm:p-6 border-b border-gray-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl sm:text-3xl font-bold">Job Applications</h1>
-        <div className="flex items-center gap-2">
-          <label htmlFor="filter-date" className="text-sm text-gray-400">
-            Filter by Date:
-          </label>
-          <input
-            id="filter-date"
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="bg-gray-800 text-white border border-gray-600 rounded px-2 py-1 text-sm"
-          />
-        </div>
-      </div>
+    <div>
+      <PageHeader
+        title="Job Applications"
+        description={`${filteredApplications.length} ${selectedDate ? "on selected date" : "total"} · newest first`}
+        actions={
+          <div className="flex items-center gap-2">
+            <label htmlFor="filter-date" className="text-sm text-white/50">
+              Date
+            </label>
+            <input
+              id="filter-date"
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="bw-input w-auto [color-scheme:dark]"
+            />
+            {selectedDate && (
+              <button type="button" className="bw-btn-sm" onClick={() => setSelectedDate("")}>
+                Clear
+              </button>
+            )}
+          </div>
+        }
+      />
 
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6">
-        {filteredApplications.length === 0 ? (
-          <p className="text-gray-400">No applications found.</p>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse border border-gray-700 text-sm sm:text-base">
-              <thead className="bg-[#1e1e1e] text-left">
-                <tr>
-                  <th className="px-4 py-3 border-b border-gray-700">Name</th>
-                  <th className="px-4 py-3 border-b border-gray-700">Email</th>
-                  <th className="px-4 py-3 border-b border-gray-700">Phone</th>
-                  <th className="px-4 py-3 border-b border-gray-700">Exp</th>
-                  <th className="px-4 py-3 border-b border-gray-700">CTC</th>
-                  <th className="px-4 py-3 border-b border-gray-700">ECTC</th>
-                  <th className="px-4 py-3 border-b border-gray-700">Notice</th>
-                  <th className="px-4 py-3 border-b border-gray-700">
-                    Applied At
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentApplications.map((app) => (
-                  <tr
-                    key={app._id}
-                    className="even:bg-[#111] hover:bg-[#222] transition duration-200"
-                  >
-                    <td className="px-4 py-3">{app.fullName}</td>
-                    <td className="px-4 py-3">
-                      <a
-                        href={`mailto:${app.email}`}
-                        className="text-cyan-400 hover:underline"
-                      >
-                        {app.email}
-                      </a>
-                    </td>
-                    <td className="px-4 py-3">{app.mobileNumber}</td>
-                    <td className="px-4 py-3">{app.experience}</td>
-                    <td className="px-4 py-3">{app.cctc}</td>
-                    <td className="px-4 py-3">{app.ectc}</td>
-                    <td className="px-4 py-3">{app.noticePeriod}</td>
-                    <td className="px-4 py-3">
-                      {new Date(app.createdAt).toLocaleString()}
-                    </td>
+      {filteredApplications.length === 0 ? (
+        <EmptyState
+          title="No applications found"
+          description={selectedDate ? "No applications on this date." : "Applications from the careers page will show up here."}
+        />
+      ) : (
+        <>
+          <Panel bodyClassName="">
+            <div className={table.wrap}>
+              <table className={`${table.table} min-w-[980px]`}>
+                <thead className={table.thead}>
+                  <tr>
+                    <th className={table.th}>Candidate</th>
+                    <th className={table.th}>Phone</th>
+                    <th className={table.th}>Experience</th>
+                    <th className={table.th}>Current CTC</th>
+                    <th className={table.th}>Expected CTC</th>
+                    <th className={table.th}>Notice</th>
+                    <th className={table.th}>Applied</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-end mt-6">
-            <div className="flex items-center gap-2">
-              <button
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((prev) => prev - 1)}
-                className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
-              >
-                Prev
-              </button>
-
-              {currentPage > 2 && (
-                <>
-                  <span className="px-2">1</span>
-                  {currentPage > 3 && <span className="px-1">...</span>}
-                </>
-              )}
-
-              {currentPage > 1 && (
-                <button
-                  className="px-2 py-1 text-gray-300"
-                  onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                  {currentPage - 1}
-                </button>
-              )}
-
-              <span className="px-3 py-1 bg-[var(--primary-color)] text-white rounded">
-                {currentPage}
-              </span>
-
-              {currentPage < totalPages && (
-                <button
-                  className="px-2 py-1 text-gray-300"
-                  onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                  {currentPage + 1}
-                </button>
-              )}
-
-              {currentPage < totalPages - 1 && (
-                <>
-                  {currentPage < totalPages - 2 && (
-                    <span className="px-1">...</span>
-                  )}
-                  <span className="px-2">{totalPages}</span>
-                </>
-              )}
-
-              <button
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage((prev) => prev + 1)}
-                className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
-              >
-                Next
-              </button>
+                </thead>
+                <tbody className={table.tbody}>
+                  {currentApplications.map((app) => (
+                    <tr key={app._id} className={table.tr}>
+                      <td className={table.td}>
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#26658c]/40 text-xs font-semibold uppercase text-[#a7ebf2]">
+                            {app.fullName?.trim()?.[0] || "?"}
+                          </span>
+                          <div className="min-w-0">
+                            <p className="font-medium text-white">{app.fullName}</p>
+                            <a href={`mailto:${app.email}`} className="text-xs text-[#a7ebf2] hover:underline">
+                              {app.email}
+                            </a>
+                          </div>
+                        </div>
+                      </td>
+                      <td className={`${table.td} whitespace-nowrap`}>
+                        <a href={`tel:${app.mobileNumber}`} className="hover:text-[#a7ebf2]">
+                          {app.mobileNumber}
+                        </a>
+                      </td>
+                      <td className={table.td}>{app.experience}</td>
+                      <td className={`${table.td} tabular-nums`}>{app.cctc}</td>
+                      <td className={`${table.td} tabular-nums`}>{app.ectc}</td>
+                      <td className={table.td}>
+                        <Badge tone="gray">{app.noticePeriod}</Badge>
+                      </td>
+                      <td className={`${table.td} whitespace-nowrap text-white/60`}>
+                        {new Date(app.createdAt).toLocaleString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+          </Panel>
+
+          <div className="mt-5">
+            <Pagination page={currentPage} totalPages={totalPages} onChange={setCurrentPage} />
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 };
