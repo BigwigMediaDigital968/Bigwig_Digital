@@ -17,6 +17,7 @@ import logo from "../Assets/Bigwig_logo__final.png";
 import line2 from "../Assets/line2.png";
 import Image from "next/image";
 import Link from "next/link";
+import { BUSINESS } from "@/data/Business";
 
 function Footer() {
   return (
@@ -137,7 +138,7 @@ function Footer() {
                   </li>
                   <li className="flex items-center">
                     <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                    +91 96858 92813
+                    {BUSINESS.telephoneDisplay}
                   </li>
                   <li className="flex items-center">
                     <FontAwesomeIcon icon={faLocation} className="mr-2" />

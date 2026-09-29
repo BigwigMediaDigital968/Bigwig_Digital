@@ -1,4 +1,5 @@
 import React from "react";
+import { BUSINESS } from "@/data/Business";
 
 // Define the structure for our branch data
 interface BranchLocation {
@@ -17,7 +18,7 @@ const branches: BranchLocation[] = [
       "Plot Number 2, near Hanuman Mandir, Idgah Hills, Bhopal, Madhya Pradesh 462001",
     mapUrl:
       "google.com/maps/place/Bigwig+Digital/data=!4m2!3m1!1s0x0:0x39395dc0edfc0c60?sa=X&ved=1t:2428&hl=en-GB&ictx=111",
-    phone: "09685892813",
+    phone: BUSINESS.telephone,
     postalCode: "462001",
     region: "Madhya Pradesh",
   },
@@ -26,7 +27,7 @@ const branches: BranchLocation[] = [
     address: "SF-15, Prabhu Chambers, Mapusa, Goa, 403507",
     mapUrl:
       "https://www.google.com/maps/place/Bigwig+Digital/data=!4m2!3m1!1s0x0:0xa54bc66585ac168e?sa=X&ved=1t:2428&hl=en-GB&ictx=111",
-    phone: "09685892813",
+    phone: BUSINESS.telephone,
     postalCode: "403507",
     region: "Goa",
   },

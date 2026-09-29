@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Home, ArrowRight, Phone } from "lucide-react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
+import { BUSINESS } from "@/data/Business";
 
 const quickLinks = [
   { label: "Our Services", href: "/services" },
@@ -130,7 +131,7 @@ export default function NotFound() {
               </Link>
 
               <a
-                href="tel:+919685892813"
+                href={BUSINESS.telephoneHref}
                 className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border transition-all hover:bg-white/5"
                 style={{
                   borderColor: "var(--secondary-color)",
@@ -220,11 +221,11 @@ export default function NotFound() {
                     Need Help?
                   </p>
                   <p className="text-white text-sm font-semibold">
-                    +91 96858 92813
+                    {BUSINESS.telephoneDisplay}
                   </p>
                 </div>
                 <a
-                  href="tel:+919685892813"
+                  href={BUSINESS.telephoneHref}
                   className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold"
                   style={{
                     backgroundColor: "var(--secondary-color)",

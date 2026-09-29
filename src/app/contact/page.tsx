@@ -8,6 +8,7 @@ import Footer from "../../../components/Footer";
 import ButtonFill from "../../../components/Button";
 import useSubmitLead from "../../../hooks/useSubmitLead";
 import { Branch } from "./component/Branches";
+import { BUSINESS } from "@/data/Business";
 
 export default function ContactPage() {
   const SERVICES_LIST = [
@@ -186,7 +187,7 @@ export default function ContactPage() {
         />
         <meta
           name="description"
-          content="Contact Bigwig Media Digital, Digital Marketing Agency in Delhi. Call +91 96858 92813 or visit us at Gulabi Bagh, Delhi. Get in Touch Now!"
+          content={`Contact Bigwig Media Digital, Digital Marketing Agency in Delhi. Call ${BUSINESS.telephoneDisplay} or visit us at Gulabi Bagh, Delhi. Get in Touch Now!`}
         />
         <link
           rel="canonical"
@@ -200,7 +201,7 @@ export default function ContactPage() {
         />
         <meta
           property="og:description"
-          content="Contact Bigwig Media Digital, Digital Marketing Agency in Delhi. Call +91 96858 92813 or visit us at Gulabi Bagh, Delhi. Get in Touch Now!"
+          content={`Contact Bigwig Media Digital, Digital Marketing Agency in Delhi. Call ${BUSINESS.telephoneDisplay} or visit us at Gulabi Bagh, Delhi. Get in Touch Now!`}
         />
         <meta
           property="og:image"
@@ -235,7 +236,7 @@ export default function ContactPage() {
                 <Phone size={32} className="text-[var(--color5)]" />
                 <div>
                   <h3 className="text-xl font-bold">Call Us</h3>
-                  <p className="opacity-80">+91 96858 92813</p>
+                  <p className="opacity-80">{BUSINESS.telephoneDisplay}</p>
                 </div>
               </div>
 

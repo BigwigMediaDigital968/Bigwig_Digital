@@ -62,12 +62,13 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { BUSINESS } from "@/data/Business";
 
 export default function FloatingCTA() {
   const [shareOpen, setShareOpen] = useState(false);
   const pathname = usePathname();
 
-  const phone = "+919685892813";
+  const phone = BUSINESS.telephone;
 
   const facebookUrl = "https://www.facebook.com/profile.php?id=61575340735142";
   const instagramUrl =

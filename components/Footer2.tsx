@@ -11,6 +11,7 @@ import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import logo from "../Assets/bigwig digital logo (11).png";
 import line2 from "../Assets/line2.png";
 import Image from "next/image";
+import { BUSINESS } from "@/data/Business";
 
 function Footer2() {
   return (
@@ -135,7 +136,7 @@ function Footer2() {
                   </li>
                   <li className="flex items-center">
                     <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                    +91 96858 92813
+                    {BUSINESS.telephoneDisplay}
                   </li>
                 </ul>
               </div>

@@ -14,6 +14,7 @@ import { SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Client from "../../../app/clients/Client";
 import Partners from "../../../../components/Partners";
+import { BUSINESS } from "@/data/Business";
 
 const sections = [
   {
@@ -165,7 +166,7 @@ const faqs = [
   },
   {
     q: "How can I get started with your website design services?",
-    a: "Simply reach out via our website contact form, email us at support@bigwigmediadigital.com, or call us at +91 96858 92813. We'll schedule a free strategy session to understand your business goals and craft a website plan tailored to your needs.",
+    a: `Simply reach out via our website contact form, email us at ${BUSINESS.email}, or call us at ${BUSINESS.telephoneDisplay}. We'll schedule a free strategy session to understand your business goals and craft a website plan tailored to your needs.`,
   },
   {
     q: "What important features do you consider when designing a web page?",

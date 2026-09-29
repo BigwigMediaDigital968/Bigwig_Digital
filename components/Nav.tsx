@@ -38,6 +38,7 @@ import {
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import { BUSINESS } from "@/data/Business";
 
 type Service = {
   title: string;
@@ -167,11 +168,11 @@ const Nav: React.FC = () => {
 
         <div className="flex items-center gap-3 w-full md:w-auto justify-end">
           <a
-            href="tel:+919685892813"
+            href={BUSINESS.telephoneHref}
             className="hidden md:flex items-center gap-1"
           >
             <Phone className="w-4 h-4 hover:text-[var(--primary-color)]" />
-            <span>+91 9685892813</span>
+            <span>{BUSINESS.telephoneDisplay}</span>
           </a>
           <a
             href="mailto:support@bigwigmediadigital.com"
@@ -453,11 +454,11 @@ const Nav: React.FC = () => {
               </a>
 
               <a
-                href="tel:+919685892813"
+                href={BUSINESS.telephoneHref}
                 className="flex items-center gap-2 hover:text-white"
               >
                 <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
-                +91 96858 92813
+                {BUSINESS.telephoneDisplay}
               </a>
 
               <div className="flex items-center gap-2">
@@ -577,7 +578,7 @@ const Nav: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 mb-2">
               <Phone className="w-4 h-4 text-[#a7ebf2]" />
-              <span className="text-gray-300 text-base">+91 96858 92813</span>
+              <span className="text-gray-300 text-base">{BUSINESS.telephoneDisplay}</span>
             </div>
             <div className="flex items-center gap-2 mb-2">
               <FaEnvelope className="w-4 h-4 text-[#a7ebf2]" />

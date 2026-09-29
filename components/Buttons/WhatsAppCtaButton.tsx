@@ -1,4 +1,5 @@
 import { FaWhatsapp } from "react-icons/fa";
+import { BUSINESS } from "@/data/Business";
 
 interface WhatsAppButtonProps {
   message?: string;
@@ -9,7 +10,7 @@ interface WhatsAppButtonProps {
 
 export default function WhatsAppCtaButton({
   message="Hi! I'm interested in your digital marketing services.",
-  phoneNumber = "+919685892813",
+  phoneNumber = BUSINESS.telephone,
   text = "Chat on WhatsApp",
   className = "",
 }: WhatsAppButtonProps) {

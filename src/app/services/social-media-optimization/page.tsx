@@ -29,6 +29,7 @@ import { WorkShowcase } from "./WorkShowcase";
 import { motion } from 'framer-motion';
 import ModernSmoProcess from "./ModernSmoProcess";
 import SmoBenefitsSection from "./SmoBenefitsSection";
+import { BUSINESS } from "@/data/Business";
 
 const socialPlatforms = [
   { name: "Facebook", icon: <FaFacebookF color="#1877F2" /> },
@@ -185,8 +186,8 @@ function SocialMediaOptimization() {
         url: "https://www.bigwigmediadigital.com",
         logo: "https://www.bigwigmediadigital.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FBigwig_logo__final.f181d8a8.png&w=828&q=75",
         image: "https://www.bigwigmediadigital.com/assets/office-team.jpg",
-        telephone: "+91-9685892813",
-        email: "support@bigwigmediadigital.com",
+        telephone: BUSINESS.telephone,
+        email: BUSINESS.email,
         address: {
           "@type": "PostalAddress",
           streetAddress: "Plot # 2, Sanjay Nagar, Gulabi Bagh",

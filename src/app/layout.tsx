@@ -3,6 +3,7 @@ import ScrollToTopButton from "../../components/ScrollToTopButton";
 import "./globals.css";
 import Script from "next/script";
 import FloatingButton from "../../components/FloatingButton";
+import { BUSINESS } from "@/data/Business";
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -133,7 +134,7 @@ export default function RootLayout({
                 image:
                   "https://www.bigwigdigital.in/assets/bigwig%20digital%20logo%20(11)-T8_kDtlw.png",
                 url: "https://bigwigdigital.in",
-                telephone: "+91 9685892813",
+                telephone: BUSINESS.telephone,
                 hasMap:
                   "google.com/maps/place/Bigwig+Digital/data=!4m2!3m1!1s0x0:0x39395dc0edfc0c60?sa=X&ved=1t:2428&hl=en-GB&ictx=111",
                 address: {
@@ -153,7 +154,7 @@ export default function RootLayout({
                 image:
                   "https://www.bigwigdigital.in/assets/bigwig%20digital%20logo%20(11)-T8_kDtlw.png",
                 url: "https://bigwigdigital.in",
-                telephone: "+91 9685892813",
+                telephone: BUSINESS.telephone,
                 hasMap:
                   "https://www.google.com/maps/place/Bigwig+Digital/data=!4m2!3m1!1s0x0:0xa54bc66585ac168e?sa=X&ved=1t:2428&hl=en-GB&ictx=111",
                 address: {

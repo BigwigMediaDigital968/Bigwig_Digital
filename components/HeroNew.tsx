@@ -5,6 +5,7 @@ import Image from "next/image";
 // Assuming you have your existing Button component
 import ButtonFill from "./Button";
 import { useNavigate } from "react-router-dom";
+import { BUSINESS } from "@/data/Business";
 
 // content for NewHero.tsx section
 const heroContent = {
@@ -65,7 +66,7 @@ const NewHero: React.FC = () => {
                 "Hi BigWig Media Digital! I'm interested in your services and would like to discuss more."
               );
               window.open(
-                `https://wa.me/+919685892813?text=${message}`,
+                `${BUSINESS.whatsappHref}?text=${message}`,
                 "_blank",
                 "noopener,noreferrer"
               );

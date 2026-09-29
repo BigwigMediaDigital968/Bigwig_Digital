@@ -8,6 +8,7 @@ import {
   FaPhoneAlt,
 } from "react-icons/fa";
 import "../index.css";
+import { BUSINESS } from "@/data/Business";
 
 const ContactSidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -38,7 +39,7 @@ const ContactSidebar: React.FC = () => {
           </a>
 
           <a
-            href="https://wa.me/+9196858 92813"
+            href={BUSINESS.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-14 bg-green-500 flex items-center justify-center text-white cursor-pointer"
@@ -47,7 +48,7 @@ const ContactSidebar: React.FC = () => {
           </a>
 
           <a
-            href="tel:+9196858 92813"
+            href={BUSINESS.telephoneHref}
             className="w-12 h-14 bg-[var(--secondary-color)] flex items-center justify-center text-white cursor-pointer"
           >
             <FaPhoneAlt />
