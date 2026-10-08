@@ -324,7 +324,7 @@ export function WorkShowcase() {
             
             {/* Behance Link Button */}
             <a 
-              href="https://www.behance.net/your-profile" 
+              href="https://www.behance.net/bigwigdigital1" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto min-w-[240px] bg-[#111217] hover:bg-[#16171e] border border-white/[0.05] hover:border-white/20 px-6 py-4 rounded-2xl transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
@@ -342,7 +342,7 @@ export function WorkShowcase() {
 
             {/* Dribbble Link Button */}
             <a 
-              href="https://dribbble.com/your-profile" 
+              href="https://dribbble.com/bigwig-digital" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto min-w-[240px] bg-[#111217] hover:bg-[#16171e] border border-white/[0.05] hover:border-white/20 px-6 py-4 rounded-2xl transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
